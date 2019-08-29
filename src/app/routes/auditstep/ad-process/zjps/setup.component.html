@@ -1,0 +1,82 @@
+<div class="modal-header">
+  <div class="modal-title">{{data.stepName}}【{{data.stepStartDate.substring(0,10)}} -
+    {{data.stepEndDate.substring(0,10)}}】专家组评审规则设置
+  </div>
+</div>
+<nz-table #deptTable nzSize="small" [nzData]="listOfData" nzPageSize="5">
+  <thead>
+    <tr>
+      <th nzWidth="4%" nzAlign="center">序号</th>
+      <th nzWidth="15%" nzAlign="center">专家组名称</th>
+      <th>成员专家列表</th>
+      <th nzWidth="36%" nzAlign="center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let zjzdata of deptTable.data;let i=index;">
+      <td nzAlign="center">{{ i+1 }}</td>
+      <td nzAlign="center">{{ zjzdata.zjzName }}</td>
+      <td></td>
+      <td nzAlign="center">
+        <button nz-button nzSize="small" nzType="link" (click)="zjzSetUser(zjzdata)">
+          <i nz-icon nzType="usergroup-add" nzTheme="outline" style="color: coral"></i>组成员</button>
+        <nz-divider nzType="vertical"></nz-divider>
+
+        <button nz-button nzSize="small" nzType="link" (click)="zjzSetPszb(zjzdata)">
+          <i *ngIf="zjzdata.indexIdList.length===1" nz-icon nzType="unordered-list" nzTheme="outline"
+            style="color: coral"></i>
+          <i *ngIf="zjzdata.indexIdList.length!==1" nz-icon nzType="check-circle" nzTheme="outline"
+            style="color:chartreuse"></i>
+          评审指标</button>
+
+        <button nz-button *ngIf='data.verIndex.substring(4, 6) === "fx"' nzSize="small" nzType="link"
+          (click)="zjzSetPsfx(zjzdata)">
+          <i *ngIf="zjzdata.branchIdList.length===1" nz-icon nzType="branches" nzTheme="outline"
+            style="color: coral"></i>
+          <i *ngIf="zjzdata.branchIdList.length!==1" nz-icon nzType="check-circle" nzTheme="outline"
+            style="color:chartreuse"></i>
+          评审分校</button>
+
+        <nz-divider nzType="vertical"></nz-divider>
+        <button nz-button nzSize="small" nzType="danger" (click)="deleteConfirm(zjzdata.id)">删除</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<nz-spin *ngIf="!i" class="modal-spin" style="padding-bottom: 5px"></nz-spin>
+<sf *ngIf="i" #sf mode="edit" [schema]="schema" [ui]="ui" [formData]="i" button="none">
+  <div class="modal-footer">
+    <button nz-button type="submit" nzType="primary" (click)="save(sf.value)" [disabled]="!sf.valid"
+      [nzLoading]="http.loading">保存专家组名称</button>
+  </div>
+</sf>
+
+<!-- <div nz-row nzGutter="16">
+  <div nz-col nzSpan="24">
+    <div class="modal-header">
+      <div class="modal-title">{{data.stepName}}【{{data.stepStartDate.substring(0,10)}} -
+        {{data.stepEndDate.substring(0,10)}}】专家组评审规则设置
+      </div>
+    </div>
+    <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+      <nz-tab nzTitle="专家组及成员设置">
+        <app-auditstep-ad-process-zjzadd></app-auditstep-ad-process-zjzadd>
+      </nz-tab>
+      <nz-tab nzTitle="专家组成员设置">
+        <ng-template nz-tab>
+          <app-auditstep-ad-process-zjzuser></app-auditstep-ad-process-zjzuser>
+        </ng-template>
+      </nz-tab>
+      <nz-tab nzTitle="专家组评审指标">
+        <ng-template nz-tab>
+          <app-auditstep-ad-process-zjzpszb></app-auditstep-ad-process-zjzpszb>
+        </ng-template>
+      </nz-tab>
+      <nz-tab nzTitle="专家组评审分校">
+        <ng-template nz-tab>
+          <app-auditstep-ad-process-zjzpsfx></app-auditstep-ad-process-zjzpsfx>
+        </ng-template>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+</div> -->

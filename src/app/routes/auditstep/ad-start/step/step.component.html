@@ -1,0 +1,12 @@
+<nz-steps nzDirection="vertical" [nzCurrent]="index" (nzIndexChange)="onIndexChange($event)">
+  <nz-step *ngFor="let astep of listOfAppStep"
+    [nzTitle]='astep.stepType + "【" + astep.fromDate.substring(0,10) + " 至 " + astep.endDate.substring(0,10) + "】"'
+    [nzDescription]="astep.stepName" (click)="editInfo(astep)"></nz-step>
+</nz-steps>
+<div class="footer">
+  <button (click)="addInfo(this.value)" nz-button nzType="primary">
+    <i nz-icon nzType="plus-circle" nzTheme="fill"></i>
+    新增阶段</button>
+  <nz-divider nzType="vertical"></nz-divider>
+  <button nz-button (click)="close()" nzType="danger"><span>关闭</span></button>
+</div>

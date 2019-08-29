@@ -1,0 +1,26 @@
+<form nz-form>
+  <nz-table #branchTable nzSize="small" [nzData]="listOfDisplayData" nzHideOnSinglePage="true" nzPageSize="100">
+    <thead>
+      <tr>
+        <th nzWidth="13%" nzAlign="center">选择</th>
+        <th>分校名称</th>
+        <th nzWidth="40%" nzAlign="center" nzShowFilter [nzFilters]="listOfType" (nzFilterChange)="filter($event)">类别
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of branchTable.data;let i=index;">
+        <td>
+          <label nz-checkbox name="first{{i}}" [(ngModel)]="data.isChecked" nzValue="data.id"
+            (ngModelChange)="ngModelChange($event,data.id)"></label>
+        </td>
+        <td>{{ data.bname }}</td>
+        <td nzAlign="center">{{ data.btype }}
+        </td>
+    </tbody>
+  </nz-table>
+</form>
+<div class="footer">
+  <button type="button" (click)="close()" class="ant-btn" style="margin-right: 8px;"><span>关闭</span></button>
+  <button type="button" (click)="submitForm()" class="ant-btn ant-btn-primary"><span>确认</span></button>
+</div>

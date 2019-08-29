@@ -1,0 +1,41 @@
+<form nz-form>
+  <nz-table #zjTable nzSize="small" [nzData]="listOfDisplayData" nzHideOnSinglePage="true" nzPageSize="200">
+    <thead>
+      <tr>
+        <th nzWidth="13%" nzAlign="center">选择</th>
+        <th nzWidth="27%" nzAlign="center">专家名称</th>
+        <th nzAlign="center">是否组长</th>
+        <th nzWidth="30%" nzAlign="center" nzShowFilter [nzFilters]="listOfType" (nzFilterChange)="filter($event)">类别
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of zjTable.data;let i=index;">
+        <td>
+          <label nz-checkbox name="first{{i}}" [(ngModel)]="data.isChecked" nzValue="data.id"
+            (ngModelChange)="ngModelChange($event,data.id)"></label>
+        </td>
+        <td>
+          <a title='{{ data.mob }}'>{{ data.userName }}</a>
+        </td>
+        <td nzAlign="center" *ngIf="data.isChecked">
+          <span *ngIf="data.id === selectChargeId"><input nz-input type="radio" name="chargerUser" id="chargerUser"
+              value='{{ data.id }}' checked=true (click)="ngChgChange($event,data.id)"></span>
+          <span *ngIf="data.id !== selectChargeId"><input nz-input type="radio" name="chargerUser" id="chargerUser"
+              value='{{ data.id }}' (click)="ngChgChange($event,data.id)"></span>
+        </td>
+        <td nzAlign="center" *ngIf="!data.isChecked">
+          <span *ngIf="data.id === selectChargeId" style="display: none"><input nz-input type="radio" name="chargerUser"
+              id="chargerUser" value='{{ data.id }}' checked=true (click)="ngChgChange($event,data.id)"></span>
+          <span *ngIf="data.id !== selectChargeId" style="display: none"><input nz-input type="radio" name="chargerUser"
+              id="chargerUser" value='{{ data.id }}' (click)="ngChgChange($event,data.id)"></span>
+        </td>
+        <td>{{ data.unitName }} </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</form>
+<div class="footer">
+  <button type="button" (click)="close()" class="ant-btn" style="margin-right: 8px;"><span>关闭</span></button>
+  <button type="button" (click)="submitForm()" class="ant-btn ant-btn-primary"><span>确认</span></button>
+</div>

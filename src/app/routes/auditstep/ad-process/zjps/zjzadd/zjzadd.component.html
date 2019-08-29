@@ -1,0 +1,22 @@
+<nz-card>
+  <nz-table #deptTable nzSize="small" [nzData]="listOfData">
+    <thead>
+      <tr>
+        <th nzWidth="4%">序号</th>
+        <th nzWidth="20%">部门名称</th>
+        <th>参与评估人员信息</th>
+        <th nzWidth="10%" nzAlign="center">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let zjzdata of deptTable.data;let i=index;">
+        <td>{{ i+1 }}</td>
+        <td>{{ zjzdata.bname }}</td>
+        <td> </td>
+        <td nzAlign="center">
+          <button nz-button nzSize="small" nzType="danger" (click)="deleteConfirm(zjzdata.id)">删除</button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>

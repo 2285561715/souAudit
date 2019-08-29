@@ -1,0 +1,14 @@
+<div class="modal-header">
+  <div class="modal-title">查看数据采集结果</div>
+</div>
+<nz-list nzSize="small" [nzDataSource]="listOfSjcj" [nzRenderItem]="item" [nzGrid]="{ gutter: 16, span: 6 }">
+  <ng-template #item let-item>
+    <nz-list-item [nzContent]="nzContent">
+      <ng-template #nzContent>
+        <nz-card [nzTitle]="item.dtName" nzSize="small" [nzHoverable]="true">
+          <a (click)="showSynchData(item.dtNo)"> 更新时间：{{item.modTime}}</a>
+        </nz-card>
+      </ng-template>
+    </nz-list-item>
+  </ng-template>
+</nz-list>

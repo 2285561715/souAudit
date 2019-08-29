@@ -1,0 +1,96 @@
+<div class="modal-header">
+  <div class="modal-title">【{{activeNode.title}}】 指标属性设置 </div>
+</div>
+<nz-steps [nzCurrent]="current" nzSize="small">
+  <nz-step nzTitle="对应数据表及材料表" (click)="stepClick(0)"></nz-step>
+  <nz-step nzTitle="评审统计分析项目" (click)="stepClick(1)"></nz-step>
+  <nz-step nzTitle="评审达标项及阀值" (click)="stepClick(2)"></nz-step>
+</nz-steps>
+<div class="steps-content" [formGroup]="validateForm">
+  <!-- 第一步设置指标对应数据填报表、采集表、文字材料-->
+  <div id="stepAct1" style="display: block">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="4" nzFor="dataSjtb">数据填报表</nz-form-label>
+      <nz-form-control [nzSpan]="16">
+        <nz-select [nzMaxTagCount]="8" style="width: 100%" nzMode="multiple" nzPlaceHolder="选择数据填报表！"
+          [(ngModel)]="listOfSelectedSjtb" [ngModelOptions]="{standalone: true}"
+          (ngModelChange)="estbFromChange($event)">
+          <nz-option *ngFor="let option of listOfSjtb" [nzLabel]="option.dtName" [nzValue]="option.dtNo"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="4" nzFor="dataSjcj">数据采集表</nz-form-label>
+      <nz-form-control [nzSpan]="16">
+        <nz-select [nzMaxTagCount]="8" style="width: 100%" nzMode="multiple" nzPlaceHolder="选择数据采集表！"
+          [(ngModel)]="listOfSelectedSjcj" [ngModelOptions]="{standalone: true}"
+          (ngModelChange)="escjFromChange($event)">
+          <nz-option *ngFor="let option of listOfSjcj" [nzLabel]="option.dtName" [nzValue]="option.dtNo"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="4" nzFor="dataFile">文字单片材料</nz-form-label>
+      <nz-form-control [nzSpan]="16">
+        <nz-select [nzMaxTagCount]="8" style="width: 100%" nzMode="multiple" nzPlaceHolder="选择文字单片材料！"
+          [(ngModel)]="listOfSelectedFile" [ngModelOptions]="{standalone: true}"
+          (ngModelChange)="esflFromChange($event)">
+          <nz-option *ngFor="let option of listOfFile" [nzLabel]="option.fileName" [nzValue]="option.fileName">
+          </nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <!-- 第二步设置指标统计项目 -->
+  <div id="stepAct2" style="display: none">
+    <nz-form-item *ngFor="let control of listOfControl; let i = index">
+      <nz-form-label [nzSpan]="4" *ngIf="i == 0" [nzFor]="control.controlInstance">指标统计名目
+      </nz-form-label>
+      <nz-form-control [nzSpan]="16" [nzOffset]="i == 0 ? 0 : 4" nzErrorTip="请输入统计名目！">
+        <input class="passenger-input" nz-input placeholder="统计名目名称" [attr.id]="control.id"
+          [formControlName]="control.controlInstance" style="width: 90%;">
+        <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeField(control, $event)"></i>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 20, offset: 4 }">
+        <button nz-button nzType="dashed" class="add-button" (click)="addField($event)" style="width: 510px;">
+          <i nz-icon nzType="plus"></i>
+          增加统计项目
+        </button>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <!-- 第三步设置指标  -->
+  <div id="stepAct3" style="display: none">
+    <nz-form-item *ngFor="let control of listOfFZControl; let i = index">
+      <nz-form-label [nzSpan]="4" *ngIf="i == 0" [nzFor]="control.controlInstance">达标名目及阀值
+      </nz-form-label>
+      <nz-form-control [nzSpan]="16" [nzOffset]="i == 0 ? 0 : 4" nzErrorTip="请输入评审达标名目！">
+        <input class="passenger-input" nz-input placeholder="达标名目名称及阀值" [attr.id]="control.id"
+          [formControlName]="control.controlInstance" style="width: 90%;">
+        <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeFZField(control, $event)"></i>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 20, offset: 4 }">
+        <button nz-button nzType="dashed" class="add-button" (click)="addFZField($event)" style="width: 510px;">
+          <i nz-icon nzType="plus"></i>
+          增加统计项目
+        </button>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</div>
+
+<div class="steps-action">
+  <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
+    <span>《上一步</span>
+  </button>
+  <button nz-button nzType="default" (click)="next()" *ngIf="current < 2">
+    <span>下一步》</span>
+  </button>
+  <button nz-button nzType="primary" (click)="submitForm()" *ngIf="current === 2">
+    <span>确认提交</span>
+  </button>
+</div>
