@@ -43,10 +43,10 @@ export class AuditstepAdProcessZjpsZjzPsfxComponent implements OnInit {
   listOfselectChk: any[] = [];
 
   ngOnInit() {
-    this.http.get('http://139.224.62.102:8080/api/stepwbs/zjz?id=' + this.value).subscribe((res: any) => {
+    this.http.get('/api/stepwbs/zjz?id=' + this.value).subscribe((res: any) => {
       this.listOfselectChk = res[0].branchIdList;
       // 查询用户列表
-      this.http.get('http://139.224.62.102:8080/api/branches').subscribe((ress: any[]) => {
+      this.http.get('/api/branches').subscribe((ress: any[]) => {
         ress.forEach(item => {
           this.listOfselectChk.includes(item.id + '') ? (item.isChecked = true) : (item.isChecked = false);
           this.listOfData.push(item);
@@ -104,7 +104,7 @@ export class AuditstepAdProcessZjpsZjzPsfxComponent implements OnInit {
     zjbdata.id = this.value;
     zjbdata.branchIdList = this.listOfselectChk;
 
-    this.http.put('http://139.224.62.102:8080/api/stepwbs/zjz', zjbdata).subscribe((res: any) => {
+    this.http.put('/api/stepwbs/zjz', zjbdata).subscribe((res: any) => {
       this.msgSrv.success('修改信息成功');
       this.cdr.detectChanges();
       this.close(res);

@@ -48,7 +48,7 @@ export class AuditindexIndexManaXdrawerIdmoreComponent implements OnInit {
     const children: Array<{ id: number; status: boolean; bno: string; bname: string }> = [];
     if (this.activeNode.verIndex.substring(4, 6) === 'zx') {
       // 第一步：总校的加载总校部门
-      this.http.get('http://139.224.62.102:8080/api/departments').subscribe((res: any) => {
+      this.http.get('/api/departments').subscribe((res: any) => {
         this.listOfDept = res;
         this.listOfDept.push({ id: 1, status: true, bno: 'fx', bname: '分校' });
       });
@@ -63,7 +63,7 @@ export class AuditindexIndexManaXdrawerIdmoreComponent implements OnInit {
   }
 
   loadRemark(): void {
-    this.http.get('http://139.224.62.102:8080/api/indexes/remark/' + this.activeNode.key).subscribe((res: any) => {
+    this.http.get('/api/indexes/remark/' + this.activeNode.key).subscribe((res: any) => {
       // 组件初始化赋值
       this.validateForm.controls.remark.setValue(res.remark);
       this.validateForm.controls.auditDesc.setValue(res.auditDesc);
@@ -142,7 +142,7 @@ export class AuditindexIndexManaXdrawerIdmoreComponent implements OnInit {
     data.dutyDept = this.listOfSelectedDept;
     console.log(data);
 
-    this.http.put(`http://139.224.62.102:8080/api/indexes`, data).subscribe((res: any) => {
+    this.http.put(`/api/indexes`, data).subscribe((res: any) => {
       this.msgSrv.success('修改信息成功');
       this.close(res);
     });

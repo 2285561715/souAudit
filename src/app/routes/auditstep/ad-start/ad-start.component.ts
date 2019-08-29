@@ -31,7 +31,7 @@ export class AuditstepAdStartComponent implements OnInit {
   }
 
   loadInfo(): void {
-    this.http.get('http://139.224.62.102:8080/api/adapply').subscribe((res: any[]) => {
+    this.http.get('/api/adapply').subscribe((res: any[]) => {
       this.listOfData = res;
       this.cdr.detectChanges();
     });
@@ -58,7 +58,7 @@ export class AuditstepAdStartComponent implements OnInit {
   // }
 
   // deleteInfo(id: number) {
-  //   this.http.delete('http://139.224.62.102:8080/api/adapply/' + id).subscribe((res: any) => {
+  //   this.http.delete('/api/adapply/' + id).subscribe((res: any) => {
   //     this.msgSrv.success('删除用户成功');
   //     this.cdr.detectChanges();
   //     this.loadInfo();

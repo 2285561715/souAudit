@@ -60,7 +60,7 @@ export class AuditindexIndexManaIdeditComponent implements OnInit {
   save(valueData: any) {
     valueData.id = this.activeNode.key;
     // console.log(valueData);
-    this.http.put(`http://139.224.62.102:8080/api/indexes`, valueData).subscribe(res => {
+    this.http.put(`/api/indexes`, valueData).subscribe(res => {
       this.msgSrv.success('保存成功');
       this.modal.close(true);
     });

@@ -28,11 +28,11 @@ export class AuditstepAdProcessViewDataSynchComponent implements OnInit {
   loadInfo(): void {
     // 按评估类别是总校还是分校查询，显示填报表、采集表、资料表清单---------------------------------
     if (this.data.verIndex.substring(4, 6) === 'zx') {
-      this.http.get('http://139.224.62.102:8080/api/data/tables?dtType=zxcj').subscribe((res: any[]) => {
+      this.http.get('/api/data/tables?dtType=zxcj').subscribe((res: any[]) => {
         this.listOfSjcj = res;
       });
     } else {
-      this.http.get('http://139.224.62.102:8080/api/data/tables?dtType=fxcj').subscribe((res: any[]) => {
+      this.http.get('/api/data/tables?dtType=fxcj').subscribe((res: any[]) => {
         this.listOfSjcj = res;
       });
     }

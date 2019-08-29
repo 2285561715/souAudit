@@ -24,7 +24,7 @@ export class AuditstepAdProcessZjpsZjzAddComponent implements OnInit {
 
   loadInfo(): void {
     this.http
-      .get('http://139.224.62.102:8080/api/stepwbs/stepwbs/zjz?appId=' + this.appId + '&stepId=' + this.stepId)
+      .get('/api/stepwbs/stepwbs/zjz?appId=' + this.appId + '&stepId=' + this.stepId)
       .subscribe((res: any[]) => {
         this.listOfData = res;
         console.log(this.listOfData);
@@ -46,7 +46,7 @@ export class AuditstepAdProcessZjpsZjzAddComponent implements OnInit {
   }
 
   deleteInfo(id: number) {
-    // this.http.delete('http://139.224.62.102:8080/api/departments/' + id).subscribe((res: any) => {
+    // this.http.delete('/api/departments/' + id).subscribe((res: any) => {
     //   this.msgSrv.success('删除用户成功');
     //   this.cdr.detectChanges();
     //   this.loadInfo();

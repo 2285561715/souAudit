@@ -38,7 +38,7 @@ export class AuditstepAdStartEditComponent implements OnInit {
   }
 
   loadInfo(): void {
-    this.http.get('http://139.224.62.102:8080/api/main/infos').subscribe((res: any) => {
+    this.http.get('/api/main/infos').subscribe((res: any) => {
       this.listOfVer = res;
     });
   }
@@ -64,7 +64,7 @@ export class AuditstepAdStartEditComponent implements OnInit {
   }
 
   deleteInfo(id: number) {
-    this.http.delete('http://139.224.62.102:8080/api/adapply/' + id).subscribe((res: any) => {
+    this.http.delete('/api/adapply/' + id).subscribe((res: any) => {
       this.msgSrv.success('删除用户成功');
       this.cdr.detectChanges();
       this.close(res);
@@ -91,7 +91,7 @@ export class AuditstepAdStartEditComponent implements OnInit {
 
     console.log(data);
 
-    this.http.put('http://139.224.62.102:8080/api/adapply', data).subscribe((res: any) => {
+    this.http.put('/api/adapply', data).subscribe((res: any) => {
       this.msgSrv.success('修改信息成功');
       this.close(res);
     });

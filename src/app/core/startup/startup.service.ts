@@ -66,7 +66,7 @@ export class StartupService {
   // }
 
   private viaHttp(resolve: any, reject: any) {
-    zip(this.httpClient.get('http://139.224.62.102:8080/api/menus/'), this.httpClient.get('/user/current'))
+    zip(this.httpClient.get('/api/menus/unit'), this.httpClient.get('/api/account'))
       .pipe(
         catchError(([appData, accountData]) => {
           resolve(null);
@@ -81,7 +81,7 @@ export class StartupService {
           this.settingService.setApp(this.app);
           // User information: including name, avatar, email address
           this.settingService.setUser({
-            name: accountData.firstName,
+            name: accountData.userName,
             avatar:
               accountData.imageUrl && accountData.imageUrl.length === 0
                 ? './assets/tmp/img/avatar.jpg'
@@ -95,7 +95,7 @@ export class StartupService {
           // Menu data, https://ng-alain.com/theme/menu
           const restMenu = [
             {
-              text: '主导航',
+              text: '总校功能区',
               group: true,
               hideInBreadcrumb: true,
               children: res.menu,
@@ -347,9 +347,9 @@ export class StartupService {
     // https://github.com/angular/angular/issues/15088
     return new Promise((resolve, reject) => {
       // http
-      // this.viaHttp(resolve, reject);
+      this.viaHttp(resolve, reject);
       // mock：请勿在生产环境中这么使用，viaMock 单纯只是为了模拟一些数据使脚手架一开始能正常运行
-      this.viaMock(resolve, reject);
+      // this.viaMock(resolve, reject);
     });
   }
 }

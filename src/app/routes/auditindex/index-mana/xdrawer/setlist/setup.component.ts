@@ -62,7 +62,7 @@ export class AuditindexIndexManaSetUpComponent implements OnInit {
   // 获取indexes_sets的conType\typeNO\TypeName\typeValue
   loadSets(): void {
     this.http
-      .get('http://139.224.62.102:8080/api/indexes/sets?indexId=' + this.activeNode.key)
+      .get('/api/indexes/sets?indexId=' + this.activeNode.key)
       .subscribe((res: any) => {
         // this.indexesSetslists = res;
         res.forEach(item => {
@@ -141,25 +141,25 @@ export class AuditindexIndexManaSetUpComponent implements OnInit {
     const children: Array<{ id: number; status: boolean; bno: string; bname: string }> = [];
     if (this.activeNode.verIndex.substring(4, 6) === 'zx') {
       // 加载 总校数据填报表、总校数据采集表、总校文字单片材料
-      this.http.get('http://139.224.62.102:8080/api/data/tables?dtType=zxtb').subscribe((res: any[]) => {
+      this.http.get('/api/data/tables?dtType=zxtb').subscribe((res: any[]) => {
         this.listOfSjtb = res;
       });
-      this.http.get('http://139.224.62.102:8080/api/data/tables?dtType=zxcj').subscribe((res: any[]) => {
+      this.http.get('/api/data/tables?dtType=zxcj').subscribe((res: any[]) => {
         this.listOfSjcj = res;
       });
-      this.http.get('http://139.224.62.102:8080/api/wzfile/files?fileType=zxwz').subscribe((res: any[]) => {
+      this.http.get('/api/wzfile/files?fileType=zxwz').subscribe((res: any[]) => {
         this.listOfFile = res;
       });
       // 加载 end------------------------------------------
     } else {
       // 加载 分校数据填报表、分校数据采集表、分校文字单片材料
-      this.http.get('http://139.224.62.102:8080/api/data/tables?dtType=fxtb').subscribe((res: any[]) => {
+      this.http.get('/api/data/tables?dtType=fxtb').subscribe((res: any[]) => {
         this.listOfSjtb = res;
       });
-      this.http.get('http://139.224.62.102:8080/api/data/tables?dtType=fxcj').subscribe((res: any[]) => {
+      this.http.get('/api/data/tables?dtType=fxcj').subscribe((res: any[]) => {
         this.listOfSjcj = res;
       });
-      this.http.get('http://139.224.62.102:8080/api/wzfile/files?fileType=fxwz').subscribe((res: any[]) => {
+      this.http.get('/api/wzfile/files?fileType=fxwz').subscribe((res: any[]) => {
         this.listOfFile = res;
       });
       // 加载 end------------------------------------------
@@ -304,7 +304,7 @@ export class AuditindexIndexManaSetUpComponent implements OnInit {
     data.dataFile = this.listOfSelectedFile;
     console.log(data);
 
-    this.http.post(`http://139.224.62.102:8080/api/indexes/sets`, data).subscribe((res: any) => {
+    this.http.post(`/api/indexes/sets`, data).subscribe((res: any) => {
       this.msgSrv.success('修改信息成功');
       this.close(res);
     });

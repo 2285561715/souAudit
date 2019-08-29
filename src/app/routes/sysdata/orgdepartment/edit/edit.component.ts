@@ -36,7 +36,7 @@ export class SysdataOrgdepartmentEditComponent implements OnInit {
     const data = this.validateForm.value;
     data.id = this.record.id;
 
-    this.http.put('http://139.224.62.102:8080/api/departments', data).subscribe((res: any) => {
+    this.http.put('/api/departments', data).subscribe((res: any) => {
       this.msgSrv.success('修改部门成功');
       this.cdr.detectChanges();
       this.close(res);

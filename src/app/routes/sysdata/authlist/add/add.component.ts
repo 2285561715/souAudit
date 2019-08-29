@@ -38,7 +38,7 @@ export class SysdataAuthlistAddComponent implements OnInit {
     }
 
     const data = this.validateForm.value;
-    this.http.post('http://139.224.62.102:8080/api/units', data).subscribe((res: any) => {
+    this.http.post('/api/units', data).subscribe((res: any) => {
       this.msgSrv.success('添加用户成功');
       this.close(res);
     });

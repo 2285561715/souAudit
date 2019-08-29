@@ -31,7 +31,7 @@ export class SysdataFxSynchdatatableComponent implements OnInit {
     this.loadInfo();
   }
   loadInfo(): void {
-    this.http.get('http://139.224.62.102:8080/api/data/tables?dtType=fxcj').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables?dtType=fxcj').subscribe((res: any[]) => {
       this.listOfData = res;
       this.cdr.detectChanges();
     });
@@ -58,7 +58,7 @@ export class SysdataFxSynchdatatableComponent implements OnInit {
   // }
 
   // deleteInfo(id: number) {
-  //   this.http.delete('http://139.224.62.102:8080/api/users/' + id).subscribe((res: any) => {
+  //   this.http.delete('/api/users/' + id).subscribe((res: any) => {
   //     this.msgSrv.success('删除用户成功');
   //     this.cdr.detectChanges();
   //     this.loadInfo();

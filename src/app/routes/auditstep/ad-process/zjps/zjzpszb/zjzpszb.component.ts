@@ -44,13 +44,13 @@ export class AuditstepAdProcessZjpsZjzPszbComponent implements OnInit {
   ngOnInit() {
     // const valuestr = this.value.split('=');
     // this.zjzId = valuestr[0];
-    // this.http.get('http://139.224.62.102:8080/api/stepwbs/zjz?id=' + valuestr[0]).subscribe((res: any) => {
+    // this.http.get('/api/stepwbs/zjz?id=' + valuestr[0]).subscribe((res: any) => {
     //   console.log('heelo');
     //   this.defaultCheckedKeys = res[0].indexIdList; // 默认checked
     //   console.log(this.defaultCheckedKeys);
     // });
 
-    // this.http.get('http://139.224.62.102:8080/api/indexes/' + valuestr[1]).subscribe((res: any) => {
+    // this.http.get('/api/indexes/' + valuestr[1]).subscribe((res: any) => {
     //   this.nodes = res.nodes[0].children;
     //   console.log(this.nodes);
     //   this.cdr.detectChanges();
@@ -62,8 +62,8 @@ export class AuditstepAdProcessZjpsZjzPszbComponent implements OnInit {
     const valuestr = this.value.split('=');
     this.zjzId = valuestr[0];
     zip(
-      this.http.get('http://139.224.62.102:8080/api/stepwbs/zjz?id=' + valuestr[0]),
-      this.http.get('http://139.224.62.102:8080/api/indexes/pszb/' + valuestr[1]),
+      this.http.get('/api/stepwbs/zjz?id=' + valuestr[0]),
+      this.http.get('/api/indexes/pszb/' + valuestr[1]),
     )
       .pipe(
         catchError(([zjzDusers, mTree]) => {
@@ -100,7 +100,7 @@ export class AuditstepAdProcessZjpsZjzPszbComponent implements OnInit {
 
     console.log(zbdata);
 
-    this.http.put('http://139.224.62.102:8080/api/stepwbs/zjz', zbdata).subscribe((res: any) => {
+    this.http.put('/api/stepwbs/zjz', zbdata).subscribe((res: any) => {
       this.msgSrv.success('修改信息成功');
       this.cdr.detectChanges();
       this.close();
