@@ -81,7 +81,7 @@ export class AuditstepAdStartStepAddComponent implements OnInit {
     valueData.isDone = 0;
 
     console.log(valueData);
-    this.http.post(`http://139.224.62.102:8080/api/adapply/steps`, valueData).subscribe(res => {
+    this.http.post(`/api/adapply/steps`, valueData).subscribe(res => {
       this.msgSrv.success('保存成功');
       this.modal.close(true);
     });

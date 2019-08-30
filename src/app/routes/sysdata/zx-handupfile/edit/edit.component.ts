@@ -69,7 +69,7 @@ export class SysdataZxHandupfileEditComponent implements OnInit {
   }
 
   loadDept(): void {
-    this.http.get('http://139.224.62.102:8080/api/departments').subscribe((res: any) => {
+    this.http.get('/api/departments').subscribe((res: any) => {
       const temp = res;
       temp.forEach(tmp => {
         const dept = {
@@ -114,7 +114,7 @@ export class SysdataZxHandupfileEditComponent implements OnInit {
     value.dutyDeptName = this.dutyDeptName;
 
     console.log(value);
-    this.http.put(`http://139.224.62.102:8080/api/wzfile/files`, value).subscribe(res => {
+    this.http.put(`/api/wzfile/files`, value).subscribe(res => {
       this.msgSrv.success('保存成功');
       this.modal.close(true);
     });

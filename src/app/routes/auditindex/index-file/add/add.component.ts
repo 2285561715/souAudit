@@ -93,7 +93,7 @@ export class AuditindexIndexFileAddComponent implements OnInit {
       date.getSeconds();
 
     console.log(value);
-    this.http.post(`http://139.224.62.102:8080/api/main/infos`, value).subscribe(res => {
+    this.http.post(`/api/main/infos`, value).subscribe(res => {
       this.msgSrv.success('保存成功');
       this.modal.close(true);
     });

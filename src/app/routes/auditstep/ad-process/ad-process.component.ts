@@ -27,7 +27,7 @@ export class AuditstepAdProcessComponent implements OnInit {
   }
 
   loadInfo(): void {
-    this.http.get('http://139.224.62.102:8080/api/adapply').subscribe((res: any[]) => {
+    this.http.get('/api/adapply').subscribe((res: any[]) => {
       this.listOfData = res;
       this.cdr.detectChanges();
     });

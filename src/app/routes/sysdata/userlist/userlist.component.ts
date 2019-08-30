@@ -42,7 +42,7 @@ export class SysdataUserlistComponent implements OnInit {
    * 加载用户列表
    */
   loadInfo(): void {
-    this.http.get('http://139.224.62.102:8080/api/users').subscribe((res: any[]) => {
+    this.http.get('/api/users').subscribe((res: any[]) => {
       this.listOfData = res;
       this.listOfDisplayData = this.listOfData;
       // this.cdr.detectChanges() 这句一定要加，否则列表不会刷新，导致看不到数据
@@ -111,7 +111,7 @@ export class SysdataUserlistComponent implements OnInit {
   }
 
   deleteInfo(id: number) {
-    this.http.delete('http://139.224.62.102:8080/api/users/' + id).subscribe((res: any) => {
+    this.http.delete('/api/users/' + id).subscribe((res: any) => {
       this.msgSrv.success('删除用户成功');
       this.cdr.detectChanges();
       this.loadInfo();

@@ -29,7 +29,7 @@ export class AuditstepAdProcessStepComponent implements OnInit {
   }
 
   loadSteps(): void {
-    this.http.get('http://139.224.62.102:8080/api/adapply/steps?appId=' + this.value.id).subscribe((res: any) => {
+    this.http.get('/api/adapply/steps?appId=' + this.value.id).subscribe((res: any) => {
       this.listOfAppStep = res;
       this.cdr.detectChanges();
     });
@@ -64,7 +64,7 @@ export class AuditstepAdProcessStepComponent implements OnInit {
     data.stepId = astep.id;
     data.stepName = astep.stepName;
     console.log(data);
-    this.http.post('http://139.224.62.102:8080/api/stepwbs/depttbrw', data).subscribe((res: any) => {
+    this.http.post('/api/stepwbs/depttbrw', data).subscribe((res: any) => {
       this.msgSrv.success('数据填报任务发布成功');
       // this.close(res);
     });

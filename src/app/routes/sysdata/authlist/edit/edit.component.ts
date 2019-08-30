@@ -40,7 +40,7 @@ export class SysdataAuthlistEditComponent implements OnInit {
 
     const data = this.validateForm.value;
     data.id = this.record.id;
-    this.http.put('http://139.224.62.102:8080/api/units', data).subscribe((res: any) => {
+    this.http.put('/api/units', data).subscribe((res: any) => {
       this.msgSrv.success('修改信息成功');
       this.close(res);
     });

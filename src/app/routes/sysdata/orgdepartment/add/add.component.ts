@@ -29,7 +29,7 @@ export class SysdataOrgdepartmentAddComponent implements OnInit {
 
   submitForm(): void {
     const data = this.validateForm.value;
-    this.http.post('http://139.224.62.102:8080/api/departments', data).subscribe((res: any) => {
+    this.http.post('/api/departments', data).subscribe((res: any) => {
       this.msgSrv.success('添加部门成功');
       this.cdr.detectChanges();
       this.close(res);

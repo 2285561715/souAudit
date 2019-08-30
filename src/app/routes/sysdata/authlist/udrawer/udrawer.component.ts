@@ -41,11 +41,11 @@ export class SysdataAuthlistUdrawerComponent implements OnInit {
   tempNode: any[] = [];
 
   ngOnInit() {
-    // this.http.get('http://139.224.62.102:8080/api/units/' + this.value).subscribe((res: any) => {
+    // this.http.get('/api/units/' + this.value).subscribe((res: any) => {
     //   this.defaultCheckedKeys = res; // 默认checked
     //   // this.cdr.detectChanges();
     // });
-    // this.http.get('http://139.224.62.102:8080/api/menus/tree').subscribe((res: any) => {
+    // this.http.get('/api/menus/tree').subscribe((res: any) => {
     //   this.nodes = res.menu;
     //   this.cdr.detectChanges();
     // });
@@ -54,8 +54,8 @@ export class SysdataAuthlistUdrawerComponent implements OnInit {
 
   loadInfo(): void {
     zip(
-      this.http.get('http://139.224.62.102:8080/api/units/' + this.value),
-      this.http.get('http://139.224.62.102:8080/api/menus/tree'),
+      this.http.get('/api/units/' + this.value),
+      this.http.get('/api/menus/tree'),
     )
       .pipe(
         catchError(([sysUnits, mTree]) => {
@@ -93,7 +93,7 @@ export class SysdataAuthlistUdrawerComponent implements OnInit {
 
     console.log(unitdata);
 
-    this.http.post('http://139.224.62.102:8080/api/units/grant', unitdata).subscribe((res: any) => {
+    this.http.post('/api/units/grant', unitdata).subscribe((res: any) => {
       this.msgSrv.success('权限设置成功！');
       this.close();
     });

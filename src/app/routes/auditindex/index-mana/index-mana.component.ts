@@ -31,7 +31,7 @@ export class AuditindexIndexManaComponent implements OnInit {
   }
 
   loadInfo(): void {
-    this.http.get('http://139.224.62.102:8080/api/main/infos').subscribe((res: any[]) => {
+    this.http.get('/api/main/infos').subscribe((res: any[]) => {
       this.listOfData = res;
       this.cdr.detectChanges();
     });
@@ -52,7 +52,7 @@ export class AuditindexIndexManaComponent implements OnInit {
   }
 
   deleteInfo(id: number) {
-    this.http.delete('http://139.224.62.102:8080/api/main/infos/' + id).subscribe((res: any) => {
+    this.http.delete('/api/main/infos/' + id).subscribe((res: any) => {
       this.msgSrv.success('删除用户成功');
       this.cdr.detectChanges();
       this.loadInfo();

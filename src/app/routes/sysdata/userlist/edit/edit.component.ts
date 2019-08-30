@@ -59,18 +59,18 @@ export class SysdataUserlistEditComponent implements OnInit {
   }
 
   loadInfo(tempValue: string): void {
-    this.http.get('http://139.224.62.102:8080/api/departments').subscribe((res: any) => {
+    this.http.get('/api/departments').subscribe((res: any) => {
       this.listOfDept = res;
       if (tempValue === 'zx') {
         this.listOfDB = this.listOfDept;
         this.cdr.detectChanges();
       }
     });
-    this.http.get('http://139.224.62.102:8080/api/units').subscribe((res: any) => {
+    this.http.get('/api/units').subscribe((res: any) => {
       this.listOfUnit = res;
       this.cdr.detectChanges();
     });
-    this.http.get('http://139.224.62.102:8080/api/branches').subscribe((res: any) => {
+    this.http.get('/api/branches').subscribe((res: any) => {
       this.listOfBranch = res;
       if (tempValue === 'fx') {
         this.listOfDB = this.listOfBranch;
@@ -106,7 +106,7 @@ export class SysdataUserlistEditComponent implements OnInit {
 
     // 初始化id
     data.id = this.record.id;
-    this.http.put('http://139.224.62.102:8080/api/users', data).subscribe((res: any) => {
+    this.http.put('/api/users', data).subscribe((res: any) => {
       this.msgSrv.success('修改用户信息成功');
       this.close(res);
     });

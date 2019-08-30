@@ -92,7 +92,7 @@ export class SysdataZxSynchdatatableEditComponent implements OnInit {
   }
 
   loadInfo(): void {
-    this.http.get('http://139.224.62.102:8080/api/departments').subscribe((res: any) => {
+    this.http.get('/api/departments').subscribe((res: any) => {
       this.listOfDept = res;
     });
     this.cdr.detectChanges();
@@ -194,7 +194,7 @@ export class SysdataZxSynchdatatableEditComponent implements OnInit {
 
     console.log(data);
 
-    this.http.put(`http://139.224.62.102:8080/api/data/tables`, data).subscribe(res => {
+    this.http.put(`/api/data/tables`, data).subscribe(res => {
       this.msgSrv.success('保存成功');
       this.modal.close(true);
     });

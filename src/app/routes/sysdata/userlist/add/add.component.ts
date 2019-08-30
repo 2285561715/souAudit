@@ -47,16 +47,16 @@ export class SysdataUserlistAddComponent implements OnInit {
   }
 
   loadInfo(): void {
-    this.http.get('http://139.224.62.102:8080/api/departments').subscribe((res: any) => {
+    this.http.get('/api/departments').subscribe((res: any) => {
       this.listOfDept = res;
       this.listOfDB = this.listOfDept;
     });
 
-    this.http.get('http://139.224.62.102:8080/api/units').subscribe((res: any) => {
+    this.http.get('/api/units').subscribe((res: any) => {
       this.listOfUnit = res;
     });
 
-    this.http.get('http://139.224.62.102:8080/api/branches').subscribe((res: any) => {
+    this.http.get('/api/branches').subscribe((res: any) => {
       this.listOfBranch = res;
     });
   }
@@ -100,7 +100,7 @@ export class SysdataUserlistAddComponent implements OnInit {
 
     console.log(data);
 
-    this.http.post('http://139.224.62.102:8080/api/users', data).subscribe((res: any) => {
+    this.http.post('/api/users', data).subscribe((res: any) => {
       this.msgSrv.success('添加用户成功');
       this.close(res);
     });

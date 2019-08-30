@@ -184,7 +184,7 @@ export class AuditindexIndexManaXdrawerComponent implements OnInit {
   }
 
   loadInfo(): void {
-    this.http.get('http://139.224.62.102:8080/api/indexes/' + this.value).subscribe((res: any) => {
+    this.http.get('/api/indexes/' + this.value).subscribe((res: any) => {
       this.nodes = res.nodes;
       console.log(this.nodes);
       this.cdr.detectChanges();
@@ -234,7 +234,7 @@ export class AuditindexIndexManaXdrawerComponent implements OnInit {
   }
 
   deleteInfo(key: number) {
-    this.http.delete('http://139.224.62.102:8080/api/indexes/' + key).subscribe((res: any) => {
+    this.http.delete('/api/indexes/' + key).subscribe((res: any) => {
       this.msgSrv.success('删除指标成功');
       this.loadInfo();
     });

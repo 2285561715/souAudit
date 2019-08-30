@@ -82,7 +82,7 @@ export class AuditstepAdStartStepEditComponent implements OnInit {
     valueData.isDone = 0;
 
     console.log(valueData);
-    this.http.post(`http://139.224.62.102:8080/api/adapply/steps`, valueData).subscribe(res => {
+    this.http.post(`/api/adapply/steps`, valueData).subscribe(res => {
       this.msgSrv.success('保存成功');
       this.modal.close(true);
     });
@@ -97,7 +97,7 @@ export class AuditstepAdStartStepEditComponent implements OnInit {
   }
   deleteInfo(id: number) {
     console.log(id);
-    this.http.delete('http://139.224.62.102:8080/api/adapply/steps/' + id).subscribe((res: any) => {
+    this.http.delete('/api/adapply/steps/' + id).subscribe((res: any) => {
       this.msgSrv.success('删除用户成功');
       this.cdr.detectChanges();
       this.modal.close(true);

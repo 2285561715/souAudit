@@ -53,13 +53,13 @@ export class SysdataDatalistComponent implements OnInit {
   changeDataSet(index: number): void {
     console.log(index);
 
-    this.http.get('http://139.224.62.102:8080/api/data/types?typeNo=' + this.tabsY[index]).subscribe((res: any[]) => {
+    this.http.get('/api/data/types?typeNo=' + this.tabsY[index]).subscribe((res: any[]) => {
       this.showDatas = res;
     });
   }
 
   ngOnInit() {
-    this.http.get('http://139.224.62.102:8080/api/data/types?typeNo=pglb').subscribe((res: any[]) => {
+    this.http.get('/api/data/types?typeNo=pglb').subscribe((res: any[]) => {
       this.showDatas = res;
     });
   }

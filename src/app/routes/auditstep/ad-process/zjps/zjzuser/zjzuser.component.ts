@@ -39,11 +39,11 @@ export class AuditstepAdProcessZjpsZjzUserComponent implements OnInit {
   selectChargeId: number;
 
   ngOnInit() {
-    this.http.get('http://139.224.62.102:8080/api/stepwbs/zjz?id=' + this.value).subscribe((res: any) => {
+    this.http.get('/api/stepwbs/zjz?id=' + this.value).subscribe((res: any) => {
       this.listOfselectChk = res[0].zjuserIdList;
       this.selectChargeId = res[0].chargeUserId;
       // 查询用户列表
-      this.http.get('http://139.224.62.102:8080/api/users').subscribe((ress: any[]) => {
+      this.http.get('/api/users').subscribe((ress: any[]) => {
         ress.forEach(item => {
           if ((item.unitName === '校内专家' || item.unitName === '校外专家') && item.status === true) {
             this.listOfselectChk.includes(item.id + '') ? (item.isChecked = true) : (item.isChecked = false);
@@ -104,7 +104,7 @@ export class AuditstepAdProcessZjpsZjzUserComponent implements OnInit {
     zjuserdata.zjuserIdList = this.listOfselectChk;
     zjuserdata.chargeUserId = this.selectChargeId;
 
-    this.http.put('http://139.224.62.102:8080/api/stepwbs/zjz', zjuserdata).subscribe((res: any) => {
+    this.http.put('/api/stepwbs/zjz', zjuserdata).subscribe((res: any) => {
       this.msgSrv.success('修改信息成功');
       this.cdr.detectChanges();
       this.close(res);

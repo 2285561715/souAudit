@@ -38,7 +38,7 @@ export class SysdataAuthlistComponent implements OnInit {
   // @ViewChild('nzTreeComponent') nzTreeComponent: NzTreeComponent;
 
   loadInfo(): void {
-    this.http.get('http://139.224.62.102:8080/api/units').subscribe((res: any[]) => {
+    this.http.get('/api/units').subscribe((res: any[]) => {
       this.listOfData = res;
       this.cdr.detectChanges();
     });
@@ -70,7 +70,7 @@ export class SysdataAuthlistComponent implements OnInit {
   }
 
   deleteInfo(id: number) {
-    this.http.delete('http://139.224.62.102:8080/api/units/' + id).subscribe((res: any) => {
+    this.http.delete('/api/units/' + id).subscribe((res: any) => {
       this.msgSrv.success('删除用户成功');
       this.cdr.detectChanges();
       this.loadInfo();

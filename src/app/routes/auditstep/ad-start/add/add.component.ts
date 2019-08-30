@@ -36,7 +36,7 @@ export class AuditstepAdStartAddComponent implements OnInit {
   }
 
   loadInfo(): void {
-    this.http.get('http://139.224.62.102:8080/api/main/infos').subscribe((res: any) => {
+    this.http.get('/api/main/infos').subscribe((res: any) => {
       this.listOfVer = res;
     });
   }
@@ -72,7 +72,7 @@ export class AuditstepAdStartAddComponent implements OnInit {
 
     console.log(data);
 
-    this.http.post('http://139.224.62.102:8080/api/adapply', data).subscribe((res: any) => {
+    this.http.post('/api/adapply', data).subscribe((res: any) => {
       this.msgSrv.success('添加用户成功');
       this.close(res);
     });

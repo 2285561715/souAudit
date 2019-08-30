@@ -26,7 +26,7 @@ export class SysdataModlistComponent implements OnInit {
   // @ViewChild('nzTreeComponent') nzTreeComponent: NzTreeComponent;
 
   loadInfo(): void {
-    this.http.get('http://139.224.62.102:8080/api/menus/list').subscribe((res: any[]) => {
+    this.http.get('/api/menus/list').subscribe((res: any[]) => {
       this.listOfData = res;
       // this.cdr.detectChanges() 这句一定要加，否则列表不会刷新，导致看不到数据
       // this.cdr.detectChanges();
