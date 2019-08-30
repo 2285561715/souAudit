@@ -9,12 +9,12 @@
   <nz-table #nzTable nzSize="middle" [nzData]="listOfData" nzPageSize="5" nzHideOnSinglePage="true">
     <thead>
       <tr>
-        <th nzWidth="3%" nzAlign="center">年份</th>
+        <th nzWidth="4%" nzAlign="center">年份</th>
         <th nzWidth="10%" nzAlign="center">评估类别</th>
-        <th nzWidth="28%">评估名称</th>
-        <th nzWidth="8%" nzAlign="center">起讫时间</th>
-        <th nzWidth="8%" nzAlign="center">评估周期</th>
-        <th nzWidth="25%" nzAlign="center">适用评估指标体系版本</th>
+        <th nzWidth="25%">评估名称</th>
+        <th nzWidth="7%" nzAlign="center">起讫时间</th>
+        <th nzWidth="7%" nzAlign="center">评估周期</th>
+        <th nzWidth="29%" nzAlign="center">适用评估指标体系版本</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -26,12 +26,12 @@
           <td>{{ data.appName }}</td>
           <td nzAlign="center">{{ data.startDate }}<br>{{ data.endDate }}</td>
           <td nzAlign="center">{{ data.dataFromDate }}<br>{{ data.dataEndDate }}</td>
-          <td>{{ data.esName }}【{{ data.verIndex }}】</td>
+          <td>{{ data.esName }}<br>【{{ data.verIndex }}】</td>
           <td>
-            <button nz-button nzSize="small" nzType="default" (click)="openStepInfo(data)">
+            <button nz-button nzSize="middle" nzType="default" (click)="openStepInfo(data)">
               <i nz-icon nzType="ordered-list" nzTheme="outline" style="color:coral"></i>评估阶段安排</button>
             <nz-divider nzType="vertical"></nz-divider>
-            <button nz-button nzSize="small" nzType="default" (click)="editInfo(data)">编辑</button>
+            <button nz-button nzSize="middle" nzType="default" (click)="editInfo(data)">编辑</button>
           </td>
         </tr>
       </ng-template>

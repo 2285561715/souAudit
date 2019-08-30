@@ -19,26 +19,23 @@
       <td></td>
       <td nzAlign="center">
         <button nz-button nzSize="small" nzType="link" (click)="zjzSetUser(zjzdata)">
-          <i nz-icon nzType="usergroup-add" nzTheme="outline" style="color: coral"></i>组成员</button>
+          <i nz-icon nzType="usergroup-add" style="color: coral"></i>组成员</button>
         <nz-divider nzType="vertical"></nz-divider>
 
         <button nz-button nzSize="small" nzType="link" (click)="zjzSetPszb(zjzdata)">
-          <i *ngIf="zjzdata.indexIdList.length===1" nz-icon nzType="unordered-list" nzTheme="outline"
-            style="color: coral"></i>
-          <i *ngIf="zjzdata.indexIdList.length!==1" nz-icon nzType="check-circle" nzTheme="outline"
-            style="color:chartreuse"></i>
+          <i *ngIf="zjzdata.indexIdList.length===1" nz-icon nzType="unordered-list" style="color: coral"></i>
+          <i *ngIf="zjzdata.indexIdList.length!==1" nz-icon nzType="check-circle" style="color:chartreuse"></i>
           评审指标</button>
 
         <button nz-button *ngIf='data.verIndex.substring(4, 6) === "fx"' nzSize="small" nzType="link"
           (click)="zjzSetPsfx(zjzdata)">
-          <i *ngIf="zjzdata.branchIdList.length===1" nz-icon nzType="branches" nzTheme="outline"
-            style="color: coral"></i>
-          <i *ngIf="zjzdata.branchIdList.length!==1" nz-icon nzType="check-circle" nzTheme="outline"
-            style="color:chartreuse"></i>
+          <i *ngIf="zjzdata.branchIdList.length===1" nz-icon nzType="branches" style="color: coral"></i>
+          <i *ngIf="zjzdata.branchIdList.length!==1" nz-icon nzType="check-circle" style="color:chartreuse"></i>
           评审分校</button>
 
         <nz-divider nzType="vertical"></nz-divider>
-        <button nz-button nzSize="small" nzType="danger" (click)="deleteConfirm(zjzdata.id)">删除</button>
+        <button nz-button nzSize="small" nzType="link" (click)="deleteConfirm(zjzdata.id)">
+          <i nz-icon nzType="usergroup-delete" style="color:red"></i>删除</button>
       </td>
     </tr>
   </tbody>

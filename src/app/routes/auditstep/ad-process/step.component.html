@@ -37,30 +37,30 @@
     <a (click)="lookSjcjTable(astep)"><i nz-icon nzType="table" style="color: coral"></i> 查看数据</a>
   </ng-template>
   <ng-template #actionSjbtTask>
-    <a *ngIf="!astep.isTaskOut" (click)="appSjtbTask(astep)"><i nz-icon nzType="caret-right" style="color: coral"></i>
-      启动填报</a>
+    <a *ngIf="!astep.isTaskOut" (click)="appSjtbTask(astep)">
+      <i nz-icon nzType="caret-right" style="color: coral"></i> 启动填报</a>
     <a *ngIf="astep.isTaskOut">
       <i nz-icon nzType="check-circle" nzTheme="fill" style="color:chartreuse"></i> 任务已发布</a>
   </ng-template>
   <ng-template #actionSjbtStatus>
-    <i nz-icon nzType="issues-close" style="color: coral"></i> 填报进程
+    <a (click)="lookSjcjTable(astep)"><i nz-icon nzType="issues-close" style="color: coral"></i> 填报进程</a>
   </ng-template>
   <ng-template #actionLookSjtb>
-    <i nz-icon nzType="search" style="color: coral"></i> 查看数据
+    <a (click)="lookSjcjTable(astep)"><i nz-icon nzType="search" style="color: coral"></i> 查看数据</a>
   </ng-template>
   <ng-template #actionPgzjSets>
     <a (click)="zjzSet(astep)"><i nz-icon nzType="setting" style="color: coral"></i> 专家设置</a>
   </ng-template>
   <ng-template #actionPgProcess>
-    <i nz-icon nzType="pic-right" style="color: coral"></i> 评审进程
+    <a (click)="lookSjcjTable(astep)"><i nz-icon nzType="pic-right" style="color: coral"></i> 评审进程</a>
   </ng-template>
   <ng-template #actionPgyj>
-    <i nz-icon nzType="file-pdf" style="color: coral"></i> 评审意见
+    <a (click)="lookSjcjTable(astep)"><i nz-icon nzType="file-pdf" style="color: coral"></i> 评审意见</a>
   </ng-template>
   <ng-template #actionPgbg>
-    <i nz-icon nzType="file-pdf" style="color: coral"></i> 评估报告
+    <a (click)="lookSjcjTable(astep)"><i nz-icon nzType="file-pdf" style="color: coral"></i> 评估报告</a>
   </ng-template>
   <ng-template #actionEnd>
-    <i nz-icon nzType="logout" style="color: coral"></i> 评估结果
+    <a (click)="lookSjcjTable(astep)"><i nz-icon nzType="logout" style="color: coral"></i> 评估结果</a>
   </ng-template>
 </div>
