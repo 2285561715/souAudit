@@ -277,8 +277,8 @@ export class AuditindexIndexManaSetUpComponent implements OnInit {
     this.current += 1;
     this.changeContent();
   }
-  stepClick(cIndex: number) {
-    this.current = cIndex;
+  onIndexChange(index: number): void {
+    this.current = index;
     this.changeContent();
   }
   // -------------------------------------------------------------------------------------

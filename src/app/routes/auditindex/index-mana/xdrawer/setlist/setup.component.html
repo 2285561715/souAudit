@@ -1,10 +1,10 @@
 <div class="modal-header">
   <div class="modal-title">【{{activeNode.title}}】 指标属性设置 </div>
 </div>
-<nz-steps [nzCurrent]="current" nzSize="small">
-  <nz-step nzTitle="对应数据表及材料表" (click)="stepClick(0)"></nz-step>
-  <nz-step nzTitle="评审统计分析项目" (click)="stepClick(1)"></nz-step>
-  <nz-step nzTitle="评审达标项及阀值" (click)="stepClick(2)"></nz-step>
+<nz-steps [nzCurrent]="current" nzSize="small" (nzIndexChange)="onIndexChange($event)">
+  <nz-step nzTitle="对应数据表及材料表"></nz-step>
+  <nz-step nzTitle="评审统计分析项目"></nz-step>
+  <nz-step nzTitle="评审达标项及阀值"></nz-step>
 </nz-steps>
 <div class="steps-content" [formGroup]="validateForm">
   <!-- 第一步设置指标对应数据填报表、采集表、文字材料-->

@@ -1,10 +1,10 @@
 <div class="modal-header">
   <div class="modal-title">编辑 {{ record.dtNo }} 信息</div>
 </div>
-<nz-steps [nzCurrent]="current" nzSize="small">
-  <nz-step nzTitle="数据表名称和字段" (click)="stepClick(0)"></nz-step>
-  <nz-step nzTitle="数据表填写规范" (click)="stepClick(1)"></nz-step>
-  <nz-step nzTitle="数据表表头模板" (click)="stepClick(2)"></nz-step>
+<nz-steps [nzCurrent]="current" nzSize="small" (nzIndexChange)="onIndexChange($event)">
+  <nz-step nzTitle="数据表名称和字段"></nz-step>
+  <nz-step nzTitle="数据表填写规范"></nz-step>
+  <nz-step nzTitle="数据表表头模板"></nz-step>
 </nz-steps>
 <div class="steps-content" [formGroup]="validateForm">
   <!-- 第一步设置数据表名称和字段 -->

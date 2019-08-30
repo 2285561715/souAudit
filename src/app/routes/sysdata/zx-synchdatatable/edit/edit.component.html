@@ -1,10 +1,10 @@
 <div class="modal-header">
   <div class="modal-title">编辑 {{ record.dtNo }} 信息</div>
 </div>
-<nz-steps [nzCurrent]="current" nzSize="small">
-  <nz-step nzTitle="数据表名称和字段" (click)="stepClick(0)"></nz-step>
-  <nz-step nzTitle="数据表填写规范" (click)="stepClick(1)"></nz-step>
-  <nz-step nzTitle="数据表表头模板" (click)="stepClick(2)"></nz-step>
+<nz-steps [nzCurrent]="current" nzSize="small" (nzIndexChange)="onIndexChange($event)">
+  <nz-step nzTitle="数据表名称和字段"></nz-step>
+  <nz-step nzTitle="数据表填写规范"></nz-step>
+  <nz-step nzTitle="数据表表头模板"></nz-step>
 </nz-steps>
 <div class="steps-content" [formGroup]="validateForm">
   <!-- 第一步设置数据表名称和字段 -->
@@ -12,7 +12,7 @@
     <nz-form-item>
       <nz-form-label [nzSpan]="4" nzRequired>数据表名</nz-form-label>
       <nz-form-control [nzSpan]="16" nzErrorTip="请输入表名称！">
-        <input formControlName="dtName" id="dtName" type="text" nz-input style="width: 500px;" placeholder="表名称">
+        <input formControlName="dtName" id="dtName" type="text" nz-input style="width: 500px;" placeholder="表名称" />
         <nz-divider nzType="vertical"></nz-divider> 字段数:
         <nz-input-number formControlName="fieldsNum" id="fieldsNum" [nzMin]="1" [nzStep]="1"></nz-input-number>
       </nz-form-control>
@@ -20,8 +20,13 @@
     <nz-form-item>
       <nz-form-label [nzSpan]="4" nzRequired>责任部门</nz-form-label>
       <nz-form-control [nzSpan]="16">
-        <nz-select formControlName="dutyDept" id="dutyDept" (ngModelChange)="esFromChange($event)"
-          nzPlaceHolder="选择责任部门" style="width: 400px;">
+        <nz-select
+          formControlName="dutyDept"
+          id="dutyDept"
+          (ngModelChange)="esFromChange($event)"
+          nzPlaceHolder="选择责任部门"
+          style="width: 400px;"
+        >
           <nz-option *ngFor="let p of listOfDept" [nzLabel]="p.bname" [nzValue]="p.id"></nz-option>
         </nz-select>
       </nz-form-control>
@@ -67,8 +72,15 @@
       <nz-form-control [nzSpan]="16">
         <!-- <textarea formControlName="tableHtml" id="tableHtml" nz-input rows="8" placeholder="表头模板"></textarea> -->
 
-        <ueditor #full formControlName="tableHtml" [config]="config" (onReady)="_ready($event)" (onDestroy)="_destroy()"
-          (ngModelChange)="_change($event)" style="width: 95%;">
+        <ueditor
+          #full
+          formControlName="tableHtml"
+          [config]="config"
+          (onReady)="_ready($event)"
+          (onDestroy)="_destroy()"
+          (ngModelChange)="_change($event)"
+          style="width: 95%;"
+        >
         </ueditor>
       </nz-form-control>
     </nz-form-item>

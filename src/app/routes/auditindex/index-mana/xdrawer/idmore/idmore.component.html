@@ -1,10 +1,10 @@
 <div class="modal-header">
   <div class="modal-title">【{{ activeNode.title }}】 指标属性设置</div>
 </div>
-<nz-steps [nzCurrent]="current" nzSize="small">
-  <nz-step nzTitle="指标内涵及责任部门" (click)="stepClick(0)"></nz-step>
-  <nz-step nzTitle="评审打分说明及权重" (click)="stepClick(1)"></nz-step>
-  <nz-step nzTitle="评估报告模板范文" (click)="stepClick(2)"></nz-step>
+<nz-steps [nzCurrent]="current" nzSize="small" (nzIndexChange)="onIndexChange($event)">
+  <nz-step nzTitle="指标内涵及责任部门"></nz-step>
+  <nz-step nzTitle="评审打分说明及权重"></nz-step>
+  <nz-step nzTitle="评估报告模板范文"></nz-step>
 </nz-steps>
 <div class="steps-content" [formGroup]="validateForm">
   <!-- 第一步设置指标内涵对应责任部门 -->

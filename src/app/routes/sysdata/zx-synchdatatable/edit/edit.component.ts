@@ -161,6 +161,11 @@ export class SysdataZxSynchdatatableEditComponent implements OnInit {
     this.changeContent();
   }
 
+  onIndexChange(index: number): void {
+    this.current = index;
+    this.changeContent();
+  }
+
   submitForm(): void {
     for (const i of Object.keys(this.validateForm.controls)) {
       this.validateForm.controls[i].markAsDirty();

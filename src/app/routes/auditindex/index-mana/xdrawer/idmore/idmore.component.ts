@@ -121,8 +121,8 @@ export class AuditindexIndexManaXdrawerIdmoreComponent implements OnInit {
     this.changeContent();
   }
 
-  stepClick(cIndex: number) {
-    this.current = cIndex;
+  onIndexChange(index: number): void {
+    this.current = index;
     this.changeContent();
   }
 
