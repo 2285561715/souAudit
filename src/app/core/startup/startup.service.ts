@@ -80,12 +80,20 @@ export class StartupService {
           // Application information: including site name, description, year
           this.settingService.setApp(this.app);
           // User information: including name, avatar, email address
+          console.log(accountData);
           this.settingService.setUser({
             name: accountData.userName,
+            userNo: accountData.userNo,
+            bid: accountData.bno,
+            bname: accountData.bname,
+            jobType: accountData.jobType,
+            mob: accountData.mob,
+            unitName: accountData.unitName,
+            userFrom: accountData.userFrom,
             avatar:
               accountData.imageUrl && accountData.imageUrl.length === 0
                 ? './assets/tmp/img/avatar.jpg'
-                : accountData.imageUrl,
+                : './assets/tmp/img/avatar.jpg',
             email: accountData.email,
             authorities: accountData.authorities,
           });

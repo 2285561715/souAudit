@@ -8,7 +8,7 @@ import {
   NzDrawerService,
 } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { _HttpClient, ModalHelper } from '@delon/theme';
+import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { zip } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -25,6 +25,7 @@ export class SysdataAuthlistUdrawerComponent implements OnInit {
     private http: _HttpClient,
     private modal: ModalHelper,
     private msgSrv: NzMessageService,
+    private settingService: SettingsService,
     private cdr: ChangeDetectorRef,
     private modalService: NzModalService,
     private drawerRef: NzDrawerRef<string>,
@@ -41,22 +42,12 @@ export class SysdataAuthlistUdrawerComponent implements OnInit {
   tempNode: any[] = [];
 
   ngOnInit() {
-    // this.http.get('/api/units/' + this.value).subscribe((res: any) => {
-    //   this.defaultCheckedKeys = res; // 默认checked
-    //   // this.cdr.detectChanges();
-    // });
-    // this.http.get('/api/menus/tree').subscribe((res: any) => {
-    //   this.nodes = res.menu;
-    //   this.cdr.detectChanges();
-    // });
     this.loadInfo();
+    console.log(this.settingService.user);
   }
 
   loadInfo(): void {
-    zip(
-      this.http.get('/api/units/' + this.value),
-      this.http.get('/api/menus/tree'),
-    )
+    zip(this.http.get('/api/units/' + this.value), this.http.get('/api/menus/tree'))
       .pipe(
         catchError(([sysUnits, mTree]) => {
           resolve(null);
@@ -71,7 +62,6 @@ export class SysdataAuthlistUdrawerComponent implements OnInit {
         () => {},
         () => {
           this.defaultCheckedKeys = this.tempDCK;
-
           console.log(this.defaultCheckedKeys);
           this.nodes = this.tempNode;
           console.log(this.nodes);
@@ -81,7 +71,6 @@ export class SysdataAuthlistUdrawerComponent implements OnInit {
   }
 
   nzEvent(event: NzFormatEmitEvent): void {
-    // console.log(event);
     this.treeCheckList = event.keys;
     this.cdr.detectChanges();
   }
@@ -90,7 +79,6 @@ export class SysdataAuthlistUdrawerComponent implements OnInit {
     const unitdata: any = {};
     unitdata.unitNo = this.value;
     unitdata.menuKeys = this.treeCheckList;
-
     console.log(unitdata);
 
     this.http.post('/api/units/grant', unitdata).subscribe((res: any) => {

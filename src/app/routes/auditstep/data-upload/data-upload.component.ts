@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { _HttpClient, ModalHelper } from '@delon/theme';
+import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 import { STColumn, STComponent } from '@delon/abc';
 import { SFSchema } from '@delon/form';
+// tslint:disable-next-line: no-duplicate-imports
 import { XlsxService } from '@delon/abc';
 
 @Component({
@@ -10,7 +11,12 @@ import { XlsxService } from '@delon/abc';
   styleUrls: ['./data-upload.component.less'],
 })
 export class AuditstepDataUploadComponent implements OnInit {
-  constructor(private http: _HttpClient, private xlsx: XlsxService, private modal: ModalHelper) {}
+  constructor(
+    private http: _HttpClient,
+    private xlsx: XlsxService,
+    private settingService: SettingsService,
+    private modal: ModalHelper,
+  ) {}
 
   // url = `/user`;
   // searchSchema: SFSchema = {
@@ -200,7 +206,9 @@ export class AuditstepDataUploadComponent implements OnInit {
   closein(): void {
     this.invisible = false;
   }
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.settingService.user);
+  }
 
   add() {
     // this.modal
