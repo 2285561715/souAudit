@@ -66,7 +66,7 @@ export class StartupService {
   // }
 
   private viaHttp(resolve: any, reject: any) {
-    zip(this.httpClient.get('/api/menus/unit'), this.httpClient.get('/api/account'))
+    zip(this.httpClient.get('/api/menus/current'), this.httpClient.get('/api/account'))
       .pipe(
         catchError(([appData, accountData]) => {
           resolve(null);
