@@ -93,7 +93,7 @@ export class SysdataUserlistEditComponent implements OnInit {
     const data = this.validateForm.value;
 
     this.listOfDB.forEach(element => {
-      if (element.bno === this.selectedDB) {
+      if (element.id === this.selectedDB) {
         data.bname = element.bname;
       }
     });

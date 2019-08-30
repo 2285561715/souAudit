@@ -79,7 +79,7 @@ export class SysdataUserlistAddComponent implements OnInit {
     // console.log(this.listOfDB.indexOf(this.selectedDB));
 
     this.listOfDB.forEach(element => {
-      if (element.bno === this.selectedDB) {
+      if (element.id === this.selectedDB) {
         data.bname = element.bname;
       }
     });

@@ -23,7 +23,7 @@
       </nz-select>
       <nz-divider nzType="vertical"></nz-divider>
       <nz-select id="bno" style="width: 200px;" formControlName="bno" [(ngModel)]="selectedDB" nzPlaceHolder="请先选择类别">
-        <nz-option *ngFor="let option of listOfDB" [nzLabel]="option.bname" [nzValue]="option.bno"></nz-option>
+        <nz-option *ngFor="let option of listOfDB" [nzLabel]="option.bname" [nzValue]="option.id"></nz-option>
       </nz-select>
     </nz-form-control>
   </nz-form-item>

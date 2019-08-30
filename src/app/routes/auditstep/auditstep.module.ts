@@ -24,7 +24,6 @@ import { AuditstepAdProcessStepComponent } from './ad-process/step.component';
 import { AuditstepAdProcessViewDataSynchComponent } from './ad-process/view/datasynch.component';
 // import { AuditstepAdProcessViewDataSynchShowComponent } from './ad-process/view/datasynchshow.component';
 import { AuditstepAdProcessZjpsSetupComponent } from './ad-process/zjps/setup.component';
-import { AuditstepAdProcessZjpsZjzAddComponent } from './ad-process/zjps/zjzadd/zjzadd.component';
 import { AuditstepAdProcessZjpsZjzUserComponent } from './ad-process/zjps/zjzuser/zjzuser.component';
 import { AuditstepAdProcessZjpsZjzPszbComponent } from './ad-process/zjps/zjzpszb/zjzpszb.component';
 import { AuditstepAdProcessZjpsZjzPsfxComponent } from './ad-process/zjps/zjzpsfx/zjzpsfx.component';
@@ -55,7 +54,6 @@ const COMPONENTS_NOROUNT = [
   AuditstepAdProcessViewDataSynchComponent,
   // AuditstepAdProcessViewDataSynchShowComponent,
   AuditstepAdProcessZjpsSetupComponent,
-  AuditstepAdProcessZjpsZjzAddComponent,
   AuditstepAdProcessZjpsZjzUserComponent,
   AuditstepAdProcessZjpsZjzPszbComponent,
   AuditstepAdProcessZjpsZjzPsfxComponent,
