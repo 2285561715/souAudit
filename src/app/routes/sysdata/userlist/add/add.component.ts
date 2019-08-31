@@ -33,8 +33,8 @@ export class SysdataUserlistAddComponent implements OnInit {
     this.validateForm = this.fb.group({
       userName: [null, [Validators.required]],
       unitNo: [null],
-      userFrom: [null],
-      bno: [null],
+      // userFrom: [null],
+      // bno: [null],
       bname: [null],
       mob: [null],
       offPhone: [null],
@@ -65,6 +65,11 @@ export class SysdataUserlistAddComponent implements OnInit {
     // this.selectedCity = this.cityData[value][0];
     this.listOfDB = value === 'fx' ? this.listOfBranch : this.listOfDept;
     this.selectedDB = this.listOfDB[0].value;
+    this.selectedUserFrom = value;
+  }
+
+  deptFromChange(value: string): void {
+    this.selectedDB = value;
   }
 
   submitForm(): void {
@@ -77,6 +82,8 @@ export class SysdataUserlistAddComponent implements OnInit {
 
     // console.log(this.selectedDB);
     // console.log(this.listOfDB.indexOf(this.selectedDB));
+    data.userFrom = this.selectedUserFrom;
+    data.bno = this.selectedDB;
 
     this.listOfDB.forEach(element => {
       if (element.id === this.selectedDB) {

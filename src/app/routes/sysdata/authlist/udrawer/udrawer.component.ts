@@ -25,7 +25,7 @@ export class SysdataAuthlistUdrawerComponent implements OnInit {
     private http: _HttpClient,
     private modal: ModalHelper,
     private msgSrv: NzMessageService,
-    private settingService: SettingsService,
+    // private settingService: SettingsService,
     private cdr: ChangeDetectorRef,
     private modalService: NzModalService,
     private drawerRef: NzDrawerRef<string>,
@@ -43,7 +43,7 @@ export class SysdataAuthlistUdrawerComponent implements OnInit {
 
   ngOnInit() {
     this.loadInfo();
-    console.log(this.settingService.user);
+    // console.log(this.settingService.user);
   }
 
   loadInfo(): void {

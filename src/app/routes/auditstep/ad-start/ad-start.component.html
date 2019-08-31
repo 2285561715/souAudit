@@ -29,9 +29,9 @@
           <td>{{ data.esName }}<br>【{{ data.verIndex }}】</td>
           <td>
             <button nz-button nzSize="middle" nzType="default" (click)="openStepInfo(data)">
-              <i nz-icon nzType="ordered-list" nzTheme="outline" style="color:coral"></i>评估阶段安排</button>
-            <nz-divider nzType="vertical"></nz-divider>
-            <button nz-button nzSize="middle" nzType="default" (click)="editInfo(data)">编辑</button>
+              <i nz-icon nzType="ordered-list" style="color:coral"></i>阶段安排</button>
+            <button nz-button nzSize="middle" nzType="default" (click)="editInfo(data)">
+              <i nz-icon nzType="form" style="color:coral"></i>编辑</button>
           </td>
         </tr>
       </ng-template>

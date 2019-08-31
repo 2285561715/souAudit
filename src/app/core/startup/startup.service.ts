@@ -103,7 +103,7 @@ export class StartupService {
           // Menu data, https://ng-alain.com/theme/menu
           const restMenu = [
             {
-              text: '总校功能区',
+              text: '上海开放大学评估系统',
               group: true,
               hideInBreadcrumb: true,
               children: res.menu,

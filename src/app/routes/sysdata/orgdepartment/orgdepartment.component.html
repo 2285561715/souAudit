@@ -3,11 +3,11 @@
     <button (click)="addInfo()" nz-button nzType="primary">新增部门</button></ng-template>
 </page-header>
 <nz-card>
-  <nz-table #deptTable nzSize="small" [nzData]="listOfData">
+  <nz-table #deptTable nzSize="small" [nzData]="listOfData" nzPageSize="8">
     <thead>
       <tr>
-        <th nzWidth="4%">序号</th>
-        <th nzWidth="20%">部门名称</th>
+        <th nzWidth="8%" nzAlign="center">部门ID</th>
+        <th nzWidth="15%">部门名称</th>
         <th>参与评估人员信息</th>
         <th nzWidth="6%" nzAlign="center">状态</th>
         <th nzWidth="10%" nzAlign="center">Action</th>
@@ -15,7 +15,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let data of deptTable.data;let i=index;">
-        <td>{{ i+1 }}</td>
+        <td nzAlign="center">{{ data.id }}</td>
         <td>{{ data.bname }}</td>
         <td>
           <span

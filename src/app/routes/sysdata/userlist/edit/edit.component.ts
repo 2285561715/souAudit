@@ -40,15 +40,16 @@ export class SysdataUserlistEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadInfo(this.record.userFrom);
+
     this.selectedUnitNo = this.record.unitNo;
     this.selectedUserFrom = this.record.userFrom;
     this.selectedDB = this.record.bno;
 
     this.validateForm = this.fb.group({
       userName: [this.record.userName, [Validators.required]],
-      unitNo: [this.record.unitNo],
-      userFrom: [this.record.userFrom],
-      bno: [this.record.bno],
+      // unitNo: [this.record.unitNo],
+      // userFrom: [this.record.userFrom],
+      // bno: [this.record.bno],
       bname: [this.record.bname],
       mob: [this.record.mob],
       offPhone: [this.record.offPhone],
@@ -82,6 +83,15 @@ export class SysdataUserlistEditComponent implements OnInit {
   userFromChange(value: string): void {
     this.listOfDB = value === 'fx' ? this.listOfBranch : this.listOfDept;
     this.selectedDB = this.listOfDB[0].value;
+    this.selectedUserFrom = value;
+  }
+
+  deptFromChange(value: string): void {
+    this.selectedDB = value;
+  }
+
+  unitFromChange(value: string): void {
+    this.selectedUnitNo = value;
   }
 
   submitForm(): void {
@@ -91,6 +101,9 @@ export class SysdataUserlistEditComponent implements OnInit {
     }
 
     const data = this.validateForm.value;
+    data.userFrom = this.selectedUserFrom;
+    data.bno = this.selectedDB;
+    data.unitNo = this.selectedUnitNo;
 
     this.listOfDB.forEach(element => {
       if (element.id === this.selectedDB) {

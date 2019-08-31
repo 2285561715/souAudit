@@ -1,8 +1,11 @@
-<nz-card>
-  <!-- <sf mode="search" [schema]="searchSchema" (formSubmit)="st.reset($event)" (formReset)="st.reset($event)"></sf>
-  <st #st [data]="url" [columns]="columns"></st> -->
+<page-header [action]="phActionTpl">
+  <ng-template #phActionTpl>
+  </ng-template>
+</page-header>
 
-  <!-- <g2-bar height="200" [title]="'数量趋势'" [data]="salesData"></!-->
+<nz-card>
+  <g2-bar height="200" [title]="'数量趋势'" [data]="salesData">
+  </g2-bar>
 
   <div nz-row nzGutter="16">
     <div nz-col nzXs="24" nzMd="12">

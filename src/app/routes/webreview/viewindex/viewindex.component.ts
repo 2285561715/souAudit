@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, TemplateRef, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { _HttpClient, ModalHelper } from '@delon/theme';
+import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 import { STColumn, STComponent } from '@delon/abc';
 import { SFSchema } from '@delon/form';
 import { NzFormatEmitEvent, NzDrawerRef, NzDrawerService, NzMessageService, NzModalService } from 'ng-zorro-antd';
@@ -16,6 +16,8 @@ export class WebreviewViewindexComponent implements OnInit {
     private drawerService: NzDrawerService,
     private msgSrv: NzMessageService,
     private modalService: NzModalService,
+    // private settingService: SettingsService,
+    public settings: SettingsService,
   ) {}
 
   listOfData: any[] = [];
@@ -24,6 +26,8 @@ export class WebreviewViewindexComponent implements OnInit {
 
   ngOnInit() {
     this.loadInfo();
+    console.log('dfd=');
+    console.log(this.settings.user.userFrom);
   }
 
   loadInfo(): void {

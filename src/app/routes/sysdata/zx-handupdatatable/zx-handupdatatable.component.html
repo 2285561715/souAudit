@@ -7,9 +7,10 @@
   <nz-table #nzTable nzSize="middle" nzPageSize="7" [nzData]="listOfData">
     <thead>
       <tr>
-        <th nzShowExpand nzwidth="4%"></th>
+        <th nzShowExpand nzwidth="4%" nzAlign="center"></th>
         <th>填报表名称</th>
-        <th nzWidth="15%">数据表名称</th>
+        <th nzWidth="15%" nzAlign="center">责任部门</th>
+        <th nzWidth="13%" nzAlign="center">数据表名称</th>
         <th nzWidth="6%" nzAlign="center">字段数</th>
         <th nzWidth="15%" nzAlign="center">最后修订时间</th>
         <th nzAlign="center" nzWidth="15%">Action</th>
@@ -18,8 +19,9 @@
     <tbody>
       <ng-template ngFor let-data [ngForOf]="nzTable.data">
         <tr>
-          <td nzShowExpand [(nzExpand)]="mapOfExpandData[data.id]"></td>
+          <td nzShowExpand [(nzExpand)]="mapOfExpandData[data.id]" nzAlign="center"></td>
           <td>{{ data.dtName }}</td>
+          <td nzAlign="center">{{ data.dutyDeptName }}</td>
           <td>{{ data.dtNo }}</td>
           <td nzAlign="center">{{ data.fieldsNum }}</td>
           <td nzAlign="center">{{ data.modTime }}</td>
@@ -28,6 +30,7 @@
               <i nz-icon nzType="table"></i> 数据样表</button>
             <nz-divider nzType="vertical"></nz-divider> -->
             <button nz-button nzSize="small" nzType="default" (click)="viewInfo(data)">view</button>
+            <nz-divider nzType="vertical"></nz-divider>
             <button nz-button nzSize="small" nzType="default" (click)="editInfo(data)">修改</button>
             <!-- <nz-divider nzType="vertical"></nz-divider>
             <button nz-button nzSize="small" nzType="danger" (click)="deleteConfirm(data.id)">删除</button> -->

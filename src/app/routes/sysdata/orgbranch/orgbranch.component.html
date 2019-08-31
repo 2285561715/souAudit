@@ -4,10 +4,10 @@
   </ng-template>
 </page-header>
 <nz-card>
-  <nz-table #branchTable nzSize="small" [nzData]="listOfDisplayData">
+  <nz-table #branchTable nzSize="small" [nzData]="listOfDisplayData" nzPageSize="8">
     <thead>
       <tr>
-        <th nzWidth="12%" nzShowSort nzSortKey="bname">分校代码</th>
+        <th nzWidth="10%" nzShowSort nzSortKey="bname">分校代码</th>
         <th nzWidth="18%">分校名称</th>
         <th nzWidth="12%" nzShowFilter [nzFilters]="listOfType" (nzFilterChange)="filter($event)">类别</th>
         <th>评估人员</th>

@@ -7,7 +7,7 @@
     <nz-form-control [nzSpan]="14" nzErrorTip="请输入姓名！">
       <input id="userName" type="text" nz-input formControlName="userName" style="width: 200px;">
       <nz-divider nzType="vertical"></nz-divider>
-      <nz-select id="unitNo" formControlName="unitNo" style="width: 200px;" nzPlaceHolder="请选择角色">
+      <nz-select id="unitNo" style="width: 200px;" formControlName="unitNo" nzPlaceHolder="请选择角色">
         <nz-option *ngFor="let option of listOfUnit" [nzLabel]="option.unitName" [nzValue]="option.unitNo"></nz-option>
       </nz-select>
     </nz-form-control>
@@ -15,12 +15,13 @@
   <nz-form-item>
     <nz-form-label [nzSpan]="6">用户类别</nz-form-label>
     <nz-form-control [nzSpan]="14">
-      <nz-select style="width: 200px;" formControlName="userFrom" [(ngModel)]="selectedUserFrom"
-        (ngModelChange)="userFromChange($event)">
+      <nz-select style="width: 200px;" [(ngModel)]="selectedUserFrom" (ngModelChange)="userFromChange($event)"
+        [ngModelOptions]="{standalone: true}">
         <nz-option *ngFor="let p of checkOptions" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
       </nz-select>
       <nz-divider nzType="vertical"></nz-divider>
-      <nz-select id="bno" style="width: 200px;" formControlName="bno" [(ngModel)]="selectedDB" nzPlaceHolder="请先选择类别">
+      <nz-select id="bno" style="width: 200px;" [(ngModel)]="selectedDB" (ngModelChange)="deptFromChange($event)"
+        [ngModelOptions]="{standalone: true}" nzPlaceHolder="请选择部门">
         <nz-option *ngFor="let option of listOfDB" [nzLabel]="option.bname" [nzValue]="option.id"></nz-option>
       </nz-select>
     </nz-form-control>
