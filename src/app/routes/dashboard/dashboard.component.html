@@ -1,1 +1,25 @@
-<page-header></page-header>
+<page-header [action]="phActionTpl">
+  <ng-template #phActionTpl> </ng-template>
+  <p>欢迎您：{{settings.user.bname}} -> {{settings.user.name}} （{{settings.user.unitName}}）</p>
+</page-header>
+<div nz-row [nzGutter]="8" *ngFor="let divData of listOfData">
+  <div nz-col [nzSpan]="8">
+    <nz-card nzTitle="{{divData.appName}} >>>">
+      <p>周期：{{ divData.startDate }}至{{ divData.endDate }}</p>
+      <p>类别：{{ divData.esType }} &nbsp;&nbsp;&nbsp;</p>
+    </nz-card>
+  </div>
+  <div nz-col [nzSpan]="16">
+    <nz-card nzTitle="当前阶段：数据填报">
+      <p>
+        <nz-tag [nzColor]="'#f50'">未填报</nz-tag>
+        <nz-tag [nzColor]="'#2db7f5'">未审核</nz-tag>
+        <nz-tag [nzColor]="'#87d068'">已填报</nz-tag>
+        <nz-tag [nzColor]="'#108ee9'">已审核</nz-tag>
+        <nz-tag [nzColor]="'#f50'">未评审</nz-tag>
+        <nz-tag [nzColor]="'#87d068'">已评审</nz-tag>
+      </p>
+      <p>周期：{{ divData.startDate }}至{{ divData.endDate }}</p>
+    </nz-card>
+  </div>
+</div>
