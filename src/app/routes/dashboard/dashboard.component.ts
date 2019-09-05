@@ -4,6 +4,8 @@ import { STColumn, STComponent } from '@delon/abc';
 import { SFSchema } from '@delon/form';
 import { NzFormatEmitEvent, NzDrawerRef, NzDrawerService, NzMessageService, NzModalService } from 'ng-zorro-antd';
 
+import { DashboardDataUpComponent } from './dataup.component';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -16,18 +18,17 @@ export class DashboardComponent implements OnInit {
     private drawerService: NzDrawerService,
     private msgSrv: NzMessageService,
     private modalService: NzModalService,
-    // private settingService: SettingsService,
-    public settings: SettingsService,
+    public loadUser: SettingsService,
   ) {}
 
   listOfData: any[] = [];
   value: string;
   visible = false;
 
+  statusStr = '1';
+
   ngOnInit() {
     this.loadInfo();
-    console.log('dfd=');
-    console.log(this.settings.user.userFrom);
   }
 
   loadInfo(): void {
@@ -37,4 +38,34 @@ export class DashboardComponent implements OnInit {
     });
   }
   //
+  openDataUp(record: any): void {
+    // console.log(record);
+    // console.log(this.loadUser.user);
+    const dataValue = record;
+    dataValue.deptId = this.loadUser.user.bid;
+    dataValue.deptName = this.loadUser.user.bname;
+
+    const drawerRef = this.drawerService.create<DashboardDataUpComponent, { value: any }, string>({
+      nzTitle: record.appName + '【' + this.loadUser.user.bname + '】' + '填报任务',
+      nzWidth: 550,
+      nzPlacement: 'left',
+      nzMaskClosable: false,
+      nzContent: DashboardDataUpComponent,
+      nzContentParams: {
+        value: dataValue,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
+  }
+
+  // --------------------------------------------
 }

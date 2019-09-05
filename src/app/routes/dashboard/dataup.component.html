@@ -1,0 +1,14 @@
+<div nz-row [nzGutter]="8" *ngFor="let dt of listOfAppStep">
+  <nz-card nzSize="small" [nzHoverable]="true" nzType="inner" [nzTitle]='"★ " + dt.dtName'
+    [nzActions]="[upStatus, checkStatus]">
+    <p>评审指标：</p>
+  </nz-card>
+
+  <ng-template #upStatus>
+    <a (click)="dataUpFun(dt)"><i nz-icon nzType="table" style="color: coral"></i>数据填报</a>
+  </ng-template>
+  <ng-template #checkStatus>
+    <a><i nz-icon nzType="issues-close" style="color: coral"></i> 数据审核</a>
+  </ng-template>
+
+</div>

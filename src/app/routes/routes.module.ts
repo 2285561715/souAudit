@@ -5,6 +5,7 @@ import { SharedModule } from '@shared';
 import { RouteRoutingModule } from './routes-routing.module';
 // dashboard pages
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardDataUpComponent } from './dashboard/dataup.component';
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
 import { UserRegisterComponent } from './passport/register/register.component';
@@ -29,7 +30,7 @@ const COMPONENTS = [
   CallbackComponent,
   UserLockComponent,
 ];
-const COMPONENTS_NOROUNT = [];
+const COMPONENTS_NOROUNT = [DashboardDataUpComponent];
 
 @NgModule({
   imports: [SharedModule, RouteRoutingModule, NzIconModule],

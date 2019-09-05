@@ -1,25 +1,36 @@
 <page-header [action]="phActionTpl">
   <ng-template #phActionTpl> </ng-template>
-  <p>欢迎您：{{settings.user.bname}} -> {{settings.user.name}} （{{settings.user.unitName}}）</p>
+  <p>欢迎您：{{loadUser.user.bname}} -> {{loadUser.user.name}} （{{loadUser.user.unitName}}）</p>
 </page-header>
 <div nz-row [nzGutter]="8" *ngFor="let divData of listOfData">
   <div nz-col [nzSpan]="8">
-    <nz-card nzTitle="{{divData.appName}} >>>">
-      <p>周期：{{ divData.startDate }}至{{ divData.endDate }}</p>
-      <p>类别：{{ divData.esType }} &nbsp;&nbsp;&nbsp;</p>
+    <nz-card nzTitle="【{{divData.appName}}】">
+      <p style="line-height: 2em">周期：{{ divData.startDate }}至{{ divData.endDate }}</p>
+      <p style="line-height: 2em">类别：{{ divData.esType }} &nbsp;&nbsp;&nbsp;</p>
     </nz-card>
   </div>
   <div nz-col [nzSpan]="16">
-    <nz-card nzTitle="当前阶段：数据填报">
-      <p>
-        <nz-tag [nzColor]="'#f50'">未填报</nz-tag>
-        <nz-tag [nzColor]="'#2db7f5'">未审核</nz-tag>
-        <nz-tag [nzColor]="'#87d068'">已填报</nz-tag>
-        <nz-tag [nzColor]="'#108ee9'">已审核</nz-tag>
-        <nz-tag [nzColor]="'#f50'">未评审</nz-tag>
-        <nz-tag [nzColor]="'#87d068'">已评审</nz-tag>
+
+    <nz-card nzTitle="当前阶段：数据填报" [nzExtra]="extraTemplate">
+      <p style="line-height: 2em">
+        阶段周期：{{ divData.startDate }} 至 {{ divData.endDate }}
       </p>
-      <p>周期：{{ divData.startDate }}至{{ divData.endDate }}</p>
+      <p style="line-height: 2em">
+        <button nz-button nzSize="small" nzType="primary" (click)="openDataUp(divData)">
+          <i nz-icon nzType="edit"></i>数据填报</button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button nz-button nzSize="small" nzType="primary" (click)="openFileUp()">
+          <i nz-icon nzType="upload"></i>资料上传</button>
+      </p>
     </nz-card>
+    <ng-template #extraTemplate>状态：
+      <nz-tag *ngIf="statusStr==='1'" [nzColor]="'#f50'">未填报</nz-tag>
+      <nz-tag *ngIf="statusStr==='1'" [nzColor]="'#f50'">未上传</nz-tag>
+      <nz-tag *ngIf="statusStr==='2'" [nzColor]="'#2db7f5'">未审核</nz-tag>
+      <nz-tag *ngIf="statusStr==='3'" [nzColor]="'#87d068'">已填报</nz-tag>
+      <nz-tag *ngIf="statusStr==='4'" [nzColor]="'#108ee9'">已审核</nz-tag>
+      <nz-tag *ngIf="statusStr==='5'" [nzColor]="'#f50'">未评审</nz-tag>
+      <nz-tag *ngIf="statusStr==='6'" [nzColor]="'#87d068'">已评审</nz-tag>
+    </ng-template>
   </div>
 </div>
