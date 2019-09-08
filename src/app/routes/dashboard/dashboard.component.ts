@@ -5,6 +5,7 @@ import { SFSchema } from '@delon/form';
 import { NzFormatEmitEvent, NzDrawerRef, NzDrawerService, NzMessageService, NzModalService } from 'ng-zorro-antd';
 
 import { DashboardDataUpComponent } from './dataup.component';
+import { DashboardFileUpComponent } from './fileup.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -37,7 +38,7 @@ export class DashboardComponent implements OnInit {
       this.cdr.detectChanges();
     });
   }
-  //
+  // 数据上报sjtb
   openDataUp(record: any): void {
     // console.log(record);
     // console.log(this.loadUser.user);
@@ -66,6 +67,34 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+  // 文件上传file
+  openFileUp(record: any): void {
+    // console.log(record);
+    // console.log(this.loadUser.user);
+    const dataValue = record;
+    dataValue.deptId = this.loadUser.user.bid;
+    dataValue.deptName = this.loadUser.user.bname;
 
+    const drawerRef = this.drawerService.create<DashboardFileUpComponent, { value: any }, string>({
+      nzTitle: record.appName + '【' + this.loadUser.user.bname + '】' + '材料上传',
+      nzWidth: 550,
+      nzPlacement: 'left',
+      nzMaskClosable: false,
+      nzContent: DashboardFileUpComponent,
+      nzContentParams: {
+        value: dataValue,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
+  }
   // --------------------------------------------
 }

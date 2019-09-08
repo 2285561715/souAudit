@@ -6,10 +6,10 @@ import { DashboardDataUpZxSjtbComponent } from './dataup/zxsjtb.component';
 
 @Component({
   selector: 'app-dashboard-dataup',
-  templateUrl: './dataup.component.html',
+  templateUrl: './fileup.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpComponent implements OnInit {
+export class DashboardFileUpComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -30,7 +30,7 @@ export class DashboardDataUpComponent implements OnInit {
   loadSteps(): void {
     // 可以传 conType='sjtb' or 'file'
     this.http
-      .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=sjtb')
+      .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=file')
       .subscribe((res: any) => {
         this.listOfAppStep = res;
         console.log(this.listOfAppStep);

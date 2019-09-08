@@ -10,6 +10,7 @@ import { SFSchema, SFUISchema } from '@delon/form';
 export class AuditstepDataUploadEditComponent implements OnInit {
   record: any = {};
   i: any;
+
   schema: SFSchema = {
     properties: {
       no: { type: 'string', title: '编号' },
@@ -26,7 +27,7 @@ export class AuditstepDataUploadEditComponent implements OnInit {
       grid: { span: 12 },
     },
     $no: {
-      widget: 'text'
+      widget: 'text',
     },
     $href: {
       widget: 'string',
@@ -37,15 +38,10 @@ export class AuditstepDataUploadEditComponent implements OnInit {
     },
   };
 
-  constructor(
-    private modal: NzModalRef,
-    private msgSrv: NzMessageService,
-    public http: _HttpClient,
-  ) {}
+  constructor(private modal: NzModalRef, private msgSrv: NzMessageService, public http: _HttpClient) {}
 
   ngOnInit(): void {
-    if (this.record.id > 0)
-    this.http.get(`/user/${this.record.id}`).subscribe(res => (this.i = res));
+    if (this.record.id > 0) this.http.get(`/user/${this.record.id}`).subscribe(res => (this.i = res));
   }
 
   save(value: any) {

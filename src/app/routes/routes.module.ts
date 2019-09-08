@@ -6,6 +6,8 @@ import { RouteRoutingModule } from './routes-routing.module';
 // dashboard pages
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardDataUpComponent } from './dashboard/dataup.component';
+import { DashboardFileUpComponent } from './dashboard/fileup.component';
+import { DashboardDataUpZxSjtbComponent } from './dashboard/dataup/zxsjtb.component';
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
 import { UserRegisterComponent } from './passport/register/register.component';
@@ -30,7 +32,7 @@ const COMPONENTS = [
   CallbackComponent,
   UserLockComponent,
 ];
-const COMPONENTS_NOROUNT = [DashboardDataUpComponent];
+const COMPONENTS_NOROUNT = [DashboardDataUpComponent, DashboardFileUpComponent, DashboardDataUpZxSjtbComponent];
 
 @NgModule({
   imports: [SharedModule, RouteRoutingModule, NzIconModule],

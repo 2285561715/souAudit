@@ -19,7 +19,7 @@ import { ICONS } from '../../../style-icons';
 @Injectable()
 export class StartupService {
   app: any = {
-    name: `souAudit`,
+    name: `souAssessment`,
     description: `上海开放大学评估系统`,
   };
   constructor(
