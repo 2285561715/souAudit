@@ -4,7 +4,7 @@
 </page-header>
 <div nz-row [nzGutter]="8" *ngFor="let divData of listOfData">
   <div nz-col [nzSpan]="8">
-    <nz-card nzTitle="【{{divData.appName}}】">
+    <nz-card nzTitle="【{{divData.appName}}】" style="background-color: rgb(252, 251, 228)">
       <p style="line-height: 2em">周期：{{ divData.startDate }}至{{ divData.endDate }}</p>
       <p style="line-height: 2em">类别：{{ divData.esType }} &nbsp;&nbsp;&nbsp;</p>
     </nz-card>

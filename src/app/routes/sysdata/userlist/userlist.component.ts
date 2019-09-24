@@ -44,11 +44,11 @@ export class SysdataUserlistComponent implements OnInit {
   loadInfo(): void {
     this.http.get('/api/users').subscribe((res: any[]) => {
       this.listOfData = res;
+      // console.log(res);
       this.listOfDisplayData = this.listOfData;
       // this.cdr.detectChanges() 这句一定要加，否则列表不会刷新，导致看不到数据
       this.cdr.detectChanges();
     });
-    
   }
 
   sort(sort: { key: string; value: string }): void {

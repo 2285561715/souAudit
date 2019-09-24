@@ -1,73 +1,39 @@
-<div class="modal-header">
-  <div class="modal-title">【】数据填报</div>
-</div>
-
 <div class="card-container">
   <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
-    <nz-tab nzTitle="数据填报">
-      <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true" nzPageSize="10">
-        <thead>
-          <tr>
-            <th nzWidth="25%">Name</th>
-            <th nzWidth="15%">Age</th>
-            <th nzWidth="40%">Address</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let data of editRowTable.data">
-            <td>
-              <ng-container *ngIf="!editCache[data.id].edit; else nameInputTpl">
-                {{ data.name }}
-              </ng-container>
-              <ng-template #nameInputTpl>
-                <input type="text" nz-input [(ngModel)]="editCache[data.id].data.name" />
-              </ng-template>
-            </td>
-            <td>
-              <ng-container *ngIf="!editCache[data.id].edit; else ageInputTpl">
-                {{ data.age }}
-              </ng-container>
-              <ng-template #ageInputTpl>
-                <input type="text" nz-input [(ngModel)]="editCache[data.id].data.age" />
-              </ng-template>
-            </td>
-            <td>
-              <ng-container *ngIf="!editCache[data.id].edit; else addressInputTpl">
-                {{ data.address }}
-              </ng-container>
-              <ng-template #addressInputTpl>
-                <input type="text" nz-input [(ngModel)]="editCache[data.id].data.address" />
-              </ng-template>
-            </td>
-            <td>
-              <div class="editable-row-operations">
-                <ng-container *ngIf="!editCache[data.id].edit; else saveTpl">
-                  <a (click)="startEdit(data.id)">Edit</a>
-                </ng-container>
-                <ng-template #saveTpl>
-                  <a (click)="saveEdit(data.id)">Save</a>
-                  <a nz-popconfirm nzTitle="Sure to cancel?" (nzOnConfirm)="cancelEdit(data.id)">Cancel</a>
-                </ng-template>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </nz-table>
+    <nz-tab [nzTitle]="titleTemplate">
+      <ng-template #titleTemplate><i nz-icon nzType="form" style="color: coral"></i>数据填报</ng-template>
+
+      <div *ngIf="value.dtNo==='sjzxtb_xxjbqk_ldxx'">
+        <app-dashboard-dataup-zxtb011-index></app-dashboard-dataup-zxtb011-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_xxjbqk_jftr'">
+        <app-dashboard-dataup-zxtb012-index></app-dashboard-dataup-zxtb012-index>>
+      </div>
+
     </nz-tab>
-    <nz-tab nzTitle="数据导入">
-      <p>Content of Tab Pane </p>
+
+    <nz-tab [nzTitle]="titleTemplate1">
+      <ng-template #titleTemplate1><i nz-icon nzType="import" style="color: coral"></i>数据导入</ng-template>
+      <p>开发中 </p>
     </nz-tab>
-    <nz-tab nzTitle="填报规则">
-      <p>Content of Tab Pane </p>
+
+    <nz-tab [nzTitle]="titleTemplate2">
+      <ng-template #titleTemplate2><i nz-icon nzType="profile" style="color: coral"></i>填报规则</ng-template>
+      <p>{{descRules}}</p>
     </nz-tab>
-    <nz-tab nzTitle="校验规则">
-      <p>Content of Tab Pane </p>
+
+    <nz-tab [nzTitle]="titleTemplate3">
+      <ng-template #titleTemplate3><i nz-icon nzType="file-done" style="color: coral"></i>校验规则</ng-template>
+      <p>{{checkRules}}</p>
     </nz-tab>
-    <nz-tab nzTitle="样例数据">
-      <p>Content of Tab Pane </p>
+
+    <nz-tab [nzTitle]="titleTemplate4">
+      <ng-template #titleTemplate4><i nz-icon nzType="table" style="color: coral"></i>样例数据</ng-template>
+      <p>{{tableHtml}}</p>
     </nz-tab>
-    <nz-tab nzTitle="数据导出">
+
+    <nz-tab [nzTitle]="titleTemplate5">
+      <ng-template #titleTemplate5><i nz-icon nzType="select" style="color: coral"></i>数据导出</ng-template>
       <p>Content of Tab Pane </p>
     </nz-tab>
   </nz-tabset>

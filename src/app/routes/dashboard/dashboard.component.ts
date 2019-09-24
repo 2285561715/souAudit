@@ -33,8 +33,18 @@ export class DashboardComponent implements OnInit {
   }
 
   loadInfo(): void {
+    // console.log(this.loadUser.user.userFrom);
     this.http.get('/api/adapply').subscribe((res: any[]) => {
-      this.listOfData = res;
+      // this.listOfData = res;
+      res.forEach(item => {
+        if (item.isZx && this.loadUser.user.userFrom === 'zx') {
+          this.listOfData.push(item);
+        }
+        if (!item.isZx && this.loadUser.user.userFrom === 'fx') {
+          this.listOfData.push(item);
+        }
+      });
+      console.log(res);
       this.cdr.detectChanges();
     });
   }
@@ -47,8 +57,8 @@ export class DashboardComponent implements OnInit {
     dataValue.deptName = this.loadUser.user.bname;
 
     const drawerRef = this.drawerService.create<DashboardDataUpComponent, { value: any }, string>({
-      nzTitle: record.appName + '【' + this.loadUser.user.bname + '】' + '填报任务',
-      nzWidth: 550,
+      nzTitle: '【' + this.loadUser.user.bname + '】' + '填报任务',
+      nzWidth: 490,
       nzPlacement: 'left',
       nzMaskClosable: false,
       nzContent: DashboardDataUpComponent,
@@ -69,15 +79,13 @@ export class DashboardComponent implements OnInit {
   }
   // 文件上传file
   openFileUp(record: any): void {
-    // console.log(record);
-    // console.log(this.loadUser.user);
     const dataValue = record;
     dataValue.deptId = this.loadUser.user.bid;
     dataValue.deptName = this.loadUser.user.bname;
 
     const drawerRef = this.drawerService.create<DashboardFileUpComponent, { value: any }, string>({
-      nzTitle: record.appName + '【' + this.loadUser.user.bname + '】' + '材料上传',
-      nzWidth: 550,
+      nzTitle: '【' + this.loadUser.user.bname + '】' + '材料上传',
+      nzWidth: 490,
       nzPlacement: 'left',
       nzMaskClosable: false,
       nzContent: DashboardFileUpComponent,

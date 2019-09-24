@@ -35,10 +35,11 @@ export class SysdataZxSynchdatatableEditComponent implements OnInit {
         'insertunorderedlist',
         'selectall',
         'cleardoc',
+        // '|',
+        // 'insertimage',
+        // 'attachment',
         '|',
-        'insertimage',
-        'attachment',
-        '|',
+        'inserttable',
         'insertparagraphbeforetable',
         'insertrow',
         'insertcol',
@@ -60,7 +61,7 @@ export class SysdataZxSynchdatatableEditComponent implements OnInit {
     autoHeightEnabled: true,
     autoFloatEnabled: true,
     wordCount: false,
-    initialFrameHeight: 200,
+    initialFrameHeight: 180,
   };
 
   current = 0;
@@ -113,19 +114,28 @@ export class SysdataZxSynchdatatableEditComponent implements OnInit {
         document.getElementById('stepAct1').style.display = 'block';
         document.getElementById('stepAct2').style.display = 'none';
         document.getElementById('stepAct3').style.display = 'none';
-
+        document.getElementById('stepAct4').style.display = 'none';
         break;
       }
       case 1: {
         document.getElementById('stepAct1').style.display = 'none';
         document.getElementById('stepAct2').style.display = 'block';
         document.getElementById('stepAct3').style.display = 'none';
+        document.getElementById('stepAct4').style.display = 'none';
         break;
       }
       case 2: {
         document.getElementById('stepAct1').style.display = 'none';
         document.getElementById('stepAct2').style.display = 'none';
         document.getElementById('stepAct3').style.display = 'block';
+        document.getElementById('stepAct4').style.display = 'none';
+        break;
+      }
+      case 3: {
+        document.getElementById('stepAct1').style.display = 'none';
+        document.getElementById('stepAct2').style.display = 'none';
+        document.getElementById('stepAct3').style.display = 'none';
+        document.getElementById('stepAct4').style.display = 'block';
         break;
       }
       default: {
@@ -153,11 +163,6 @@ export class SysdataZxSynchdatatableEditComponent implements OnInit {
 
   next(): void {
     this.current += 1;
-    this.changeContent();
-  }
-
-  stepClick(cIndex: number) {
-    this.current = cIndex;
     this.changeContent();
   }
 

@@ -43,6 +43,7 @@
     "@delon/theme": "^8.2.0",
     "@delon/util": "^8.2.0",
     "ajv": "^6.10.0",
+    "editor.md": "^1.5.0",
     "ng-alain": "^8.2.0",
     "ng-zorro-antd": "^8.2.1",
     "ngx-ueditor": "^2.1.3",

@@ -10,6 +10,58 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class SysdataFxHandupdatatableEditComponent implements OnInit {
   record: any = {};
+
+  config = {
+    toolbars: [
+      [
+        'bold',
+        'italic',
+        'underline',
+        'fontborder',
+        'strikethrough',
+        'superscript',
+        'subscript',
+        'removeformat',
+        'formatmatch',
+        'autotypeset',
+        'blockquote',
+        'pasteplain',
+        '|',
+        'forecolor',
+        'backcolor',
+        'insertorderedlist',
+        'insertunorderedlist',
+        'selectall',
+        'cleardoc',
+        // '|',
+        // 'insertimage',
+        // 'attachment',
+        '|',
+        'inserttable',
+        'insertparagraphbeforetable',
+        'insertrow',
+        'insertcol',
+        'mergeright',
+        'mergedown',
+        'deleterow',
+        'deletecol',
+        'splittorows',
+        'splittocols',
+        'splittocells',
+        'mergecells',
+        'deletetable',
+        '|',
+        'horizontal',
+        'source',
+      ],
+    ],
+    autoClearinitialContent: true,
+    autoHeightEnabled: true,
+    autoFloatEnabled: true,
+    wordCount: false,
+    initialFrameHeight: 180,
+  };
+
   current = 0;
   validateForm: FormGroup;
   listOfDept = [];
@@ -60,19 +112,28 @@ export class SysdataFxHandupdatatableEditComponent implements OnInit {
         document.getElementById('stepAct1').style.display = 'block';
         document.getElementById('stepAct2').style.display = 'none';
         document.getElementById('stepAct3').style.display = 'none';
-
+        document.getElementById('stepAct4').style.display = 'none';
         break;
       }
       case 1: {
         document.getElementById('stepAct1').style.display = 'none';
         document.getElementById('stepAct2').style.display = 'block';
         document.getElementById('stepAct3').style.display = 'none';
+        document.getElementById('stepAct4').style.display = 'none';
         break;
       }
       case 2: {
         document.getElementById('stepAct1').style.display = 'none';
         document.getElementById('stepAct2').style.display = 'none';
         document.getElementById('stepAct3').style.display = 'block';
+        document.getElementById('stepAct4').style.display = 'none';
+        break;
+      }
+      case 3: {
+        document.getElementById('stepAct1').style.display = 'none';
+        document.getElementById('stepAct2').style.display = 'none';
+        document.getElementById('stepAct3').style.display = 'none';
+        document.getElementById('stepAct4').style.display = 'block';
         break;
       }
       default: {
@@ -80,6 +141,19 @@ export class SysdataFxHandupdatatableEditComponent implements OnInit {
       }
     }
   }
+  // --------------------------------------------------------------------------
+  onChanges(values: any): void {
+    console.log(values);
+  }
+
+  _ready(event: any): void {}
+
+  _destroy(): void {
+    console.log('enter  destory');
+  }
+
+  _change(event: any) {}
+  // --------------------------------------------------------------------------
 
   pre(): void {
     this.current -= 1;

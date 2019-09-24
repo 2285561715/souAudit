@@ -2,7 +2,7 @@ import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-z
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper } from '@delon/theme';
 
-import { DashboardDataUpZxSjtbComponent } from './dataup/zxsjtb.component';
+import { DashboardFileUpZxWzclComponent } from './fileup/zxwzcl.component';
 
 @Component({
   selector: 'app-dashboard-dataup',
@@ -15,6 +15,7 @@ export class DashboardFileUpComponent implements OnInit {
     private modal: ModalHelper,
     private msgSrv: NzMessageService,
     private cdr: ChangeDetectorRef,
+    private drawerService: NzDrawerService,
     private drawerRef: NzDrawerRef<string>,
   ) {}
 
@@ -38,14 +39,31 @@ export class DashboardFileUpComponent implements OnInit {
       });
   }
 
-  // 专家组设置、专家组设置
-  dataUpFun(dt: any) {
-    const data = this.value;
-    data.dtNo = dt.dtNo;
-    console.log(data);
-    this.modal.create(DashboardDataUpZxSjtbComponent, { data }, { size: 'xl' }).subscribe((res: any) => {});
-  }
+  // 文件上传file
+  fileUpFun(dt: any): void {
+    const tdata = this.value;
+    tdata.dtNo = dt.dtNo;
+    const drawerRef = this.drawerService.create<DashboardFileUpZxWzclComponent, { value: any }, string>({
+      nzTitle: '【' + dt.dtName + '】材料上传',
+      nzWidth: document.body.clientWidth - 490,
+      nzPlacement: 'right',
+      nzMaskClosable: false,
+      nzContent: DashboardFileUpZxWzclComponent,
+      nzContentParams: {
+        value: tdata,
+      },
+    });
 
+    drawerRef.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
+  }
   // close(res: any) {
   //   this.modal.close(res);
   // }

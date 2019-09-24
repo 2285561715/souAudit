@@ -15,16 +15,25 @@ export class DashboardDataUpComponent implements OnInit {
     private modal: ModalHelper,
     private msgSrv: NzMessageService,
     private cdr: ChangeDetectorRef,
+    private drawerService: NzDrawerService,
     private drawerRef: NzDrawerRef<string>,
   ) {}
 
   value: any = [];
-  listOfAppStep: any = [];
+  listOfTableList: any = [];
+
+  // 打开上传数据页面
+  // dataUpFun(dt: any) {
+  //   const data = this.value;
+  //   data.dtNo = dt.dtNo;
+  //   console.log(data);
+  //   this.modal.create(DashboardDataUpZxSjtbComponent, { data }, { size: 'xl' }).subscribe((res: any) => {});
+  // }
 
   ngOnInit() {
     this.loadSteps();
-    // console.log('value=');
-    // console.log(this.value);
+    console.log('value=');
+    console.log(this.value);
   }
 
   loadSteps(): void {
@@ -32,18 +41,37 @@ export class DashboardDataUpComponent implements OnInit {
     this.http
       .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=sjtb')
       .subscribe((res: any) => {
-        this.listOfAppStep = res;
-        console.log(this.listOfAppStep);
+        this.listOfTableList = res;
+        console.log(this.listOfTableList);
         this.cdr.detectChanges();
       });
   }
 
-  // 专家组设置、专家组设置
-  dataUpFun(dt: any) {
-    const data = this.value;
-    data.dtNo = dt.dtNo;
-    console.log(data);
-    this.modal.create(DashboardDataUpZxSjtbComponent, { data }, { size: 'xl' }).subscribe((res: any) => {});
+  // 文件上传file
+  dataUpFun(dt: any): void {
+    const tdata = this.value;
+    tdata.dtNo = dt.dtNo;
+
+    const drawerRef = this.drawerService.create<DashboardDataUpZxSjtbComponent, { value: any }, string>({
+      nzTitle: '【' + dt.dtName + '】数据填报',
+      nzWidth: document.body.clientWidth - 490,
+      nzPlacement: 'right',
+      // nzMaskClosable: false,
+      nzContent: DashboardDataUpZxSjtbComponent,
+      nzContentParams: {
+        value: tdata,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
   }
 
   // close(res: any) {
