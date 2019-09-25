@@ -7,14 +7,17 @@
         <app-dashboard-dataup-zxtb011-index></app-dashboard-dataup-zxtb011-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_xxjbqk_jftr'">
-        <app-dashboard-dataup-zxtb012-index></app-dashboard-dataup-zxtb012-index>>
+        <app-dashboard-dataup-zxtb012-index></app-dashboard-dataup-zxtb012-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_xxjbqk_bxxt'">
+        <app-dashboard-dataup-zxtb013-index></app-dashboard-dataup-zxtb013-index>
       </div>
 
     </nz-tab>
 
     <nz-tab [nzTitle]="titleTemplate1">
       <ng-template #titleTemplate1><i nz-icon nzType="import" style="color: coral"></i>数据导入</ng-template>
-      <p>开发中 </p>
+      <p>loading... </p>
     </nz-tab>
 
     <nz-tab [nzTitle]="titleTemplate2">
@@ -34,7 +37,7 @@
 
     <nz-tab [nzTitle]="titleTemplate5">
       <ng-template #titleTemplate5><i nz-icon nzType="select" style="color: coral"></i>数据导出</ng-template>
-      <p>Content of Tab Pane </p>
+      <p>loading... </p>
     </nz-tab>
   </nz-tabset>
 </div>

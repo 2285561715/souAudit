@@ -4,7 +4,8 @@ import { STColumn, STComponent } from '@delon/abc';
 import { SFSchema } from '@delon/form';
 import { NzFormatEmitEvent, NzDrawerRef, NzDrawerService, NzMessageService, NzModalService } from 'ng-zorro-antd';
 
-import { DashboardDataUpComponent } from './dataup.component';
+import { DashboardDataUpZxComponent } from './dataupzx.component';
+import { DashboardDataUpFxComponent } from './dataupfx.component';
 import { DashboardFileUpComponent } from './fileup.component';
 
 @Component({
@@ -48,20 +49,45 @@ export class DashboardComponent implements OnInit {
       this.cdr.detectChanges();
     });
   }
-  // 数据上报sjtb
+  // 总校数据上报sjtb
   openDataUp(record: any): void {
-    // console.log(record);
-    // console.log(this.loadUser.user);
     const dataValue = record;
     dataValue.deptId = this.loadUser.user.bid;
     dataValue.deptName = this.loadUser.user.bname;
 
-    const drawerRef = this.drawerService.create<DashboardDataUpComponent, { value: any }, string>({
+    const drawerRef = this.drawerService.create<DashboardDataUpZxComponent, { value: any }, string>({
       nzTitle: '【' + this.loadUser.user.bname + '】' + '填报任务',
       nzWidth: 490,
       nzPlacement: 'left',
       nzMaskClosable: false,
-      nzContent: DashboardDataUpComponent,
+      nzContent: DashboardDataUpZxComponent,
+      nzContentParams: {
+        value: dataValue,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
+  }
+  // 分校数据上报sjtb
+  openDataUpFx(record: any): void {
+    const dataValue = record;
+    dataValue.deptId = this.loadUser.user.bid;
+    dataValue.deptName = this.loadUser.user.bname;
+
+    const drawerRef = this.drawerService.create<DashboardDataUpFxComponent, { value: any }, string>({
+      nzTitle: '【' + this.loadUser.user.bname + '】' + '数据填报任务',
+      nzWidth: 490,
+      nzPlacement: 'left',
+      nzMaskClosable: false,
+      nzContent: DashboardDataUpFxComponent,
       nzContentParams: {
         value: dataValue,
       },
@@ -84,7 +110,7 @@ export class DashboardComponent implements OnInit {
     dataValue.deptName = this.loadUser.user.bname;
 
     const drawerRef = this.drawerService.create<DashboardFileUpComponent, { value: any }, string>({
-      nzTitle: '【' + this.loadUser.user.bname + '】' + '材料上传',
+      nzTitle: '【' + this.loadUser.user.bname + '】' + '文字材料上传',
       nzWidth: 490,
       nzPlacement: 'left',
       nzMaskClosable: false,

@@ -5,12 +5,14 @@ import { SharedModule } from '@shared';
 import { RouteRoutingModule } from './routes-routing.module';
 // dashboard pages
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardDataUpComponent } from './dashboard/dataup.component';
+import { DashboardDataUpZxComponent } from './dashboard/dataupzx.component';
+import { DashboardDataUpFxComponent } from './dashboard/dataupfx.component';
 import { DashboardFileUpComponent } from './dashboard/fileup.component';
 // --数据填报
 import { DashboardDataUpZxSjtbComponent } from './dashboard/dataup/zxsjtb.component';
 import { DashboardDataUpZxtb011IndexComponent } from './dashboard/dataup/zxtb01-1/index.component';
 import { DashboardDataUpZxtb012IndexComponent } from './dashboard/dataup/zxtb01-2/index.component';
+import { DashboardDataUpZxtb013IndexComponent } from './dashboard/dataup/zxtb01-3/index.component';
 // -- 文字资料上传
 import { DashboardFileUpZxWzclComponent } from './dashboard/fileup/zxwzcl.component';
 // passport pages
@@ -38,12 +40,14 @@ const COMPONENTS = [
   UserLockComponent,
 ];
 const COMPONENTS_NOROUNT = [
-  DashboardDataUpComponent,
+  DashboardDataUpZxComponent,
+  DashboardDataUpFxComponent,
   DashboardFileUpComponent,
   // --数据填报
   DashboardDataUpZxSjtbComponent,
   DashboardDataUpZxtb011IndexComponent,
   DashboardDataUpZxtb012IndexComponent,
+  DashboardDataUpZxtb013IndexComponent,
   // --文字材料上传
   DashboardFileUpZxWzclComponent,
 ];

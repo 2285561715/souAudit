@@ -5,11 +5,11 @@ import { _HttpClient, ModalHelper } from '@delon/theme';
 import { DashboardDataUpZxSjtbComponent } from './dataup/zxsjtb.component';
 
 @Component({
-  selector: 'app-dashboard-dataup',
-  templateUrl: './dataup.component.html',
+  selector: 'app-dashboard-dataup-fx',
+  templateUrl: './dataupfx.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpComponent implements OnInit {
+export class DashboardDataUpFxComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -21,14 +21,6 @@ export class DashboardDataUpComponent implements OnInit {
 
   value: any = [];
   listOfTableList: any = [];
-
-  // 打开上传数据页面
-  // dataUpFun(dt: any) {
-  //   const data = this.value;
-  //   data.dtNo = dt.dtNo;
-  //   console.log(data);
-  //   this.modal.create(DashboardDataUpZxSjtbComponent, { data }, { size: 'xl' }).subscribe((res: any) => {});
-  // }
 
   ngOnInit() {
     this.loadSteps();
