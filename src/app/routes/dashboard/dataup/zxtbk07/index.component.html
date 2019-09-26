@@ -19,7 +19,9 @@
           {{ data.xl_myd }}
         </ng-container>
         <ng-template #xlmydInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_myd" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_myd" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.xl_myd" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
 
@@ -28,7 +30,9 @@
           {{ data.fxl_myd }}
         </ng-container>
         <ng-template #fxlmydInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_myd" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_myd" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.fxl_myd" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
 
@@ -37,7 +41,9 @@
           {{ data.sq_myd }}
         </ng-container>
         <ng-template #sqmydInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.sq_myd" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.sq_myd" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.sq_myd" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
 

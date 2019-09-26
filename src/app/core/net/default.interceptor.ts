@@ -10,7 +10,7 @@ import {
 } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { mergeMap, catchError } from 'rxjs/operators';
-import { NzMessageService, NzNotificationService } from 'ng-zorro-antd';
+import { NzMessageService, NzNotificationService, NzModalService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
@@ -38,7 +38,7 @@ const CODEMESSAGE = {
  */
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
-  constructor(private injector: Injector) {}
+  constructor(private injector: Injector, private modalService: NzModalService) {}
 
   private get notification(): NzNotificationService {
     return this.injector.get(NzNotificationService);
@@ -62,7 +62,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     if (ev.status > 0) {
       this.injector.get(_HttpClient).end();
     }
-    this.checkStatus(ev);
+    // this.checkStatus(ev);
     // 业务处理：一些通用操作
     switch (ev.status) {
       case 200:
@@ -86,16 +86,46 @@ export class DefaultInterceptor implements HttpInterceptor {
         //     }
         // }
         break;
+      case 400:
+        this.modalService.error({
+          nzTitle: '操作提醒',
+          nzContent: '错误的请求',
+        });
+        break;
       case 401:
         // this.notification.error(`未登录或登录已过期，请重新登录。`, ``);
         // 清空 token 信息
         (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).clear();
-        this.goTo('/passport/login');
+        this.modalService.info({
+          nzTitle: '操作提醒',
+          nzContent: '用户已过期，请重新登录',
+          nzOnOk: () => this.goTo('/passport/login'),
+        });
         break;
       case 403:
+        this.modalService.error({
+          nzTitle: '操作提醒',
+          nzContent: '没有操作权限',
+        });
+        break;
       case 404:
+        this.modalService.error({
+          nzTitle: '操作提醒',
+          nzContent: '未找到服务器资源',
+        });
+        break;
+      case 405:
+        this.modalService.error({
+          nzTitle: '操作提醒',
+          nzContent: '请求错误，不支持的请求方法',
+        });
+        break;
       case 500:
-        this.goTo(`/exception/${ev.status}`);
+        // this.goTo(`/exception/${ev.status}`);
+        this.modalService.error({
+          nzTitle: '操作提醒',
+          nzContent: '请求或数据填写错误，请确认数据重新输入',
+        });
         break;
       default:
         if (ev instanceof HttpErrorResponse) {

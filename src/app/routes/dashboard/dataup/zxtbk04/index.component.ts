@@ -3,11 +3,11 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRe
 import { _HttpClient, ModalHelper } from '@delon/theme';
 
 @Component({
-  selector: 'app-dashboard-dataup-zxtb012-index',
+  selector: 'app-dashboard-dataup-zxtbk04-index',
   templateUrl: './index.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpZxtb012IndexComponent implements OnInit {
+export class DashboardDataUpZxtbK04IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -21,7 +21,7 @@ export class DashboardDataUpZxtb012IndexComponent implements OnInit {
 
   ngOnInit(): void {
     // 获得数据表的数据
-    this.http.get('/api/data/tables/search/sjzxtb_xxjbqk_jftr').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/sjzxtb_k04_jftr').subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -53,7 +53,7 @@ export class DashboardDataUpZxtb012IndexComponent implements OnInit {
     const data = this.editCache[id].data;
     console.log(data);
 
-    this.http.put(`/api/data/tables/entry?id=` + id + `&tableno=sjzxtb_xxjbqk_jftr`, data).subscribe(res => {
+    this.http.put(`/api/data/tables/entry?id=` + id + `&tableno=sjzxtb_k04_jftr`, data).subscribe(res => {
       this.msgSrv.success('保存成功');
     });
 

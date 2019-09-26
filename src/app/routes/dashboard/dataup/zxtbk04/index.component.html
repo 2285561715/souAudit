@@ -22,7 +22,9 @@
           {{ data.xl_sum }}
         </ng-container>
         <ng-template #xlsumInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_sum" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_sum" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.xl_sum" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -30,7 +32,9 @@
           {{ data.xl_num }}
         </ng-container>
         <ng-template #xlnumInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_num" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_num" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.xl_num" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
 
@@ -39,7 +43,9 @@
           {{ data.fxl_sum }}
         </ng-container>
         <ng-template #fxlsumInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_sum" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_sum" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.fxl_sum" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -47,7 +53,9 @@
           {{ data.fxl_num }}
         </ng-container>
         <ng-template #fxlnumInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_num" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_num" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.fxl_num" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
 
@@ -56,7 +64,9 @@
           {{ data.sq_sum }}
         </ng-container>
         <ng-template #sqsumInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.sq_sum" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.sq_sum" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.sq_sum" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -64,7 +74,9 @@
           {{ data.sq_num }}
         </ng-container>
         <ng-template #sqnumInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.sq_num" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.sq_num" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.sq_num" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
 

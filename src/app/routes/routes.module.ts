@@ -10,11 +10,12 @@ import { DashboardDataUpFxComponent } from './dashboard/dataupfx.component';
 import { DashboardFileUpComponent } from './dashboard/fileup.component';
 // --数据填报
 import { DashboardDataUpZxSjtbComponent } from './dashboard/dataup/zxsjtb.component';
-import { DashboardDataUpZxtb011IndexComponent } from './dashboard/dataup/zxtb01-1/index.component';
-import { DashboardDataUpZxtb012IndexComponent } from './dashboard/dataup/zxtb01-2/index.component';
-import { DashboardDataUpZxtb013IndexComponent } from './dashboard/dataup/zxtb01-3/index.component';
+import { DashboardDataUpZxtbK01IndexComponent } from './dashboard/dataup/zxtbk01/index.component';
+import { DashboardDataUpZxtbK04IndexComponent } from './dashboard/dataup/zxtbk04/index.component';
+import { DashboardDataUpZxtbK06IndexComponent } from './dashboard/dataup/zxtbk06/index.component';
 import { DashboardDataUpZxtbK07IndexComponent } from './dashboard/dataup/zxtbk07/index.component';
 import { DashboardDataUpZxtbK08IndexComponent } from './dashboard/dataup/zxtbk08/index.component';
+import { DashboardDataUpZxtbK09IndexComponent } from './dashboard/dataup/zxtbk09/index.component';
 import { DashboardDataUpZxtbK10IndexComponent } from './dashboard/dataup/zxtbk10/index.component';
 import { DashboardDataUpZxtbK11IndexComponent } from './dashboard/dataup/zxtbk11/index.component';
 import { DashboardDataUpZxtbK141IndexComponent } from './dashboard/dataup/zxtbk14-1/index.component';
@@ -51,11 +52,12 @@ const COMPONENTS_NOROUNT = [
   DashboardFileUpComponent,
   // --数据填报
   DashboardDataUpZxSjtbComponent,
-  DashboardDataUpZxtb011IndexComponent,
-  DashboardDataUpZxtb012IndexComponent,
-  DashboardDataUpZxtb013IndexComponent,
+  DashboardDataUpZxtbK01IndexComponent,
+  DashboardDataUpZxtbK04IndexComponent,
+  DashboardDataUpZxtbK06IndexComponent,
   DashboardDataUpZxtbK07IndexComponent,
   DashboardDataUpZxtbK08IndexComponent,
+  DashboardDataUpZxtbK09IndexComponent,
   DashboardDataUpZxtbK10IndexComponent,
   DashboardDataUpZxtbK11IndexComponent,
   DashboardDataUpZxtbK141IndexComponent,

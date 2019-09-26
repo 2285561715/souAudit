@@ -3,11 +3,11 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRe
 import { _HttpClient, ModalHelper } from '@delon/theme';
 
 @Component({
-  selector: 'app-dashboard-dataup-zxtb011-index',
+  selector: 'app-dashboard-dataup-zxtbk06-index',
   templateUrl: './index.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpZxtb011IndexComponent implements OnInit {
+export class DashboardDataUpZxtbK06IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -21,7 +21,7 @@ export class DashboardDataUpZxtb011IndexComponent implements OnInit {
 
   ngOnInit(): void {
     // 获得数据表的数据
-    this.http.get('/api/data/tables/search/sjzxtb_xxjbqk_ldxx').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/sjzxtb_k06_bxxt').subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -46,25 +46,19 @@ export class DashboardDataUpZxtb011IndexComponent implements OnInit {
       edit: false,
     };
   }
-
+  // 保存数据
   saveEdit(id: string): void {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    // data.id = Number(id);
-    // data.tableno = 'sjzxtb_xxjbqk_ldxx';
-    data.leaveDate = '2019-10-10';
     console.log(data);
-    this.http.put(`/api/data/tables/entry?id=` + id + `&tableno=sjzxtb_xxjbqk_ldxx`, data).subscribe(res => {
+
+    this.http.put(`/api/data/tables/entry?id=` + id + `&tableno=sjzxtb_k06_bxxt`, data).subscribe(res => {
       this.msgSrv.success('保存成功');
     });
 
     this.editCache[id].edit = false;
   }
-
-  // close() {
-  //   this.modal.destroy();
-  // }
 
   updateEditCache(): void {
     this.listOfData.forEach(item => {

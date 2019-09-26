@@ -6,13 +6,14 @@
       <th nzAlign="center">工号</th>
       <th nzAlign="center">出生年月</th>
       <th nzAlign="center">性别</th>
-      <th nzAlign="center">职工类型</th>
-      <th nzAlign="center">所在部门</th>
+      <th nzAlign="center">毕业专业</th>
+      <th nzAlign="center">任教学科</th>
+      <th nzAlign="center">任教课程总门次</th>
       <th nzAlign="center">专业技术职务</th>
       <th nzAlign="center">学历</th>
       <th nzAlign="center">学位</th>
-      <th nzAlign="center">工作职务</th>
-      <th nzAlign="center">入职年月</th>
+      <th nzAlign="center">性质</th>
+      <th nzAlign="center">所在单位</th>
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
@@ -21,8 +22,8 @@
       <td nzAlign="center">
         {{ data.nd }} 年
       </td>
-      <!-- id,nd,xm,zgh,birdate,xb,zglx,szbm,zyjszw,xl,xw,gzzw,rzny -->
-      <!-- id,年度,姓名,工号,,性别,类型,所在部门,专业技术职务,学历,学位,工作职务,入职年月 -->
+      <!-- id,nd,xm,zgh,birdate,xb,byzy,rjxk,rjkczmc,zyjszw,xl,xw,xz,szdw -->
+      <!-- id,年度,姓名,工号,出生年月,性别,毕业专业,任教学科,任教课程总门次,专业技术职务,学历,学位,性质,所在单位 -->
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xmInputTpl">
           {{ data.xm }}
@@ -55,20 +56,30 @@
           <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xb" />
         </ng-template>
       </td>
+
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else zglxInputTpl">
-          {{ data.zglx }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else byzyInputTpl">
+          {{ data.byzy }}
         </ng-container>
-        <ng-template #zglxInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zglx" />
+        <ng-template #byzyInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.byzy" />
         </ng-template>
       </td>
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else szbmInputTpl">
-          {{ data.szbm }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else rjxkInputTpl">
+          {{ data.rjxk }}
         </ng-container>
-        <ng-template #szbmInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.szbm" />
+        <ng-template #rjxkInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.rjxk" />
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else rjkczmcInputTpl">
+          {{ data.rjkczmc }}
+        </ng-container>
+        <ng-template #rjkczmcInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.rjkczmc" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -96,19 +107,19 @@
         </ng-template>
       </td>
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else gzzwInputTpl">
-          {{ data.gzzw }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xzInputTpl">
+          {{ data.xz }}
         </ng-container>
-        <ng-template #gzzwInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.gzzw" />
+        <ng-template #xzInputTpl>
+          <input type="date" nz-input [(ngModel)]="editCache[data.id].data.xz" />
         </ng-template>
       </td>
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else rznyInputTpl">
-          {{ data.rzny }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else szdwInputTpl">
+          {{ data.szdw }}
         </ng-container>
-        <ng-template #rznyInputTpl>
-          <input type="date" nz-input [(ngModel)]="editCache[data.id].data.rzny" />
+        <ng-template #szdwInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.szdw" />
         </ng-template>
       </td>
 
@@ -129,7 +140,7 @@
       </td>
     </tr>
     <tr>
-      <td colspan=12>
+      <td colspan=14>
         <button nz-button nzType="primary" (click)="addData()"><i nz-icon nzType="plus-circle"></i>新增 1
           条数据</button>
       </td>

@@ -18,7 +18,9 @@
           {{ data.yszxl }}
         </ng-container>
         <ng-template #yszxlInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.yszxl" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.yszxl" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.yszxl" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
 
@@ -27,7 +29,9 @@
           {{ data.srzzl }}
         </ng-container>
         <ng-template #srzzlInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.srzzl" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.srzzl" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.srzzl" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
 

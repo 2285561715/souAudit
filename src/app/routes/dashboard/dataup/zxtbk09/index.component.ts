@@ -3,11 +3,11 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRe
 import { _HttpClient, ModalHelper } from '@delon/theme';
 
 @Component({
-  selector: 'app-dashboard-dataup-zxtbk10-index',
+  selector: 'app-dashboard-dataup-zxtbk09-index',
   templateUrl: './index.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
+export class DashboardDataUpZxtbK09IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -40,7 +40,7 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
 
   // ---------------------------------
   loadInfo(): void {
-    this.http.get('/api/data/tables/search/sjzxtb_k10_glryxx').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/sjzxtb_k09_jsjbxx').subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -72,7 +72,7 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
     // console.log(data);
-    this.http.put(`/api/data/tables/entry?id=` + id + `&tableno=sjzxtb_k10_glryxx`, data).subscribe(res => {
+    this.http.put(`/api/data/tables/entry?id=` + id + `&tableno=sjzxtb_k09_jsjbxx`, data).subscribe(res => {
       this.msgSrv.success('保存成功');
     });
     this.editCache[id].edit = false;
@@ -81,7 +81,7 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
   // 新增1条数据
   addData(): void {
     const date = new Date();
-    this.http.put(`/api/data/tables/entry/init?tableno=sjzxtb_k10_glryxx&nd=` + date.getFullYear()).subscribe(res => {
+    this.http.put(`/api/data/tables/entry/init?tableno=sjzxtb_k09_jsjbxx&nd=` + date.getFullYear()).subscribe(res => {
       this.msgSrv.success('保存成功');
     });
     this.cdr.detectChanges();
@@ -89,7 +89,7 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
   }
 
   dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k10_glryxx&id=' + id).subscribe((res: any) => {
+    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k09_jsjbxx&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
       this.cdr.detectChanges();
       // this.loadInfo();

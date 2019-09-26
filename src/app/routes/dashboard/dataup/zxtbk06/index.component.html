@@ -22,7 +22,9 @@
           {{ data.xl_newnum }}
         </ng-container>
         <ng-template #xlnewnumInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_newnum" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_newnum" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.xl_newnum" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -30,16 +32,19 @@
           {{ data.xl_outnum }}
         </ng-container>
         <ng-template #xloutnumInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_outnum" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_outnum" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.xl_outnum" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
-
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else fxlnewnumInputTpl">
           {{ data.fxl_newnum }}
         </ng-container>
         <ng-template #fxlnewnumInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_newnum" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_newnum" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.fxl_newnum" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -47,16 +52,19 @@
           {{ data.fxl_outnum }}
         </ng-container>
         <ng-template #fxloutnumInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_outnum" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_outnum" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.fxl_outnum" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
-
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else sqnewnumInputTpl">
           {{ data.sq_newnum }}
         </ng-container>
         <ng-template #sqnewnumInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.sq_newnum" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.sq_newnum" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.sq_newnum" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -64,7 +72,9 @@
           {{ data.sq_outnum }}
         </ng-container>
         <ng-template #sqoutnumInputTpl>
-          <input type="number" nz-input [(ngModel)]="editCache[data.id].data.sq_outnum" />
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.sq_outnum" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.sq_outnum" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
 

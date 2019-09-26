@@ -3,20 +3,23 @@
     <nz-tab [nzTitle]="titleTemplate">
       <ng-template #titleTemplate><i nz-icon nzType="form" style="color: coral"></i>数据填报</ng-template>
 
-      <div *ngIf="value.dtNo==='sjzxtb_xxjbqk_ldxx'">
-        <app-dashboard-dataup-zxtb011-index></app-dashboard-dataup-zxtb011-index>
+      <div *ngIf="value.dtNo==='sjzxtb_k01_ldxx'">
+        <app-dashboard-dataup-zxtbk01-index></app-dashboard-dataup-zxtbk01-index>
       </div>
-      <div *ngIf="value.dtNo==='sjzxtb_xxjbqk_jftr'">
-        <app-dashboard-dataup-zxtb012-index></app-dashboard-dataup-zxtb012-index>
+      <div *ngIf="value.dtNo==='sjzxtb_k04_jftr'">
+        <app-dashboard-dataup-zxtbk04-index></app-dashboard-dataup-zxtbk04-index>
       </div>
-      <div *ngIf="value.dtNo==='sjzxtb_xxjbqk_bxxt'">
-        <app-dashboard-dataup-zxtb013-index></app-dashboard-dataup-zxtb013-index>
+      <div *ngIf="value.dtNo==='sjzxtb_k06_bxxt'">
+        <app-dashboard-dataup-zxtbk06-index></app-dashboard-dataup-zxtbk06-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k07_xxzmyd'">
         <app-dashboard-dataup-zxtbk07-index></app-dashboard-dataup-zxtbk07-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k08_cwgl'">
         <app-dashboard-dataup-zxtbk08-index></app-dashboard-dataup-zxtbk08-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k09_jsjbxx'">
+        <app-dashboard-dataup-zxtbk09-index></app-dashboard-dataup-zxtbk09-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k10_glryxx'">
         <app-dashboard-dataup-zxtbk10-index></app-dashboard-dataup-zxtbk10-index>
@@ -36,11 +39,19 @@
     <nz-tab [nzTitle]="titleTemplate1">
       <ng-template #titleTemplate1><i nz-icon nzType="import" style="color: coral"></i>数据导入</ng-template>
 
+      <div *ngIf="value.dtNo==='sjzxtb_k09_jsjbxx'">
+        <button nz-button nzType="primary" class="mr-sm" down-file http-url="./assets/zxsj_mb/sjzxtb_k09_jsjbxx.xlsx"
+          file-name="表K09.总校教师基本信息">
+          <i nz-icon nzType="download"></i> 《总校教师基本信息》模板下载</button>
+        <nz-upload nzAction="/api/uploadMultipleFiles" (nzChange)="fupChange($event)">
+          <button nz-button><i nz-icon nzType="upload"></i><span>数据导入</span></button>
+        </nz-upload>
+      </div>
+
       <div *ngIf="value.dtNo==='sjzxtb_k10_glryxx'">
         <button nz-button nzType="primary" class="mr-sm" down-file http-url="./assets/zxsj_mb/sjzxtb_k10_glryxx.xlsx"
           file-name="表K10.管理人员基本信息">
           <i nz-icon nzType="download"></i> 《管理人员基本信息》模板下载</button>
-
         <nz-upload nzAction="/api/uploadMultipleFiles" (nzChange)="fupChange($event)">
           <button nz-button><i nz-icon nzType="upload"></i><span>数据导入</span></button>
         </nz-upload>
