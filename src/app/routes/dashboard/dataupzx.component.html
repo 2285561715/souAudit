@@ -1,6 +1,6 @@
 <div nz-row [nzGutter]="8" *ngFor="let dt of listOfTableList; let i = index">
-  <nz-card nzSize="small" [nzHoverable]="true" nzType="inner" [nzTitle]="'指标：' + dt.indexName"
-    [nzActions]="[upStatus, checkStatus]" [nzExtra]="extraTemplate">
+  <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="'指标：' + dt.indexName" [nzActions]="[upStatus, checkStatus]"
+    [nzExtra]="extraTemplate">
     <div nz-col nzSpan="24">
       <b> <i nz-icon nzType="golden" nzTheme="fill" style="color: coral"></i> {{ dt.dtName }} </b>
     </div>
@@ -21,9 +21,9 @@
     </div> -->
   </nz-card>
   <ng-template #extraTemplate>
-    <span nz-tooltip nzTooltipTitle="{{ dt.indexRemark }}">
-      <i nz-icon nzType="info-circle" nzTheme="fill" style="color: coral"></i>
-      内涵</span>
+    <span nz-tooltip nzTooltipTitle="点击浏览内涵">
+      <i nz-icon nzType="info-circle" nzTheme="fill" style="color:dodgerblue;font-size: 18px;"
+        (click)="showComet(dt.indexName,dt.indexRemark)"></i></span>
   </ng-template>
   <ng-template #upStatus>
     <a (click)="dataUpFun(dt)"><i nz-icon nzType="edit" nzTheme="fill" style="color: coral"></i> 数据填报</a>

@@ -43,4 +43,8 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
       // console.log(this.listOfFieldsZH);
     });
   }
+
+  fupChange(event): void {
+    console.log(event);
+  }
 }

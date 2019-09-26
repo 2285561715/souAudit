@@ -1,6 +1,7 @@
 import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper } from '@delon/theme';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 import { DashboardDataUpZxSjtbComponent } from './dataup/zxsjtb.component';
 
@@ -17,6 +18,7 @@ export class DashboardDataUpZxComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private drawerService: NzDrawerService,
     private drawerRef: NzDrawerRef<string>,
+    private modalService: NzModalService,
   ) {}
 
   value: any = [];
@@ -46,7 +48,7 @@ export class DashboardDataUpZxComponent implements OnInit {
 
     const drawerRef = this.drawerService.create<DashboardDataUpZxSjtbComponent, { value: any }, string>({
       nzTitle: '【' + dt.dtName + '】数据填报',
-      nzWidth: document.body.clientWidth - 490,
+      nzWidth: document.body.clientWidth - 200,
       nzPlacement: 'right',
       // nzMaskClosable: false,
       nzContent: DashboardDataUpZxSjtbComponent,
@@ -66,6 +68,14 @@ export class DashboardDataUpZxComponent implements OnInit {
     });
   }
 
+  showComet(titleStr: string, commentStr: string): void {
+    this.modalService.info({
+      nzTitle: '【<b>' + titleStr + '</b>】内涵说明',
+      nzContent: '<p>' + commentStr + '</p>',
+      nzWidth: 580,
+      nzOnOk: () => console.log('Info OK'),
+    });
+  }
   // close(res: any) {
   //   this.modal.close(res);
   // }
