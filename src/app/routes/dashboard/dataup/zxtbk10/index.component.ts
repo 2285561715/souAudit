@@ -82,18 +82,18 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
   addData(): void {
     const date = new Date();
     this.http.put(`/api/data/tables/entry/init?tableno=sjzxtb_k10_glryxx&nd=` + date.getFullYear()).subscribe(res => {
-      this.msgSrv.success('保存成功');
+      this.msgSrv.success('新增成功');
     });
-    this.cdr.detectChanges();
-    // this.loadInfo();
+    this.listOfData = [];
+    this.loadInfo();
   }
 
   dataDelete(id: string): void {
     this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k10_glryxx&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
-      this.cdr.detectChanges();
-      // this.loadInfo();
     });
+    this.listOfData = [];
+    this.loadInfo();
   }
 
   updateEditCache(): void {

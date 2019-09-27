@@ -24,11 +24,16 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
   checkRules = '';
   tableHtml = '';
 
+  data = {
+    otherdata: 1,
+    time: new Date(),
+  };
+
   listOfFields: any = [];
   listOfFieldsZH: any = [];
 
   ngOnInit(): void {
-    console.log(this.value);
+    // console.log(this.value);
     // 获得数据表的 填写规则、校验规则、样例数据等
     this.http.get('/api/data/tables/' + this.value.dtNo).subscribe((res: any[]) => {
       this.listOfTableDesc = res;
@@ -46,5 +51,12 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
 
   fupChange(event): void {
     console.log(event);
+    // this.ngOnInit();
+  }
+
+  pageRefresh(): void {
+    // console.log('sdfsaf');
+    // this.cdr.detectChanges();
+    // this.ngOnInit();
   }
 }

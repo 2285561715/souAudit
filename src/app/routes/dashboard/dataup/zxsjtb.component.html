@@ -1,7 +1,7 @@
 <div class="card-container">
   <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
-    <nz-tab [nzTitle]="titleTemplate">
-      <ng-template #titleTemplate><i nz-icon nzType="form" style="color: coral"></i>数据填报</ng-template>
+    <nz-tab [nzTitle]="titleTemplate" (nzClick)="pageRefresh()">
+      <ng-template #titleTemplate><i nz-icon nzType="form" style="color: coral"></i>数据列表</ng-template>
 
       <div *ngIf="value.dtNo==='sjzxtb_k01_ldxx'">
         <app-dashboard-dataup-zxtbk01-index></app-dashboard-dataup-zxtbk01-index>
@@ -40,20 +40,22 @@
       <ng-template #titleTemplate1><i nz-icon nzType="import" style="color: coral"></i>数据导入</ng-template>
 
       <div *ngIf="value.dtNo==='sjzxtb_k09_jsjbxx'">
-        <button nz-button nzType="primary" class="mr-sm" down-file http-url="./assets/zxsj_mb/sjzxtb_k09_jsjbxx.xlsx"
+        <button nz-button down-file [http-data]="data" http-url="./assets/zxsj_mb/sjzxtb_k10_glryxx.xlsx"
           file-name="表K09.总校教师基本信息">
           <i nz-icon nzType="download"></i> 《总校教师基本信息》模板下载</button>
+        <nz-divider nzType="vertical"></nz-divider>
         <nz-upload nzAction="/api/uploadMultipleFiles" (nzChange)="fupChange($event)">
-          <button nz-button><i nz-icon nzType="upload"></i><span>数据导入</span></button>
+          <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
         </nz-upload>
       </div>
 
       <div *ngIf="value.dtNo==='sjzxtb_k10_glryxx'">
-        <button nz-button nzType="primary" class="mr-sm" down-file http-url="./assets/zxsj_mb/sjzxtb_k10_glryxx.xlsx"
+        <button nz-button down-file [http-data]="data" http-url="./assets/zxsj_mb/sjzxtb_k10_glryxx.xlsx"
           file-name="表K10.管理人员基本信息">
           <i nz-icon nzType="download"></i> 《管理人员基本信息》模板下载</button>
-        <nz-upload nzAction="/api/uploadMultipleFiles" (nzChange)="fupChange($event)">
-          <button nz-button><i nz-icon nzType="upload"></i><span>数据导入</span></button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <nz-upload nzAction="/api/excel/import?tableName=sjzxtb_k10_glryxx" (nzChange)="fupChange($event)">
+          <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
         </nz-upload>
       </div>
 
