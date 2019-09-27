@@ -18,11 +18,18 @@
       <p style="line-height: 2em">
         <button *ngIf="divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openDataUp(divData)">
           <i nz-icon nzType="edit"></i>数据填报</button>
+
         <button *ngIf="!divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openDataUpFx(divData)">
           <i nz-icon nzType="edit"></i>数据填报</button>
+
         <nz-divider nzType="vertical"></nz-divider>
-        <button nz-button nzSize="small" nzType="primary" (click)="openFileUp(divData)">
+
+        <button *ngIf="divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openFileUp(divData)">
           <i nz-icon nzType="upload"></i>材料上传</button>
+
+        <button *ngIf="!divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openFileUpFx(divData)">
+          <i nz-icon nzType="upload"></i>材料上传</button>
+
       </p>
     </nz-card>
     <ng-template #extraTemplate>状态：

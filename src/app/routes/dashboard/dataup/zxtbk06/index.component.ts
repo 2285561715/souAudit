@@ -1,6 +1,6 @@
 import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { _HttpClient, ModalHelper } from '@delon/theme';
+import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
 @Component({
   selector: 'app-dashboard-dataup-zxtbk06-index',
@@ -13,6 +13,7 @@ export class DashboardDataUpZxtbK06IndexComponent implements OnInit {
     private modal: ModalHelper,
     private msgSrv: NzMessageService,
     private cdr: ChangeDetectorRef,
+    public loadUser: SettingsService,
   ) {}
 
   editCache: { [key: string]: any } = {};
@@ -53,9 +54,17 @@ export class DashboardDataUpZxtbK06IndexComponent implements OnInit {
     const data = this.editCache[id].data;
     console.log(data);
 
-    this.http.put(`/api/data/tables/entry?id=` + id + `&tableno=sjzxtb_k06_bxxt`, data).subscribe(res => {
-      this.msgSrv.success('保存成功');
-    });
+    this.http
+      .put(
+        `/api/data/tables/entry?id=` +
+          id +
+          `&tableno=sjzxtb_k06_bxxt&appId=17&stepId=21&deptId=` +
+          this.loadUser.user.bid,
+        data,
+      )
+      .subscribe(res => {
+        this.msgSrv.success('保存成功');
+      });
 
     this.editCache[id].edit = false;
   }

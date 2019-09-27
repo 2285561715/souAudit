@@ -2,7 +2,7 @@
   <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
     <nz-tab [nzTitle]="titleTemplate">
       <ng-template #titleTemplate><i nz-icon nzType="upload" style="color: coral"></i>材料上传</ng-template>
-      <nz-upload nzAction="/api/uploadMultipleFiles" [nzFileList]="fileList" (nzChange)="fupChange($event)">
+      <nz-upload nzAction="/api/uploadFile" [nzFileList]="fileList" (nzChange)="fupChange($event)">
         <button nz-button><i nz-icon nzType="upload"></i><span>文字材料上传</span></button>
       </nz-upload>
     </nz-tab>

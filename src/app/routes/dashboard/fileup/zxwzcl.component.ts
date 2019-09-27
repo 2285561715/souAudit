@@ -23,42 +23,7 @@ export class DashboardFileUpZxWzclComponent implements OnInit {
   listOfFileDesc: any = {};
   fileRemark = '';
 
-  fileList = [
-    // {
-    //   uid: 1,
-    //   name: 'xxx.png',
-    //   status: 'done',
-    //   response: 'Server Error 500', // custom error message to show
-    //   url: 'http://www.baidu.com/xxx.png',
-    // },
-  ];
-
-  startEdit(id: string): void {
-    this.editCache[id].edit = true;
-  }
-
-  cancelEdit(id: string): void {
-    const index = this.listOfData.findIndex(item => item.id === id);
-    this.editCache[id] = {
-      data: { ...this.listOfData[index] },
-      edit: false,
-    };
-  }
-
-  saveEdit(id: string): void {
-    const index = this.listOfData.findIndex(item => item.id === id);
-    Object.assign(this.listOfData[index], this.editCache[id].data);
-    this.editCache[id].edit = false;
-  }
-
-  updateEditCache(): void {
-    this.listOfData.forEach(item => {
-      this.editCache[item.id] = {
-        edit: false,
-        data: { ...item },
-      };
-    });
-  }
+  fileList = [];
 
   ngOnInit(): void {
     console.log(this.value);
@@ -66,30 +31,14 @@ export class DashboardFileUpZxWzclComponent implements OnInit {
     this.http.post('/api/wzfile/filename', { fileName: this.value.dtNo }).subscribe((res: any) => {
       console.log(res);
       this.fileRemark = res.remark;
-      // this.close(res);
     });
-
-    // this.http.post('/api/wzfile/filename', this.value.dtNo).subscribe((res: any[]) => {
-    //   this.listOfFileDesc = res;
-    //   this.cdr.detectChanges();
-    //   this.fileRemark = this.listOfFileDesc.remark;
-    // });
-
-    for (let i = 0; i < 30; i++) {
-      this.listOfData.push({
-        id: `${i}`,
-        name: `Edrward ${i}`,
-        age: 32,
-        address: `London Park no. ${i}`,
-      });
-    }
-    this.updateEditCache();
   }
 
   fupChange(event): void {
-    console.log(event);
+    event.fileList.forEach(item => {
+      const fileUrl = item.response.fileDownloadUri;
+      // 下面一行打印出来应该就是文件地址
+      console.log({ fileUrl });
+    });
   }
-  // close(res: any) {
-  //   this.modal.close(res);
-  // }
 }

@@ -1,15 +1,15 @@
-import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
+import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef, NzModalService } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper } from '@delon/theme';
 
 import { DashboardFileUpZxWzclComponent } from './fileup/zxwzcl.component';
 
 @Component({
-  selector: 'app-dashboard-dataup',
-  templateUrl: './fileup.component.html',
+  selector: 'app-dashboard-fileup-zx',
+  templateUrl: './fileupzx.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardFileUpComponent implements OnInit {
+export class DashboardFileUpZxComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -17,10 +17,11 @@ export class DashboardFileUpComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private drawerService: NzDrawerService,
     private drawerRef: NzDrawerRef<string>,
+    private modalService: NzModalService,
   ) {}
 
   value: any = [];
-  listOfAppStep: any = [];
+  listOfFileList: any = [];
 
   ngOnInit() {
     this.loadSteps();
@@ -33,8 +34,8 @@ export class DashboardFileUpComponent implements OnInit {
     this.http
       .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=file')
       .subscribe((res: any) => {
-        this.listOfAppStep = res;
-        console.log(this.listOfAppStep);
+        this.listOfFileList = res;
+        console.log(this.listOfFileList);
         this.cdr.detectChanges();
       });
   }
@@ -47,7 +48,7 @@ export class DashboardFileUpComponent implements OnInit {
       nzTitle: '【' + dt.dtName + '】材料上传',
       nzWidth: document.body.clientWidth - 490,
       nzPlacement: 'right',
-      nzMaskClosable: false,
+      // nzMaskClosable: false,
       nzContent: DashboardFileUpZxWzclComponent,
       nzContentParams: {
         value: tdata,
@@ -62,6 +63,15 @@ export class DashboardFileUpComponent implements OnInit {
       if (typeof data === 'string') {
         this.value = data;
       }
+    });
+  }
+
+  showComet(titleStr: string, commentStr: string): void {
+    this.modalService.info({
+      nzTitle: '【<b>' + titleStr + '</b>】内涵说明',
+      nzContent: '<p>' + commentStr + '</p>',
+      nzWidth: 580,
+      nzOnOk: () => console.log('Info OK'),
     });
   }
   // close(res: any) {

@@ -7,7 +7,8 @@ import { RouteRoutingModule } from './routes-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardDataUpZxComponent } from './dashboard/dataupzx.component';
 import { DashboardDataUpFxComponent } from './dashboard/dataupfx.component';
-import { DashboardFileUpComponent } from './dashboard/fileup.component';
+import { DashboardFileUpZxComponent } from './dashboard/fileupzx.component';
+import { DashboardFileUpFxComponent } from './dashboard/fileupfx.component';
 // --数据填报
 import { DashboardDataUpZxSjtbComponent } from './dashboard/dataup/zxsjtb.component';
 import { DashboardDataUpZxtbK01IndexComponent } from './dashboard/dataup/zxtbk01/index.component';
@@ -49,7 +50,8 @@ const COMPONENTS = [
 const COMPONENTS_NOROUNT = [
   DashboardDataUpZxComponent,
   DashboardDataUpFxComponent,
-  DashboardFileUpComponent,
+  DashboardFileUpZxComponent,
+  DashboardFileUpFxComponent,
   // --数据填报
   DashboardDataUpZxSjtbComponent,
   DashboardDataUpZxtbK01IndexComponent,

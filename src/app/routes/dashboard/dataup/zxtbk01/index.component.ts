@@ -1,6 +1,6 @@
 import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { _HttpClient, ModalHelper } from '@delon/theme';
+import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
 @Component({
   selector: 'app-dashboard-dataup-zxtbk01-index',
@@ -13,6 +13,7 @@ export class DashboardDataUpZxtbK01IndexComponent implements OnInit {
     private modal: ModalHelper,
     private msgSrv: NzMessageService,
     private cdr: ChangeDetectorRef,
+    public loadUser: SettingsService,
   ) {}
 
   editCache: { [key: string]: any } = {};
@@ -20,6 +21,7 @@ export class DashboardDataUpZxtbK01IndexComponent implements OnInit {
   value: any = {};
 
   ngOnInit(): void {
+    console.log(this.loadUser.user.bid);
     // 获得数据表的数据
     this.http.get('/api/data/tables/search/sjzxtb_k01_ldxx').subscribe((res: any[]) => {
       res.forEach(item => {
@@ -51,20 +53,20 @@ export class DashboardDataUpZxtbK01IndexComponent implements OnInit {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    // data.id = Number(id);
-    // data.tableno = 'sjzxtb_xxjbqk_ldxx';
-    data.leaveDate = '2019-10-10';
-    console.log(data);
-    this.http.put(`/api/data/tables/entry?id=` + id + `&tableno=sjzxtb_k01_ldxx`, data).subscribe(res => {
-      this.msgSrv.success('保存成功');
-    });
-
+    // console.log(data);
+    this.http
+      .put(
+        `/api/data/tables/entry?id=` +
+          id +
+          `&tableno=sjzxtb_k01_ldxx&appId=17&stepId=21&deptId=` +
+          this.loadUser.user.bid,
+        data,
+      )
+      .subscribe(res => {
+        this.msgSrv.success('保存成功');
+      });
     this.editCache[id].edit = false;
   }
-
-  // close() {
-  //   this.modal.destroy();
-  // }
 
   updateEditCache(): void {
     this.listOfData.forEach(item => {

@@ -1,15 +1,15 @@
-import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
+import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef, NzModalService } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper } from '@delon/theme';
 
-import { DashboardDataUpZxSjtbComponent } from './dataup/zxsjtb.component';
+import { DashboardFileUpZxWzclComponent } from './fileup/zxwzcl.component';
 
 @Component({
-  selector: 'app-dashboard-dataup-fx',
-  templateUrl: './dataupfx.component.html',
+  selector: 'app-dashboard-fileup-fx',
+  templateUrl: './fileupfx.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpFxComponent implements OnInit {
+export class DashboardFileUpFxComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -17,44 +17,44 @@ export class DashboardDataUpFxComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private drawerService: NzDrawerService,
     private drawerRef: NzDrawerRef<string>,
+    private modalService: NzModalService,
   ) {}
 
   value: any = [];
-  listOfTableList: any = [];
+  listOfFileList: any = [];
 
   ngOnInit() {
     this.loadSteps();
-    console.log('value=');
-    console.log(this.value);
+    // console.log('value=');
+    // console.log(this.value);
   }
 
   loadSteps(): void {
     // 可以传 conType='sjtb' or 'file'
     // this.http
-    //   .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=sjtb')
+    //   .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=file')
     //   .subscribe((res: any) => {
-    //     this.listOfTableList = res;
-    //     console.log(this.listOfTableList);
+    //     this.listOfFileList = res;
+    //     console.log(this.listOfFileList);
     //     this.cdr.detectChanges();
     //   });
 
-    this.http.get('/api/data/tables?dtType=fxtb').subscribe((res: any[]) => {
-      this.listOfTableList = res;
+    this.http.get('/api/wzfile/files?fileType=zxwz').subscribe((res: any[]) => {
+      this.listOfFileList = res;
       this.cdr.detectChanges();
     });
   }
 
   // 文件上传file
-  dataUpFun(dt: any): void {
+  fileUpFun(dt: any): void {
     const tdata = this.value;
     tdata.dtNo = dt.dtNo;
-
-    const drawerRef = this.drawerService.create<DashboardDataUpZxSjtbComponent, { value: any }, string>({
-      nzTitle: '【' + dt.dtName + '】数据填报',
+    const drawerRef = this.drawerService.create<DashboardFileUpZxWzclComponent, { value: any }, string>({
+      nzTitle: '【' + dt.dtName + '】材料上传',
       nzWidth: document.body.clientWidth - 490,
       nzPlacement: 'right',
       // nzMaskClosable: false,
-      nzContent: DashboardDataUpZxSjtbComponent,
+      nzContent: DashboardFileUpZxWzclComponent,
       nzContentParams: {
         value: tdata,
       },
@@ -71,6 +71,14 @@ export class DashboardDataUpFxComponent implements OnInit {
     });
   }
 
+  showComet(titleStr: string, commentStr: string): void {
+    this.modalService.info({
+      nzTitle: '【<b>' + titleStr + '</b>】内涵说明',
+      nzContent: '<p>' + commentStr + '</p>',
+      nzWidth: 580,
+      nzOnOk: () => console.log('Info OK'),
+    });
+  }
   // close(res: any) {
   //   this.modal.close(res);
   // }

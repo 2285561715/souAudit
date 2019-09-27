@@ -6,7 +6,8 @@ import { NzFormatEmitEvent, NzDrawerRef, NzDrawerService, NzMessageService, NzMo
 
 import { DashboardDataUpZxComponent } from './dataupzx.component';
 import { DashboardDataUpFxComponent } from './dataupfx.component';
-import { DashboardFileUpComponent } from './fileup.component';
+import { DashboardFileUpZxComponent } from './fileupzx.component';
+import { DashboardFileUpFxComponent } from './fileupfx.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -109,12 +110,40 @@ export class DashboardComponent implements OnInit {
     dataValue.deptId = this.loadUser.user.bid;
     dataValue.deptName = this.loadUser.user.bname;
 
-    const drawerRef = this.drawerService.create<DashboardFileUpComponent, { value: any }, string>({
+    const drawerRef = this.drawerService.create<DashboardFileUpZxComponent, { value: any }, string>({
       nzTitle: '【' + this.loadUser.user.bname + '】' + '文字材料上传',
       nzWidth: 490,
       nzPlacement: 'left',
       nzMaskClosable: false,
-      nzContent: DashboardFileUpComponent,
+      nzContent: DashboardFileUpZxComponent,
+      nzContentParams: {
+        value: dataValue,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
+  }
+  // -------------------------------------------
+  // 文件上传file
+  openFileUpFx(record: any): void {
+    const dataValue = record;
+    dataValue.deptId = this.loadUser.user.bid;
+    dataValue.deptName = this.loadUser.user.bname;
+
+    const drawerRef = this.drawerService.create<DashboardFileUpFxComponent, { value: any }, string>({
+      nzTitle: '【' + this.loadUser.user.bname + '】' + '文字材料上传',
+      nzWidth: 490,
+      nzPlacement: 'left',
+      nzMaskClosable: false,
+      nzContent: DashboardFileUpFxComponent,
       nzContentParams: {
         value: dataValue,
       },

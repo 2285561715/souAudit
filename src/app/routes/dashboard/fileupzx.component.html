@@ -1,4 +1,4 @@
-<div nz-row [nzGutter]="8" *ngFor="let dt of listOfTableList; let i = index">
+<div nz-row [nzGutter]="8" *ngFor="let dt of listOfFileList; let i=index;">
   <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="'指标：' + dt.indexName" [nzActions]="[upStatus, checkStatus]"
     [nzExtra]="extraTemplate">
     <div nz-col nzSpan="24">
@@ -6,7 +6,7 @@
     </div>
     <!-- <nz-divider nzType="horizontal"></nz-divider>
     <div *ngIf="dt.modTime" nz-col nzSpan="12">
-      <i nz-icon nzType="diff" style="color:rgb(5, 113, 221)"></i> 填报:{{ dt.modTime.substring(0, 16) }}
+      <i nz-icon nzType="diff" style="color:rgb(5, 113, 221)"></i> 上传:{{ dt.modTime.substring(0, 16) }}
     </div>
     <div *ngIf="!dt.modTime" nz-col nzSpan="12">
       <i nz-icon nzType="diff" style="color:rgb(5, 113, 221)"></i> 未上传
@@ -26,9 +26,11 @@
         (click)="showComet(dt.indexName,dt.indexRemark)"></i></span>
   </ng-template>
   <ng-template #upStatus>
-    <a (click)="dataUpFun(dt)"><i nz-icon nzType="edit" nzTheme="fill" style="color: coral"></i> 数据填报</a>
+    <a (click)="fileUpFun(dt)"><i nz-icon nzType="edit" nzTheme="fill" style="color: coral"></i> 材料上传</a>
   </ng-template>
   <ng-template #checkStatus>
-    <a><i nz-icon nzType="radar-chart" nzTheme="outline" style="color: coral"></i> 数据预览</a>
+    <a href='./assets/demo.pdf' target="_blank"><i nz-icon nzType="pie-chart" nzTheme="fill" style="color: coral"></i>
+      材料预览</a>
   </ng-template>
+
 </div>

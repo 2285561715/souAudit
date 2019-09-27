@@ -22,7 +22,7 @@
         {{ data.nd }} 年
       </td>
       <!-- id,nd,xm,zgh,birdate,xb,zglx,szbm,zyjszw,xl,xw,gzzw,rzny -->
-      <!-- id,年度,姓名,工号,,性别,类型,所在部门,专业技术职务,学历,学位,工作职务,入职年月 -->
+      <!-- id,年度,姓名,工号,性别,类型,所在部门,专业技术职务,学历,学位,工作职务,入职年月 -->
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xmInputTpl">
           {{ data.xm }}

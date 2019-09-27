@@ -1,6 +1,6 @@
 import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { _HttpClient, ModalHelper } from '@delon/theme';
+import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
 @Component({
   selector: 'app-dashboard-dataup-zxtbk09-index',
@@ -13,6 +13,7 @@ export class DashboardDataUpZxtbK09IndexComponent implements OnInit {
     private modal: ModalHelper,
     private msgSrv: NzMessageService,
     private cdr: ChangeDetectorRef,
+    public loadUser: SettingsService,
   ) {}
 
   editCache: { [key: string]: any } = {};
@@ -21,25 +22,11 @@ export class DashboardDataUpZxtbK09IndexComponent implements OnInit {
   inData: any[] = [];
 
   ngOnInit(): void {
-    // 获得数据表的数据
     this.loadInfo();
-    // this.http.get('/api/data/tables/search/sjzxtb_k10_glryxx').subscribe((res: any[]) => {
-    //   res.forEach(item => {
-    //     item.id = item.id + '';
-    //     this.listOfData = [...this.listOfData, item];
-    //     this.editCache[item.id] = {
-    //       edit: false,
-    //       data: { ...item },
-    //     };
-    //   });
-    //   console.log(this.listOfData);
-    //   this.cdr.detectChanges();
-    // });
-    // // this.updateEditCache();
   }
-
-  // ---------------------------------
+  // 获得数据表的数据
   loadInfo(): void {
+    this.listOfData = [];
     this.http.get('/api/data/tables/search/sjzxtb_k09_jsjbxx').subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
@@ -72,27 +59,40 @@ export class DashboardDataUpZxtbK09IndexComponent implements OnInit {
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
     // console.log(data);
-    this.http.put(`/api/data/tables/entry?id=` + id + `&tableno=sjzxtb_k09_jsjbxx`, data).subscribe(res => {
-      this.msgSrv.success('保存成功');
-    });
+    this.http
+      .put(
+        `/api/data/tables/entry?id=` +
+          id +
+          `&tableno=sjzxtb_k09_jsjbxx&appId=17&stepId=21&deptId=` +
+          this.loadUser.user.bid,
+        data,
+      )
+      .subscribe(res => {
+        this.msgSrv.success('保存成功');
+      });
     this.editCache[id].edit = false;
   }
 
   // 新增1条数据
   addData(): void {
     const date = new Date();
-    this.http.put(`/api/data/tables/entry/init?tableno=sjzxtb_k09_jsjbxx&nd=` + date.getFullYear()).subscribe(res => {
-      this.msgSrv.success('保存成功');
-    });
+    this.http
+      .put(
+        `/api/data/tables/entry/init?tableno=sjzxtb_k09_jsjbxx&nd=` +
+          date.getFullYear() +
+          '&appId=17&stepId=21&deptId=' +
+          this.loadUser.user.bid,
+      )
+      .subscribe(res => {
+        this.msgSrv.success('保存成功');
+      });
     this.cdr.detectChanges();
-    // this.loadInfo();
   }
 
   dataDelete(id: string): void {
     this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k09_jsjbxx&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
       this.cdr.detectChanges();
-      // this.loadInfo();
     });
   }
 

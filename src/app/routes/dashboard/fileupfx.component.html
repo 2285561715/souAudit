@@ -1,0 +1,17 @@
+<div nz-row [nzGutter]="8" *ngFor="let dt of listOfFileList; let i=index;">
+  <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="dt.fileName">
+    <div nz-col nzSpan="12">
+      <button nz-button (click)="fileUpFun(dt)" style="border: 0em">
+        <i nz-icon nzType="edit" nzTheme="fill" style="color: coral"></i>
+        数据填报</button>
+    </div>
+    <div nz-col nzSpan="12">
+
+      <button nz-button style="border: 0em" down-file http-url="http://localhost:4200/assets/demo.pdf"
+        file-name="表K10.管理人员基本信息.pdf">
+        <i nz-icon nzType="search" style="color: coral"></i> 材料预览</button>
+    </div>
+  </nz-card>
+
+
+</div>
