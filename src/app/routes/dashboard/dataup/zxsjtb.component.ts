@@ -59,18 +59,19 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
 
   fupChange(event): void {
     console.log(event);
-    if (event.fileList && event.fileList.length > 0) {
-      switch (this.value.dtNo) {
-        case 'sjzxtb_k09_jsjbxx':
+    switch (this.value.dtNo) {
+      case 'sjzxtb_k09_jsjbxx':
+        if (event.fileList && event.fileList.length > 0) {
           this.k09Component.loadInfo();
-          break;
-        case 'sjzxtb_k10_glryxx':
+        }
+        break;
+      case 'sjzxtb_k10_glryxx':
+        if (event.fileList && event.fileList.length > 0) {
           this.k10Component.loadInfo();
-          break;
-
-        default:
-          break;
-      }
+        }
+        break;
+      default:
+        break;
     }
   }
 }

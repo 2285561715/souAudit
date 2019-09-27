@@ -86,7 +86,6 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
         this.msgSrv.success('新增成功');
       });
     this.listOfData = [];
-    this.loadInfo();
   }
 
   dataDelete(id: string): void {
@@ -94,7 +93,6 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
       this.msgSrv.success('删除数据成功');
     });
     this.listOfData = [];
-    this.loadInfo();
   }
 
   updateEditCache(): void {
