@@ -21,8 +21,14 @@ import { DashboardDataUpZxtbK10IndexComponent } from './dashboard/dataup/zxtbk10
 import { DashboardDataUpZxtbK11IndexComponent } from './dashboard/dataup/zxtbk11/index.component';
 import { DashboardDataUpZxtbK141IndexComponent } from './dashboard/dataup/zxtbk14-1/index.component';
 import { DashboardDataUpZxtbK142IndexComponent } from './dashboard/dataup/zxtbk14-2/index.component';
+import { DashboardDataUpZxtbK15IndexComponent } from './dashboard/dataup/zxtbk15/index.component';
+import { DashboardDataUpZxtbK20IndexComponent } from './dashboard/dataup/zxtbk20/index.component';
+import { DashboardDataUpZxtbK21IndexComponent } from './dashboard/dataup/zxtbk21/index.component';
+import { DashboardDataUpZxtbK23IndexComponent } from './dashboard/dataup/zxtbk23/index.component';
+import { DashboardDataUpZxtbK31IndexComponent } from './dashboard/dataup/zxtbk31/index.component';
 // -- 文字资料上传
 import { DashboardFileUpZxWzclComponent } from './dashboard/fileup/zxwzcl.component';
+import { DashboardFileUpFxWzclComponent } from './dashboard/fileup/fxwzcl.component';
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
 import { UserRegisterComponent } from './passport/register/register.component';
@@ -64,8 +70,14 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpZxtbK11IndexComponent,
   DashboardDataUpZxtbK141IndexComponent,
   DashboardDataUpZxtbK142IndexComponent,
+  DashboardDataUpZxtbK15IndexComponent,
+  DashboardDataUpZxtbK20IndexComponent,
+  DashboardDataUpZxtbK21IndexComponent,
+  DashboardDataUpZxtbK23IndexComponent,
+  DashboardDataUpZxtbK31IndexComponent,
   // --文字材料上传
   DashboardFileUpZxWzclComponent,
+  DashboardFileUpFxWzclComponent,
 ];
 
 @NgModule({

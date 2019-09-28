@@ -85,7 +85,7 @@ export class DashboardComponent implements OnInit {
 
     const drawerRef = this.drawerService.create<DashboardDataUpFxComponent, { value: any }, string>({
       nzTitle: '【' + this.loadUser.user.bname + '】' + '数据填报任务',
-      nzWidth: 490,
+      nzWidth: 800,
       nzPlacement: 'left',
       nzMaskClosable: false,
       nzContent: DashboardDataUpFxComponent,
@@ -140,7 +140,7 @@ export class DashboardComponent implements OnInit {
 
     const drawerRef = this.drawerService.create<DashboardFileUpFxComponent, { value: any }, string>({
       nzTitle: '【' + this.loadUser.user.bname + '】' + '文字材料上传',
-      nzWidth: 490,
+      nzWidth: 800,
       nzPlacement: 'left',
       nzMaskClosable: false,
       nzContent: DashboardFileUpFxComponent,

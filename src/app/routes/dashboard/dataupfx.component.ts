@@ -1,4 +1,4 @@
-import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
+import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef, NzModalService } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper } from '@delon/theme';
 
@@ -17,6 +17,7 @@ export class DashboardDataUpFxComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private drawerService: NzDrawerService,
     private drawerRef: NzDrawerRef<string>,
+    private modalService: NzModalService,
   ) {}
 
   value: any = [];
@@ -30,18 +31,18 @@ export class DashboardDataUpFxComponent implements OnInit {
 
   loadSteps(): void {
     // 可以传 conType='sjtb' or 'file'
-    // this.http
-    //   .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=sjtb')
-    //   .subscribe((res: any) => {
-    //     this.listOfTableList = res;
-    //     console.log(this.listOfTableList);
-    //     this.cdr.detectChanges();
-    //   });
+    this.http
+      .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=sjtb')
+      .subscribe((res: any) => {
+        this.listOfTableList = res;
+        console.log(this.listOfTableList);
+        this.cdr.detectChanges();
+      });
 
-    this.http.get('/api/data/tables?dtType=fxtb').subscribe((res: any[]) => {
-      this.listOfTableList = res;
-      this.cdr.detectChanges();
-    });
+    // this.http.get('/api/data/tables?dtType=fxtb').subscribe((res: any[]) => {
+    //   this.listOfTableList = res;
+    //   this.cdr.detectChanges();
+    // });
   }
 
   // 文件上传file
@@ -51,7 +52,7 @@ export class DashboardDataUpFxComponent implements OnInit {
 
     const drawerRef = this.drawerService.create<DashboardDataUpZxSjtbComponent, { value: any }, string>({
       nzTitle: '【' + dt.dtName + '】数据填报',
-      nzWidth: document.body.clientWidth - 490,
+      nzWidth: document.body.clientWidth - 290,
       nzPlacement: 'right',
       // nzMaskClosable: false,
       nzContent: DashboardDataUpZxSjtbComponent,
@@ -71,6 +72,14 @@ export class DashboardDataUpFxComponent implements OnInit {
     });
   }
 
+  showComet(titleStr: string, commentStr: string): void {
+    this.modalService.info({
+      nzTitle: '【<b>' + titleStr + '</b>】内涵说明',
+      nzContent: '<p>' + commentStr + '</p>',
+      nzWidth: 580,
+      nzOnOk: () => console.log('Info OK'),
+    });
+  }
   // close(res: any) {
   //   this.modal.close(res);
   // }

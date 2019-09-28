@@ -4,10 +4,10 @@ import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
 @Component({
   selector: 'app-dashboard-fileup-zxwzcl',
-  templateUrl: './zxwzcl.component.html',
+  templateUrl: './fxwzcl.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardFileUpZxWzclComponent implements OnInit {
+export class DashboardFileUpFxWzclComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -29,11 +29,11 @@ export class DashboardFileUpZxWzclComponent implements OnInit {
   fileList: any[] = [];
 
   ngOnInit(): void {
-    // console.log(this.value);
+    console.log('fdsgsdfg=');
     // /api/uploadFile
     this.upFileUrl =
-      '/api/uploadFile?tableno=' + this.value.dtNo + '&appId=17&stepId=21&deptId=' + this.loadUser.user.bid;
-
+      '/api/uploadFile?tableno=' + this.value.dtNo + '&appId=18&stepId=29&deptId=' + this.loadUser.user.bid;
+    console.log(this.upFileUrl);
     // 获得文字材料的要求等
     this.http.post('/api/wzfile/filename', { fileName: this.value.dtNo }).subscribe((res: any) => {
       this.fileRemark = res.remark;
@@ -45,7 +45,7 @@ export class DashboardFileUpZxWzclComponent implements OnInit {
       const fileUrl = item.response.fileDownloadUri;
       // 下面一行打印出来应该就是文件地址
       this.msgSrv.success('文件上传成功');
-      // console.log({ fileUrl });
+      console.log({ fileUrl });
     });
   }
 }

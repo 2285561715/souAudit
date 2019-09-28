@@ -1,6 +1,6 @@
 import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef, NzModalService } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { _HttpClient, ModalHelper } from '@delon/theme';
+import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
 import { DashboardFileUpZxWzclComponent } from './fileup/zxwzcl.component';
 
@@ -18,6 +18,7 @@ export class DashboardFileUpZxComponent implements OnInit {
     private drawerService: NzDrawerService,
     private drawerRef: NzDrawerRef<string>,
     private modalService: NzModalService,
+    public loadUser: SettingsService,
   ) {}
 
   value: any = [];
@@ -31,6 +32,7 @@ export class DashboardFileUpZxComponent implements OnInit {
 
   loadSteps(): void {
     // 可以传 conType='sjtb' or 'file'
+    this.listOfFileList = [];
     this.http
       .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=file')
       .subscribe((res: any) => {
@@ -44,6 +46,7 @@ export class DashboardFileUpZxComponent implements OnInit {
   fileUpFun(dt: any): void {
     const tdata = this.value;
     tdata.dtNo = dt.dtNo;
+
     const drawerRef = this.drawerService.create<DashboardFileUpZxWzclComponent, { value: any }, string>({
       nzTitle: '【' + dt.dtName + '】材料上传',
       nzWidth: document.body.clientWidth - 490,
@@ -60,6 +63,7 @@ export class DashboardFileUpZxComponent implements OnInit {
     });
 
     drawerRef.afterClose.subscribe(data => {
+      this.loadSteps();
       if (typeof data === 'string') {
         this.value = data;
       }

@@ -64,7 +64,8 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
   }
 
   fupChange(event): void {
-    console.log(event);
+    // console.log(event);
+    this.msgSrv.success('数据导入成功');
     switch (this.value.dtNo) {
       case 'sjzxtb_k09_jsjbxx':
         if (event.fileList && event.fileList.length > 0) {

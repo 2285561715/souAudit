@@ -29,8 +29,16 @@
     <a (click)="fileUpFun(dt)"><i nz-icon nzType="edit" nzTheme="fill" style="color: coral"></i> 材料上传</a>
   </ng-template>
   <ng-template #checkStatus>
-    <a href='./assets/demo.pdf' target="_blank"><i nz-icon nzType="pie-chart" nzTheme="fill" style="color: coral"></i>
-      材料预览</a>
-  </ng-template>
+    <!-- <a href='./assets/demo.pdf' target="_blank"><i nz-icon nzType="pie-chart" nzTheme="fill" style="color: coral"></i>
+      材料预览</a> -->
 
+    <span *ngIf="dt.fileupUrl" nz-tooltip nzTooltipTitle="预览">
+      <button nzSize="small" nz-button style="border: 0em" down-file http-url="{{dt.fileupUrl}}"
+        file-name="{{dt.dtName}}.docx"><i nz-icon nzType="search" style="color: lime"></i> 材料预览</button>
+    </span>
+    <span *ngIf="!dt.fileupUrl" nz-tooltip nzTooltipTitle="未上传">
+      <button nzSize="small" nz-button style="border: 0em">
+        <i nz-icon nzType="close" style="color: crimson"></i> 未上传</button>
+    </span>
+  </ng-template>
 </div>

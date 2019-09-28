@@ -2,7 +2,7 @@ import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef, NzModalServ
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper } from '@delon/theme';
 
-import { DashboardFileUpZxWzclComponent } from './fileup/zxwzcl.component';
+import { DashboardFileUpFxWzclComponent } from './fileup/fxwzcl.component';
 
 @Component({
   selector: 'app-dashboard-fileup-fx',
@@ -24,37 +24,36 @@ export class DashboardFileUpFxComponent implements OnInit {
   listOfFileList: any = [];
 
   ngOnInit() {
-    this.loadSteps();
-    // console.log('value=');
-    // console.log(this.value);
+    this.loadInfo();
   }
 
-  loadSteps(): void {
+  loadInfo(): void {
     // 可以传 conType='sjtb' or 'file'
-    // this.http
-    //   .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=file')
-    //   .subscribe((res: any) => {
-    //     this.listOfFileList = res;
-    //     console.log(this.listOfFileList);
-    //     this.cdr.detectChanges();
-    //   });
+    this.listOfFileList = [];
+    this.http
+      .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=file')
+      .subscribe((res: any) => {
+        this.listOfFileList = res;
+        console.log(this.listOfFileList);
+        this.cdr.detectChanges();
+      });
 
-    this.http.get('/api/wzfile/files?fileType=zxwz').subscribe((res: any[]) => {
-      this.listOfFileList = res;
-      this.cdr.detectChanges();
-    });
+    // this.http.get('/api/wzfile/files?fileType=fxwz').subscribe((res: any[]) => {
+    //   this.listOfFileList = res;
+    //   this.cdr.detectChanges();
+    // });
   }
 
   // 文件上传file
   fileUpFun(dt: any): void {
     const tdata = this.value;
     tdata.dtNo = dt.dtNo;
-    const drawerRef = this.drawerService.create<DashboardFileUpZxWzclComponent, { value: any }, string>({
+    const drawerRef = this.drawerService.create<DashboardFileUpFxWzclComponent, { value: any }, string>({
       nzTitle: '【' + dt.dtName + '】材料上传',
       nzWidth: document.body.clientWidth - 490,
       nzPlacement: 'right',
       // nzMaskClosable: false,
-      nzContent: DashboardFileUpZxWzclComponent,
+      nzContent: DashboardFileUpFxWzclComponent,
       nzContentParams: {
         value: tdata,
       },
@@ -65,6 +64,7 @@ export class DashboardFileUpFxComponent implements OnInit {
     });
 
     drawerRef.afterClose.subscribe(data => {
+      this.loadInfo();
       if (typeof data === 'string') {
         this.value = data;
       }
