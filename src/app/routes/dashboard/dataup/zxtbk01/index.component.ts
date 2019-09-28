@@ -15,7 +15,7 @@ export class DashboardDataUpZxtbK01IndexComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     public loadUser: SettingsService,
   ) {}
-
+  // 登录用户部门id
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
   value: any = {};

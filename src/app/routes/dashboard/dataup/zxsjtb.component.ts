@@ -43,6 +43,8 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
   private k10Component: DashboardDataUpZxtbK10IndexComponent;
 
   ngOnInit(): void {
+    // 数据导入地址
+    // 登录用户部门id
     this.upUrl =
       '/api/excel/import?tableName=' + this.value.dtNo + '&appId=17&stepId=21&deptId=' + this.loadUser.user.bid;
     console.log(this.upUrl);
