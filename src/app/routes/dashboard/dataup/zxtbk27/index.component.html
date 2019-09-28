@@ -2,9 +2,8 @@
   <thead>
     <tr>
       <th nzWidth="120px" nzAlign="center">年度</th>
-
-      <th nzWidth="250px" nzAlign="center">课程名称</th>
-      <th nzWidth="250px" nzAlign="center">经费投入（单位：元）</th>
+      <th nzWidth="250px" nzAlign="center">国际开放教育会议名称</th>
+      <th nzWidth="250px" nzAlign="center">国际机构合作交流院校名称</th>
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
@@ -14,21 +13,21 @@
         {{ data.nd }} 年
       </td>
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else kcmcInputTpl">
-          {{ data.kcmc }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else hymcInputTpl">
+          {{ data.hymc }}
         </ng-container>
-        <ng-template #kcmcInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.kcmc" [nzMin]="0" [nzStep]="1">
+        <ng-template #hymcInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.hymc" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
 
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jftrInputTpl">
-          {{ data.jftr }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else hzjlxymcInputTpl">
+          {{ data.hzjlxymc }}
         </ng-container>
-        <ng-template #jftrInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.jftr" [nzMin]="0" [nzStep]="1">
+        <ng-template #hzjlxymcInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.hzjlxymc" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>

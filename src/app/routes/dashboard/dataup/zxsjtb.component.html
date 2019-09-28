@@ -45,6 +45,15 @@
       <div *ngIf="value.dtNo==='sjzxtb_k23_rcpy3l'">
         <app-dashboard-dataup-zxtbk21-index></app-dashboard-dataup-zxtbk21-index>
       </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k27_kfjygjyxl'">
+        <app-dashboard-dataup-zxtbk27-index></app-dashboard-dataup-zxtbk27-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k28_ssgjjl'">
+        <app-dashboard-dataup-zxtbk28-index></app-dashboard-dataup-zxtbk28-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k30_xfyh'">
+        <app-dashboard-dataup-zxtbk30-index></app-dashboard-dataup-zxtbk30-index>
+      </div>
       <div *ngIf="value.dtNo==='sjzxtb_k31_shfuks'">
         <app-dashboard-dataup-zxtbk31-index></app-dashboard-dataup-zxtbk31-index>
       </div>
@@ -99,6 +108,35 @@
         <button nz-button class="mr-sm" down-file http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k23_rcpy3l.xlsx"
           file-name="表K23.人才培养—毕业率、流失率与学位获得率.xlsx">
           <i nz-icon nzType="download"></i> 《表K23.人才培养—毕业率、流失率与学位获得率》模板下载</button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
+          <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
+        </nz-upload>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k27_kfjygjyxl'">
+        <button nz-button class="mr-sm" down-file
+          http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k27_kfjygjyxl.xlsx"
+          file-name="表K27.国际交流—开放教育国际影响力.xlsx">
+          <i nz-icon nzType="download"></i> 《表K27.国际交流—开放教育国际影响力》模板下载</button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
+          <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
+        </nz-upload>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k28_ssgjjl'">
+        <button nz-button class="mr-sm" down-file http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k28_ssgjjl.xlsx"
+          file-name="表K28.国际交流—师生国际交流开展情况.xlsx">
+          <i nz-icon nzType="download"></i> 《表K28.国际交流—师生国际交流开展情况》模板下载</button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
+          <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
+        </nz-upload>
+      </div>
+
+      <div *ngIf="value.dtNo==='sjzxtb_k30_xfyh'">
+        <button nz-button class="mr-sm" down-file http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k30_xfyh.xlsx"
+          file-name="表K30.社会服务—“学分银行”实施情况.xlsx">
+          <i nz-icon nzType="download"></i> 《表K30.社会服务—“学分银行”实施情况》模板下载</button>
         <nz-divider nzType="vertical"></nz-divider>
         <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
           <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>

@@ -86,6 +86,13 @@ export class DashboardDataUpZxtbK21IndexComponent implements OnInit {
     this.listOfData = [];
   }
 
+  dataDelete(id: string): void {
+    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k21_rcpygm&id=' + id).subscribe((res: any) => {
+      this.msgSrv.success('删除数据成功');
+      this.cdr.detectChanges();
+    });
+  }
+
   updateEditCache(): void {
     this.listOfData.forEach(item => {
       this.editCache[item.id] = {

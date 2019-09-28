@@ -2,7 +2,7 @@ import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef, NzModalServ
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper } from '@delon/theme';
 
-import { DashboardDataUpZxSjtbComponent } from './dataup/zxsjtb.component';
+import { DashboardDataUpFxSjtbComponent } from './dataupfx/fxsjtb.component';
 
 @Component({
   selector: 'app-dashboard-dataup-fx',
@@ -50,12 +50,12 @@ export class DashboardDataUpFxComponent implements OnInit {
     const tdata = this.value;
     tdata.dtNo = dt.dtNo;
 
-    const drawerRef = this.drawerService.create<DashboardDataUpZxSjtbComponent, { value: any }, string>({
+    const drawerRef = this.drawerService.create<DashboardDataUpFxSjtbComponent, { value: any }, string>({
       nzTitle: '【' + dt.dtName + '】数据填报',
       nzWidth: document.body.clientWidth - 290,
       nzPlacement: 'right',
       // nzMaskClosable: false,
-      nzContent: DashboardDataUpZxSjtbComponent,
+      nzContent: DashboardDataUpFxSjtbComponent,
       nzContentParams: {
         value: tdata,
       },

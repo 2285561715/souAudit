@@ -3,11 +3,11 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRe
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
 @Component({
-  selector: 'app-dashboard-dataup-zxtbk20-index',
+  selector: 'app-dashboard-dataup-zxtbk30-index',
   templateUrl: './index.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpZxtbK20IndexComponent implements OnInit {
+export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -22,7 +22,7 @@ export class DashboardDataUpZxtbK20IndexComponent implements OnInit {
 
   ngOnInit(): void {
     // 获得数据表的数据
-    this.http.get('/api/data/tables/search/sjzxtb_k20_kcjs').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/sjzxtb_k30_xfyh').subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -59,7 +59,7 @@ export class DashboardDataUpZxtbK20IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_k20_kcjs&appId=17&stepId=21&deptId=` +
+          `&tableno=sjzxtb_k30_xfyh&appId=17&stepId=21&deptId=` +
           this.loadUser.user.bid,
         data,
       )
@@ -75,7 +75,7 @@ export class DashboardDataUpZxtbK20IndexComponent implements OnInit {
     const date = new Date();
     this.http
       .put(
-        `/api/data/tables/entry/init?tableno=sjzxtb_k20_kcjs&nd=` +
+        `/api/data/tables/entry/init?tableno=sjzxtb_k30_xfyh&nd=` +
           date.getFullYear() +
           '&appId=17&stepId=21&deptId=' +
           this.loadUser.user.bid,
@@ -87,7 +87,7 @@ export class DashboardDataUpZxtbK20IndexComponent implements OnInit {
   }
 
   dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k20_kcjs&id=' + id).subscribe((res: any) => {
+    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k30_xfyh&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
       this.cdr.detectChanges();
     });
