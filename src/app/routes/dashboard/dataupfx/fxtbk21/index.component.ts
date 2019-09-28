@@ -24,14 +24,15 @@ export class DashboardDataUpFxtbK21IndexComponent implements OnInit {
     // 获得数据表的数据
     this.http.get('/api/data/tables/search/sjzxtb_k21_rcpygm').subscribe((res: any[]) => {
       res.forEach(item => {
-        item.id = item.id + '';
-        this.listOfData = [...this.listOfData, item];
-        this.editCache[item.id] = {
-          edit: false,
-          data: { ...item },
-        };
+        if (item.xxdm === this.loadUser.user.bid) {
+          item.id = item.id + '';
+          this.listOfData = [...this.listOfData, item];
+          this.editCache[item.id] = {
+            edit: false,
+            data: { ...item },
+          };
+        }
       });
-      console.log(this.listOfData);
       this.cdr.detectChanges();
     });
     // this.updateEditCache();

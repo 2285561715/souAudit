@@ -29,12 +29,14 @@ export class DashboardDataUpFxtbK10IndexComponent implements OnInit {
     this.listOfData = [];
     this.http.get('/api/data/tables/search/sjzxtb_k10_glryxx').subscribe((res: any[]) => {
       res.forEach(item => {
-        item.id = item.id + '';
-        this.listOfData = [...this.listOfData, item];
-        this.editCache[item.id] = {
-          edit: false,
-          data: { ...item },
-        };
+        if (item.xxdm === this.loadUser.user.bid) {
+          item.id = item.id + '';
+          this.listOfData = [...this.listOfData, item];
+          this.editCache[item.id] = {
+            edit: false,
+            data: { ...item },
+          };
+        }
       });
       this.cdr.detectChanges();
     });
