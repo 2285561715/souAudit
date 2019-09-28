@@ -40,26 +40,22 @@
       <ng-template #titleTemplate1><i nz-icon nzType="import" style="color: coral"></i>数据导入</ng-template>
 
       <div *ngIf="value.dtNo==='sjzxtb_k09_jsjbxx'">
-        <button nz-button class="mr-sm" down-file http-url="http://localhost:4200/assets/zxsj_mb/sjzxtb_k09_jsjbxx.xlsx"
+        <button nz-button class="mr-sm" down-file http-url="http://139.224.102.62/assets/zxsj_mb/sjzxtb_k09_jsjbxx.xlsx"
           file-name="表K09.总校教师基本信息.xlsx">
           <i nz-icon nzType="download"></i> 《总校教师基本信息》模板下载</button>
 
         <nz-divider nzType="vertical"></nz-divider>
-        <nz-upload
-          nzAction="/api/excel/import?tableName=sjzxtb_k09_jsjbxx&appId=17&stepId=21&deptId={{loadUser.user.bid}}"
-          (nzChange)="fupChange($event)">
+        <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
           <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
         </nz-upload>
       </div>
 
       <div *ngIf="value.dtNo==='sjzxtb_k10_glryxx'">
-        <button nz-button class="mr-sm" down-file http-url="http://localhost:4200/assets/zxsj_mb/sjzxtb_k10_glryxx.xlsx"
+        <button nz-button class="mr-sm" down-file http-url="http://139.224.102.62/assets/zxsj_mb/sjzxtb_k10_glryxx.xlsx"
           file-name="表K10.管理人员基本信息.xlsx">
           <i nz-icon nzType="download"></i> 《管理人员基本信息》模板下载</button>
         <nz-divider nzType="vertical"></nz-divider>
-        <nz-upload
-          nzAction="/api/excel/import?tableName=sjzxtb_k10_glryxx&appId=17&stepId=21&deptId={{loadUser.user.bid}}"
-          (nzChange)="fupChange($event)">
+        <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
           <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
         </nz-upload>
       </div>

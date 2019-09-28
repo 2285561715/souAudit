@@ -26,6 +26,7 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
   descRules = '';
   checkRules = '';
   tableHtml = '';
+  upUrl = '';
 
   data = {
     otherdata: 1,
@@ -42,6 +43,9 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
   private k10Component: DashboardDataUpZxtbK10IndexComponent;
 
   ngOnInit(): void {
+    this.upUrl =
+      '/api/excel/import?tableName=' + this.value.dtNo + '&appId=17&stepId=21&deptId=' + this.loadUser.user.bid;
+    console.log(this.upUrl);
     // console.log(this.value);
     // 获得数据表的 填写规则、校验规则、样例数据等
     this.http.get('/api/data/tables/' + this.value.dtNo).subscribe((res: any[]) => {
