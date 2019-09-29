@@ -65,7 +65,7 @@ export class DashboardDataUpFxtbK10IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_k10_glryxx&appId=17&stepId=21&deptId=` +
+          `&tableno=sjfxtb_glryxx&appId=17&stepId=21&deptId=` +
           this.loadUser.user.bid,
         data,
       )
@@ -80,7 +80,7 @@ export class DashboardDataUpFxtbK10IndexComponent implements OnInit {
     const date = new Date();
     this.http
       .put(
-        `/api/data/tables/entry/init?tableno=sjzxtb_k10_glryxx&nd=` +
+        `/api/data/tables/entry/init?tableno=sjfxtb_glryxx&nd=` +
           date.getFullYear() +
           '&appId=17&stepId=21&deptId=' +
           this.loadUser.user.bid,
@@ -92,7 +92,7 @@ export class DashboardDataUpFxtbK10IndexComponent implements OnInit {
   }
 
   dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k10_glryxx&id=' + id).subscribe((res: any) => {
+    this.http.delete('/api/data/tables/entry/del?tableno=sjfxtb_glryxx&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
     });
     this.listOfData = [];
