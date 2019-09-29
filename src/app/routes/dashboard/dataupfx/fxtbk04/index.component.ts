@@ -60,7 +60,7 @@ export class DashboardDataUpFxtbK04IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjfxtb_xxjbqk_jftr&appId=17&stepId=21&deptId=` +
+          `&tableno=sjfxtb_xxjbqk_jftr&appId=18&stepId=29&deptId=` +
           this.loadUser.user.bid,
         data,
       )

@@ -60,7 +60,7 @@ export class DashboardDataUpFxtbK21IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_k21_rcpygm&appId=17&stepId=21&deptId=` +
+          `&tableno=sjzxtb_k21_rcpygm&appId=18&stepId=29&deptId=` +
           this.loadUser.user.bid,
         data,
       )
@@ -78,7 +78,7 @@ export class DashboardDataUpFxtbK21IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry/init?tableno=sjzxtb_k21_rcpygm&nd=` +
           date.getFullYear() +
-          '&appId=17&stepId=21&deptId=' +
+          '&appId=18&stepId=29&deptId=' +
           this.loadUser.user.bid,
       )
       .subscribe(res => {

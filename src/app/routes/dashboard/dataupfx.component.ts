@@ -31,6 +31,7 @@ export class DashboardDataUpFxComponent implements OnInit {
 
   loadSteps(): void {
     // 可以传 conType='sjtb' or 'file'
+    this.listOfTableList = [];
     this.http
       .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=sjtb')
       .subscribe((res: any) => {
@@ -66,6 +67,7 @@ export class DashboardDataUpFxComponent implements OnInit {
     });
 
     drawerRef.afterClose.subscribe(data => {
+      this.loadSteps();
       if (typeof data === 'string') {
         this.value = data;
       }
