@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, TemplateRef, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
-import { STColumn, STComponent } from '@delon/abc';
-import { SFSchema } from '@delon/form';
-import { NzFormatEmitEvent, NzDrawerRef, NzDrawerService, NzMessageService, NzModalService } from 'ng-zorro-antd';
+import { NzDrawerService, NzMessageService, NzModalService } from 'ng-zorro-antd';
 
 import { DashboardDataUpZxComponent } from './dataupzx.component';
 import { DashboardDataUpFxComponent } from './dataupfx.component';

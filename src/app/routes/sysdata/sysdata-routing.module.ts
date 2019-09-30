@@ -13,6 +13,7 @@ import { SysdataZxHandupfileComponent } from './zx-handupfile/zx-handupfile.comp
 import { SysdataFxSynchdatatableComponent } from './fx-synchdatatable/fx-synchdatatable.component';
 import { SysdataFxHandupdatatableComponent } from './fx-handupdatatable/fx-handupdatatable.component';
 import { SysdataFxHandupfileComponent } from './fx-handupfile/fx-handupfile.component';
+import { SysdataZpwdComponent } from './zpwd/zpwd.component';
 
 const routes: Routes = [
   { path: 'userlist', component: SysdataUserlistComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'fx-synchdatatable', component: SysdataFxSynchdatatableComponent },
   { path: 'fx-handupdatatable', component: SysdataFxHandupdatatableComponent },
   { path: 'fx-handupfile', component: SysdataFxHandupfileComponent },
+  { path: 'zpwd', component: SysdataZpwdComponent },
 ];
 
 @NgModule({

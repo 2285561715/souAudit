@@ -16,8 +16,7 @@
           {{ data.gjjlhdmc }}
         </ng-container>
         <ng-template #gjjlhdmcInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.gjjlhdmc" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.gjjlhdmc" />
         </ng-template>
       </td>
 

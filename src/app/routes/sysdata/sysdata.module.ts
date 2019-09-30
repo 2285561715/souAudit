@@ -40,6 +40,7 @@ import { SysdataFxHandupfileComponent } from './fx-handupfile/fx-handupfile.comp
 import { SysdataFxHandupfileEditComponent } from './fx-handupfile/edit/edit.component';
 import { SysdataFxHandupfileAddComponent } from './fx-handupfile/add/add.component';
 import { UEditorModule } from 'ngx-ueditor';
+import { SysdataZpwdComponent } from './zpwd/zpwd.component';
 
 const COMPONENTS = [
   SysdataUserlistComponent,
@@ -54,6 +55,7 @@ const COMPONENTS = [
   SysdataFxSynchdatatableComponent,
   SysdataFxHandupdatatableComponent,
   SysdataFxHandupfileComponent,
+  SysdataZpwdComponent,
 ];
 const COMPONENTS_NOROUNT = [
   SysdataUserlistEditComponent,

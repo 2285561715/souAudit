@@ -18,8 +18,7 @@
           {{ data.kcmc }}
         </ng-container>
         <ng-template #kcmcInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.kcmc" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.kcmc" />
         </ng-template>
       </td>
 

@@ -80,8 +80,9 @@ export class StartupService {
           // Application information: including site name, description, year
           this.settingService.setApp(this.app);
           // User information: including name, avatar, email address
-          console.log(accountData);
+          // console.log(accountData);
           this.settingService.setUser({
+            id: accountData.id,
             name: accountData.userName,
             userNo: accountData.userNo,
             bid: accountData.bno,
@@ -123,233 +124,233 @@ export class StartupService {
   }
 
   // 模拟数据
-  private viaMock(resolve: any, reject: any) {
-    // const tokenData = this.tokenService.get();
-    // if (!tokenData.token) {
-    //   this.injector.get(Router).navigateByUrl('/passport/login');
-    //   resolve({});
-    //   return;
-    // }
-    // mock
-    const app: any = {
-      name: `souAudit`,
-      description: `上海开放大学评估系统`,
-    };
-    const user: any = {
-      name: 'Admin',
-      avatar: './assets/tmp/img/avatar.jpg',
-      email: 'audit@shtvu.edu.cn',
-      token: '123456789',
-    };
-    // Application information: including site name, description, year
-    this.settingService.setApp(app);
-    // User information: including name, avatar, email address
-    this.settingService.setUser(user);
-    // ACL: Set the permissions to full, https://ng-alain.com/acl/getting-started
-    this.aclService.setFull(true);
-    // Menu data, https://ng-alain.com/theme/menu
-    this.menuService.add([
-      {
-        text: '总校功能区',
-        group: true,
-        children: [
-          {
-            text: '组织结构管理',
-            // link: '/sysorg',
-            icon: { type: 'icon', value: 'anticon-cluster' },
-            children: [
-              {
-                text: '总校职能部门',
-                link: '/sysdata/orgdepartment',
-                // i18n: 'menu.dashboard.v1',
-              },
-              {
-                text: '分校信息管理',
-                link: '/sysdata/orgbranch',
-                // i18n: 'menu.dashboard.analysis',
-              },
-              {
-                text: '用户列表管理',
-                link: '/sysdata/userlist',
-                // i18n: 'menu.dashboard.monitor',
-              },
-            ],
-          },
-          {
-            text: '数据材料清单',
-            // link: '/sysorg',
-            icon: { type: 'icon', value: 'appstore' },
-            children: [
-              {
-                text: '总校采集表',
-                link: '/sysdata/zx-synchdatatable',
-                // i18n: 'menu.dashboard.v1',
-              },
-              {
-                text: '总校填报表',
-                link: '/sysdata/zx-handupdatatable',
-                // i18n: 'menu.dashboard.analysis',
-              },
-              {
-                text: '总校材料单',
-                link: '/sysdata/zx-handupfile',
-                // i18n: 'menu.dashboard.monitor',
-              },
-              {
-                text: '分校采集表',
-                link: '/sysdata/fx-synchdatatable',
-                // i18n: 'menu.dashboard.v1',
-              },
-              {
-                text: '分校填报表',
-                link: '/sysdata/fx-handupdatatable',
-                // link: '/sysdata/fx-handupdatatable',
-                // i18n: 'menu.dashboard.analysis',
-              },
-              {
-                text: '分校材料单',
-                link: '/sysdata/fx-handupfile',
-                // i18n: 'menu.dashboard.monitor',
-              },
-            ],
-          },
-          {
-            text: '评估指标体系',
-            // link: '/sysorg',
-            icon: { type: 'icon', value: 'anticon-menu-unfold' },
-            children: [
-              {
-                text: '评估体系管理',
-                link: '/auditindex/index-file',
-                // i18n: 'menu.dashboard.monitor',
-              },
-              {
-                text: '评估指标管理',
-                link: '/auditindex/index-mana',
-                // i18n: 'menu.dashboard.v1',
-              },
-            ],
-          },
-          {
-            text: '评估工作管理',
-            // link: '/sysorg',
-            icon: { type: 'icon', value: 'anticon-bank' },
-            children: [
-              {
-                text: '评估工作启动',
-                link: '/auditstep/ad-start',
-                // i18n: 'menu.dashboard.v1',
-              },
-              {
-                text: '评估过程管理',
-                link: '/auditstep/ad-process',
-                // i18n: 'menu.dashboard.v1',
-              },
-              // {
-              //   text: '数据采集管理',
-              //   link: '/auditstep/data-synch',
-              //   // i18n: 'menu.dashboard.analysis',
-              // },
-              // {
-              //   text: '部门数据填报',
-              //   link: '/auditstep/data-upload',
-              //   // i18n: 'menu.dashboard.monitor',
-              // },
-              // {
-              //   text: '部门数据审核',
-              //   link: '/auditstep/data-checkup',
-              //   // i18n: 'menu.dashboard.monitor',
-              // },
-              // {
-              //   text: '评估报告预览',
-              //   link: '/auditstep/p-preview',
-              //   // i18n: 'menu.dashboard.monitor',
-              // },
-            ],
-          },
-          // {
-          //   text: '分校评估过程',
-          //   // link: '/sysorg',
-          //   icon: { type: 'icon', value: 'anticon-branches' },
-          //   children: [
-          //     {
-          //       text: '分校数据填报',
-          //       link: '/fxaudit/data-upload',
-          //       // i18n: 'menu.dashboard.monitor',
-          //     },
-          //     {
-          //       text: '分校数据审核',
-          //       link: '/fxaudit/data-checkup',
-          //       // i18n: 'menu.dashboard.monitor',
-          //     },
-          //     {
-          //       text: '分校报告预览',
-          //       link: '/fxaudit/f-preview',
-          //       // i18n: 'menu.dashboard.monitor',
-          //     },
-          //   ],
-          // },
-          {
-            text: '专家网上评审',
-            link: '/webreview/viewindex',
-            icon: { type: 'icon', value: 'audit' },
-            shortcutRoot: true,
-          },
-          {
-            text: '评估报告概览',
-            link: '/auditreport/fileshow',
-            icon: { type: 'icon', value: 'file-ppt' },
-            shortcutRoot: true,
-          },
-          {
-            text: '领导层驾驶舱',
-            link: '/dashboard',
-            icon: { type: 'icon', value: 'windows' },
-            // shortcutRoot: true,
-            children: [
-              {
-                text: '仪表盘',
-                link: '/leadboard/v1',
-                // i18n: 'menu.dashboard.monitor',
-              },
-              {
-                text: '分析页',
-                link: '/leadboard/v1',
-                // i18n: 'menu.dashboard.monitor',
-              },
-            ],
-          },
-          {
-            text: '系统基础管理',
-            // link: '/sysdata',
-            icon: { type: 'icon', value: 'setting' },
-            children: [
-              {
-                text: '系统菜单管理',
-                link: '/sysdata/modlist',
-                // i18n: 'menu.dashboard.v1',
-              },
-              {
-                text: '角色权限设置',
-                link: '/sysdata/authlist',
-                // i18n: 'menu.dashboard.analysis',
-              },
-              {
-                text: '基础数据设置',
-                link: '/sysdata/datalist',
-                // i18n: 'menu.dashboard.monitor',
-              },
-            ],
-          },
-        ],
-      },
-    ]);
+  // private viaMock(resolve: any, reject: any) {
+  //   // const tokenData = this.tokenService.get();
+  //   // if (!tokenData.token) {
+  //   //   this.injector.get(Router).navigateByUrl('/passport/login');
+  //   //   resolve({});
+  //   //   return;
+  //   // }
+  //   // mock
+  //   const app: any = {
+  //     name: `souAudit`,
+  //     description: `上海开放大学评估系统`,
+  //   };
+  //   const user: any = {
+  //     name: 'Admin',
+  //     avatar: './assets/tmp/img/avatar.jpg',
+  //     email: 'audit@shtvu.edu.cn',
+  //     token: '123456789',
+  //   };
+  //   // Application information: including site name, description, year
+  //   this.settingService.setApp(app);
+  //   // User information: including name, avatar, email address
+  //   this.settingService.setUser(user);
+  //   // ACL: Set the permissions to full, https://ng-alain.com/acl/getting-started
+  //   this.aclService.setFull(true);
+  //   // Menu data, https://ng-alain.com/theme/menu
+  //   this.menuService.add([
+  //     {
+  //       text: '总校功能区',
+  //       group: true,
+  //       children: [
+  //         {
+  //           text: '组织结构管理',
+  //           // link: '/sysorg',
+  //           icon: { type: 'icon', value: 'anticon-cluster' },
+  //           children: [
+  //             {
+  //               text: '总校职能部门',
+  //               link: '/sysdata/orgdepartment',
+  //               // i18n: 'menu.dashboard.v1',
+  //             },
+  //             {
+  //               text: '分校信息管理',
+  //               link: '/sysdata/orgbranch',
+  //               // i18n: 'menu.dashboard.analysis',
+  //             },
+  //             {
+  //               text: '用户列表管理',
+  //               link: '/sysdata/userlist',
+  //               // i18n: 'menu.dashboard.monitor',
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           text: '数据材料清单',
+  //           // link: '/sysorg',
+  //           icon: { type: 'icon', value: 'appstore' },
+  //           children: [
+  //             {
+  //               text: '总校采集表',
+  //               link: '/sysdata/zx-synchdatatable',
+  //               // i18n: 'menu.dashboard.v1',
+  //             },
+  //             {
+  //               text: '总校填报表',
+  //               link: '/sysdata/zx-handupdatatable',
+  //               // i18n: 'menu.dashboard.analysis',
+  //             },
+  //             {
+  //               text: '总校材料单',
+  //               link: '/sysdata/zx-handupfile',
+  //               // i18n: 'menu.dashboard.monitor',
+  //             },
+  //             {
+  //               text: '分校采集表',
+  //               link: '/sysdata/fx-synchdatatable',
+  //               // i18n: 'menu.dashboard.v1',
+  //             },
+  //             {
+  //               text: '分校填报表',
+  //               link: '/sysdata/fx-handupdatatable',
+  //               // link: '/sysdata/fx-handupdatatable',
+  //               // i18n: 'menu.dashboard.analysis',
+  //             },
+  //             {
+  //               text: '分校材料单',
+  //               link: '/sysdata/fx-handupfile',
+  //               // i18n: 'menu.dashboard.monitor',
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           text: '评估指标体系',
+  //           // link: '/sysorg',
+  //           icon: { type: 'icon', value: 'anticon-menu-unfold' },
+  //           children: [
+  //             {
+  //               text: '评估体系管理',
+  //               link: '/auditindex/index-file',
+  //               // i18n: 'menu.dashboard.monitor',
+  //             },
+  //             {
+  //               text: '评估指标管理',
+  //               link: '/auditindex/index-mana',
+  //               // i18n: 'menu.dashboard.v1',
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           text: '评估工作管理',
+  //           // link: '/sysorg',
+  //           icon: { type: 'icon', value: 'anticon-bank' },
+  //           children: [
+  //             {
+  //               text: '评估工作启动',
+  //               link: '/auditstep/ad-start',
+  //               // i18n: 'menu.dashboard.v1',
+  //             },
+  //             {
+  //               text: '评估过程管理',
+  //               link: '/auditstep/ad-process',
+  //               // i18n: 'menu.dashboard.v1',
+  //             },
+  //             // {
+  //             //   text: '数据采集管理',
+  //             //   link: '/auditstep/data-synch',
+  //             //   // i18n: 'menu.dashboard.analysis',
+  //             // },
+  //             // {
+  //             //   text: '部门数据填报',
+  //             //   link: '/auditstep/data-upload',
+  //             //   // i18n: 'menu.dashboard.monitor',
+  //             // },
+  //             // {
+  //             //   text: '部门数据审核',
+  //             //   link: '/auditstep/data-checkup',
+  //             //   // i18n: 'menu.dashboard.monitor',
+  //             // },
+  //             // {
+  //             //   text: '评估报告预览',
+  //             //   link: '/auditstep/p-preview',
+  //             //   // i18n: 'menu.dashboard.monitor',
+  //             // },
+  //           ],
+  //         },
+  //         // {
+  //         //   text: '分校评估过程',
+  //         //   // link: '/sysorg',
+  //         //   icon: { type: 'icon', value: 'anticon-branches' },
+  //         //   children: [
+  //         //     {
+  //         //       text: '分校数据填报',
+  //         //       link: '/fxaudit/data-upload',
+  //         //       // i18n: 'menu.dashboard.monitor',
+  //         //     },
+  //         //     {
+  //         //       text: '分校数据审核',
+  //         //       link: '/fxaudit/data-checkup',
+  //         //       // i18n: 'menu.dashboard.monitor',
+  //         //     },
+  //         //     {
+  //         //       text: '分校报告预览',
+  //         //       link: '/fxaudit/f-preview',
+  //         //       // i18n: 'menu.dashboard.monitor',
+  //         //     },
+  //         //   ],
+  //         // },
+  //         {
+  //           text: '专家网上评审',
+  //           link: '/webreview/viewindex',
+  //           icon: { type: 'icon', value: 'audit' },
+  //           shortcutRoot: true,
+  //         },
+  //         {
+  //           text: '评估报告概览',
+  //           link: '/auditreport/fileshow',
+  //           icon: { type: 'icon', value: 'file-ppt' },
+  //           shortcutRoot: true,
+  //         },
+  //         {
+  //           text: '领导层驾驶舱',
+  //           link: '/dashboard',
+  //           icon: { type: 'icon', value: 'windows' },
+  //           // shortcutRoot: true,
+  //           children: [
+  //             {
+  //               text: '仪表盘',
+  //               link: '/leadboard/v1',
+  //               // i18n: 'menu.dashboard.monitor',
+  //             },
+  //             {
+  //               text: '分析页',
+  //               link: '/leadboard/v1',
+  //               // i18n: 'menu.dashboard.monitor',
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           text: '系统基础管理',
+  //           // link: '/sysdata',
+  //           icon: { type: 'icon', value: 'setting' },
+  //           children: [
+  //             {
+  //               text: '系统菜单管理',
+  //               link: '/sysdata/modlist',
+  //               // i18n: 'menu.dashboard.v1',
+  //             },
+  //             {
+  //               text: '角色权限设置',
+  //               link: '/sysdata/authlist',
+  //               // i18n: 'menu.dashboard.analysis',
+  //             },
+  //             {
+  //               text: '基础数据设置',
+  //               link: '/sysdata/datalist',
+  //               // i18n: 'menu.dashboard.monitor',
+  //             },
+  //           ],
+  //         },
+  //       ],
+  //     },
+  //   ]);
 
-    // Can be set page suffix title, https://ng-alain.com/theme/title
-    this.titleService.suffix = app.name;
+  //   // Can be set page suffix title, https://ng-alain.com/theme/title
+  //   this.titleService.suffix = app.name;
 
-    resolve({});
-  }
+  //   resolve({});
+  // }
 
   load(): Promise<any> {
     // only works with promises

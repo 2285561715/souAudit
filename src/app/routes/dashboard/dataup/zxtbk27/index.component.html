@@ -17,8 +17,7 @@
           {{ data.hymc }}
         </ng-container>
         <ng-template #hymcInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.hymc" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.hymc" />
         </ng-template>
       </td>
 
@@ -27,8 +26,7 @@
           {{ data.hzjlxymc }}
         </ng-container>
         <ng-template #hzjlxymcInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.hzjlxymc" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.hzjlxymc" />
         </ng-template>
       </td>
 
