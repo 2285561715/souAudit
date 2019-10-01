@@ -117,4 +117,14 @@ export class SysdataUserlistComponent implements OnInit {
       this.loadInfo();
     });
   }
+
+  pwdInit(record) {
+    const data = record;
+    data.modType = 'cz';
+    data.userId = record.id;
+    console.log(data);
+    this.http.post('/api/account/password', data).subscribe((res: any) => {
+      this.msgSrv.success('重置密码成功，初始密码：123456！');
+    });
+  }
 }

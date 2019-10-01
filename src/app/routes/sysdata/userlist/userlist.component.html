@@ -25,7 +25,8 @@
         <td>{{ data.userName }}</td>
         <td>{{ data.bname }}</td>
         <td>{{ data.mob }} , {{ data.email }}</td>
-        <td nzAlign="center"><a href="#" title="{{ data.userNo }} , {{ data.password }}">查看</a></td>
+        <td nzAlign="center">
+          <button nz-button nzSize="small" nzType="default" (click)="pwdInit(data)">密码重置</button></td>
         <td nzAlign="center">
           <button nz-button nzSize="small" nzType="default" (click)="editInfo(data)">修改</button>
           <nz-divider nzType="vertical"></nz-divider>

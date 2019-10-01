@@ -98,33 +98,33 @@ export class DefaultInterceptor implements HttpInterceptor {
         (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).clear();
         this.modalService.info({
           nzTitle: '操作提醒',
-          nzContent: '用户已过期，请重新登录',
+          nzContent: '用户名密码输入有误或登录已过期，请重试！',
           nzOnOk: () => this.goTo('/passport/login'),
         });
         break;
       case 403:
         this.modalService.error({
           nzTitle: '操作提醒',
-          nzContent: '没有操作权限',
+          nzContent: '没有操作权限！',
         });
         break;
       case 404:
         this.modalService.error({
           nzTitle: '操作提醒',
-          nzContent: '未找到服务器资源',
+          nzContent: '未找到服务器资源！',
         });
         break;
       case 405:
         this.modalService.error({
           nzTitle: '操作提醒',
-          nzContent: '请求错误，不支持的请求方法',
+          nzContent: '请求数据错误，不支持的请求方法！',
         });
         break;
       case 500:
         // this.goTo(`/exception/${ev.status}`);
         this.modalService.error({
           nzTitle: '操作提醒',
-          nzContent: '请求或数据填写错误，请确认数据重新输入',
+          nzContent: '请求或数据填写错误，请确认数据重新输入！',
         });
         break;
       default:

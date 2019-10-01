@@ -72,8 +72,9 @@ export class SysdataZpwdComponent implements OnInit {
 
     console.log(data);
 
-    this.http.post('/account/password', data).subscribe((res: any) => {
+    this.http.post('/api/account/password', data).subscribe((res: any) => {
       this.msgSrv.success('修改密码成功，请记住新密码：' + data.password);
+      this.ngOnInit();
     });
   }
 
