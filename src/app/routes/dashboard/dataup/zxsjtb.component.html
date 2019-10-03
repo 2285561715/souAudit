@@ -27,14 +27,29 @@
       <div *ngIf="value.dtNo==='sjzxtb_k11_jsjbqk'">
         <app-dashboard-dataup-zxtbk11-index></app-dashboard-dataup-zxtbk11-index>
       </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k121_gsptd'">
+        <app-dashboard-dataup-zxtbk121-index></app-dashboard-dataup-zxtbk121-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k122_gsprc'">
+        <app-dashboard-dataup-zxtbk122-index></app-dashboard-dataup-zxtbk122-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k13_hzbx'">
+        <app-dashboard-dataup-zxtbk13-index></app-dashboard-dataup-zxtbk13-index>
+      </div>
       <div *ngIf="value.dtNo==='sjzxtb_k141_kfjyyj'">
         <app-dashboard-dataup-zxtbk141-index></app-dashboard-dataup-zxtbk141-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k142_shsqjy'">
         <app-dashboard-dataup-zxtbk142-index></app-dashboard-dataup-zxtbk142-index>
       </div>
-      <div *ngIf="value.dtNo==='sjzxtb_yjss_xx'">
+      <div *ngIf="value.dtNo==='sjzxtb_k15_yjss'">
         <app-dashboard-dataup-zxtbk15-index></app-dashboard-dataup-zxtbk15-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k16_jxkypt'">
+        <app-dashboard-dataup-zxtbk16-index></app-dashboard-dataup-zxtbk16-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k17_sysxjs'">
+        <app-dashboard-dataup-zxtbk17-index></app-dashboard-dataup-zxtbk17-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k20_kcjs'">
         <app-dashboard-dataup-zxtbk20-index></app-dashboard-dataup-zxtbk20-index>
@@ -62,38 +77,6 @@
 
     <nz-tab [nzTitle]="titleTemplate1">
       <ng-template #titleTemplate1><i nz-icon nzType="import" style="color: coral"></i>数据导入</ng-template>
-
-      <div *ngIf="value.dtNo==='sjzxtb_k09_jsjbxx'">
-        <button nz-button class="mr-sm" down-file http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k09_jsjbxx.xlsx"
-          file-name="表K09.总校教师基本信息.xlsx">
-          <i nz-icon nzType="download"></i> 《总校教师基本信息》模板下载</button>
-
-        <nz-divider nzType="vertical"></nz-divider>
-        <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
-          <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
-        </nz-upload>
-      </div>
-
-      <div *ngIf="value.dtNo==='sjzxtb_k10_glryxx'">
-        <button nz-button class="mr-sm" down-file http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k10_glryxx.xlsx"
-          file-name="表K10.管理人员基本信息.xlsx">
-          <i nz-icon nzType="download"></i> 《管理人员基本信息》模板下载</button>
-        <nz-divider nzType="vertical"></nz-divider>
-        <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
-          <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
-        </nz-upload>
-      </div>
-
-      <div *ngIf="value.dtNo==='sjzxtb_k20_kcjs'">
-        <button nz-button class="mr-sm" down-file http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k20_kcjs.xlsx"
-          file-name="表K20.教学资源—课程建设.xlsx">
-          <i nz-icon nzType="download"></i>《表K20.教学资源—课程建设》模板下载</button>
-        <nz-divider nzType="vertical"></nz-divider>
-        <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
-          <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
-        </nz-upload>
-      </div>
-
       <div *ngIf="value.dtNo==='sjzxtb_k21_rcpygm'">
         <button nz-button class="mr-sm" down-file http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k21_rcpygm.xlsx"
           file-name="表K23.人才培养—毕业率、流失率与学位获得率.xlsx">

@@ -19,9 +19,14 @@ import { DashboardDataUpZxtbK08IndexComponent } from './dashboard/dataup/zxtbk08
 import { DashboardDataUpZxtbK09IndexComponent } from './dashboard/dataup/zxtbk09/index.component';
 import { DashboardDataUpZxtbK10IndexComponent } from './dashboard/dataup/zxtbk10/index.component';
 import { DashboardDataUpZxtbK11IndexComponent } from './dashboard/dataup/zxtbk11/index.component';
+import { DashboardDataUpZxtbK121IndexComponent } from './dashboard/dataup/zxtbk12-1/index.component';
+import { DashboardDataUpZxtbK122IndexComponent } from './dashboard/dataup/zxtbk12-2/index.component';
+import { DashboardDataUpZxtbK13IndexComponent } from './dashboard/dataup/zxtbk13/index.component';
 import { DashboardDataUpZxtbK141IndexComponent } from './dashboard/dataup/zxtbk14-1/index.component';
 import { DashboardDataUpZxtbK142IndexComponent } from './dashboard/dataup/zxtbk14-2/index.component';
 import { DashboardDataUpZxtbK15IndexComponent } from './dashboard/dataup/zxtbk15/index.component';
+import { DashboardDataUpZxtbK16IndexComponent } from './dashboard/dataup/zxtbk16/index.component';
+import { DashboardDataUpZxtbK17IndexComponent } from './dashboard/dataup/zxtbk17/index.component';
 import { DashboardDataUpZxtbK20IndexComponent } from './dashboard/dataup/zxtbk20/index.component';
 import { DashboardDataUpZxtbK21IndexComponent } from './dashboard/dataup/zxtbk21/index.component';
 import { DashboardDataUpZxtbK23IndexComponent } from './dashboard/dataup/zxtbk23/index.component';
@@ -79,9 +84,14 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpZxtbK09IndexComponent,
   DashboardDataUpZxtbK10IndexComponent,
   DashboardDataUpZxtbK11IndexComponent,
+  DashboardDataUpZxtbK121IndexComponent,
+  DashboardDataUpZxtbK122IndexComponent,
+  DashboardDataUpZxtbK13IndexComponent,
   DashboardDataUpZxtbK141IndexComponent,
   DashboardDataUpZxtbK142IndexComponent,
   DashboardDataUpZxtbK15IndexComponent,
+  DashboardDataUpZxtbK16IndexComponent,
+  DashboardDataUpZxtbK17IndexComponent,
   DashboardDataUpZxtbK20IndexComponent,
   DashboardDataUpZxtbK21IndexComponent,
   DashboardDataUpZxtbK23IndexComponent,

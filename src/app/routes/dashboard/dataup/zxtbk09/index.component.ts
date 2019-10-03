@@ -20,8 +20,10 @@ export class DashboardDataUpZxtbK09IndexComponent implements OnInit {
   listOfData: any[] = [];
   value: any = {};
   inData: any[] = [];
+  upUrl = '';
 
   ngOnInit(): void {
+    this.upUrl = '/api/excel/import?tableName=sjzxtb_k09_jsjbxx&appId=17&stepId=21&deptId=' + this.loadUser.user.bid;
     this.loadInfo();
   }
   // 获得数据表的数据
@@ -36,10 +38,8 @@ export class DashboardDataUpZxtbK09IndexComponent implements OnInit {
           data: { ...item },
         };
       });
-      console.log(this.listOfData);
       this.cdr.detectChanges();
     });
-    // this.updateEditCache();
   }
 
   startEdit(id: string): void {
@@ -85,15 +85,16 @@ export class DashboardDataUpZxtbK09IndexComponent implements OnInit {
           this.loadUser.user.bid,
       )
       .subscribe(res => {
-        this.msgSrv.success('保存成功');
+        this.msgSrv.success('新增数据成功');
+        this.loadInfo();
       });
-    this.cdr.detectChanges();
   }
 
   dataDelete(id: string): void {
     this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k09_jsjbxx&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
-      this.cdr.detectChanges();
+      // this.cdr.detectChanges();
+      this.loadInfo();
     });
   }
 
@@ -105,4 +106,12 @@ export class DashboardDataUpZxtbK09IndexComponent implements OnInit {
       };
     });
   }
+  // 数据导入后回调函数
+  fupChange(event): void {
+    if (event.type === 'success') {
+      this.msgSrv.success('本次导入数据：' + event.file.response.dataCount + ' 条！');
+      this.loadInfo();
+    }
+  }
+  // -----------------
 }

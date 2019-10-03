@@ -2,8 +2,8 @@
   <thead>
     <tr style="background: linen">
       <th nzWidth="120px" nzAlign="center">年度</th>
-      <th nzWidth="250px" nzAlign="center"><b>投稿数</b></th>
-      <th nzWidth="250px" nzAlign="center"><b>录用数</b></th>
+      <th nzWidth="250px" nzAlign="center"><b>经费投入（元）</b></th>
+      <th nzWidth="250px" nzAlign="center"><b>已建成数量</b></th>
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
@@ -14,23 +14,21 @@
       </td>
 
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else tgsInputTpl">
-          {{ data.tgs }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jftrInputTpl">
+          {{ data.jftr }}
         </ng-container>
-        <ng-template #tgsInputTpl>
-          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.tgs" /> -->
-          <nz-input-number [(ngModel)]="editCache[data.id].data.tgs" [nzMin]="0" [nzStep]="1">
+        <ng-template #jftrInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.jftr" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
 
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else lysInputTpl">
-          {{ data.lys }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jcslInputTpl">
+          {{ data.jcsl }}
         </ng-container>
-        <ng-template #lysInputTpl>
-          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.lys" /> -->
-          <nz-input-number [(ngModel)]="editCache[data.id].data.lys" [nzMin]="0" [nzStep]="1">
+        <ng-template #jcslInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.jcsl" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>

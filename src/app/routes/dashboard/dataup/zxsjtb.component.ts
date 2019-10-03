@@ -1,8 +1,8 @@
 import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
-import { DashboardDataUpZxtbK09IndexComponent } from './zxtbk09/index.component';
-import { DashboardDataUpZxtbK10IndexComponent } from './zxtbk10/index.component';
+// import { DashboardDataUpZxtbK09IndexComponent } from './zxtbk09/index.component';
+// import { DashboardDataUpZxtbK10IndexComponent } from './zxtbk10/index.component';
 
 @Component({
   selector: 'app-dashboard-dataup-zxsjtb',
@@ -36,11 +36,10 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
   listOfFields: any = [];
   listOfFieldsZH: any = [];
 
-  @ViewChild(DashboardDataUpZxtbK09IndexComponent, { static: false })
-  private k09Component: DashboardDataUpZxtbK09IndexComponent;
-
-  @ViewChild(DashboardDataUpZxtbK10IndexComponent, { static: false })
-  private k10Component: DashboardDataUpZxtbK10IndexComponent;
+  // @ViewChild(DashboardDataUpZxtbK09IndexComponent, { static: false })
+  // private k09Component: DashboardDataUpZxtbK09IndexComponent;
+  // @ViewChild(DashboardDataUpZxtbK10IndexComponent, { static: false })
+  // private k10Component: DashboardDataUpZxtbK10IndexComponent;
 
   ngOnInit(): void {
     // 数据导入地址
@@ -65,20 +64,20 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
 
   fupChange(event): void {
     // console.log(event);
-    this.msgSrv.success('数据导入成功');
-    switch (this.value.dtNo) {
-      case 'sjzxtb_k09_jsjbxx':
-        if (event.fileList && event.fileList.length > 0) {
-          this.k09Component.loadInfo();
-        }
-        break;
-      case 'sjzxtb_k10_glryxx':
-        if (event.fileList && event.fileList.length > 0) {
-          this.k10Component.loadInfo();
-        }
-        break;
-      default:
-        break;
-    }
+    // this.msgSrv.success('数据导入成功');
+    // switch (this.value.dtNo) {
+    //   case 'sjzxtb_k09_jsjbxx':
+    //     if (event.fileList && event.fileList.length > 0) {
+    //       this.k09Component.loadInfo();
+    //     }
+    //     break;
+    //   case 'sjzxtb_k10_glryxx':
+    //     if (event.fileList && event.fileList.length > 0) {
+    //       this.k10Component.loadInfo();
+    //     }
+    //     break;
+    //   default:
+    //     break;
+    // }
   }
 }

@@ -3,11 +3,11 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRe
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
 @Component({
-  selector: 'app-dashboard-dataup-zxtbk10-index',
+  selector: 'app-dashboard-dataup-zxtbk122-index',
   templateUrl: './index.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
+export class DashboardDataUpZxtbK122IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -18,17 +18,18 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
 
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
+  value: any = {};
   inData: any[] = [];
   upUrl = '';
 
   ngOnInit(): void {
-    this.upUrl = '/api/excel/import?tableName=sjzxtb_k10_glryxx&appId=17&stepId=21&deptId=' + this.loadUser.user.bid;
+    this.upUrl = '/api/excel/import?tableName=sjzxtb_k122_gsprc&appId=17&stepId=21&deptId=' + this.loadUser.user.bid;
     this.loadInfo();
   }
-
+  // 获得数据表的数据
   loadInfo(): void {
     this.listOfData = [];
-    this.http.get('/api/data/tables/search/sjzxtb_k10_glryxx').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/sjzxtb_k122_gsprc').subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -57,13 +58,12 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    // console.log(data);
     // 登录用户部门id
     this.http
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_k10_glryxx&appId=17&stepId=21&deptId=` +
+          `&tableno=sjzxtb_k122_gsprc&appId=17&stepId=21&deptId=` +
           this.loadUser.user.bid,
         data,
       )
@@ -78,7 +78,7 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
     const date = new Date();
     this.http
       .put(
-        `/api/data/tables/entry/init?tableno=sjzxtb_k10_glryxx&nd=` +
+        `/api/data/tables/entry/init?tableno=sjzxtb_k122_gsprc&nd=` +
           date.getFullYear() +
           '&appId=17&stepId=21&deptId=' +
           this.loadUser.user.bid,
@@ -90,8 +90,9 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
   }
 
   dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k10_glryxx&id=' + id).subscribe((res: any) => {
+    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k122_gsprc&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
+      // this.cdr.detectChanges();
       this.loadInfo();
     });
   }

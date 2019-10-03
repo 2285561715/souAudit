@@ -19,10 +19,16 @@ export class DashboardDataUpFxtbK01IndexComponent implements OnInit {
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
   value: any = {};
+  upUrl = '';
 
   ngOnInit(): void {
-    console.log(this.loadUser.user.bid);
+    // this.upUrl = '/api/excel/import?tableName=sjfxtb_xxjbqk_ldxx&appId=18&stepId=29&deptId=' + this.loadUser.user.bid;
+    this.loadInfo();
+  }
+
+  loadInfo(): void {
     // 获得数据表的数据
+    this.listOfData = [];
     this.http.get('/api/data/tables/search/sjfxtb_xxjbqk_ldxx').subscribe((res: any[]) => {
       res.forEach(item => {
         if (item.xxdm === this.loadUser.user.bid) {
@@ -36,7 +42,6 @@ export class DashboardDataUpFxtbK01IndexComponent implements OnInit {
       });
       this.cdr.detectChanges();
     });
-    // this.updateEditCache();
   }
 
   startEdit(id: string): void {
@@ -82,14 +87,14 @@ export class DashboardDataUpFxtbK01IndexComponent implements OnInit {
       )
       .subscribe(res => {
         this.msgSrv.success('新增成功');
+        this.loadInfo();
       });
-    this.listOfData = [];
   }
 
   dataDelete(id: string): void {
     this.http.delete('/api/data/tables/entry/del?tableno=sjfxtb_xxjbqk_ldxx&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
-      this.cdr.detectChanges();
+      this.loadInfo();
     });
   }
 
@@ -101,4 +106,12 @@ export class DashboardDataUpFxtbK01IndexComponent implements OnInit {
       };
     });
   }
+  // 数据导入后回调函数
+  fupChange(event): void {
+    if (event.type === 'success') {
+      this.msgSrv.success('本次导入数据：' + event.file.response.dataCount + ' 条！');
+      this.loadInfo();
+    }
+  }
+  // -----------------
 }

@@ -39,21 +39,16 @@ export class DashboardDataUpFxComponent implements OnInit {
         console.log(this.listOfTableList);
         this.cdr.detectChanges();
       });
-
-    // this.http.get('/api/data/tables?dtType=fxtb').subscribe((res: any[]) => {
-    //   this.listOfTableList = res;
-    //   this.cdr.detectChanges();
-    // });
   }
 
-  // 文件上传file
+  // 分校数据填报，弹出框
   dataUpFun(dt: any): void {
     const tdata = this.value;
     tdata.dtNo = dt.dtNo;
 
     const drawerRef = this.drawerService.create<DashboardDataUpFxSjtbComponent, { value: any }, string>({
       nzTitle: '【' + dt.dtName + '】数据填报',
-      nzWidth: document.body.clientWidth - 290,
+      nzWidth: document.body.clientWidth - 200,
       nzPlacement: 'right',
       // nzMaskClosable: false,
       nzContent: DashboardDataUpFxSjtbComponent,
@@ -82,7 +77,4 @@ export class DashboardDataUpFxComponent implements OnInit {
       nzOnOk: () => console.log('Info OK'),
     });
   }
-  // close(res: any) {
-  //   this.modal.close(res);
-  // }
 }

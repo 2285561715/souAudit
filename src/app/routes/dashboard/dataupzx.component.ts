@@ -45,10 +45,11 @@ export class DashboardDataUpZxComponent implements OnInit {
   dataUpFun(dt: any): void {
     const tdata = this.value;
     tdata.dtNo = dt.dtNo;
+    tdata.dtName = dt.dtName;
 
     const drawerRef = this.drawerService.create<DashboardDataUpZxSjtbComponent, { value: any }, string>({
       nzTitle: '【' + dt.dtName + '】数据填报',
-      nzWidth: document.body.clientWidth - 200,
+      nzWidth: document.body.clientWidth - 180,
       nzPlacement: 'right',
       // nzMaskClosable: false,
       nzContent: DashboardDataUpZxSjtbComponent,

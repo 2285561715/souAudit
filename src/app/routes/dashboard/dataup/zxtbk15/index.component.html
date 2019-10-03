@@ -1,19 +1,19 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
-    <tr>
+    <tr style="background: linen">
       <th nzWidth="100px" nzAlign="center">年度</th>
-      <th nzWidth="80px" nzAlign="center">传统教室（间）</th>
+      <th nzWidth="80px" nzAlign="center">传统教室(间)</th>
       <th nzWidth="80px" nzAlign="center">计算机教室</th>
-      <th nzWidth="80px" nzAlign="center">多媒体教室（间）</th>
-      <th nzWidth="80px" nzAlign="center">实验（训）室（含虚拟室）（间）</th>
-      <th nzWidth="80px" nzAlign="center">联网计算机数（台）</th>
-      <th nzWidth="80px" nzAlign="center">局域网带宽(M)</th>
-      <th nzWidth="80px" nzAlign="center">互联网接入带宽（M）</th>
-      <th nzWidth="80px" nzAlign="center">专用服务器数（台）</th>
-      <th nzWidth="80px" nzAlign="center">教（学）员学习室（间）</th>
-      <!-- <th nzWidth="80px" nzAlign="center">休息室（间）</th> -->
-      <th nzWidth="80px" nzAlign="center">资料室（间）</th>
-      <th nzWidth="80px" nzAlign="center">图书馆（个）</th>
+      <th nzWidth="80px" nzAlign="center">多媒体<br>教室(间)</th>
+      <th nzWidth="80px" nzAlign="center">实验(训)室<br>(含虚拟)(间)</th>
+      <th nzWidth="80px" nzAlign="center">联网计算机<br>数(台)</th>
+      <th nzWidth="80px" nzAlign="center">局域网<br>带宽(M)</th>
+      <th nzWidth="80px" nzAlign="center">互联网接入<br>带宽(M)</th>
+      <th nzWidth="80px" nzAlign="center">专用服务器<br>数(台)</th>
+      <th nzWidth="80px" nzAlign="center">教(学)员<br>学习室(间)</th>
+      <th nzWidth="80px" nzAlign="center">资料室(间)</th>
+      <th nzWidth="80px" nzAlign="center">图书馆(个)</th>
+      <th nzWidth="80px" nzAlign="center">经费投入(元)</th>
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
@@ -105,15 +105,6 @@
           </nz-input-number>
         </ng-template>
       </td>
-      <!-- <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxsInputTpl">
-          {{ data.xxs }}
-        </ng-container>
-        <ng-template #xxsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.xxs" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
-        </ng-template>
-      </td> -->
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else zlsInputTpl">
           {{ data.zls }}
@@ -129,6 +120,15 @@
         </ng-container>
         <ng-template #tsgInputTpl>
           <nz-input-number [(ngModel)]="editCache[data.id].data.tsg" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jftrInputTpl">
+          {{ data.jftr }}
+        </ng-container>
+        <ng-template #jftrInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.jftr" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>

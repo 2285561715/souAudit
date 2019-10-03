@@ -46,7 +46,7 @@ export class DashboardDataUpFxSjtbComponent implements OnInit {
     // 数据导入地址
     // 登录用户部门id
     this.upUrl =
-      '/api/excel/import?tableName=' + this.value.dtNo + '&appId=17&stepId=21&deptId=' + this.loadUser.user.bid;
+      '/api/excel/import?tableName=' + this.value.dtNo + '&appId=18&stepId=29&deptId=' + this.loadUser.user.bid;
     console.log(this.upUrl);
     // console.log(this.value);
     // 获得数据表的 填写规则、校验规则、样例数据等

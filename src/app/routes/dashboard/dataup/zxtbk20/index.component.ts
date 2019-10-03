@@ -19,8 +19,15 @@ export class DashboardDataUpZxtbK20IndexComponent implements OnInit {
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
   value: any = {};
+  upUrl = '';
 
   ngOnInit(): void {
+    this.upUrl = '/api/excel/import?tableName=sjzxtb_k20_kcjs&appId=17&stepId=21&deptId=' + this.loadUser.user.bid;
+    this.loadInfo();
+  }
+
+  loadInfo(): void {
+    this.listOfData = [];
     // 获得数据表的数据
     this.http.get('/api/data/tables/search/sjzxtb_k20_kcjs').subscribe((res: any[]) => {
       res.forEach(item => {
@@ -31,10 +38,9 @@ export class DashboardDataUpZxtbK20IndexComponent implements OnInit {
           data: { ...item },
         };
       });
-      console.log(this.listOfData);
+      // console.log(this.listOfData);
       this.cdr.detectChanges();
     });
-    // this.updateEditCache();
   }
 
   startEdit(id: string): void {
@@ -66,7 +72,6 @@ export class DashboardDataUpZxtbK20IndexComponent implements OnInit {
       .subscribe(res => {
         this.msgSrv.success('保存成功');
       });
-
     this.editCache[id].edit = false;
   }
 
@@ -77,19 +82,21 @@ export class DashboardDataUpZxtbK20IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry/init?tableno=sjzxtb_k20_kcjs&nd=` +
           date.getFullYear() +
-          '&appId=17&stepId=21&deptId=' +
+          '&appId=17&stepId=21&deptId=51252' +
           this.loadUser.user.bid,
       )
       .subscribe(res => {
         this.msgSrv.success('新增成功');
+        this.loadInfo();
       });
-    this.listOfData = [];
+    // this.listOfData = [];
   }
 
   dataDelete(id: string): void {
     this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k20_kcjs&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
       this.cdr.detectChanges();
+      this.loadInfo();
     });
   }
 
@@ -101,4 +108,13 @@ export class DashboardDataUpZxtbK20IndexComponent implements OnInit {
       };
     });
   }
+
+  // 数据导入后回调函数
+  fupChange(event): void {
+    if (event.type === 'success') {
+      this.msgSrv.success('本次导入数据：' + event.file.response.dataCount + ' 条！');
+      this.loadInfo();
+    }
+  }
+  // ------------
 }

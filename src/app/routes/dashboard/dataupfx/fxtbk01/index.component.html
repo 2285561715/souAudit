@@ -1,6 +1,22 @@
+<nz-card nzSize="small">
+  <div nz-row>
+    <div nz-col nzSpan="8">
+      <button nz-button nzType="primary" nzSize="small" (click)="addData()">
+        <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+    </div>
+    <div nz-col nzSpan="16" style="text-align: right">
+      <!-- <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
+        http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k09_jsjbxx.xlsx" file-name="表K09.总校教师基本信息.xlsx">
+        《表K09.总校教师基本信息》模板下载 <i nz-icon nzType="download" style="color:coral"></i></button>
+      <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
+        <button nz-button nzSize="small" nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
+      </nz-upload> -->
+    </div>
+  </div>
+</nz-card>
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
-    <tr>
+    <tr style="background-color: linen">
       <th nzWidth="100px" nzAlign="center">姓名</th>
       <th nzWidth="200px" nzAlign="center">职务</th>
       <th nzWidth="120px" nzAlign="center">年龄</th>
@@ -20,7 +36,6 @@
           <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xm" />
         </ng-template>
       </td>
-
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else zwInputTpl">
           {{ data.zw }}
@@ -70,7 +85,6 @@
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>
             <nz-divider nzType="vertical"></nz-divider>
-            <!-- <a (click)="dataDelete(data.id)">删除</a> -->
             <a nz-popconfirm nzTitle="确认删除该条数据?" (nzOnConfirm)="dataDelete(data.id)">删除</a>
           </ng-container>
           <ng-template #saveTpl>
@@ -81,12 +95,5 @@
         </div>
       </td>
     </tr>
-    <tr>
-      <td colspan=7>
-        <button nz-button nzType="primary" (click)="addData()"><i nz-icon nzType="plus-circle"></i>新增 1
-          行</button>
-      </td>
-    </tr>
-
   </tbody>
 </nz-table>

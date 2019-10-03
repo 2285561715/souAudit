@@ -22,7 +22,7 @@ export class DashboardDataUpZxtbK15IndexComponent implements OnInit {
 
   ngOnInit(): void {
     // 获得数据表的数据
-    this.http.get('/api/data/tables/search/sjzxtb_yjss_xx').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/sjzxtb_k15_yjss').subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -59,7 +59,7 @@ export class DashboardDataUpZxtbK15IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_yjss_xx&appId=17&stepId=21&deptId=` +
+          `&tableno=sjzxtb_k15_yjss&appId=17&stepId=21&deptId=` +
           this.loadUser.user.bid,
         data,
       )

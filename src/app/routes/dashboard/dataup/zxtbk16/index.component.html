@@ -6,8 +6,8 @@
     </div>
     <div nz-col nzSpan="16" style="text-align: right">
       <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
-        http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k20_kcjs.xlsx" file-name="表K20.教学资源—课程建设.xlsx">
-        《表K20.教学资源—课程建设》模板下载 <i nz-icon nzType="download" style="color:coral"></i></button>
+        http-url="http://localhost:4200/assets/zxsj_mb/sjzxtb_k16_jxkypt.xlsx" file-name="表K16.支撑平台—教学科研平台.xlsx">
+        《表K16.支撑平台—教学科研平台》模板下载 <i nz-icon nzType="download" style="color:coral"></i></button>
       <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
         <button nz-button nzSize="small" nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
       </nz-upload>
@@ -16,11 +16,11 @@
 </nz-card>
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
-    <tr style="background-color: linen">
-      <th nzWidth="120px" nzAlign="center">年度</th>
-      <th nzWidth="250px" nzAlign="center">课程名称</th>
-      <th nzWidth="250px" nzAlign="center">教师建设经费投入（单位：元）</th>
-      <th nzWidth="250px" nzAlign="center">技术开发经费投入（单位：元）</th>
+    <tr style="background: linen">
+      <th nzAlign="center" nzWidth="150px">年度</th>
+      <th nzAlign="center" nzWidth="350px">教学科研平台名称</th>
+      <th nzAlign="center" nzWidth="200px">级别</th>
+      <th nzAlign="center" nzWidth="150px">数量</th>
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
@@ -28,38 +28,37 @@
     <tr *ngFor="let data of editRowTable.data">
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ndInputTpl">
-          {{ data.nd }}
+          {{ data.nd }} 年
         </ng-container>
         <ng-template #ndInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>年
+          <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1" nzSize="4">
+          </nz-input-number> 年
         </ng-template>
       </td>
-
+      <!-- id,nd,xxdm,xxmc,ptmc,ptjb,ptnum -->
+      <!-- id,年度,学校代码,学校名称,教学科研平台名称,级别,数量 -->
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else kcmcInputTpl">
-          {{ data.kcmc }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ptmcInputTpl">
+          {{ data.ptmc }}
         </ng-container>
-        <ng-template #kcmcInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.kcmc" />
-        </ng-template>
-      </td>
-
-      <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jftrInputTpl">
-          {{ data.jftr }}
-        </ng-container>
-        <ng-template #jftrInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.jftr" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
+        <ng-template #ptmcInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.ptmc" />
         </ng-template>
       </td>
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jsjftrInputTpl">
-          {{ data.jsjftr }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ptjbInputTpl">
+          {{ data.ptjb }}
         </ng-container>
-        <ng-template #jsjftrInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.jsjftr" [nzMin]="0" [nzStep]="1">
+        <ng-template #ptjbInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.ptjb" />
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ptnumInputTpl">
+          {{ data.ptnum }}
+        </ng-container>
+        <ng-template #ptnumInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.ptnum" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>

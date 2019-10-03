@@ -1,6 +1,22 @@
+<nz-card nzSize="small">
+  <div nz-row>
+    <div nz-col nzSpan="8">
+      <button nz-button nzType="primary" nzSize="small" (click)="addData()">
+        <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+    </div>
+    <div nz-col nzSpan="16" style="text-align: right">
+      <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
+        http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k09_jsjbxx.xlsx" file-name="表K09.总校教师基本信息.xlsx">
+        《表K09.总校教师基本信息》模板下载 <i nz-icon nzType="download" style="color:coral"></i></button>
+      <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
+        <button nz-button nzSize="small" nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
+      </nz-upload>
+    </div>
+  </div>
+</nz-card>
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
-    <tr>
+    <tr style="background: linen">
       <th nzAlign="center">年度</th>
       <th nzAlign="center">姓名</th>
       <th nzAlign="center">工号</th>
@@ -8,7 +24,7 @@
       <th nzAlign="center">性别</th>
       <th nzAlign="center">毕业专业</th>
       <th nzAlign="center">任教学科</th>
-      <th nzAlign="center">任教课程总门次</th>
+      <th nzAlign="center">任教课程<br>总门次</th>
       <th nzAlign="center">专业技术职务</th>
       <th nzAlign="center">学历</th>
       <th nzAlign="center">学位</th>
@@ -20,7 +36,13 @@
   <tbody>
     <tr *ngFor="let data of editRowTable.data">
       <td nzAlign="center">
-        {{ data.nd }} 年
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ndInputTpl">
+          {{ data.nd }} 年
+        </ng-container>
+        <ng-template #ndInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1" nzSize="4">
+          </nz-input-number>
+        </ng-template>
       </td>
       <!-- id,nd,xm,zgh,birdate,xb,byzy,rjxk,rjkczmc,zyjszw,xl,xw,xz,szdw -->
       <!-- id,年度,姓名,工号,出生年月,性别,毕业专业,任教学科,任教课程总门次,专业技术职务,学历,学位,性质,所在单位 -->
@@ -45,7 +67,7 @@
           {{ data.birdate }}
         </ng-container>
         <ng-template #birdateInputTpl>
-          <input type="date" nz-input [(ngModel)]="editCache[data.id].data.birdate" />
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.birdate" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -56,7 +78,6 @@
           <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xb" />
         </ng-template>
       </td>
-
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else byzyInputTpl">
           {{ data.byzy }}
@@ -111,7 +132,7 @@
           {{ data.xz }}
         </ng-container>
         <ng-template #xzInputTpl>
-          <input type="date" nz-input [(ngModel)]="editCache[data.id].data.xz" />
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xz" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -128,7 +149,6 @@
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>
             <nz-divider nzType="vertical"></nz-divider>
-            <!-- <a (click)="dataDelete(data.id)">删除</a> -->
             <a nz-popconfirm nzTitle="确认删除该条数据?" (nzOnConfirm)="dataDelete(data.id)">删除</a>
           </ng-container>
           <ng-template #saveTpl>
@@ -137,12 +157,6 @@
             <a nz-popconfirm nzTitle="确认取消?" (nzOnConfirm)="cancelEdit(data.id)">取消</a>
           </ng-template>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td colspan=14>
-        <button nz-button nzType="primary" (click)="addData()"><i nz-icon nzType="plus-circle"></i>新增 1
-          条数据</button>
       </td>
     </tr>
   </tbody>
