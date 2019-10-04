@@ -1,17 +1,59 @@
+<nz-card nzSize="small">
+  <div nz-row>
+    <div nz-col nzSpan="8">
+      <button nz-button nzType="primary" nzSize="small" (click)="addData()">
+        <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+    </div>
+    <div nz-col nzSpan="16" style="text-align: right">
+      <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
+        http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k27_kfjygjyxl.xlsx" file-name="表K27.国际交流—开放教育国际影响力.xlsx">
+        《表K27.国际交流—开放教育国际影响力》模板下载 <i nz-icon nzType="download" style="color:coral"></i></button>
+      <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
+        <button nz-button nzSize="small" nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
+      </nz-upload>
+    </div>
+  </div>
+</nz-card>
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr>
       <th nzWidth="120px" nzAlign="center">年度</th>
-      <th nzWidth="250px" nzAlign="center">国际开放教育会议名称</th>
-      <th nzWidth="250px" nzAlign="center">国际机构合作交流院校名称</th>
+      <th nzWidth="100px" nzAlign="center">学校代码</th>
+      <th nzWidth="130px" nzAlign="center">学校名称</th>
+      <th nzWidth="250px" nzAlign="center"><b>国际开放教育会议名称</b></th>
+      <th nzWidth="250px" nzAlign="center"><b>国际机构合作交流院校名称</b></th>
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of editRowTable.data">
       <td nzAlign="center">
-        {{ data.nd }} 年
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ndInputTpl">
+          {{ data.nd }} 年
+        </ng-container>
+        <ng-template #ndInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1" nzSize="4">
+          </nz-input-number>
+        </ng-template>
       </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxdmInputTpl">
+          {{ data.xxdm }}
+        </ng-container>
+        <ng-template #xxdmInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xxdm" />
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxmcInputTpl">
+          {{ data.xxmc }}
+        </ng-container>
+        <ng-template #xxmcInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xxmc" />
+        </ng-template>
+      </td>
+      <!-- id,nd,xxdm,xxmc,hymc,hzjlxymc-->
+      <!-- id,年度,学校代码,学校名称,国际开放教育会议名称,国际机构合作交流院校名称-->
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else hymcInputTpl">
           {{ data.hymc }}
@@ -35,7 +77,6 @@
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>
             <nz-divider nzType="vertical"></nz-divider>
-            <!-- <a (click)="dataDelete(data.id)">删除</a> -->
             <a nz-popconfirm nzTitle="确认删除该条数据?" (nzOnConfirm)="dataDelete(data.id)">删除</a>
           </ng-container>
           <ng-template #saveTpl>
@@ -44,12 +85,6 @@
             <a nz-popconfirm nzTitle="确认取消?" (nzOnConfirm)="cancelEdit(data.id)">取消</a>
           </ng-template>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td colspan=4>
-        <button nz-button nzType="primary" (click)="addData()"><i nz-icon nzType="plus-circle"></i>新增 1
-          行</button>
       </td>
     </tr>
   </tbody>

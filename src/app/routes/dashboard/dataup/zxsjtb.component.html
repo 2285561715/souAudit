@@ -24,6 +24,9 @@
       <div *ngIf="value.dtNo==='sjzxtb_k10_glryxx'">
         <app-dashboard-dataup-zxtbk10-index></app-dashboard-dataup-zxtbk10-index>
       </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k10_fdyxx'">
+        <app-dashboard-dataup-zxtbk102-index></app-dashboard-dataup-zxtbk102-index>
+      </div>
       <div *ngIf="value.dtNo==='sjzxtb_k11_jsjbqk'">
         <app-dashboard-dataup-zxtbk11-index></app-dashboard-dataup-zxtbk11-index>
       </div>
@@ -45,11 +48,23 @@
       <div *ngIf="value.dtNo==='sjzxtb_k15_yjss'">
         <app-dashboard-dataup-zxtbk15-index></app-dashboard-dataup-zxtbk15-index>
       </div>
+      <div *ngIf="value.dtNo==='sjzxtb_K15_web'">
+        <app-dashboard-dataup-zxtbk152-index></app-dashboard-dataup-zxtbk152-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_K15_mob'">
+        <app-dashboard-dataup-zxtbk153-index></app-dashboard-dataup-zxtbk153-index>
+      </div>
       <div *ngIf="value.dtNo==='sjzxtb_k16_jxkypt'">
         <app-dashboard-dataup-zxtbk16-index></app-dashboard-dataup-zxtbk16-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k17_sysxjs'">
         <app-dashboard-dataup-zxtbk17-index></app-dashboard-dataup-zxtbk17-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k18_dzts'">
+        <app-dashboard-dataup-zxtbk18-index></app-dashboard-dataup-zxtbk18-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k19_zyhbj'">
+        <app-dashboard-dataup-zxtbk19-index></app-dashboard-dataup-zxtbk19-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k20_kcjs'">
         <app-dashboard-dataup-zxtbk20-index></app-dashboard-dataup-zxtbk20-index>
@@ -57,8 +72,20 @@
       <div *ngIf="value.dtNo==='sjzxtb_k21_rcpygm'">
         <app-dashboard-dataup-zxtbk21-index></app-dashboard-dataup-zxtbk21-index>
       </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k22_hjqkxs'">
+        <app-dashboard-dataup-zxtbk22-index></app-dashboard-dataup-zxtbk22-index>
+      </div>
       <div *ngIf="value.dtNo==='sjzxtb_k23_rcpy3l'">
-        <app-dashboard-dataup-zxtbk21-index></app-dashboard-dataup-zxtbk21-index>
+        <app-dashboard-dataup-zxtbk23-index></app-dashboard-dataup-zxtbk23-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k24_cdxm'">
+        <app-dashboard-dataup-zxtbk24-index></app-dashboard-dataup-zxtbk24-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k25_jxcgj'">
+        <app-dashboard-dataup-zxtbk25-index></app-dashboard-dataup-zxtbk25-index>
+      </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k26_sbjhykyj'">
+        <app-dashboard-dataup-zxtbk26-index></app-dashboard-dataup-zxtbk26-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k27_kfjygjyxl'">
         <app-dashboard-dataup-zxtbk27-index></app-dashboard-dataup-zxtbk27-index>
@@ -72,81 +99,40 @@
       <div *ngIf="value.dtNo==='sjzxtb_k31_shfuks'">
         <app-dashboard-dataup-zxtbk31-index></app-dashboard-dataup-zxtbk31-index>
       </div>
-
-    </nz-tab>
-
-    <nz-tab [nzTitle]="titleTemplate1">
-      <ng-template #titleTemplate1><i nz-icon nzType="import" style="color: coral"></i>数据导入</ng-template>
-      <div *ngIf="value.dtNo==='sjzxtb_k21_rcpygm'">
-        <button nz-button class="mr-sm" down-file http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k21_rcpygm.xlsx"
-          file-name="表K23.人才培养—毕业率、流失率与学位获得率.xlsx">
-          <i nz-icon nzType="download"></i> 《表K23.人才培养—毕业率、流失率与学位获得率》模板下载</button>
-        <nz-divider nzType="vertical"></nz-divider>
-        <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
-          <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
-        </nz-upload>
+      <div *ngIf="value.dtNo==='sjzxtb_k32_bxsyxxzmyd'">
+        <app-dashboard-dataup-zxtbk32-index></app-dashboard-dataup-zxtbk32-index>
       </div>
-
-      <div *ngIf="value.dtNo==='sjzxtb_k23_rcpy3l'">
-        <button nz-button class="mr-sm" down-file http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k23_rcpy3l.xlsx"
-          file-name="表K23.人才培养—毕业率、流失率与学位获得率.xlsx">
-          <i nz-icon nzType="download"></i> 《表K23.人才培养—毕业率、流失率与学位获得率》模板下载</button>
-        <nz-divider nzType="vertical"></nz-divider>
-        <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
-          <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
-        </nz-upload>
+      <div *ngIf="value.dtNo==='sjzxtb_k33_zxdrkd'">
+        <app-dashboard-dataup-zxtbk33-index></app-dashboard-dataup-zxtbk33-index>
       </div>
-      <div *ngIf="value.dtNo==='sjzxtb_k27_kfjygjyxl'">
-        <button nz-button class="mr-sm" down-file
-          http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k27_kfjygjyxl.xlsx"
-          file-name="表K27.国际交流—开放教育国际影响力.xlsx">
-          <i nz-icon nzType="download"></i> 《表K27.国际交流—开放教育国际影响力》模板下载</button>
-        <nz-divider nzType="vertical"></nz-divider>
-        <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
-          <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
-        </nz-upload>
-      </div>
-      <div *ngIf="value.dtNo==='sjzxtb_k28_ssgjjl'">
-        <button nz-button class="mr-sm" down-file http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k28_ssgjjl.xlsx"
-          file-name="表K28.国际交流—师生国际交流开展情况.xlsx">
-          <i nz-icon nzType="download"></i> 《表K28.国际交流—师生国际交流开展情况》模板下载</button>
-        <nz-divider nzType="vertical"></nz-divider>
-        <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
-          <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
-        </nz-upload>
-      </div>
-
-      <div *ngIf="value.dtNo==='sjzxtb_k30_xfyh'">
-        <button nz-button class="mr-sm" down-file http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k30_xfyh.xlsx"
-          file-name="表K30.社会服务—“学分银行”实施情况.xlsx">
-          <i nz-icon nzType="download"></i> 《表K30.社会服务—“学分银行”实施情况》模板下载</button>
-        <nz-divider nzType="vertical"></nz-divider>
-        <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
-          <button nz-button nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
-        </nz-upload>
-      </div>
-
-
     </nz-tab>
 
     <nz-tab [nzTitle]="titleTemplate2">
       <ng-template #titleTemplate2><i nz-icon nzType="profile" style="color: coral"></i>填报规则</ng-template>
       <p>{{descRules}}</p>
+      <!-- <ueditor #full [config]="config" style="width: 85%;height: 600px;">{{descRules}}
+      </ueditor> -->
     </nz-tab>
-
+    <nz-tab [nzTitle]="titleTemplate1">
+      <ng-template #titleTemplate1><i nz-icon nzType="import" style="color: coral"></i>统计报表</ng-template>
+      <p>请等待数据处理结果...</p>
+    </nz-tab>
     <!-- <nz-tab [nzTitle]="titleTemplate3">
       <ng-template #titleTemplate3><i nz-icon nzType="file-done" style="color: coral"></i>校验规则</ng-template>
       <p>{{checkRules}}</p>
     </nz-tab> -->
-
     <!-- <nz-tab [nzTitle]="titleTemplate4">
       <ng-template #titleTemplate4><i nz-icon nzType="table" style="color: coral"></i>样例数据</ng-template>
       <p>{{tableHtml}}</p>
     </nz-tab> -->
-
     <nz-tab [nzTitle]="titleTemplate5">
       <ng-template #titleTemplate5><i nz-icon nzType="select" style="color: coral"></i>数据导出</ng-template>
-      <p>loading... </p>
+      <p><b>请选择要导出的数据字段：</b></p>
+      <nz-select nzMode="tags" style="width: 100%;" nzPlaceHolder="请选择数据字段！">
+        <nz-option *ngFor="let option of listOfFields;let i=index" [nzLabel]="listOfFieldsZH[i]"
+          [nzValue]="listOfFields[i]">
+        </nz-option>
+      </nz-select>
     </nz-tab>
   </nz-tabset>
 </div>

@@ -6,7 +6,7 @@
     </div>
     <div nz-col nzSpan="16" style="text-align: right">
       <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
-        http-url="http://localhost:4200/assets/zxsj_mb/sjzxtb_k10_glryxx.xlsx" file-name="表K10.管理人员基本信息.xlsx">
+        http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k10_glryxx.xlsx" file-name="表K10.管理人员基本信息.xlsx">
         《表K10.管理人员基本信息》模板下载 <i nz-icon nzType="download" style="color:coral"></i></button>
       <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
         <button nz-button nzSize="small" nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
@@ -17,18 +17,18 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background-color: linen">
-      <th nzAlign="center">年度</th>
-      <th nzAlign="center">姓名</th>
-      <th nzAlign="center">工号</th>
-      <th nzAlign="center">出生年月</th>
-      <th nzAlign="center">性别</th>
-      <th nzAlign="center">职工类型</th>
-      <th nzAlign="center">所在部门</th>
-      <th nzAlign="center">专业技术职务</th>
-      <th nzAlign="center">学历</th>
-      <th nzAlign="center">学位</th>
-      <th nzAlign="center">工作职务</th>
-      <th nzAlign="center">入职年月</th>
+      <th nzWidth="90px" nzAlign="center">年度</th>
+      <th nzWidth="100px" nzAlign="center"><b>姓名</b></th>
+      <th nzWidth="100px" nzAlign="center"><b>工号</b></th>
+      <th nzWidth="130px" nzAlign="center"><b>出生年月</b></th>
+      <th nzWidth="80px" nzAlign="center"><b>性别</b></th>
+      <th nzWidth="120px" nzAlign="center"><b>职工类型</b></th>
+      <th nzWidth="120px" nzAlign="center"><b>所在部门</b></th>
+      <th nzWidth="130px" nzAlign="center"><b>专业技术职务</b></th>
+      <th nzWidth="105px" nzAlign="center"><b>学历</b></th>
+      <th nzWidth="105px" nzAlign="center"><b>学位</b></th>
+      <th nzAlign="center"><b>工作职务</b></th>
+      <!-- <th nzAlign="center">入职年月</th> -->
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
@@ -66,7 +66,7 @@
           {{ data.birdate }}
         </ng-container>
         <ng-template #birdateInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.birdate" />
+          <input type="date" nzSize="small" nz-input [(ngModel)]="editCache[data.id].data.birdate" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -74,7 +74,11 @@
           {{ data.xb }}
         </ng-container>
         <ng-template #xbInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xb" />
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xb" /> -->
+          <nz-select style="width: 60px;" [(ngModel)]="editCache[data.id].data.xb" nzAllowClear nzPlaceHolder="性别">
+            <nz-option nzValue="男" nzLabel="男"></nz-option>
+            <nz-option nzValue="女" nzLabel="女"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -98,7 +102,14 @@
           {{ data.zyjszw }}
         </ng-container>
         <ng-template #zyjszwInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zyjszw" />
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zyjszw" /> -->
+          <nz-select style="width: 110px;" [(ngModel)]="editCache[data.id].data.zyjszw" nzAllowClear nzPlaceHolder="学位">
+            <nz-option nzValue="正高级" nzLabel="正高级"></nz-option>
+            <nz-option nzValue="副高级" nzLabel="副高级"></nz-option>
+            <nz-option nzValue="中级" nzLabel="中级"></nz-option>
+            <nz-option nzValue="初级" nzLabel="初级"></nz-option>
+            <nz-option nzValue="无" nzLabel="无"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -106,7 +117,16 @@
           {{ data.xl }}
         </ng-container>
         <ng-template #xlInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xl" />
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xl" /> -->
+          <nz-select style="width: 90px;" [(ngModel)]="editCache[data.id].data.xl" nzAllowClear nzPlaceHolder="学历">
+            <nz-option nzValue="博士研究生" nzLabel="博士研究生"></nz-option>
+            <nz-option nzValue="硕士研究生" nzLabel="硕士研究生"></nz-option>
+            <nz-option nzValue="本科" nzLabel="本科"></nz-option>
+            <nz-option nzValue="专科" nzLabel="专科"></nz-option>
+            <nz-option nzValue="中专" nzLabel="中专"></nz-option>
+            <nz-option nzValue="其它" nzLabel="其它"></nz-option>
+          </nz-select>
+
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -114,7 +134,15 @@
           {{ data.xw }}
         </ng-container>
         <ng-template #xwInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xw" />
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xw" /> -->
+          <nz-select style="width: 90px;" [(ngModel)]="editCache[data.id].data.xw" nzAllowClear nzPlaceHolder="学位">
+            <nz-option nzValue="博士" nzLabel="博士"></nz-option>
+            <nz-option nzValue="硕士" nzLabel="硕士"></nz-option>
+            <nz-option nzValue="学士" nzLabel="学士"></nz-option>
+            <nz-option nzValue="专科" nzLabel="专科"></nz-option>
+            <nz-option nzValue="其它" nzLabel="其它"></nz-option>
+            <nz-option nzValue="无任何学位" nzLabel="无任何学位"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -125,14 +153,14 @@
           <input type="text" nz-input [(ngModel)]="editCache[data.id].data.gzzw" />
         </ng-template>
       </td>
-      <td nzAlign="center">
+      <!-- <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else rznyInputTpl">
           {{ data.rzny }}
         </ng-container>
         <ng-template #rznyInputTpl>
           <input type="text" nz-input [(ngModel)]="editCache[data.id].data.rzny" />
         </ng-template>
-      </td>
+      </td> -->
 
       <td nzAlign="center">
         <div class="editable-row-operations">

@@ -19,8 +19,14 @@ export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
   value: any = {};
+  upUrl = '';
 
   ngOnInit(): void {
+    this.upUrl = '/api/excel/import?tableName=sjzxtb_k30_xfyh&appId=17&stepId=21&deptId=' + this.loadUser.user.bid;
+    this.loadInfo();
+  }
+  loadInfo(): void {
+    this.listOfData = [];
     // 获得数据表的数据
     this.http.get('/api/data/tables/search/sjzxtb_k30_xfyh').subscribe((res: any[]) => {
       res.forEach(item => {
@@ -31,10 +37,8 @@ export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
           data: { ...item },
         };
       });
-      console.log(this.listOfData);
       this.cdr.detectChanges();
     });
-    // this.updateEditCache();
   }
 
   startEdit(id: string): void {
@@ -66,7 +70,6 @@ export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
       .subscribe(res => {
         this.msgSrv.success('保存成功');
       });
-
     this.editCache[id].edit = false;
   }
 
@@ -81,15 +84,15 @@ export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
           this.loadUser.user.bid,
       )
       .subscribe(res => {
-        this.msgSrv.success('新增成功');
+        this.msgSrv.success('新增数据成功');
+        this.loadInfo();
       });
-    this.listOfData = [];
   }
 
   dataDelete(id: string): void {
     this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k30_xfyh&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
-      this.cdr.detectChanges();
+      this.loadInfo();
     });
   }
 
@@ -101,4 +104,12 @@ export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
       };
     });
   }
+  // 数据导入后回调函数
+  fupChange(event): void {
+    if (event.type === 'success') {
+      this.msgSrv.success('本次导入数据：' + event.file.response.dataCount + ' 条！');
+      this.loadInfo();
+    }
+  }
+  // -----------------
 }

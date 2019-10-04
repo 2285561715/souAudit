@@ -2,18 +2,18 @@
   <thead>
     <tr style="background: linen">
       <th nzWidth="100px" nzAlign="center">年度</th>
-      <th nzWidth="80px" nzAlign="center">传统教室(间)</th>
-      <th nzWidth="80px" nzAlign="center">计算机教室</th>
-      <th nzWidth="80px" nzAlign="center">多媒体<br>教室(间)</th>
-      <th nzWidth="80px" nzAlign="center">实验(训)室<br>(含虚拟)(间)</th>
-      <th nzWidth="80px" nzAlign="center">联网计算机<br>数(台)</th>
-      <th nzWidth="80px" nzAlign="center">局域网<br>带宽(M)</th>
-      <th nzWidth="80px" nzAlign="center">互联网接入<br>带宽(M)</th>
-      <th nzWidth="80px" nzAlign="center">专用服务器<br>数(台)</th>
-      <th nzWidth="80px" nzAlign="center">教(学)员<br>学习室(间)</th>
-      <th nzWidth="80px" nzAlign="center">资料室(间)</th>
-      <th nzWidth="80px" nzAlign="center">图书馆(个)</th>
-      <th nzWidth="80px" nzAlign="center">经费投入(元)</th>
+      <th nzWidth="95px" nzAlign="center">传统教室(间)</th>
+      <th nzWidth="95px" nzAlign="center">计算机教室</th>
+      <th nzWidth="95px" nzAlign="center">多媒体<br>教室(间)</th>
+      <th nzWidth="95px" nzAlign="center">实验(训)室<br>(含虚拟)(间)</th>
+      <th nzWidth="95px" nzAlign="center">联网计算机<br>数(台)</th>
+      <th nzWidth="95px" nzAlign="center">局域网<br>带宽(M)</th>
+      <th nzWidth="95px" nzAlign="center">互联网接入<br>带宽(M)</th>
+      <th nzWidth="95px" nzAlign="center">专用服务器<br>数(台)</th>
+      <th nzWidth="95px" nzAlign="center">教(学)员<br>学习室(间)</th>
+      <th nzWidth="95px" nzAlign="center">资料室(间)</th>
+      <th nzWidth="95px" nzAlign="center">图书馆(个)</th>
+      <th nzWidth="95px" nzAlign="center">经费投入(元)</th>
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
@@ -29,7 +29,7 @@
           {{ data.ctjs }}
         </ng-container>
         <ng-template #ctjsInputTpl>
-          <nz-input-number width="10px" [(ngModel)]="editCache[data.id].data.ctjs" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.ctjs" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -38,7 +38,7 @@
           {{ data.jsjjs }}
         </ng-container>
         <ng-template #jsjjsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.jsjjs" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.jsjjs" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -47,7 +47,7 @@
           {{ data.dmtjs }}
         </ng-container>
         <ng-template #dmtjsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.dmtjs" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.dmtjs" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -56,7 +56,7 @@
           {{ data.sysxs }}
         </ng-container>
         <ng-template #sysxsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.sysxs" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.sysxs" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -65,7 +65,7 @@
           {{ data.lwjsjs }}
         </ng-container>
         <ng-template #lwjsjsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.lwjsjs" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.lwjsjs" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -74,7 +74,7 @@
           {{ data.jywdk }}
         </ng-container>
         <ng-template #jywdkInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.jywdk" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.jywdk" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -83,7 +83,8 @@
           {{ data.hlwjrdk }}
         </ng-container>
         <ng-template #hlwjrdkInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.hlwjrdk" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.hlwjrdk" [nzMin]="0"
+            [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -92,7 +93,7 @@
           {{ data.zyfwqs }}
         </ng-container>
         <ng-template #zyfwqsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.zyfwqs" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.zyfwqs" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -101,7 +102,7 @@
           {{ data.jyxxs }}
         </ng-container>
         <ng-template #jyxxsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.jyxxs" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.jyxxs" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -110,7 +111,7 @@
           {{ data.zls }}
         </ng-container>
         <ng-template #zlsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.zls" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.zls" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -119,7 +120,7 @@
           {{ data.tsg }}
         </ng-container>
         <ng-template #tsgInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.tsg" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.tsg" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
