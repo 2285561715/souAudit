@@ -3,11 +3,11 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRe
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
 @Component({
-  selector: 'app-dashboard-dataup-fxtbk21-index',
+  selector: 'app-dashboard-dataup-fxtbb21-index',
   templateUrl: './index.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpFxtbK21IndexComponent implements OnInit {
+export class DashboardDataUpFxtbB21IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,

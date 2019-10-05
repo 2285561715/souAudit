@@ -29,7 +29,7 @@ export class DashboardDataUpZxtbK26IndexComponent implements OnInit {
   // 获得数据表的数据
   loadInfo(): void {
     this.listOfData = [];
-    this.http.get('/api/data/tables/search/sjzxtb_k26_sbjhykyj').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/zxtb/sjzxtb_k26_sbjhykyj').subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];

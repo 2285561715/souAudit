@@ -3,11 +3,11 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRe
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
 @Component({
-  selector: 'app-dashboard-dataup-fxtbk10-index',
+  selector: 'app-dashboard-dataup-fxtbb02-index',
   templateUrl: './index.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpFxtbK10IndexComponent implements OnInit {
+export class DashboardDataUpFxtbB02IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -19,15 +19,11 @@ export class DashboardDataUpFxtbK10IndexComponent implements OnInit {
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
   value: any = {};
-  inData: any[] = [];
 
   ngOnInit(): void {
-    this.loadInfo();
-  }
-
-  loadInfo(): void {
-    this.listOfData = [];
-    this.http.get('/api/data/tables/search/sjzxtb_k10_glryxx').subscribe((res: any[]) => {
+    // 获得数据表的数据
+    this.http.get('/api/data/tables/search/fxtb/sjfxtb_b02_jsjbqk').subscribe((res: any[]) => {
+      console.log(res);
       res.forEach(item => {
         if (item.xxdm === this.loadUser.user.bid) {
           item.id = item.id + '';
@@ -38,6 +34,7 @@ export class DashboardDataUpFxtbK10IndexComponent implements OnInit {
           };
         }
       });
+      console.log(this.listOfData);
       this.cdr.detectChanges();
     });
     // this.updateEditCache();
@@ -65,7 +62,7 @@ export class DashboardDataUpFxtbK10IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjfxtb_glryxx&appId=18&stepId=29&deptId=` +
+          `&tableno=sjfxtb_b02_jsjbqk&appId=18&stepId=29&deptId=` +
           this.loadUser.user.bid,
         data,
       )
@@ -73,29 +70,6 @@ export class DashboardDataUpFxtbK10IndexComponent implements OnInit {
         this.msgSrv.success('保存成功');
       });
     this.editCache[id].edit = false;
-  }
-
-  // 新增1条数据
-  addData(): void {
-    const date = new Date();
-    this.http
-      .put(
-        `/api/data/tables/entry/init?tableno=sjfxtb_glryxx&nd=` +
-          date.getFullYear() +
-          '&appId=18&stepId=29&deptId=' +
-          this.loadUser.user.bid,
-      )
-      .subscribe(res => {
-        this.msgSrv.success('新增成功');
-      });
-    this.listOfData = [];
-  }
-
-  dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjfxtb_glryxx&id=' + id).subscribe((res: any) => {
-      this.msgSrv.success('删除数据成功');
-    });
-    this.listOfData = [];
   }
 
   updateEditCache(): void {

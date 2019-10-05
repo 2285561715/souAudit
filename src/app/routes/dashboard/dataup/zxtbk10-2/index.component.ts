@@ -28,7 +28,7 @@ export class DashboardDataUpZxtbK102IndexComponent implements OnInit {
 
   loadInfo(): void {
     this.listOfData = [];
-    this.http.get('/api/data/tables/search/sjzxtb_k10_fdyxx').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/zxtb/sjzxtb_k10_fdyxx').subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];

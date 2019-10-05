@@ -1,16 +1,15 @@
-import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
+import { NzMessageService } from 'ng-zorro-antd';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { _HttpClient, SettingsService } from '@delon/theme';
 
 @Component({
-  selector: 'app-dashboard-dataup-fxtbk04-index',
+  selector: 'app-dashboard-dataup-fxtbb012-index',
   templateUrl: './index.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpFxtbK04IndexComponent implements OnInit {
+export class DashboardDataUpFxtbB012IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
-    private modal: ModalHelper,
     private msgSrv: NzMessageService,
     private cdr: ChangeDetectorRef,
     public loadUser: SettingsService,
@@ -22,7 +21,7 @@ export class DashboardDataUpFxtbK04IndexComponent implements OnInit {
 
   ngOnInit(): void {
     // 获得数据表的数据
-    this.http.get('/api/data/tables/search/sjfxtb_xxjbqk_jftr').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/fxtb/sjfxtb_b01_jftr').subscribe((res: any[]) => {
       res.forEach(item => {
         if (item.xxdm === this.loadUser.user.bid) {
           item.id = item.id + '';
@@ -60,7 +59,7 @@ export class DashboardDataUpFxtbK04IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjfxtb_xxjbqk_jftr&appId=18&stepId=29&deptId=` +
+          `&tableno=sjfxtb_b01_jftr&appId=18&stepId=29&deptId=` +
           this.loadUser.user.bid,
         data,
       )

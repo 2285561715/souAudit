@@ -44,7 +44,15 @@
           {{ data.xl }}
         </ng-container>
         <ng-template #xlInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xl" />
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xl" /> -->
+          <nz-select style="width: 90px;" [(ngModel)]="editCache[data.id].data.xl" nzAllowClear nzPlaceHolder="学历">
+            <nz-option nzValue="博士研究生" nzLabel="博士研究生"></nz-option>
+            <nz-option nzValue="硕士研究生" nzLabel="硕士研究生"></nz-option>
+            <nz-option nzValue="本科" nzLabel="本科"></nz-option>
+            <nz-option nzValue="专科" nzLabel="专科"></nz-option>
+            <nz-option nzValue="中专" nzLabel="中专"></nz-option>
+            <nz-option nzValue="其它" nzLabel="其它"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
 
@@ -53,7 +61,14 @@
           {{ data.zc }}
         </ng-container>
         <ng-template #zcInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zc" />
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zc" /> -->
+          <nz-select style="width: 110px;" [(ngModel)]="editCache[data.id].data.zc" nzAllowClear nzPlaceHolder="职称">
+            <nz-option nzValue="正高级" nzLabel="正高级"></nz-option>
+            <nz-option nzValue="副高级" nzLabel="副高级"></nz-option>
+            <nz-option nzValue="中级" nzLabel="中级"></nz-option>
+            <nz-option nzValue="初级" nzLabel="初级"></nz-option>
+            <nz-option nzValue="无" nzLabel="无"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
 

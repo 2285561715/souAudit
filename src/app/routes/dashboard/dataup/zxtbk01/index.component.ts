@@ -23,7 +23,7 @@ export class DashboardDataUpZxtbK01IndexComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.loadUser.user.bid);
     // 获得数据表的数据
-    this.http.get('/api/data/tables/search/sjzxtb_k01_ldxx').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/zxtb/sjzxtb_k01_ldxx').subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -34,7 +34,6 @@ export class DashboardDataUpZxtbK01IndexComponent implements OnInit {
       });
       this.cdr.detectChanges();
     });
-    // this.updateEditCache();
   }
 
   startEdit(id: string): void {

@@ -1,44 +1,44 @@
-import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
+import { NzMessageService } from 'ng-zorro-antd';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { _HttpClient, SettingsService } from '@delon/theme';
 
 @Component({
-  selector: 'app-dashboard-dataup-zxtbk18-index',
+  selector: 'app-dashboard-dataup-fxtbb01-index',
   templateUrl: './index.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpZxtbK18IndexComponent implements OnInit {
+export class DashboardDataUpFxtbB01IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
-    private modal: ModalHelper,
     private msgSrv: NzMessageService,
     private cdr: ChangeDetectorRef,
     public loadUser: SettingsService,
   ) {}
-
+  // 登录用户部门id
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
   value: any = {};
   upUrl = '';
 
   ngOnInit(): void {
-    this.upUrl = '/api/excel/import?tableName=sjzxtb_k18_dzts&appId=17&stepId=21&deptId=' + this.loadUser.user.bid;
+    // this.upUrl = '/api/excel/import?tableName=sjfxtb_xxjbqk_ldxx&appId=18&stepId=29&deptId=' + this.loadUser.user.bid;
     this.loadInfo();
   }
 
   loadInfo(): void {
-    this.listOfData = [];
     // 获得数据表的数据
-    this.http.get('/api/data/tables/search/zxtb/sjzxtb_k18_dzts').subscribe((res: any[]) => {
+    this.listOfData = [];
+    this.http.get('/api/data/tables/search/fxtb/sjfxtb_b01_ldxx').subscribe((res: any[]) => {
       res.forEach(item => {
-        item.id = item.id + '';
-        this.listOfData = [...this.listOfData, item];
-        this.editCache[item.id] = {
-          edit: false,
-          data: { ...item },
-        };
+        if (item.xxdm === this.loadUser.user.bid) {
+          item.id = item.id + '';
+          this.listOfData = [...this.listOfData, item];
+          this.editCache[item.id] = {
+            edit: false,
+            data: { ...item },
+          };
+        }
       });
-      // console.log(this.listOfData);
       this.cdr.detectChanges();
     });
   }
@@ -54,18 +54,16 @@ export class DashboardDataUpZxtbK18IndexComponent implements OnInit {
       edit: false,
     };
   }
-  // 保存数据
+
   saveEdit(id: string): void {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    console.log(data);
-    // 登录用户部门id
     this.http
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_k18_dzts&appId=17&stepId=21&deptId=` +
+          `&tableno=sjfxtb_b01_ldxx&appId=18&stepId=29&deptId=` +
           this.loadUser.user.bid,
         data,
       )
@@ -80,22 +78,20 @@ export class DashboardDataUpZxtbK18IndexComponent implements OnInit {
     const date = new Date();
     this.http
       .put(
-        `/api/data/tables/entry/init?tableno=sjzxtb_k18_dzts&nd=` +
+        `/api/data/tables/entry/init?tableno=sjfxtb_b01_ldxx&nd=` +
           date.getFullYear() +
-          '&appId=17&stepId=21&deptId=51252' +
+          '&appId=18&stepId=29&deptId=' +
           this.loadUser.user.bid,
       )
       .subscribe(res => {
-        this.msgSrv.success('新增成功');
+        this.msgSrv.success('新增数据成功');
         this.loadInfo();
       });
-    // this.listOfData = [];
   }
 
   dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k18_dzts&id=' + id).subscribe((res: any) => {
+    this.http.delete('/api/data/tables/entry/del?tableno=sjfxtb_b01_ldxx&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
-      this.cdr.detectChanges();
       this.loadInfo();
     });
   }
@@ -108,7 +104,6 @@ export class DashboardDataUpZxtbK18IndexComponent implements OnInit {
       };
     });
   }
-
   // 数据导入后回调函数
   fupChange(event): void {
     if (event.type === 'success') {
@@ -116,5 +111,5 @@ export class DashboardDataUpZxtbK18IndexComponent implements OnInit {
       this.loadInfo();
     }
   }
-  // ------------
+  // -----------------
 }

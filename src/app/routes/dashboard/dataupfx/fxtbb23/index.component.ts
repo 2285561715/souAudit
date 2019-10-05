@@ -3,11 +3,11 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRe
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
 @Component({
-  selector: 'app-dashboard-dataup-fxtbk01-index',
+  selector: 'app-dashboard-dataup-fxtbb23-index',
   templateUrl: './index.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpFxtbK01IndexComponent implements OnInit {
+export class DashboardDataUpFxtbB23IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -15,21 +15,14 @@ export class DashboardDataUpFxtbK01IndexComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     public loadUser: SettingsService,
   ) {}
-  // 登录用户部门id
+
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
   value: any = {};
-  upUrl = '';
 
   ngOnInit(): void {
-    // this.upUrl = '/api/excel/import?tableName=sjfxtb_xxjbqk_ldxx&appId=18&stepId=29&deptId=' + this.loadUser.user.bid;
-    this.loadInfo();
-  }
-
-  loadInfo(): void {
     // 获得数据表的数据
-    this.listOfData = [];
-    this.http.get('/api/data/tables/search/sjfxtb_xxjbqk_ldxx').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/sjzxtb_k23_rcpy3l').subscribe((res: any[]) => {
       res.forEach(item => {
         if (item.xxdm === this.loadUser.user.bid) {
           item.id = item.id + '';
@@ -42,6 +35,7 @@ export class DashboardDataUpFxtbK01IndexComponent implements OnInit {
       });
       this.cdr.detectChanges();
     });
+    // this.updateEditCache();
   }
 
   startEdit(id: string): void {
@@ -55,23 +49,25 @@ export class DashboardDataUpFxtbK01IndexComponent implements OnInit {
       edit: false,
     };
   }
-
+  // 保存数据
   saveEdit(id: string): void {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    // console.log(data);
+    console.log(data);
+    // 登录用户部门id
     this.http
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjfxtb_xxjbqk_ldxx&appId=18&stepId=29&deptId=` +
+          `&tableno=sjzxtb_k23_rcpy3l&appId=18&stepId=29&deptId=` +
           this.loadUser.user.bid,
         data,
       )
       .subscribe(res => {
         this.msgSrv.success('保存成功');
       });
+
     this.editCache[id].edit = false;
   }
 
@@ -80,24 +76,22 @@ export class DashboardDataUpFxtbK01IndexComponent implements OnInit {
     const date = new Date();
     this.http
       .put(
-        `/api/data/tables/entry/init?tableno=sjfxtb_xxjbqk_ldxx&nd=` +
+        `/api/data/tables/entry/init?tableno=sjzxtb_k23_rcpy3l&nd=` +
           date.getFullYear() +
           '&appId=18&stepId=29&deptId=' +
           this.loadUser.user.bid,
       )
       .subscribe(res => {
         this.msgSrv.success('新增成功');
-        this.loadInfo();
       });
+    this.listOfData = [];
   }
-
   dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjfxtb_xxjbqk_ldxx&id=' + id).subscribe((res: any) => {
+    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k23_rcpy3l&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
-      this.loadInfo();
+      this.cdr.detectChanges();
     });
   }
-
   updateEditCache(): void {
     this.listOfData.forEach(item => {
       this.editCache[item.id] = {
@@ -106,12 +100,4 @@ export class DashboardDataUpFxtbK01IndexComponent implements OnInit {
       };
     });
   }
-  // 数据导入后回调函数
-  fupChange(event): void {
-    if (event.type === 'success') {
-      this.msgSrv.success('本次导入数据：' + event.file.response.dataCount + ' 条！');
-      this.loadInfo();
-    }
-  }
-  // -----------------
 }

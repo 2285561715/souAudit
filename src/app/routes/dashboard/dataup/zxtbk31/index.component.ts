@@ -22,7 +22,7 @@ export class DashboardDataUpZxtbK31IndexComponent implements OnInit {
 
   ngOnInit(): void {
     // 获得数据表的数据
-    this.http.get('/api/data/tables/search/sjzxtb_k31_shfuks').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/zxtb/sjzxtb_k31_shfuks').subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];

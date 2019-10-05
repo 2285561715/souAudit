@@ -5,12 +5,6 @@
         <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
     </div>
     <div nz-col nzSpan="16" style="text-align: right">
-      <!-- <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
-        http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k09_jsjbxx.xlsx" file-name="表K09.总校教师基本信息.xlsx">
-        《表K09.总校教师基本信息》模板下载 <i nz-icon nzType="download" style="color:coral"></i></button>
-      <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
-        <button nz-button nzSize="small" nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
-      </nz-upload> -->
     </div>
   </div>
 </nz-card>
@@ -19,9 +13,9 @@
     <tr style="background-color: linen">
       <th nzWidth="100px" nzAlign="center">姓名</th>
       <th nzWidth="200px" nzAlign="center">职务</th>
-      <th nzWidth="120px" nzAlign="center">年龄</th>
-      <th nzWidth="100px" nzAlign="center">学历</th>
-      <th nzWidth="120px" nzAlign="center">职称</th>
+      <th nzWidth="180px" nzAlign="center">年龄</th>
+      <th nzWidth="160px" nzAlign="center">学历</th>
+      <th nzWidth="160px" nzAlign="center">职称</th>
       <th nzAlign="center">分管工作</th>
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
@@ -44,7 +38,6 @@
           <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zw" />
         </ng-template>
       </td>
-
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else birdateInputTpl">
           {{ data.birdate }}
@@ -53,25 +46,35 @@
           <input type="date" nz-input [(ngModel)]="editCache[data.id].data.birdate" />
         </ng-template>
       </td>
-
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xlInputTpl">
           {{ data.xl }}
         </ng-container>
         <ng-template #xlInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xl" />
+          <nz-select style="width: 110px;" [(ngModel)]="editCache[data.id].data.xl" nzAllowClear nzPlaceHolder="学历">
+            <nz-option nzValue="博士研究生" nzLabel="博士研究生"></nz-option>
+            <nz-option nzValue="硕士研究生" nzLabel="硕士研究生"></nz-option>
+            <nz-option nzValue="本科" nzLabel="本科"></nz-option>
+            <nz-option nzValue="专科" nzLabel="专科"></nz-option>
+            <nz-option nzValue="中专" nzLabel="中专"></nz-option>
+            <nz-option nzValue="其它" nzLabel="其它"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
-
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else zcInputTpl">
           {{ data.zc }}
         </ng-container>
         <ng-template #zcInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zc" />
+          <nz-select style="width: 110px;" [(ngModel)]="editCache[data.id].data.zc" nzAllowClear nzPlaceHolder="职称">
+            <nz-option nzValue="正高级" nzLabel="正高级"></nz-option>
+            <nz-option nzValue="副高级" nzLabel="副高级"></nz-option>
+            <nz-option nzValue="中级" nzLabel="中级"></nz-option>
+            <nz-option nzValue="初级" nzLabel="初级"></nz-option>
+            <nz-option nzValue="无" nzLabel="无"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
-
       <td>
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else gzInputTpl">
           {{ data.gz }}

@@ -3,11 +3,11 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRe
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
 @Component({
-  selector: 'app-dashboard-dataup-fxtbk23-index',
+  selector: 'app-dashboard-dataup-fxtbb10-index',
   templateUrl: './index.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpFxtbK23IndexComponent implements OnInit {
+export class DashboardDataUpFxtbB10IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -19,10 +19,15 @@ export class DashboardDataUpFxtbK23IndexComponent implements OnInit {
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
   value: any = {};
+  inData: any[] = [];
 
   ngOnInit(): void {
-    // 获得数据表的数据
-    this.http.get('/api/data/tables/search/sjzxtb_k23_rcpy3l').subscribe((res: any[]) => {
+    this.loadInfo();
+  }
+
+  loadInfo(): void {
+    this.listOfData = [];
+    this.http.get('/api/data/tables/search/sjzxtb_k10_glryxx').subscribe((res: any[]) => {
       res.forEach(item => {
         if (item.xxdm === this.loadUser.user.bid) {
           item.id = item.id + '';
@@ -54,20 +59,19 @@ export class DashboardDataUpFxtbK23IndexComponent implements OnInit {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    console.log(data);
+    // console.log(data);
     // 登录用户部门id
     this.http
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_k23_rcpy3l&appId=18&stepId=29&deptId=` +
+          `&tableno=sjfxtb_glryxx&appId=18&stepId=29&deptId=` +
           this.loadUser.user.bid,
         data,
       )
       .subscribe(res => {
         this.msgSrv.success('保存成功');
       });
-
     this.editCache[id].edit = false;
   }
 
@@ -76,7 +80,7 @@ export class DashboardDataUpFxtbK23IndexComponent implements OnInit {
     const date = new Date();
     this.http
       .put(
-        `/api/data/tables/entry/init?tableno=sjzxtb_k23_rcpy3l&nd=` +
+        `/api/data/tables/entry/init?tableno=sjfxtb_glryxx&nd=` +
           date.getFullYear() +
           '&appId=18&stepId=29&deptId=' +
           this.loadUser.user.bid,
@@ -86,12 +90,14 @@ export class DashboardDataUpFxtbK23IndexComponent implements OnInit {
       });
     this.listOfData = [];
   }
+
   dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k23_rcpy3l&id=' + id).subscribe((res: any) => {
+    this.http.delete('/api/data/tables/entry/del?tableno=sjfxtb_glryxx&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
-      this.cdr.detectChanges();
     });
+    this.listOfData = [];
   }
+
   updateEditCache(): void {
     this.listOfData.forEach(item => {
       this.editCache[item.id] = {

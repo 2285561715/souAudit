@@ -47,12 +47,13 @@ import { DashboardDataUpZxtbK32IndexComponent } from './dashboard/dataup/zxtbk32
 import { DashboardDataUpZxtbK33IndexComponent } from './dashboard/dataup/zxtbk33/index.component';
 // 分校数据填报
 import { DashboardDataUpFxSjtbComponent } from './dashboard/dataupfx/fxsjtb.component';
-import { DashboardDataUpFxtbK01IndexComponent } from './dashboard/dataupfx/fxtbk01/index.component';
-import { DashboardDataUpFxtbK04IndexComponent } from './dashboard/dataupfx/fxtbk04/index.component';
-import { DashboardDataUpFxtbK09IndexComponent } from './dashboard/dataupfx/fxtbk09/index.component';
-import { DashboardDataUpFxtbK10IndexComponent } from './dashboard/dataupfx/fxtbk10/index.component';
-import { DashboardDataUpFxtbK21IndexComponent } from './dashboard/dataupfx/fxtbk21/index.component';
-import { DashboardDataUpFxtbK23IndexComponent } from './dashboard/dataupfx/fxtbk23/index.component';
+import { DashboardDataUpFxtbB01IndexComponent } from './dashboard/dataupfx/fxtbb01/index.component';
+import { DashboardDataUpFxtbB012IndexComponent } from './dashboard/dataupfx/fxtbb01-2/index.component';
+import { DashboardDataUpFxtbB02IndexComponent } from './dashboard/dataupfx/fxtbb02/index.component';
+import { DashboardDataUpFxtbB09IndexComponent } from './dashboard/dataupfx/fxtbb09/index.component';
+import { DashboardDataUpFxtbB10IndexComponent } from './dashboard/dataupfx/fxtbb10/index.component';
+import { DashboardDataUpFxtbB21IndexComponent } from './dashboard/dataupfx/fxtbb21/index.component';
+import { DashboardDataUpFxtbB23IndexComponent } from './dashboard/dataupfx/fxtbb23/index.component';
 // -- 文字资料上传
 import { DashboardFileUpZxWzclComponent } from './dashboard/fileup/zxwzcl.component';
 import { DashboardFileUpFxWzclComponent } from './dashboard/fileup/fxwzcl.component';
@@ -123,12 +124,13 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpZxtbK33IndexComponent,
   // --分校数据填报
   DashboardDataUpFxSjtbComponent,
-  DashboardDataUpFxtbK01IndexComponent,
-  DashboardDataUpFxtbK04IndexComponent,
-  DashboardDataUpFxtbK09IndexComponent,
-  DashboardDataUpFxtbK10IndexComponent,
-  DashboardDataUpFxtbK21IndexComponent,
-  DashboardDataUpFxtbK23IndexComponent,
+  DashboardDataUpFxtbB01IndexComponent,
+  DashboardDataUpFxtbB012IndexComponent,
+  DashboardDataUpFxtbB02IndexComponent,
+  DashboardDataUpFxtbB09IndexComponent,
+  DashboardDataUpFxtbB10IndexComponent,
+  DashboardDataUpFxtbB21IndexComponent,
+  DashboardDataUpFxtbB23IndexComponent,
   // --文字材料上传
   DashboardFileUpZxWzclComponent,
   DashboardFileUpFxWzclComponent,
