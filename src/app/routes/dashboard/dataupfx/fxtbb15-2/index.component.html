@@ -1,0 +1,124 @@
+<nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
+  <thead>
+    <tr style="background-color: linen;">
+      <th rowspan="2" nzWidth="70px" nzAlign="center">年度</th>
+      <th rowspan="2" nzWidth="90px" nzAlign="center">学校代码</th>
+      <th rowspan="2" nzWidth="110px" nzAlign="center">学校名称</th>
+      <th colspan="7" nzAlign="center"><b>学习平台使用情况</b></th>
+      <th nzAlign="center"><b>分校网站使用情况</b></th>
+      <th rowspan="2" nzAlign="center">Action</th>
+    </tr>
+    <tr style="background-color: linen">
+      <th nzAlign="center">上线学生人数</th>
+      <th nzAlign="center">上线教师人数</th>
+      <th nzalign="center">学生在线总时长</th>
+      <th nzalign="center">教师在线总时长</th>
+      <th nzAlign="center">学生访问总数</th>
+      <th nzAlign="center">学生发帖总数</th>
+      <th nzAlign="center">教师发帖总数</th>
+      <th nzAlign="center" style="font-weight: bold">总访问量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of editRowTable.data">
+      <td nzAlign="center">
+        {{ data.nd }} 年
+      </td>
+      <td nzAlign="center">
+        {{ data.xxdm }}
+      </td>
+      <td nzAlign="center">
+        {{ data.xxmc }}
+      </td>
+      <!-- id,nd,xxdm,xxmc,sxxss,sxjss,xszxzsc,jszxzsc,xsfwzs,xsftzs,jsftzs,gg_wzfwl -->
+      <!-- id,年度,学校代码,学校名称,上线学生人数,上线教师人数,学生在线总时长,教师在线总时长,学生访问总数,学生发帖总数,教师发帖总数,公共网站总访问量 -->
+      <td nzAlign="center">
+        <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else sxxssInputTpl"> -->
+        {{ data.sxxss }}
+        <!-- </ng-container>
+        <ng-template #sxxssInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.sxxss" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template> -->
+      </td>
+      <td nzAlign="center">
+        <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else sxjssInputTpl"> -->
+        {{ data.sxjss }}
+        <!-- </ng-container>
+        <ng-template #sxjssInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.sxjss" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template> -->
+      </td>
+      <td nzAlign="center">
+        <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xszxzscInputTpl"> -->
+        {{ data.xszxzsc }}
+        <!-- </ng-container>
+        <ng-template #xszxzscInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.xszxzsc" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template> -->
+      </td>
+      <td nzAlign="center">
+        <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jszxzscInputTpl"> -->
+        {{ data.jszxzsc }}
+        <!-- </ng-container>
+        <ng-template #jszxzscInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.jszxzsc" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template> -->
+      </td>
+      <td nzAlign="center">
+        <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xsfwzsInputTpl"> -->
+        {{ data.xsfwzs }}
+        <!-- </ng-container>
+        <ng-template #xsfwzsInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.xsfwzs" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template> -->
+      </td>
+      <td nzAlign="center">
+        <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xsftzsInputTpl"> -->
+        {{ data.xsftzs }}
+        <!-- </ng-container>
+        <ng-template #xsftzsInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.xsftzs" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template> -->
+      </td>
+      <td nzAlign="center">
+        <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jsftzsInputTpl"> -->
+        {{ data.jsftzs }}
+        <!-- </ng-container>
+        <ng-template #jsftzsInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.jsftzs" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template> -->
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else gg_wzfwlInputTpl">
+          {{ data.gg_wzfwl }}
+        </ng-container>
+        <ng-template #gg_wzfwlInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.gg_wzfwl" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
+
+      <td nzAlign="center">
+        <div class="editable-row-operations">
+          <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
+            <a (click)="startEdit(data.id)">修改</a>
+            <!-- <nz-divider nzType="vertical"></nz-divider>
+            <a nz-popconfirm nzTitle="确认删除该条数据?" (nzOnConfirm)="dataDelete(data.id)">删除</a> -->
+          </ng-container>
+          <ng-template #saveTpl>
+            <a (click)="saveEdit(data.id)">保存</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a nz-popconfirm nzTitle="确认取消?" (nzOnConfirm)="cancelEdit(data.id)">取消</a>
+          </ng-template>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

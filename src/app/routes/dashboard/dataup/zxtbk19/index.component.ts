@@ -82,7 +82,7 @@ export class DashboardDataUpZxtbK19IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry/init?tableno=sjzxtb_k19_zyhbj&nd=` +
           date.getFullYear() +
-          '&appId=17&stepId=21&deptId=51252' +
+          '&appId=17&stepId=21&deptId=' +
           this.loadUser.user.bid,
       )
       .subscribe(res => {

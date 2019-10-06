@@ -1,26 +1,49 @@
+<nz-card nzSize="small">
+  <div nz-row>
+    <div nz-col nzSpan="8">
+      <button nz-button nzType="primary" nzSize="small" (click)="addData()">
+        <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+    </div>
+    <div nz-col nzSpan="16" style="text-align: right">
+      <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
+        http-url="http://localhost:4200/assets/fxsj_mb/sjfxtb_b03_jsjbxx.xlsx" file-name="表03.教师基本信息.xlsx">
+        《表03.教师基本信息》模板下载 <i nz-icon nzType="download" style="color:coral"></i></button>
+      <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
+        <button nz-button nzSize="small" nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
+      </nz-upload>
+    </div>
+  </div>
+</nz-card>
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
-    <tr>
+    <tr style="background: linen">
       <th nzAlign="center">年度</th>
-      <th nzAlign="center">姓名</th>
-      <th nzAlign="center">工号</th>
-      <th nzAlign="center">出生年月</th>
-      <th nzAlign="center">性别</th>
-      <th nzAlign="center">毕业专业</th>
-      <th nzAlign="center">任教学科</th>
-      <th nzAlign="center">任教课程总门次</th>
-      <th nzAlign="center">专业技术职务</th>
-      <th nzAlign="center">学历</th>
-      <th nzAlign="center">学位</th>
-      <th nzAlign="center">性质</th>
-      <th nzAlign="center">所在单位</th>
+      <th nzAlign="center" style="font-weight: bold">姓名</th>
+      <th nzAlign="center" style="font-weight: bold">工号</th>
+      <th nzAlign="center" style="font-weight: bold">出生年月</th>
+      <th nzAlign="center" style="font-weight: bold">性别</th>
+      <th nzAlign="center" style="font-weight: bold">毕业专业</th>
+      <th nzAlign="center" style="font-weight: bold">任教学科</th>
+      <th nzAlign="center" style="font-weight: bold">任教课程<br>总门次</th>
+      <th nzAlign="center" style="font-weight: bold">专业技术职务</th>
+      <th nzAlign="center" style="font-weight: bold">学历</th>
+      <th nzAlign="center" style="font-weight: bold">学位</th>
+      <th nzAlign="center" style="font-weight: bold">性质</th>
+      <th nzAlign="center" style="font-weight: bold">所在单位</th>
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of editRowTable.data">
       <td nzAlign="center">
-        {{ data.nd }} 年
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ndInputTpl">
+          {{ data.nd }} 年
+        </ng-container>
+        <ng-template #ndInputTpl>
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1"
+            nzSize="4">
+          </nz-input-number>
+        </ng-template>
       </td>
       <!-- id,nd,xm,zgh,birdate,xb,byzy,rjxk,rjkczmc,zyjszw,xl,xw,xz,szdw -->
       <!-- id,年度,姓名,工号,出生年月,性别,毕业专业,任教学科,任教课程总门次,专业技术职务,学历,学位,性质,所在单位 -->
@@ -29,7 +52,7 @@
           {{ data.xm }}
         </ng-container>
         <ng-template #xmInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xm" />
+          <input type="text" style="max-width: 10em" nz-input [(ngModel)]="editCache[data.id].data.xm" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -37,7 +60,7 @@
           {{ data.zgh }}
         </ng-container>
         <ng-template #zghInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zgh" />
+          <input type="text" style="max-width: 9em" nz-input [(ngModel)]="editCache[data.id].data.zgh" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -45,7 +68,7 @@
           {{ data.birdate }}
         </ng-container>
         <ng-template #birdateInputTpl>
-          <input type="date" nz-input [(ngModel)]="editCache[data.id].data.birdate" />
+          <input type="date" style="max-width: 10em" nz-input [(ngModel)]="editCache[data.id].data.birdate" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -53,16 +76,18 @@
           {{ data.xb }}
         </ng-container>
         <ng-template #xbInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xb" />
+          <nz-select style="width: 60px;" [(ngModel)]="editCache[data.id].data.xb" nzAllowClear nzPlaceHolder="性别">
+            <nz-option nzValue="男" nzLabel="男"></nz-option>
+            <nz-option nzValue="女" nzLabel="女"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
-
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else byzyInputTpl">
           {{ data.byzy }}
         </ng-container>
         <ng-template #byzyInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.byzy" />
+          <input type="text" style="max-width: 10em" nz-input [(ngModel)]="editCache[data.id].data.byzy" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -70,7 +95,7 @@
           {{ data.rjxk }}
         </ng-container>
         <ng-template #rjxkInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.rjxk" />
+          <input type="text" style="max-width: 12em" nz-input [(ngModel)]="editCache[data.id].data.rjxk" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -78,7 +103,8 @@
           {{ data.rjkczmc }}
         </ng-container>
         <ng-template #rjkczmcInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.rjkczmc" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.rjkczmc" [nzMin]="0"
+            [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -87,7 +113,7 @@
           {{ data.zyjszw }}
         </ng-container>
         <ng-template #zyjszwInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zyjszw" />
+          <input type="text" style="max-width: 10em" nz-input [(ngModel)]="editCache[data.id].data.zyjszw" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -95,7 +121,7 @@
           {{ data.xl }}
         </ng-container>
         <ng-template #xlInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xl" />
+          <input type="text" style="max-width: 10em" nz-input [(ngModel)]="editCache[data.id].data.xl" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -103,7 +129,7 @@
           {{ data.xw }}
         </ng-container>
         <ng-template #xwInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xw" />
+          <input type="text" style="max-width: 10em" nz-input [(ngModel)]="editCache[data.id].data.xw" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -111,7 +137,10 @@
           {{ data.xz }}
         </ng-container>
         <ng-template #xzInputTpl>
-          <input type="date" nz-input [(ngModel)]="editCache[data.id].data.xz" />
+          <nz-select style="width: 85px;" [(ngModel)]="editCache[data.id].data.xz" nzAllowClear nzPlaceHolder="性质">
+            <nz-option nzValue="专职" nzLabel="专职"></nz-option>
+            <nz-option nzValue="兼职" nzLabel="兼职"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -128,7 +157,6 @@
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>
             <nz-divider nzType="vertical"></nz-divider>
-            <!-- <a (click)="dataDelete(data.id)">删除</a> -->
             <a nz-popconfirm nzTitle="确认删除该条数据?" (nzOnConfirm)="dataDelete(data.id)">删除</a>
           </ng-container>
           <ng-template #saveTpl>
@@ -137,12 +165,6 @@
             <a nz-popconfirm nzTitle="确认取消?" (nzOnConfirm)="cancelEdit(data.id)">取消</a>
           </ng-template>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td colspan=14>
-        <button nz-button nzType="primary" (click)="addData()"><i nz-icon nzType="plus-circle"></i>新增 1
-          条数据</button>
       </td>
     </tr>
   </tbody>

@@ -22,7 +22,7 @@ export class DashboardDataUpFxtbB21IndexComponent implements OnInit {
 
   ngOnInit(): void {
     // 获得数据表的数据
-    this.http.get('/api/data/tables/search/sjzxtb_k21_rcpygm').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/fxtb/sjzxtb_k21_rcpygm').subscribe((res: any[]) => {
       res.forEach(item => {
         if (item.xxdm === this.loadUser.user.bid) {
           item.id = item.id + '';

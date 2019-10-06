@@ -22,13 +22,13 @@ export class DashboardDataUpZxtbK153IndexComponent implements OnInit {
   upUrl = '';
 
   ngOnInit(): void {
-    this.upUrl = '/api/excel/import?tableName=sjzxtb_K15_mob&appId=17&stepId=21&deptId=' + this.loadUser.user.bid;
+    this.upUrl = '/api/excel/import?tableName=sjzxtb_k15_mob&appId=17&stepId=21&deptId=' + this.loadUser.user.bid;
     this.loadInfo();
   }
   loadInfo(): void {
     this.listOfData = [];
     // 获得数据表的数据
-    this.http.get('/api/data/tables/search/zxtb/sjzxtb_K15_mob').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/zxtb/sjzxtb_k15_mob').subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -64,7 +64,7 @@ export class DashboardDataUpZxtbK153IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_K15_mob&appId=17&stepId=21&deptId=` +
+          `&tableno=sjzxtb_k15_mob&appId=17&stepId=21&deptId=` +
           this.loadUser.user.bid,
         data,
       )
@@ -80,7 +80,7 @@ export class DashboardDataUpZxtbK153IndexComponent implements OnInit {
     const date = new Date();
     this.http
       .put(
-        `/api/data/tables/entry/init?tableno=sjzxtb_K15_mob&nd=` +
+        `/api/data/tables/entry/init?tableno=sjzxtb_k15_mob&nd=` +
           date.getFullYear() +
           '&appId=17&stepId=21&deptId=' +
           this.loadUser.user.bid,
@@ -92,7 +92,7 @@ export class DashboardDataUpZxtbK153IndexComponent implements OnInit {
   }
 
   dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_K15_mob&id=' + id).subscribe((res: any) => {
+    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k15_mob&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
       this.loadInfo();
     });

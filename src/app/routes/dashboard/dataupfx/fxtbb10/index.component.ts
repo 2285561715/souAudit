@@ -20,14 +20,16 @@ export class DashboardDataUpFxtbB10IndexComponent implements OnInit {
   listOfData: any[] = [];
   value: any = {};
   inData: any[] = [];
+  upUrl = '';
 
   ngOnInit(): void {
+    this.upUrl = '/api/excel/import?tableName=sjfxtb_b04_glryxx&appId=18&stepId=29&deptId=' + this.loadUser.user.bid;
     this.loadInfo();
   }
-
+  // 获得数据表的数据
   loadInfo(): void {
     this.listOfData = [];
-    this.http.get('/api/data/tables/search/sjzxtb_k10_glryxx').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/fxtb/sjfxtb_b04_glryxx').subscribe((res: any[]) => {
       res.forEach(item => {
         if (item.xxdm === this.loadUser.user.bid) {
           item.id = item.id + '';
@@ -40,7 +42,6 @@ export class DashboardDataUpFxtbB10IndexComponent implements OnInit {
       });
       this.cdr.detectChanges();
     });
-    // this.updateEditCache();
   }
 
   startEdit(id: string): void {
@@ -59,13 +60,12 @@ export class DashboardDataUpFxtbB10IndexComponent implements OnInit {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    // console.log(data);
     // 登录用户部门id
     this.http
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjfxtb_glryxx&appId=18&stepId=29&deptId=` +
+          `&tableno=sjfxtb_b04_glryxx&appId=18&stepId=29&deptId=` +
           this.loadUser.user.bid,
         data,
       )
@@ -80,22 +80,23 @@ export class DashboardDataUpFxtbB10IndexComponent implements OnInit {
     const date = new Date();
     this.http
       .put(
-        `/api/data/tables/entry/init?tableno=sjfxtb_glryxx&nd=` +
+        `/api/data/tables/entry/init?tableno=sjfxtb_b04_glryxx&nd=` +
           date.getFullYear() +
           '&appId=18&stepId=29&deptId=' +
           this.loadUser.user.bid,
       )
       .subscribe(res => {
-        this.msgSrv.success('新增成功');
+        this.msgSrv.success('新增数据成功');
+        this.loadInfo();
       });
-    this.listOfData = [];
   }
 
   dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjfxtb_glryxx&id=' + id).subscribe((res: any) => {
+    this.http.delete('/api/data/tables/entry/del?tableno=sjfxtb_b04_glryxx&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
+      // this.cdr.detectChanges();
+      this.loadInfo();
     });
-    this.listOfData = [];
   }
 
   updateEditCache(): void {
@@ -106,4 +107,12 @@ export class DashboardDataUpFxtbB10IndexComponent implements OnInit {
       };
     });
   }
+  // 数据导入后回调函数
+  fupChange(event): void {
+    if (event.type === 'success') {
+      this.msgSrv.success('本次导入数据：' + event.file.response.dataCount + ' 条！');
+      this.loadInfo();
+    }
+  }
+  // -----------------
 }
