@@ -1,13 +1,3 @@
-<nz-card nzSize="small">
-  <div nz-row>
-    <div nz-col nzSpan="8">
-      <button nz-button nzType="primary" nzSize="small" (click)="addData()">
-        <i nz-icon nzType="search"></i> 查看人才培养规模数据</button>
-    </div>
-    <div nz-col nzSpan="16" style="text-align: right">
-    </div>
-  </div>
-</nz-card>
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background-color: linen">
@@ -102,8 +92,8 @@
         <div class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>
-            <nz-divider nzType="vertical"></nz-divider>
-            <a nz-popconfirm nzTitle="确认删除该条数据?" (nzOnConfirm)="dataDelete(data.id)">删除</a>
+            <!-- <nz-divider nzType="vertical"></nz-divider>
+            <a nz-popconfirm nzTitle="确认删除该条数据?" (nzOnConfirm)="dataDelete(data.id)">删除</a> -->
           </ng-container>
           <ng-template #saveTpl>
             <a (click)="saveEdit(data.id)">保存</a>
@@ -112,6 +102,34 @@
           </ng-template>
         </div>
       </td>
+    </tr>
+  </tbody>
+</nz-table>
+<br>
+<nz-table #gmRowTable nzBordered [nzData]="listOfGMData" nzSize="small" nzHideOnSinglePage="true">
+  <thead>
+    <tr style="background-color: linen">
+      <th nzWidth="120px" nzAlign="center">年度</th>
+      <th nzAlign="center">在籍学生数-本科</th>
+      <th nzAlign="center">在籍学生数-专科</th>
+      <th nzAlign="center">当年度招生数-本科</th>
+      <th nzAlign="center">当年度招生数-专科</th>
+      <th nzAlign="center">续修生数-本科</th>
+      <th nzAlign="center">续修生数-专科</th>
+      <th nzWidth="100px" nzAlign="center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of gmRowTable.data">
+      <td nzAlign="center">{{ data.nd }} 年
+      </td>
+      <td nzAlign="center">{{ data.zjxssbk }}</td>
+      <td nzAlign="center">{{ data.zjxsszk }}</td>
+      <td nzAlign="center">{{ data.dndzssbk }}</td>
+      <td nzAlign="center">{{ data.dndzsszk }}</td>
+      <td nzAlign="center">{{ data.xxsbk }}</td>
+      <td nzAlign="center">{{ data.xxszk }}</td>
+      <td nzAlign="center">仅浏览</td>
     </tr>
   </tbody>
 </nz-table>

@@ -18,12 +18,12 @@ export class DashboardDataUpFxtbB23IndexComponent implements OnInit {
 
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
+  listOfGMData: any[] = [];
   value: any = {};
 
   ngOnInit(): void {
-    // 获得数据表的数据
+    // 获得数据表的数据 3率数据
     this.http.get('/api/data/tables/search/fxtb/sjzxtb_k23_rcpy3l').subscribe((res: any[]) => {
-      console.log(res);
       res.forEach(item => {
         if (item.xxdm === this.loadUser.user.bid) {
           item.id = item.id + '';
@@ -36,7 +36,17 @@ export class DashboardDataUpFxtbB23IndexComponent implements OnInit {
       });
       this.cdr.detectChanges();
     });
-    // this.updateEditCache();
+
+    // 获得 规模数据
+    this.http.get('/api/data/tables/search/zxtb/sjzxtb_k21_rcpygm').subscribe((res: any[]) => {
+      console.log(res);
+      res.forEach(item => {
+        if (item.xxdm === this.loadUser.user.bid) {
+          this.listOfGMData = [...this.listOfGMData, item];
+        }
+      });
+      this.cdr.detectChanges();
+    });
   }
 
   startEdit(id: string): void {
@@ -68,37 +78,6 @@ export class DashboardDataUpFxtbB23IndexComponent implements OnInit {
       .subscribe(res => {
         this.msgSrv.success('保存成功');
       });
-
     this.editCache[id].edit = false;
-  }
-
-  // 新增1条数据
-  addData(): void {
-    const date = new Date();
-    this.http
-      .put(
-        `/api/data/tables/entry/init?tableno=sjzxtb_k23_rcpy3l&nd=` +
-          date.getFullYear() +
-          '&appId=18&stepId=29&deptId=' +
-          this.loadUser.user.bid,
-      )
-      .subscribe(res => {
-        this.msgSrv.success('新增成功');
-      });
-    this.listOfData = [];
-  }
-  dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k23_rcpy3l&id=' + id).subscribe((res: any) => {
-      this.msgSrv.success('删除数据成功');
-      this.cdr.detectChanges();
-    });
-  }
-  updateEditCache(): void {
-    this.listOfData.forEach(item => {
-      this.editCache[item.id] = {
-        edit: false,
-        data: { ...item },
-      };
-    });
   }
 }

@@ -64,7 +64,6 @@ import { DashboardDataUpFxtbB153IndexComponent } from './dashboard/dataupfx/fxtb
 import { DashboardDataUpFxtbB16IndexComponent } from './dashboard/dataupfx/fxtbb16/index.component';
 import { DashboardDataUpFxtbB17IndexComponent } from './dashboard/dataupfx/fxtbb17/index.component';
 import { DashboardDataUpFxtbB18IndexComponent } from './dashboard/dataupfx/fxtbb18/index.component';
-import { DashboardDataUpFxtbB21IndexComponent } from './dashboard/dataupfx/fxtbb21/index.component';
 import { DashboardDataUpFxtbB22IndexComponent } from './dashboard/dataupfx/fxtbb22/index.component';
 import { DashboardDataUpFxtbB23IndexComponent } from './dashboard/dataupfx/fxtbb23/index.component';
 import { DashboardDataUpFxtbB25IndexComponent } from './dashboard/dataupfx/fxtbb25/index.component';
@@ -155,7 +154,6 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpFxtbB16IndexComponent,
   DashboardDataUpFxtbB17IndexComponent,
   DashboardDataUpFxtbB18IndexComponent,
-  DashboardDataUpFxtbB21IndexComponent,
   DashboardDataUpFxtbB22IndexComponent,
   DashboardDataUpFxtbB23IndexComponent,
   DashboardDataUpFxtbB25IndexComponent,

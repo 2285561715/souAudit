@@ -33,9 +33,11 @@
         </span>
       </td>
       <td nzAlign="center">
-        <button nzSize="small" nz-button (click)="dataUpFun(dt)" style="border: 0em">
-          <i nz-icon nzType="edit" nzTheme="fill" style="color: coral"></i>
-          填报</button>
+        <span nz-tooltip nzTooltipTitle="填报和查看数据统计分析">
+          <button nzSize="small" nz-button (click)="dataUpFun(dt)" style="border: 0em">
+            <i nz-icon nzType="edit" nzTheme="fill" style="color: coral"></i>
+            填报</button>
+        </span>
       </td>
     </tr>
   </tbody>
