@@ -137,7 +137,7 @@ export class UserLoginComponent implements OnDestroy {
     if (environment.production) {
       callback = 'https://ng-alain.github.io/ng-alain/#/callback/' + type;
     } else {
-      callback = 'http://localhost:4200/#/callback/' + type;
+      callback = 'http://139.224.62.102/#/callback/' + type;
     }
     switch (type) {
       case 'auth0':
