@@ -40,7 +40,8 @@
           {{ data.nd }} 年
         </ng-container>
         <ng-template #ndInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1" nzSize="4">
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1"
+            nzSize="4">
           </nz-input-number>
         </ng-template>
       </td>
@@ -51,7 +52,7 @@
           {{ data.xm }}
         </ng-container>
         <ng-template #xmInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xm" />
+          <input type="text" style="max-width: 7em" nz-input [(ngModel)]="editCache[data.id].data.xm" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -59,7 +60,7 @@
           {{ data.zgh }}
         </ng-container>
         <ng-template #zghInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zgh" />
+          <input type="text" style="max-width: 7em" nz-input [(ngModel)]="editCache[data.id].data.zgh" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -67,7 +68,7 @@
           {{ data.birdate }}
         </ng-container>
         <ng-template #birdateInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.birdate" />
+          <input type="text" style="max-width: 7em" nz-input [(ngModel)]="editCache[data.id].data.birdate" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -75,7 +76,11 @@
           {{ data.xb }}
         </ng-container>
         <ng-template #xbInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xb" />
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xb" /> -->
+          <nz-select style="width: 60px;" [(ngModel)]="editCache[data.id].data.xb" nzAllowClear nzPlaceHolder="性别">
+            <nz-option nzValue="男" nzLabel="男"></nz-option>
+            <nz-option nzValue="女" nzLabel="女"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -83,7 +88,7 @@
           {{ data.byzy }}
         </ng-container>
         <ng-template #byzyInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.byzy" />
+          <input type="text" style="max-width: 11em" nz-input [(ngModel)]="editCache[data.id].data.byzy" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -91,7 +96,7 @@
           {{ data.rjxk }}
         </ng-container>
         <ng-template #rjxkInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.rjxk" />
+          <input type="text" style="max-width: 12em" nz-input [(ngModel)]="editCache[data.id].data.rjxk" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -99,7 +104,8 @@
           {{ data.rjkczmc }}
         </ng-container>
         <ng-template #rjkczmcInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.rjkczmc" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.rjkczmc" [nzMin]="0"
+            [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -108,7 +114,7 @@
           {{ data.zyjszw }}
         </ng-container>
         <ng-template #zyjszwInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zyjszw" />
+          <input type="text" style="max-width: 11em" nz-input [(ngModel)]="editCache[data.id].data.zyjszw" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -116,7 +122,15 @@
           {{ data.xl }}
         </ng-container>
         <ng-template #xlInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xl" />
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xl" /> -->
+          <nz-select style="width: 70px;" [(ngModel)]="editCache[data.id].data.xl" nzAllowClear nzPlaceHolder="学历">
+            <nz-option nzValue="博士研究生" nzLabel="博士研究生"></nz-option>
+            <nz-option nzValue="硕士研究生" nzLabel="硕士研究生"></nz-option>
+            <nz-option nzValue="本科" nzLabel="本科"></nz-option>
+            <nz-option nzValue="专科" nzLabel="专科"></nz-option>
+            <nz-option nzValue="中专" nzLabel="中专"></nz-option>
+            <nz-option nzValue="其它" nzLabel="其它"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -124,7 +138,15 @@
           {{ data.xw }}
         </ng-container>
         <ng-template #xwInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xw" />
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xw" /> -->
+          <nz-select style="width: 70px;" [(ngModel)]="editCache[data.id].data.xw" nzAllowClear nzPlaceHolder="学位">
+            <nz-option nzValue="博士" nzLabel="博士"></nz-option>
+            <nz-option nzValue="硕士" nzLabel="硕士"></nz-option>
+            <nz-option nzValue="学士" nzLabel="学士"></nz-option>
+            <nz-option nzValue="专科" nzLabel="专科"></nz-option>
+            <nz-option nzValue="其它" nzLabel="其它"></nz-option>
+            <nz-option nzValue="无任何学位" nzLabel="无任何学位"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -132,7 +154,11 @@
           {{ data.xz }}
         </ng-container>
         <ng-template #xzInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xz" />
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xz" /> -->
+          <nz-select style="width: 60px;" [(ngModel)]="editCache[data.id].data.xz" nzAllowClear nzPlaceHolder="性质">
+            <nz-option nzValue="专职" nzLabel="专职"></nz-option>
+            <nz-option nzValue="兼职" nzLabel="兼职"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
       <td nzAlign="center">
