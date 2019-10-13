@@ -1,11 +1,17 @@
 <nz-card nzSize="small">
   <div nz-row>
-    <div nz-col nzSpan="24" style="text-align: right;">
+    <div nz-col nzSpan="16">
       <button nz-button nzType="primary" nzSize="small" nzShape="round" (click)="showData('sjtb')">
         <i nz-icon nzType="table"></i> 数据表填报进度</button>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <button nz-button nzType="primary" nzSize="small" nzShape="round" (click)="showData('file')">
         <i nz-icon nzType="file-done"></i> 文字材料上传进度</button>
+    </div>
+    <div nz-col nzSpan="8" style="text-align: right;">
+      选择分校查询：<nz-select style="width: 200px;" nzShowSearch nzAllowClear nzPlaceHolder="选择一个分校查看"
+        [(ngModel)]="selectedValue" (ngModelChange)="filter($event)">
+        <nz-option *ngFor="let option of listOfType" [nzLabel]="option.text" [nzValue]="option.value"></nz-option>
+      </nz-select>&nbsp;&nbsp;
     </div>
   </div>
 </nz-card>
@@ -14,18 +20,18 @@
   <thead>
     <tr *ngIf="conStr==='sjtb'">
       <th nzAlign="center" nzWidth="50%"><b>数据表名称</b></th>
-      <th nzAlign="center" nzWidth="20%" nzShowFilter [nzFilterMultiple]="false" [nzFilters]="listOfType"
-        (nzFilterChange)="filter($event)">
-        <b>分校名称</b></th>
+      <!-- <th nzAlign="center" nzWidth="20%" nzShowFilter [nzFilterMultiple]="false" [nzFilters]="listOfType"
+        (nzFilterChange)="filter($event)"> -->
+      <th nzAlign="center" nzWidth="20%"><b>分校名称</b></th>
       <th nzAlign="center" nzWidth="15%"><b>是否填报</b></th>
       <th nzAlign="center" nzWidth="15%"><b>是否确认</b></th>
       <!-- <th nzAlign="center" nzWidth="12%">Action</th> -->
     </tr>
     <tr *ngIf="conStr==='file'">
       <th nzAlign="center" nzWidth="50%"><b>文字材料名称</b></th>
-      <th nzAlign="center" nzWidth="20%" nzShowFilter [nzFilterMultiple]="false" [nzFilters]="listOfType"
-        (nzFilterChange)="filter($event)">
-        <b>分校名称</b></th>
+      <!-- <th nzAlign="center" nzWidth="20%" nzShowFilter [nzFilterMultiple]="false" [nzFilters]="listOfType"
+        (nzFilterChange)="filter($event)"> -->
+      <th nzAlign="center" nzWidth="20%"><b>分校名称</b></th>
       <th nzAlign="center" nzWidth="15%"><b>是否上传</b></th>
       <th nzAlign="center" nzWidth="15%"><b>是否确认</b></th>
       <!-- <th nzAlign="center" nzWidth="12%">Action</th> -->

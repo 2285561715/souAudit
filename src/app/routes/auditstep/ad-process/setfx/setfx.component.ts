@@ -44,16 +44,19 @@ export class AuditstepAdProcessSetFxComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.value);
-    this.http.get('/api/stepwbs/zjz?id=78').subscribe((res: any) => {
-      this.listOfselectChk = res[0].branchIdList;
+    this.http.get('/api/fxlist/es?appId=' + this.value.id).subscribe((res: any) => {
+      // this.listOfselectChk = res[0].branchIdList;
+      this.listOfData = res;
+      this.listOfDisplayData = this.listOfData;
+      console.log(res);
       // 查询用户列表
-      this.http.get('/api/branches').subscribe((ress: any[]) => {
-        ress.forEach(item => {
-          this.listOfselectChk.includes(item.id + '') ? (item.isChecked = true) : (item.isChecked = false);
-          this.listOfData.push(item);
-        });
-        this.listOfDisplayData = this.listOfData;
-      });
+      // this.http.get('/api/branches').subscribe((ress: any[]) => {
+      //   ress.forEach(item => {
+      //     this.listOfselectChk.includes(item.id + '') ? (item.isChecked = true) : (item.isChecked = false);
+      //     this.listOfData.push(item);
+      //   });
+      //   this.listOfDisplayData = this.listOfData;
+      // });
       this.cdr.detectChanges();
     });
   }
@@ -103,11 +106,11 @@ export class AuditstepAdProcessSetFxComponent implements OnInit {
 
   submitForm(): void {
     console.log(this.listOfData);
-    // this.http.put('/api/stepwbs/zjz', this.listOfData).subscribe((res: any) => {
-    //   this.msgSrv.success('修改信息成功');
-    //   this.cdr.detectChanges();
-    //   this.close(res);
-    // });
+    this.http.put('/api/fxlist/es?appId=' + this.value.id, this.listOfData).subscribe((res: any) => {
+      this.msgSrv.success('修改信息成功');
+      this.cdr.detectChanges();
+      this.close(res);
+    });
   }
 
   close(res: any): void {
