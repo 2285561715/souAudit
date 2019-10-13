@@ -59,4 +59,22 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
       this.listOfFieldsZH = this.listOfTableDesc.zdZhNameList.split(',');
     });
   }
+
+  // 数据导出功能
+  exportToExcel(event: any): void {
+    // value.id = this.record.id;
+    // dataSet = this.value;
+    // console.log(dataSet);
+    console.log(event);
+
+    const date = new Date();
+    let month: string | number = date.getMonth() + 1;
+    let strDate: string | number = date.getDate();
+    month = month < 10 ? '0' + month : month;
+    strDate = strDate < 10 ? '0' + strDate : strDate;
+
+    // this.http.post(`/api/main/infos`, dataSet).subscribe(res => {
+    //   this.msgSrv.success('导出数据成功！');
+    // });
+  }
 }

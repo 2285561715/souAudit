@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
   }
 
   loadInfo(): void {
-    // console.log(this.loadUser.user.userFrom);
+    // console.log(this.loadUser.user);
     this.http.get('/api/adapply').subscribe((res: any[]) => {
       // this.listOfData = res;
       res.forEach(item => {
@@ -137,7 +137,7 @@ export class DashboardComponent implements OnInit {
     dataValue.deptName = this.loadUser.user.bname;
 
     const drawerRef = this.drawerService.create<DashboardFileUpFxComponent, { value: any }, string>({
-      nzTitle: '【' + this.loadUser.user.bname + '】' + '文字材料上传',
+      nzTitle: '【' + this.loadUser.user.bname + '】' + '文字单片材料上传',
       nzWidth: 800,
       nzPlacement: 'left',
       nzMaskClosable: false,

@@ -126,11 +126,16 @@
     <nz-tab [nzTitle]="titleTemplate5">
       <ng-template #titleTemplate5><i nz-icon nzType="select" style="color: coral"></i>数据导出</ng-template>
       <p><b>请选择要导出的数据字段：</b></p>
-      <nz-select nzMode="tags" style="width: 100%;" nzPlaceHolder="请选择数据字段！">
+      <nz-select nzMode="tags" style="width: 100%;" (ngModelChange)="exportToExcel($event)" nzPlaceHolder="请选择数据字段！"
+        id="outFields">
         <nz-option *ngFor="let option of listOfFields;let i=index" [nzLabel]="listOfFieldsZH[i]"
           [nzValue]="listOfFields[i]">
         </nz-option>
       </nz-select>
+      <br><br>
+      <button nz-button nzType="primary" (click)="exportToExcel()"><i nz-icon nzType="check-circle"
+          nzTheme="outline"></i> 导出为 EXCEL
+        >></button>
     </nz-tab>
   </nz-tabset>
 </div>

@@ -48,7 +48,7 @@ export class DashboardDataUpFxComponent implements OnInit {
 
     const drawerRef = this.drawerService.create<DashboardDataUpFxSjtbComponent, { value: any }, string>({
       nzTitle: '【' + dt.dtName + '】数据填报',
-      nzWidth: document.body.clientWidth - 200,
+      nzWidth: document.body.clientWidth - 100,
       nzPlacement: 'right',
       // nzMaskClosable: false,
       nzContent: DashboardDataUpFxSjtbComponent,

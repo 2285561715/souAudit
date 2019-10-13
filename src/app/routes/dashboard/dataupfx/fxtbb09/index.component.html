@@ -25,11 +25,11 @@
       <th nzAlign="center" style="font-weight: bold">毕业专业</th>
       <th nzAlign="center" style="font-weight: bold">任教学科</th>
       <th nzAlign="center" style="font-weight: bold">任教课程<br>总门次</th>
-      <th nzAlign="center" style="font-weight: bold">专业技术职务</th>
+      <th nzAlign="center" style="font-weight: bold">专业技术<br>职务</th>
       <th nzAlign="center" style="font-weight: bold">学历</th>
       <th nzAlign="center" style="font-weight: bold">学位</th>
       <th nzAlign="center" style="font-weight: bold">性质</th>
-      <th nzAlign="center" style="font-weight: bold">所在单位</th>
+      <th nzWidth="140px" nzAlign="center" style="font-weight: bold">所在单位</th>
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
@@ -52,7 +52,7 @@
           {{ data.xm }}
         </ng-container>
         <ng-template #xmInputTpl>
-          <input type="text" style="max-width: 10em" nz-input [(ngModel)]="editCache[data.id].data.xm" />
+          <input type="text" style="max-width: 7em" nz-input [(ngModel)]="editCache[data.id].data.xm" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -60,7 +60,7 @@
           {{ data.zgh }}
         </ng-container>
         <ng-template #zghInputTpl>
-          <input type="text" style="max-width: 9em" nz-input [(ngModel)]="editCache[data.id].data.zgh" />
+          <input type="text" style="max-width: 6em" nz-input [(ngModel)]="editCache[data.id].data.zgh" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -68,7 +68,7 @@
           {{ data.birdate }}
         </ng-container>
         <ng-template #birdateInputTpl>
-          <input type="date" style="max-width: 10em" nz-input [(ngModel)]="editCache[data.id].data.birdate" />
+          <input type="text" style="max-width: 9em" nz-input [(ngModel)]="editCache[data.id].data.birdate" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -87,7 +87,7 @@
           {{ data.byzy }}
         </ng-container>
         <ng-template #byzyInputTpl>
-          <input type="text" style="max-width: 10em" nz-input [(ngModel)]="editCache[data.id].data.byzy" />
+          <input type="text" style="max-width: 9em" nz-input [(ngModel)]="editCache[data.id].data.byzy" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -95,7 +95,7 @@
           {{ data.rjxk }}
         </ng-container>
         <ng-template #rjxkInputTpl>
-          <input type="text" style="max-width: 12em" nz-input [(ngModel)]="editCache[data.id].data.rjxk" />
+          <input type="text" style="max-width: 9em" nz-input [(ngModel)]="editCache[data.id].data.rjxk" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -113,7 +113,7 @@
           {{ data.zyjszw }}
         </ng-container>
         <ng-template #zyjszwInputTpl>
-          <input type="text" style="max-width: 10em" nz-input [(ngModel)]="editCache[data.id].data.zyjszw" />
+          <input type="text" style="max-width: 8em" nz-input [(ngModel)]="editCache[data.id].data.zyjszw" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -121,7 +121,7 @@
           {{ data.xl }}
         </ng-container>
         <ng-template #xlInputTpl>
-          <input type="text" style="max-width: 10em" nz-input [(ngModel)]="editCache[data.id].data.xl" />
+          <input type="text" style="max-width: 8em" nz-input [(ngModel)]="editCache[data.id].data.xl" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -129,7 +129,7 @@
           {{ data.xw }}
         </ng-container>
         <ng-template #xwInputTpl>
-          <input type="text" style="max-width: 10em" nz-input [(ngModel)]="editCache[data.id].data.xw" />
+          <input type="text" style="max-width: 8em" nz-input [(ngModel)]="editCache[data.id].data.xw" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -148,7 +148,7 @@
           {{ data.szdw }}
         </ng-container>
         <ng-template #szdwInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.szdw" />
+          <input type="text" style="max-width: 12em" nz-input [(ngModel)]="editCache[data.id].data.szdw" />
         </ng-template>
       </td>
 
@@ -168,4 +168,6 @@
       </td>
     </tr>
   </tbody>
+
+
 </nz-table>

@@ -27,6 +27,9 @@ import { AuditstepAdProcessZjpsSetupComponent } from './ad-process/zjps/setup.co
 import { AuditstepAdProcessZjpsZjzUserComponent } from './ad-process/zjps/zjzuser/zjzuser.component';
 import { AuditstepAdProcessZjpsZjzPszbComponent } from './ad-process/zjps/zjzpszb/zjzpszb.component';
 import { AuditstepAdProcessZjpsZjzPsfxComponent } from './ad-process/zjps/zjzpsfx/zjzpsfx.component';
+import { AuditstepAdProcessTbjcZxIndexComponent } from './ad-process/tbjczx/index.component';
+import { AuditstepAdProcessTbjcFxIndexComponent } from './ad-process/tbjcfx/index.component';
+import { AuditstepAdProcessSetFxComponent } from './ad-process/setfx/setfx.component';
 
 const COMPONENTS = [
   AuditstepAdStartComponent,
@@ -57,6 +60,9 @@ const COMPONENTS_NOROUNT = [
   AuditstepAdProcessZjpsZjzUserComponent,
   AuditstepAdProcessZjpsZjzPszbComponent,
   AuditstepAdProcessZjpsZjzPsfxComponent,
+  AuditstepAdProcessTbjcZxIndexComponent,
+  AuditstepAdProcessTbjcFxIndexComponent,
+  AuditstepAdProcessSetFxComponent,
 ];
 
 @NgModule({

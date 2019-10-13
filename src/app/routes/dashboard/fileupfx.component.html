@@ -1,8 +1,9 @@
 <nz-table nzSize="small" #colSpanTable [nzData]="listOfFileList" nzBordered nzPageSize="50" nzHideOnSinglePage="true">
   <thead>
     <tr>
-      <th nzAlign="center" nzWidth="55%"><b>文字单片材料名称</b></th>
-      <th nzAlign="center" nzWidth="12%"><b>指标内涵</b></th>
+      <!-- <th nzAlign="center" nzWidth="25%"><b>评审指标</b></th> -->
+      <th nzAlign="center" nzWidth="30%"><b>文字单片材料名称</b></th>
+      <th nzAlign="center" nzWidth="12%"><b>对应指标及内涵</b></th>
       <th nzAlign="center" nzWidth="10%"><b>是否上传</b></th>
       <th nzAlign="center" nzWidth="10%"><b>是否确认</b></th>
       <th nzAlign="center" nzWidth="12%">Action</th>
@@ -10,6 +11,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let dt of colSpanTable.data; index as i">
+      <!-- <td>{{ dt.indexName }}</td> -->
       <td>{{ dt.dtName }}</td>
       <td nzAlign="center">
         <span nz-tooltip nzTooltipTitle="点击浏览内涵">
@@ -36,7 +38,6 @@
         <span nz-tooltip nzTooltipTitle="上传或重传">
           <button nzSize="small" nz-button (click)="fileUpFun(dt)" style="border: 0em">
             <i nz-icon nzType="upload" style="color: coral"></i></button></span>
-
         <span nz-tooltip nzTooltipTitle="预览">
           <button *ngIf="dt.fileupUrl" nzSize="small" nz-button style="border: 0em" down-file
             http-url="{{dt.fileupUrl}}" file-name="{{dt.dtName}}.docx"><i nz-icon nzType="search"

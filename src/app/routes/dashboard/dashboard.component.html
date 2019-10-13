@@ -2,54 +2,90 @@
   <ng-template #phActionTpl> </ng-template>
   <p>欢迎您：{{loadUser.user.bname}} -> {{loadUser.user.name}} （{{loadUser.user.unitName}}）</p>
 </page-header>
-<div nz-row [nzGutter]="8" *ngFor="let divData of listOfData">
-  <div nz-col [nzSpan]="8">
-    <nz-card nzTitle="【{{divData.appName}}】" style="background-color: rgb(252, 251, 228)">
-      <p style="line-height: 2em">周期：{{ divData.startDate }}至{{ divData.endDate }}</p>
-      <p style="line-height: 2em">类别：{{ divData.esType }} &nbsp;&nbsp;&nbsp;
+<div nz-row *ngFor="let divData of listOfData">
+  <!-- 填报员 -->
+  <div nz-row [nzGutter]="8" *ngIf="!(loadUser.user.unitNo==='xnzj')">
+    <div nz-col [nzSpan]="10">
+      <nz-card nzTitle="【{{divData.appName}}】" style="background-color: rgb(252, 251, 228)">
+        <p style="line-height: 2em">周期：{{ divData.startDate }}至{{ divData.endDate }}</p>
+        <p style="line-height: 2em">类别：{{ divData.esType }} &nbsp;&nbsp;&nbsp;
+          <button *ngIf="loadUser.user.unitNo==='zxbmtb'" nz-button nzSize="small" nzType="primary"
+            style="border: 0em;background: coral;" down-file
+            http-url="http://139.224.62.102/assets/sou-zx-bxsp-2019.pdf" file-name="上海开放大学整体办学水平评估指标体系及内涵说明.pdf">
+            <i nz-icon nzType="download"></i> 整体评估指标体系及内涵</button>
 
-        <button *ngIf="loadUser.user.userFrom==='zx'" nz-button nzSize="small" nzType="primary" style="border: 0em;background: coral;"
-          down-file http-url="http://139.224.62.102/assets/sou-zx-bxsp-2019.pdf"
-          file-name="上海开放大学整体办学水平评估指标体系及内涵说明.pdf">
-          <i nz-icon nzType="download"></i> 整体评估指标体系及内涵</button>
+          <button *ngIf="loadUser.user.unitNo==='fxtb'" nzSize="small" nz-button nzType="primary"
+            style="border: 0em;background: coral;" down-file
+            http-url="http://139.224.62.102/assets/sou-fx-bxsp-2019.pdf" file-name="上海开放大学分校办学水平评估指标及内涵.pdf">
+            <i nz-icon nzType="download"></i> 分校评估指标体系及内涵</button>
+        </p>
+      </nz-card>
+    </div>
+    <div nz-col [nzSpan]="14">
+      <nz-card nzTitle="当前阶段：数据填报" [nzExtra]="extraTemplate">
+        <p style="line-height: 2em">
+          阶段周期：{{ divData.startDate }} 至 {{ divData.endDate }}
+        </p>
+        <p style="line-height: 2em">
+          <button *ngIf="divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openDataUp(divData)">
+            <i nz-icon nzType="edit"></i>数据填报</button>
 
-        <button *ngIf="loadUser.user.userFrom==='fx'" nzSize="small" nz-button  nzType="primary" style="border: 0em;background: coral;" down-file
-          http-url="http://139.224.62.102/assets/sou-fx-bxsp-2019.pdf" file-name="上海开放大学分校办学水平评估指标及内涵.pdf">
-          <i nz-icon nzType="download"></i> 分校评估指标体系及内涵</button>
-      </p>
-    </nz-card>
+          <button *ngIf="!divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openDataUpFx(divData)">
+            <i nz-icon nzType="edit"></i>数据填报</button>
+
+          <nz-divider nzType="vertical"></nz-divider>
+
+          <button *ngIf="divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openFileUp(divData)">
+            <i nz-icon nzType="upload"></i>材料上传</button>
+
+          <button *ngIf="!divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openFileUpFx(divData)">
+            <i nz-icon nzType="upload"></i>材料上传</button>
+
+        </p>
+      </nz-card>
+      <ng-template #extraTemplate>状态：
+        <nz-tag *ngIf="statusStr==='1'" [nzColor]="'#f50'">未填报</nz-tag>
+        <nz-tag *ngIf="statusStr==='1'" [nzColor]="'#f50'">未上传</nz-tag>
+        <nz-tag *ngIf="statusStr==='2'" [nzColor]="'#2db7f5'">未审核</nz-tag>
+        <nz-tag *ngIf="statusStr==='3'" [nzColor]="'#87d068'">已填报</nz-tag>
+        <nz-tag *ngIf="statusStr==='4'" [nzColor]="'#108ee9'">已审核</nz-tag>
+        <nz-tag *ngIf="statusStr==='5'" [nzColor]="'#f50'">未评审</nz-tag>
+        <nz-tag *ngIf="statusStr==='6'" [nzColor]="'#87d068'">已评审</nz-tag>
+      </ng-template>
+    </div>
   </div>
-  <div nz-col [nzSpan]="16">
-
-    <nz-card nzTitle="当前阶段：数据填报" [nzExtra]="extraTemplate">
-      <p style="line-height: 2em">
-        阶段周期：{{ divData.startDate }} 至 {{ divData.endDate }}
-      </p>
-      <p style="line-height: 2em">
-        <button *ngIf="divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openDataUp(divData)">
-          <i nz-icon nzType="edit"></i>数据填报</button>
-
-        <button *ngIf="!divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openDataUpFx(divData)">
-          <i nz-icon nzType="edit"></i>数据填报</button>
-
-        <nz-divider nzType="vertical"></nz-divider>
-
-        <button *ngIf="divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openFileUp(divData)">
-          <i nz-icon nzType="upload"></i>材料上传</button>
-
-        <button *ngIf="!divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openFileUpFx(divData)">
-          <i nz-icon nzType="upload"></i>材料上传</button>
-
-      </p>
-    </nz-card>
-    <ng-template #extraTemplate>状态：
-      <nz-tag *ngIf="statusStr==='1'" [nzColor]="'#f50'">未填报</nz-tag>
-      <nz-tag *ngIf="statusStr==='1'" [nzColor]="'#f50'">未上传</nz-tag>
-      <nz-tag *ngIf="statusStr==='2'" [nzColor]="'#2db7f5'">未审核</nz-tag>
-      <nz-tag *ngIf="statusStr==='3'" [nzColor]="'#87d068'">已填报</nz-tag>
-      <nz-tag *ngIf="statusStr==='4'" [nzColor]="'#108ee9'">已审核</nz-tag>
-      <nz-tag *ngIf="statusStr==='5'" [nzColor]="'#f50'">未评审</nz-tag>
-      <nz-tag *ngIf="statusStr==='6'" [nzColor]="'#87d068'">已评审</nz-tag>
-    </ng-template>
+  <!-- 专家组 -->
+  <div nz-row [nzGutter]="8" *ngIf="loadUser.user.unitNo==='xnzj'">
+    <div nz-col [nzSpan]="10">
+      <nz-card nzTitle="【{{divData.appName}}】" style="background-color: rgb(252, 251, 228)">
+        <p style="line-height: 2em;font-size:1.5em;">
+          当前阶段：专家评审<br>
+          评审周期：{{ divData.startDate }} 至 {{ divData.endDate }}</p>
+        <p style="line-height: 2em">
+          <button nz-button nzType="primary" nzSize="large" style="border: 0em;background: coral;font-size: 1.2em;" down-file
+            [http-url]="'http://localhost:4200/assets/'+divData.verIndex+'.pdf'" [file-name]="divData.esName+'.pdf'">
+            <i nz-icon nzType="download"></i> {{ divData.esName }}</button>
+        </p>
+      </nz-card>
+    </div>
+    <div nz-col [nzSpan]="14">
+      <nz-card nzTitle="姓名：{{loadUser.user.name}}" [nzExtra]="extraTemplate">
+        <p style="line-height: 2em;font-size: 1.5em;">
+          您本次评审：<span style="color: crimson;font-weight: bold;">8</span> 个指标 ， <span
+            style="color: crimson;;font-weight: bold;">8</span> 所分校<br>
+          您所在组别：专家组A ， 组长：王**
+        </p>
+        <p style="line-height: 2em">
+          <button nz-button nzType="primary" nzSize="large" (click)="openDataUp(divData)" style="font-size: 1.5em;">
+            <i nz-icon nzType="edit"></i>按指标评审</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button nz-button nzType="primary" nzSize="large" (click)="openDataUpFx(divData)" style="font-size: 1.5em;">
+            <i nz-icon nzType="edit"></i>按分校评审</button>
+        </p>
+      </nz-card>
+      <ng-template #extraTemplate>状态：
+        <nz-tag *ngIf="statusStr==='1'" [nzColor]="'#f50'">评审中</nz-tag>
+      </ng-template>
+    </div>
   </div>
 </div>

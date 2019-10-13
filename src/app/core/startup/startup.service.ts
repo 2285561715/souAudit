@@ -80,14 +80,14 @@ export class StartupService {
           // Application information: including site name, description, year
           this.settingService.setApp(this.app);
           // User information: including name, avatar, email address
-          // console.log(accountData);
+          console.log(accountData);
           this.settingService.setUser({
             id: accountData.id,
             name: accountData.userName,
             userNo: accountData.userNo,
             bid: accountData.bno,
             bname: accountData.bname,
-            jobType: accountData.jobType,
+            unitNo: accountData.unitNo,
             mob: accountData.mob,
             unitName: accountData.unitName,
             userFrom: accountData.userFrom,

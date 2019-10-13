@@ -1,0 +1,44 @@
+<form nz-form>
+  <nz-table #branchTable nzSize="small" nzBordered [nzData]="listOfDisplayData" nzHideOnSinglePage="true"
+    nzPageSize="100">
+    <thead>
+      <tr>
+        <th nzWidth="80px" nzAlign="center">选择</th>
+        <th nzWidth="120px" nzAlign="center" nzShowFilter [nzFilters]="listOfType" (nzFilterChange)="filter($event)">
+          分校类型
+        </th>
+        <th nzWidth="230px" nzAlign="center">分校名称</th>
+        <th nzWidth="140px" nzAlign="center">学历教育</th>
+        <th nzWidth="140px" nzAlign="center">非学历教育</th>
+        <th nzWidth="140px" nzAlign="center">社区教育</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of branchTable.data; let i = index">
+        <td nzAlign="center">
+          <label nz-checkbox name="chkfx{{ i }}" [(ngModel)]="data.isChecked" nzValue="data.id"
+            (ngModelChange)="ngchkChange($event, i)"></label>
+        </td>
+        <td nzAlign="center">{{ data.btype }}</td>
+        <td>{{ data.bname }}</td>
+
+        <td nzAlign="center">
+          <label nz-checkbox name="xl{{ i }}" [(ngModel)]="data.isXl" nzValue="xl"
+            (ngModelChange)="ngxlChange($event, i)"></label>
+        </td>
+        <td nzAlign="center">
+          <label nz-checkbox name="fxl{{ i }}" [(ngModel)]="data.isFxl" nzValue="fxl"
+            (ngModelChange)="ngfxlChange($event, i)"></label>
+        </td>
+        <td nzAlign="center">
+          <label nz-checkbox name="sh{{ i }}" [(ngModel)]="data.isSh" nzValue="sq"
+            (ngModelChange)="ngsqChange($event, i)"></label>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</form>
+<div class="footer">
+  <button type="button" (click)="close()" class="ant-btn" style="margin-right: 8px;"><span>关闭</span></button>
+  <button type="button" (click)="submitForm()" class="ant-btn ant-btn-primary"><span>确认</span></button>
+</div>
