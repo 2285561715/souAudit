@@ -48,6 +48,14 @@ export class DashboardComponent implements OnInit {
       this.cdr.detectChanges();
     });
   }
+
+  // // 分校设置参评板块
+  // openSetFx(ddtata: any): void {
+  //   this.modal.create(SysdataDashboardEsfxsetEditComponent, { size: 'md' }).subscribe((res: any) => {
+  //     // this.loadInfo();
+  //   });
+  // }
+
   // 总校数据上报sjtb
   openDataUp(record: any): void {
     const dataValue = record;

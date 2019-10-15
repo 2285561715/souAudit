@@ -38,6 +38,7 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
   // private k10Component: DashboardDataUpZxtbK10IndexComponent;
 
   ngOnInit(): void {
+    this.value.stepId = 21;
     // 导出数据接口地址
     this.outDataUrl =
       '/api/excel/export?tableName=' +

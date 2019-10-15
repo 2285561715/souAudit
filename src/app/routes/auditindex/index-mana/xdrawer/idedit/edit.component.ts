@@ -29,6 +29,15 @@ export class AuditindexIndexManaIdeditComponent implements OnInit {
       xzKind: { type: 'string', title: '指标性质', enum: ['P', 'T', 'Y', 'N'] },
       isStar: { type: 'boolean', title: '是否关键指标' },
       orderIndex: { type: 'number', title: '组内排序', minimum: 0 },
+      idKind: {
+        type: 'string',
+        title: '指标类别',
+        enum: [
+          { label: '学历教育', value: 'xl' },
+          { label: '非学历教育', value: 'fxl' },
+          { label: '社区教育', value: 'sq' },
+        ],
+      },
     },
     required: ['indexName'],
   };
@@ -45,6 +54,10 @@ export class AuditindexIndexManaIdeditComponent implements OnInit {
       widget: 'radio',
       grid: { span: 12 },
     },
+    $idKind: {
+      widget: 'radio',
+      grid: { span: 24 },
+    },
   };
 
   ngOnInit(): void {
@@ -53,6 +66,7 @@ export class AuditindexIndexManaIdeditComponent implements OnInit {
     this.formNode.isLeaf = this.activeNode.origin.isLeaf;
     this.formNode.isStar = this.activeNode.origin.isStar;
     this.formNode.xzKind = this.activeNode.origin.xzKind;
+    this.formNode.idKind = this.activeNode.origin.idKind;
     this.formNode.orderIndex = this.activeNode.origin.orderIndex;
     this.i = this.formNode;
   }

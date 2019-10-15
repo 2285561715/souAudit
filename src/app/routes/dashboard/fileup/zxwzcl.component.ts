@@ -32,7 +32,7 @@ export class DashboardFileUpZxWzclComponent implements OnInit {
     // console.log(this.value);
     // /api/uploadFile
     this.upFileUrl =
-      '/api/uploadFile?tableno=' + this.value.dtNo + '&appId=17&stepId=21&deptId=' + this.loadUser.user.bid;
+      '/api/uploadFile?tableno=' + this.value.dtNo + '&appId=` + this.dataStr.id + `&stepId=` + this.dataStr.stepId + `&deptId=' + this.loadUser.user.bid;
 
     // 获得文字材料的要求等
     this.http.post('/api/wzfile/filename', { fileName: this.value.dtNo }).subscribe((res: any) => {

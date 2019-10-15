@@ -1,5 +1,5 @@
 import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
 @Component({
@@ -20,8 +20,11 @@ export class DashboardDataUpZxtbK01IndexComponent implements OnInit {
   listOfData: any[] = [];
   value: any = {};
 
+  @Input() dataStr: any;
+
   ngOnInit(): void {
-    console.log(this.loadUser.user.bid);
+    // console.log(this.loadUser.user.bid);
+    console.log(this.dataStr);
     // 获得数据表的数据
     this.http.get('/api/data/tables/search/zxtb/sjzxtb_k01_ldxx').subscribe((res: any[]) => {
       res.forEach(item => {
@@ -57,7 +60,11 @@ export class DashboardDataUpZxtbK01IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_k01_ldxx&appId=17&stepId=21&deptId=` +
+          `&tableno=sjzxtb_k01_ldxx&appId=` +
+          this.dataStr.id +
+          `&stepId=` +
+          this.dataStr.stepId +
+          `&deptId=` +
           this.loadUser.user.bid,
         data,
       )

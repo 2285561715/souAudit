@@ -25,6 +25,16 @@ export class AuditindexIndexManaIdaddComponent implements OnInit {
       isLeaf: { type: 'boolean', title: '是否是观测点' },
       xzKind: { type: 'string', title: '指标性质', enum: ['P', 'T', 'Y', 'N'], default: 'N' },
       isStar: { type: 'boolean', title: '是否关键指标' },
+      idKind: {
+        type: 'string',
+        title: '指标类别',
+        enum: [
+          { label: '学历教育', value: 'xl' },
+          { label: '非学历教育', value: 'fxl' },
+          { label: '社区教育', value: 'sq' },
+        ],
+        default: 'xl',
+      },
       // orderIndex: { type: 'number', title: '组内排序', minimum: 0, default: 1 },
       // remark: { type: 'string', title: '指标内涵' },
       // reportModel: { type: 'string', title: '报告模板' },
@@ -44,6 +54,10 @@ export class AuditindexIndexManaIdaddComponent implements OnInit {
     $xzKind: {
       widget: 'radio',
       grid: { span: 12 },
+    },
+    $idKind: {
+      widget: 'radio',
+      grid: { span: 24 },
     },
   };
 

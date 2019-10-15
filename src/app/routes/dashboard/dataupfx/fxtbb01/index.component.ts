@@ -1,5 +1,5 @@
 import { NzMessageService } from 'ng-zorro-antd';
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { _HttpClient, SettingsService } from '@delon/theme';
 
 @Component({
@@ -19,6 +19,8 @@ export class DashboardDataUpFxtbB01IndexComponent implements OnInit {
   listOfData: any[] = [];
   value: any = {};
   upUrl = '';
+
+  @Input() dataStr: any;
 
   ngOnInit(): void {
     // this.upUrl = '/api/excel/import?tableName=sjfxtb_xxjbqk_ldxx&appId=18&stepId=29&deptId=' + this.loadUser.user.bid;
@@ -63,7 +65,11 @@ export class DashboardDataUpFxtbB01IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjfxtb_b01_ldxx&appId=18&stepId=29&deptId=` +
+          `&tableno=sjfxtb_b01_ldxx&appId=` +
+          this.dataStr.id +
+          `&stepId=` +
+          this.dataStr.stepId +
+          `&deptId=` +
           this.loadUser.user.bid,
         data,
       )
@@ -80,7 +86,11 @@ export class DashboardDataUpFxtbB01IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry/init?tableno=sjfxtb_b01_ldxx&nd=` +
           date.getFullYear() +
-          '&appId=18&stepId=29&deptId=' +
+          `&appId=` +
+          this.dataStr.id +
+          `&stepId=` +
+          this.dataStr.stepId +
+          `&deptId=` +
           this.loadUser.user.bid,
       )
       .subscribe(res => {

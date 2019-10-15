@@ -32,6 +32,7 @@ export class DashboardDataUpFxSjtbComponent implements OnInit {
   listOfFieldsZH: any = [];
 
   ngOnInit(): void {
+    this.value.stepId = 29;
     // 导出数据接口地址
     this.outDataUrl =
       '/api/excel/export?tableName=' +
