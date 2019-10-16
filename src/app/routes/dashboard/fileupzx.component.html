@@ -34,7 +34,7 @@
 
     <span *ngIf="dt.fileupUrl" nz-tooltip nzTooltipTitle="预览">
       <button nzSize="small" nz-button style="border: 0em" down-file http-url="{{dt.fileupUrl}}"
-        file-name="{{dt.dtName}}.docx"><i nz-icon nzType="search" style="color: lime"></i> 材料预览</button>
+        file-name="{{dt.dtName}}.{{dt.exName}}"><i nz-icon nzType="search" style="color: lime"></i> 材料预览</button>
     </span>
     <span *ngIf="!dt.fileupUrl" nz-tooltip nzTooltipTitle="未上传">
       <button nzSize="small" nz-button style="border: 0em">

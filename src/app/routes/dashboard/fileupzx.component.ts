@@ -26,8 +26,6 @@ export class DashboardFileUpZxComponent implements OnInit {
 
   ngOnInit() {
     this.loadSteps();
-    // console.log('value=');
-    // console.log(this.value);
   }
 
   loadSteps(): void {
@@ -36,8 +34,14 @@ export class DashboardFileUpZxComponent implements OnInit {
     this.http
       .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=file')
       .subscribe((res: any) => {
-        this.listOfFileList = res;
-        console.log(this.listOfFileList);
+        res.forEach(item => {
+          if (item.fileupUrl) {
+            const idx = item.fileupUrl.lastIndexOf('.');
+            const exName = item.fileupUrl.substring(idx + 1, item.fileupUrl.length);
+            item.exName = exName;
+          }
+          this.listOfFileList = [...this.listOfFileList, item];
+        });
         this.cdr.detectChanges();
       });
   }
@@ -46,6 +50,7 @@ export class DashboardFileUpZxComponent implements OnInit {
   fileUpFun(dt: any): void {
     const tdata = this.value;
     tdata.dtNo = dt.dtNo;
+    tdata.stepId = 21;
 
     const drawerRef = this.drawerService.create<DashboardFileUpZxWzclComponent, { value: any }, string>({
       nzTitle: '【' + dt.dtName + '】材料上传',

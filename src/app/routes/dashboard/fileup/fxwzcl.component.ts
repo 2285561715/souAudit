@@ -31,8 +31,18 @@ export class DashboardFileUpFxWzclComponent implements OnInit {
   ngOnInit(): void {
     console.log('fdsgsdfg=');
     // /api/uploadFile
+    // this.upFileUrl =
+    //   '/api/uploadFile?tableno=' + this.value.dtNo + '&appId=18&stepId=29&deptId=' + this.loadUser.user.bid;
     this.upFileUrl =
-      '/api/uploadFile?tableno=' + this.value.dtNo + '&appId=18&stepId=29&deptId=' + this.loadUser.user.bid;
+      '/api/uploadFile?tableno=' +
+      this.value.dtNo +
+      `&appId=` +
+      this.value.id +
+      `&stepId=` +
+      this.value.stepId +
+      `&deptId=` +
+      this.loadUser.user.bid;
+
     console.log(this.upFileUrl);
     // 获得文字材料的要求等
     this.http.post('/api/wzfile/filename', { fileName: this.value.dtNo }).subscribe((res: any) => {

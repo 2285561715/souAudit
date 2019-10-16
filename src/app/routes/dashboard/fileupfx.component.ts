@@ -33,21 +33,23 @@ export class DashboardFileUpFxComponent implements OnInit {
     this.http
       .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=file')
       .subscribe((res: any) => {
-        this.listOfFileList = res;
-        console.log(this.listOfFileList);
+        res.forEach(item => {
+          if (item.fileupUrl) {
+            const idx = item.fileupUrl.lastIndexOf('.');
+            const exName = item.fileupUrl.substring(idx + 1, item.fileupUrl.length);
+            item.exName = exName;
+          }
+          this.listOfFileList = [...this.listOfFileList, item];
+        });
         this.cdr.detectChanges();
       });
-
-    // this.http.get('/api/wzfile/files?fileType=fxwz').subscribe((res: any[]) => {
-    //   this.listOfFileList = res;
-    //   this.cdr.detectChanges();
-    // });
   }
 
   // 文件上传file
   fileUpFun(dt: any): void {
     const tdata = this.value;
     tdata.dtNo = dt.dtNo;
+    tdata.stepId = 29;
     const drawerRef = this.drawerService.create<DashboardFileUpFxWzclComponent, { value: any }, string>({
       nzTitle: '【' + dt.dtName + '】材料上传',
       nzWidth: document.body.clientWidth - 490,
