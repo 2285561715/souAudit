@@ -1,4 +1,4 @@
-import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
+import { NzMessageService, NzModalService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
@@ -14,6 +14,7 @@ export class DashboardDataUpFxtbB09IndexComponent implements OnInit {
     private msgSrv: NzMessageService,
     private cdr: ChangeDetectorRef,
     public loadUser: SettingsService,
+    private modalService: NzModalService,
   ) {}
 
   editCache: { [key: string]: any } = {};
@@ -131,4 +132,25 @@ export class DashboardDataUpFxtbB09IndexComponent implements OnInit {
     }
   }
   // -----------------
+  deleteConfirm(): void {
+    this.modalService.confirm({
+      nzTitle: '<i>是否要删除数据</i>',
+      nzContent: '<b>删除数据后无法恢复，确认要删除？</b>',
+      nzOnOk: () => this.deleteInfo(),
+    });
+  }
+
+  deleteInfo() {
+    // /api/data/tables/entry/del/nd?tableNo=sjzxtb_k18_dzts&tableLx=zx&deptId=58&nd=2018
+    this.http
+      .delete(
+        '/api/data/tables/entry/del/nd?tableNo=sjfxtb_b03_jsjbxx&tableLx=fx&deptId=' +
+          this.loadUser.user.bid +
+          '&nd=2018',
+      )
+      .subscribe((res: any) => {
+        this.msgSrv.success('清空数据成功');
+        this.loadInfo();
+      });
+  }
 }

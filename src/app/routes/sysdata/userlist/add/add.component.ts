@@ -79,9 +79,6 @@ export class SysdataUserlistAddComponent implements OnInit {
     }
 
     const data = this.validateForm.value;
-
-    // console.log(this.selectedDB);
-    // console.log(this.listOfDB.indexOf(this.selectedDB));
     data.userFrom = this.selectedUserFrom;
     data.bno = this.selectedDB;
 
@@ -104,8 +101,6 @@ export class SysdataUserlistAddComponent implements OnInit {
     //   if (this.userName.invalid || this.password.invalid) {
     //     return;
     //   }
-
-    console.log(data);
 
     this.http.post('/api/users', data).subscribe((res: any) => {
       this.msgSrv.success('添加用户成功');

@@ -33,7 +33,7 @@ export class DashboardDataUpZxtbK142IndexComponent implements OnInit {
           data: { ...item },
         };
       });
-      console.log(this.listOfData);
+      
       this.cdr.detectChanges();
     });
     // this.updateEditCache();
@@ -55,7 +55,7 @@ export class DashboardDataUpZxtbK142IndexComponent implements OnInit {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    console.log(data);
+    
 
     this.http
       .put(

@@ -71,7 +71,6 @@ export class AuditstepAdProcessTbjcFxIndexComponent implements OnInit {
   selectedValue = null;
 
   ngOnInit() {
-    // console.log(this.value);
     this.loadInfo();
   }
 

@@ -61,10 +61,7 @@ export class AuditstepAdProcessZjpsZjzPszbComponent implements OnInit {
   loadInfo(): void {
     const valuestr = this.value.split('=');
     this.zjzId = valuestr[0];
-    zip(
-      this.http.get('/api/stepwbs/zjz?id=' + valuestr[0]),
-      this.http.get('/api/indexes/pszb/' + valuestr[1]),
-    )
+    zip(this.http.get('/api/stepwbs/zjz?id=' + valuestr[0]), this.http.get('/api/indexes/pszb/' + valuestr[1]))
       .pipe(
         catchError(([zjzDusers, mTree]) => {
           resolve(null);
@@ -87,10 +84,10 @@ export class AuditstepAdProcessZjpsZjzPszbComponent implements OnInit {
   }
 
   nzEvent(event: NzFormatEmitEvent): void {
-    console.log(event);
+    // console.log(event);
     this.treeCheckList = event.keys;
     this.cdr.detectChanges();
-    console.log(this.treeCheckList);
+    // console.log(this.treeCheckList);
   }
 
   submitTree(): void {
@@ -98,7 +95,8 @@ export class AuditstepAdProcessZjpsZjzPszbComponent implements OnInit {
     zbdata.id = this.zjzId;
     zbdata.indexIdList = this.treeCheckList;
 
-    console.log(zbdata);
+    // console.log(this.treeCheckList);
+    // console.log(zbdata);
 
     this.http.put('/api/stepwbs/zjz', zbdata).subscribe((res: any) => {
       this.msgSrv.success('修改信息成功');

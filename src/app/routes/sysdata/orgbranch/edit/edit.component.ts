@@ -66,7 +66,6 @@ export class SysdataOrgbranchEditComponent implements OnInit {
         }
       }
     });
-    console.log(this.selectedOptions.toString());
   }
 
   submitForm() {
@@ -75,8 +74,6 @@ export class SysdataOrgbranchEditComponent implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    console.log(this.validateForm.value);
-
     const data = this.validateForm.value;
 
     const tempSelectedstrin = this.selectedOptions.toString();

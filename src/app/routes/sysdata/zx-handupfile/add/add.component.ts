@@ -113,7 +113,6 @@ export class SysdataZxHandupfileAddComponent implements OnInit {
     });
     value.dutyDeptName = this.dutyDeptName;
 
-    console.log(value);
     this.http.post(`/api/wzfile/files`, value).subscribe(res => {
       this.msgSrv.success('保存成功');
       this.modal.close(true);

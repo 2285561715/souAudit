@@ -70,8 +70,6 @@ export class AuditstepAdStartAddComponent implements OnInit {
     data.dataFromDate = this.zhDate(data.dataFromDate);
     data.dataEndDate = this.zhDate(data.dataEndDate);
 
-    console.log(data);
-
     this.http.post('/api/adapply', data).subscribe((res: any) => {
       this.msgSrv.success('添加用户成功');
       this.close(res);

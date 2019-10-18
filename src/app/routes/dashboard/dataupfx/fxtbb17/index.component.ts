@@ -48,7 +48,7 @@ export class DashboardDataUpFxtbB17IndexComponent implements OnInit {
           };
         }
       });
-      console.log(this.listOfData);
+      
       this.cdr.detectChanges();
     });
     // this.updateEditCache();
@@ -70,7 +70,7 @@ export class DashboardDataUpFxtbB17IndexComponent implements OnInit {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    console.log(data);
+    
 
     this.http
       .put(

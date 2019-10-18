@@ -44,7 +44,6 @@ export class AuditstepAdStartStepComponent implements OnInit {
   loadInfo(): void {
     this.http.get('/api/adapply/steps?appId=' + this.value.id).subscribe((res: any) => {
       this.listOfAppStep = res;
-      console.log(this.listOfAppStep);
       this.cdr.detectChanges();
     });
   }

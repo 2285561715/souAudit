@@ -62,9 +62,9 @@ export class SysdataAuthlistUdrawerComponent implements OnInit {
         () => {},
         () => {
           this.defaultCheckedKeys = this.tempDCK;
-          console.log(this.defaultCheckedKeys);
+          // console.log(this.defaultCheckedKeys);
           this.nodes = this.tempNode;
-          console.log(this.nodes);
+          // console.log(this.nodes);
           this.cdr.detectChanges();
         },
       );
@@ -79,7 +79,6 @@ export class SysdataAuthlistUdrawerComponent implements OnInit {
     const unitdata: any = {};
     unitdata.unitNo = this.value;
     unitdata.menuKeys = this.treeCheckList;
-    console.log(unitdata);
 
     this.http.post('/api/units/grant', unitdata).subscribe((res: any) => {
       this.msgSrv.success('权限设置成功！');

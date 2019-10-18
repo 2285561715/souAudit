@@ -51,8 +51,6 @@ export class SysdataDatalistComponent implements OnInit {
   listOfData: any[] = [];
 
   changeDataSet(index: number): void {
-    console.log(index);
-
     this.http.get('/api/data/types?typeNo=' + this.tabsY[index]).subscribe((res: any[]) => {
       this.showDatas = res;
     });

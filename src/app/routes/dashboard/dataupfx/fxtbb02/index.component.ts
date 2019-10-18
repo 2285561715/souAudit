@@ -25,7 +25,6 @@ export class DashboardDataUpFxtbB02IndexComponent implements OnInit {
   ngOnInit(): void {
     // 获得数据表的数据
     this.http.get('/api/data/tables/search/fxtb/sjfxtb_b02_jsjbqk').subscribe((res: any[]) => {
-      console.log(res);
       res.forEach(item => {
         if (item.xxdm === this.loadUser.user.bid) {
           item.id = item.id + '';
@@ -36,7 +35,7 @@ export class DashboardDataUpFxtbB02IndexComponent implements OnInit {
           };
         }
       });
-      console.log(this.listOfData);
+
       this.cdr.detectChanges();
     });
     // this.updateEditCache();
@@ -58,7 +57,7 @@ export class DashboardDataUpFxtbB02IndexComponent implements OnInit {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    // console.log(data);
+
     // 登录用户部门id
     this.http
       .put(

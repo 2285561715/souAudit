@@ -40,7 +40,6 @@ export class DashboardFileUpZxWzclComponent implements OnInit {
       this.value.stepId +
       `&deptId=` +
       this.loadUser.user.bid;
-
     // 获得文字材料的要求等
     this.http.post('/api/wzfile/filename', { fileName: this.value.dtNo }).subscribe((res: any) => {
       this.fileRemark = res.remark;

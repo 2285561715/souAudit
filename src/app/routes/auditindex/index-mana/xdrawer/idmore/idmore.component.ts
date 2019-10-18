@@ -127,8 +127,8 @@ export class AuditindexIndexManaXdrawerIdmoreComponent implements OnInit {
   }
 
   done(): void {
-    console.log(this.validateForm.value);
-    console.log('done');
+    // console.log(this.validateForm.value);
+    // console.log('done');
   }
 
   submitForm(): void {
@@ -140,7 +140,6 @@ export class AuditindexIndexManaXdrawerIdmoreComponent implements OnInit {
     const data = this.validateForm.value;
     data.id = this.activeNode.key;
     data.dutyDept = this.listOfSelectedDept;
-    console.log(data);
 
     this.http.put(`/api/indexes`, data).subscribe((res: any) => {
       this.msgSrv.success('修改信息成功');

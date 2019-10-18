@@ -66,8 +66,6 @@ export class AuditstepAdProcessViewDataSynchShowComponent implements OnInit {
   total: string;
   ngOnInit() {
     this.loadInfo();
-    console.log('table===');
-    console.log(this.tableNo);
   }
 
   loadInfo(): void {

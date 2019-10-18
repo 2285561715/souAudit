@@ -66,7 +66,7 @@ export class DashboardDataUpZxtbK09IndexComponent implements OnInit {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    // console.log(data);
+
     // 登录用户部门id
     this.http
       .put(

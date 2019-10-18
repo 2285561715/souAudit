@@ -27,12 +27,14 @@ export class DashboardDataUpFxSjtbComponent implements OnInit {
   value: any = {};
   listOfTableDesc: any = {};
   outDataUrl = '';
+  downExcelUrl = '';
+  isVisible = false;
 
   listOfFields: any = [];
   listOfFieldsZH: any = [];
 
   ngOnInit(): void {
-    this.value.stepId = 29;
+    // console.log(this.value);
     // 导出数据接口地址
     this.outDataUrl =
       '/api/excel/export?tableName=' +
@@ -52,5 +54,30 @@ export class DashboardDataUpFxSjtbComponent implements OnInit {
       this.listOfFields = this.listOfTableDesc.zdNameList.split(',');
       this.listOfFieldsZH = this.listOfTableDesc.zdZhNameList.split(',');
     });
+  }
+
+  // 数据导出功能
+  exportToExcel(event: any): void {
+    this.isVisible = true;
+    this.http
+      .get(
+        '/api/data/export?tableNo=' +
+          this.value.dtNo +
+          '&tableName=' +
+          this.value.dtName +
+          '&tableLx=fx&deptId=' +
+          this.loadUser.user.bid,
+      )
+      .subscribe(res => {
+        this.downExcelUrl = res.data;
+      });
+  }
+
+  handleOk(): void {
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    this.isVisible = false;
   }
 }

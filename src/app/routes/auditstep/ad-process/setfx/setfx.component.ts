@@ -43,12 +43,10 @@ export class AuditstepAdProcessSetFxComponent implements OnInit {
   listOfselectChk: any[] = [];
 
   ngOnInit() {
-    console.log(this.value);
     this.http.get('/api/fxlist/es?appId=' + this.value.id).subscribe((res: any) => {
       // this.listOfselectChk = res[0].branchIdList;
       this.listOfData = res;
       this.listOfDisplayData = this.listOfData;
-      console.log(res);
       // 查询用户列表
       // this.http.get('/api/branches').subscribe((ress: any[]) => {
       //   ress.forEach(item => {
@@ -105,7 +103,6 @@ export class AuditstepAdProcessSetFxComponent implements OnInit {
   }
 
   submitForm(): void {
-    console.log(this.listOfData);
     this.http.put('/api/fxlist/es?appId=' + this.value.id, this.listOfData).subscribe((res: any) => {
       this.msgSrv.success('修改信息成功');
       this.cdr.detectChanges();

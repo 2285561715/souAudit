@@ -25,8 +25,6 @@ export class DashboardDataUpFxComponent implements OnInit {
 
   ngOnInit() {
     this.loadSteps();
-    console.log('value=');
-    console.log(this.value);
   }
 
   loadSteps(): void {
@@ -36,7 +34,7 @@ export class DashboardDataUpFxComponent implements OnInit {
       .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=sjtb')
       .subscribe((res: any) => {
         this.listOfTableList = res;
-        console.log(this.listOfTableList);
+        // console.log(this.listOfTableList);
         this.cdr.detectChanges();
       });
   }
@@ -45,6 +43,8 @@ export class DashboardDataUpFxComponent implements OnInit {
   dataUpFun(dt: any): void {
     const tdata = this.value;
     tdata.dtNo = dt.dtNo;
+    tdata.dtName = dt.dtName;
+    tdata.stepId = dt.stepId;
 
     const drawerRef = this.drawerService.create<DashboardDataUpFxSjtbComponent, { value: any }, string>({
       nzTitle: '【' + dt.dtName + '】数据填报',

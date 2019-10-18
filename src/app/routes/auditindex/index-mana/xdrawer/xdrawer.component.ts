@@ -186,7 +186,6 @@ export class AuditindexIndexManaXdrawerComponent implements OnInit {
   loadInfo(): void {
     this.http.get('/api/indexes/' + this.value).subscribe((res: any) => {
       this.nodes = res.nodes;
-      console.log(this.nodes);
       this.cdr.detectChanges();
     });
   }

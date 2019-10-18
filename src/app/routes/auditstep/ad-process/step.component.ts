@@ -27,7 +27,6 @@ export class AuditstepAdProcessStepComponent implements OnInit {
   listOfAppStep: any = [];
 
   ngOnInit() {
-    console.log(this.value);
     this.loadSteps();
   }
 
@@ -91,7 +90,6 @@ export class AuditstepAdProcessStepComponent implements OnInit {
     data.appId = this.value.id;
     data.stepId = astep.id;
     data.stepName = astep.stepName;
-    console.log(data);
     this.http.post('/api/stepwbs/depttbrw', data).subscribe((res: any) => {
       this.msgSrv.success('数据填报任务发布成功');
       this.loadSteps();

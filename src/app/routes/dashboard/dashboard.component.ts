@@ -25,7 +25,6 @@ export class DashboardComponent implements OnInit {
   listOfData: any[] = [];
   value: string;
   visible = false;
-
   statusStr = '1';
 
   ngOnInit() {
@@ -33,28 +32,60 @@ export class DashboardComponent implements OnInit {
   }
 
   loadInfo(): void {
-    // console.log(this.loadUser.user);
-    this.http.get('/api/adapply').subscribe((res: any[]) => {
-      // this.listOfData = res;
-      res.forEach(item => {
-        if (item.isZx && this.loadUser.user.userFrom === 'zx') {
-          this.listOfData.push(item);
-        }
-        if (!item.isZx && this.loadUser.user.userFrom === 'fx') {
-          this.listOfData.push(item);
-        }
-      });
-      console.log(res);
-      this.cdr.detectChanges();
-    });
-  }
+    // 获得评估任务-------------------------------------------------
 
-  // // 分校设置参评板块
-  // openSetFx(ddtata: any): void {
-  //   this.modal.create(SysdataDashboardEsfxsetEditComponent, { size: 'md' }).subscribe((res: any) => {
-  //     // this.loadInfo();
-  //   });
-  // }
+    switch (this.loadUser.user.unitNo) {
+      case 'zxbmtb':
+        this.http.get('/api/adapply').subscribe((res: any[]) => {
+          res.forEach(item => {
+            if (item.isZx && this.loadUser.user.userFrom === 'zx') {
+              this.listOfData.push(item);
+            }
+          });
+          this.cdr.detectChanges();
+        });
+        break;
+      case 'fxtb':
+        this.http.get('/api/adapply').subscribe((res: any[]) => {
+          res.forEach(item => {
+            if (!item.isZx && this.loadUser.user.userFrom === 'fx') {
+              this.listOfData.push(item);
+            }
+          });
+          this.cdr.detectChanges();
+        });
+        break;
+      case 'xnzj':
+        this.http.get('/api/zjps/index?userId=' + this.loadUser.user.id).subscribe((res: any) => {
+          this.listOfData.push(res);
+          // this.listOfData = [...this.listOfData, res];
+          this.cdr.detectChanges();
+        });
+        break;
+      case 'xwzj':
+        this.http.get('/api/zjps/index?userId=' + this.loadUser.user.id).subscribe((res: any) => {
+          this.listOfData.push(res);
+          // this.listOfData = [...this.listOfData, res];
+          console.log(res);
+          this.cdr.detectChanges();
+        });
+        break;
+      default:
+        break;
+    }
+
+    // this.http.get('/api/adapply').subscribe((res: any[]) => {
+    //   res.forEach(item => {
+    //     if (item.isZx && this.loadUser.user.userFrom === 'zx') {
+    //       this.listOfData.push(item);
+    //     }
+    //     if (!item.isZx && this.loadUser.user.userFrom === 'fx') {
+    //       this.listOfData.push(item);
+    //     }
+    //   });
+    //   this.cdr.detectChanges();
+    // });
+  }
 
   // 总校数据上报sjtb
   openDataUp(record: any): void {

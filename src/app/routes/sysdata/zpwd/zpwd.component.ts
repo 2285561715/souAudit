@@ -54,7 +54,7 @@ export class SysdataZpwdComponent implements OnInit {
   }
 
   loadInfo(): void {
-    console.log(this.loadUser.user);
+    // console.log(this.loadUser.user);
   }
 
   submitForm(): void {
@@ -69,8 +69,6 @@ export class SysdataZpwdComponent implements OnInit {
     data.modType = 'up';
     data.userId = this.loadUser.user.id;
     data.newPassword = data.password;
-
-    console.log(data);
 
     this.http.post('/api/account/password', data).subscribe((res: any) => {
       this.msgSrv.success('修改密码成功，请记住新密码：' + data.password);

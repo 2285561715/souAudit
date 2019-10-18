@@ -89,8 +89,6 @@ export class AuditstepAdStartEditComponent implements OnInit {
     data.dataEndDate = this.zhDate(data.dataEndDate);
     data.id = this.record.id;
 
-    console.log(data);
-
     this.http.put('/api/adapply', data).subscribe((res: any) => {
       this.msgSrv.success('修改信息成功');
       this.close(res);

@@ -38,7 +38,6 @@ export class DashboardDataUpZxtbK16IndexComponent implements OnInit {
   loadInfo(): void {
     this.listOfData = [];
     this.http.get('/api/data/tables/search/zxtb/sjzxtb_k16_jxkypt').subscribe((res: any[]) => {
-      // console.log(res);
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -47,7 +46,7 @@ export class DashboardDataUpZxtbK16IndexComponent implements OnInit {
           data: { ...item },
         };
       });
-      // console.log(this.listOfData);
+
       this.cdr.detectChanges();
     });
   }

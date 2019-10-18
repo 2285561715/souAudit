@@ -52,7 +52,7 @@ export class AuditindexIndexManaSetUpComponent implements OnInit {
       dataSjcj: [null, [Validators.required]],
       dataFile: [null, [Validators.required]],
     });
-    console.log(this.activeNode);
+    // console.log(this.activeNode);
     this.addField();
     this.addFZField();
     this.loadSets();
@@ -61,78 +61,75 @@ export class AuditindexIndexManaSetUpComponent implements OnInit {
 
   // 获取indexes_sets的conType\typeNO\TypeName\typeValue
   loadSets(): void {
-    this.http
-      .get('/api/indexes/sets?indexId=' + this.activeNode.key)
-      .subscribe((res: any) => {
-        // this.indexesSetslists = res;
-        res.forEach(item => {
-          switch (item.conType) {
-            case 'sjtb':
-              this.listOfSelectedSjtb.push(item.typeNo);
-              break;
-            case 'sjcj':
-              this.listOfSelectedSjcj.push(item.typeNo);
-              break;
-            case 'file':
-              this.listOfSelectedFile.push(item.typeNo);
-              break;
-            case 'tjlx':
-              switch (this.ofi) {
-                case 0:
-                  this.validateForm.controls.tjlx0.setValue(item.typeNo);
-                  break;
-                case 1:
-                  this.addField();
-                  this.validateForm.controls.tjlx1.setValue(item.typeNo);
-                  break;
-                case 2:
-                  this.addField();
-                  this.validateForm.controls.tjlx2.setValue(item.typeNo);
-                  break;
-                case 3:
-                  this.addField();
-                  this.validateForm.controls.tjlx3.setValue(item.typeNo);
-                  break;
-                case 4:
-                  this.addField();
-                  this.validateForm.controls.tjlx4.setValue(item.typeNo);
-                  break;
-              }
-              this.ofi = this.ofi + 1;
-              break;
-            case 'psbzfz':
-              switch (this.ofFZi) {
-                case 0:
-                  this.validateForm.controls.psbzfz0.setValue(item.typeNo);
-                  break;
-                case 1:
-                  this.addFZField();
-                  this.validateForm.controls.psbzfz1.setValue(item.typeNo);
-                  break;
-                case 2:
-                  this.addFZField();
-                  this.validateForm.controls.psbzfz2.setValue(item.typeNo);
-                  break;
-                case 3:
-                  this.addFZField();
-                  this.validateForm.controls.psbzfz3.setValue(item.typeNo);
-                  break;
-                case 4:
-                  this.addFZField();
-                  this.validateForm.controls.psbzfz4.setValue(item.typeNo);
-                  break;
-              }
-              this.ofFZi = this.ofFZi + 1;
-              break;
-            default:
-              break;
-          }
-        });
-
-        this.loadInfo();
-
-        console.log(this.indexesSetslists);
+    this.http.get('/api/indexes/sets?indexId=' + this.activeNode.key).subscribe((res: any) => {
+      // this.indexesSetslists = res;
+      res.forEach(item => {
+        switch (item.conType) {
+          case 'sjtb':
+            this.listOfSelectedSjtb.push(item.typeNo);
+            break;
+          case 'sjcj':
+            this.listOfSelectedSjcj.push(item.typeNo);
+            break;
+          case 'file':
+            this.listOfSelectedFile.push(item.typeNo);
+            break;
+          case 'tjlx':
+            switch (this.ofi) {
+              case 0:
+                this.validateForm.controls.tjlx0.setValue(item.typeNo);
+                break;
+              case 1:
+                this.addField();
+                this.validateForm.controls.tjlx1.setValue(item.typeNo);
+                break;
+              case 2:
+                this.addField();
+                this.validateForm.controls.tjlx2.setValue(item.typeNo);
+                break;
+              case 3:
+                this.addField();
+                this.validateForm.controls.tjlx3.setValue(item.typeNo);
+                break;
+              case 4:
+                this.addField();
+                this.validateForm.controls.tjlx4.setValue(item.typeNo);
+                break;
+            }
+            this.ofi = this.ofi + 1;
+            break;
+          case 'psbzfz':
+            switch (this.ofFZi) {
+              case 0:
+                this.validateForm.controls.psbzfz0.setValue(item.typeNo);
+                break;
+              case 1:
+                this.addFZField();
+                this.validateForm.controls.psbzfz1.setValue(item.typeNo);
+                break;
+              case 2:
+                this.addFZField();
+                this.validateForm.controls.psbzfz2.setValue(item.typeNo);
+                break;
+              case 3:
+                this.addFZField();
+                this.validateForm.controls.psbzfz3.setValue(item.typeNo);
+                break;
+              case 4:
+                this.addFZField();
+                this.validateForm.controls.psbzfz4.setValue(item.typeNo);
+                break;
+            }
+            this.ofFZi = this.ofFZi + 1;
+            break;
+          default:
+            break;
+        }
       });
+
+      this.loadInfo();
+      // console.log(this.indexesSetslists);
+    });
     this.cdr.detectChanges();
   }
 
@@ -190,7 +187,7 @@ export class AuditindexIndexManaSetUpComponent implements OnInit {
       controlInstance: `tjlx${id}`,
     };
     const index = this.listOfControl.push(control);
-    console.log(this.listOfControl[this.listOfControl.length - 1]);
+    // console.log(this.listOfControl[this.listOfControl.length - 1]);
     this.validateForm.addControl(
       this.listOfControl[index - 1].controlInstance,
       new FormControl(null, Validators.required),
@@ -202,7 +199,7 @@ export class AuditindexIndexManaSetUpComponent implements OnInit {
     if (this.listOfControl.length > 1) {
       const index = this.listOfControl.indexOf(i);
       this.listOfControl.splice(index, 1);
-      console.log(this.listOfControl);
+      // console.log(this.listOfControl);
       this.validateForm.removeControl(i.controlInstance);
     }
   }
@@ -218,7 +215,7 @@ export class AuditindexIndexManaSetUpComponent implements OnInit {
       controlInstance: `psbzfz${id}`,
     };
     const index = this.listOfFZControl.push(control);
-    console.log(this.listOfFZControl[this.listOfFZControl.length - 1]);
+    // console.log(this.listOfFZControl[this.listOfFZControl.length - 1]);
     this.validateForm.addControl(
       this.listOfFZControl[index - 1].controlInstance,
       new FormControl(null, Validators.required),
@@ -230,7 +227,7 @@ export class AuditindexIndexManaSetUpComponent implements OnInit {
     if (this.listOfFZControl.length > 1) {
       const index = this.listOfFZControl.indexOf(i);
       this.listOfFZControl.splice(index, 1);
-      console.log(this.listOfFZControl);
+      // console.log(this.listOfFZControl);
       this.validateForm.removeControl(i.controlInstance);
     }
   }
@@ -284,8 +281,8 @@ export class AuditindexIndexManaSetUpComponent implements OnInit {
   // -------------------------------------------------------------------------------------
 
   done(): void {
-    console.log(this.validateForm.value);
-    console.log('done');
+    // console.log(this.validateForm.value);
+    // console.log('done');
   }
 
   submitForm(): void {
@@ -302,7 +299,6 @@ export class AuditindexIndexManaSetUpComponent implements OnInit {
     data.dataSjtb = this.listOfSelectedSjtb;
     data.dataSjcj = this.listOfSelectedSjcj;
     data.dataFile = this.listOfSelectedFile;
-    console.log(data);
 
     this.http.post(`/api/indexes/sets`, data).subscribe((res: any) => {
       this.msgSrv.success('修改信息成功');

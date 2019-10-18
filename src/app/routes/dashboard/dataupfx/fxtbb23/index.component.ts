@@ -41,7 +41,6 @@ export class DashboardDataUpFxtbB23IndexComponent implements OnInit {
 
     // 获得 规模数据
     this.http.get('/api/data/tables/search/zxtb/sjzxtb_k21_rcpygm').subscribe((res: any[]) => {
-      console.log(res);
       res.forEach(item => {
         if (item.xxdm === this.loadUser.user.bid) {
           this.listOfGMData = [...this.listOfGMData, item];
@@ -67,7 +66,7 @@ export class DashboardDataUpFxtbB23IndexComponent implements OnInit {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    console.log(data);
+
     // 登录用户部门id
     this.http
       .put(

@@ -31,7 +31,7 @@ export class AuditstepAdProcessTbjcZxIndexComponent implements OnInit {
       .get('/api/tbrwjdcx?appId=' + this.value.appId + '&pglx=zx&conType=' + this.conStr)
       .subscribe((res: any[]) => {
         this.listOfData = res;
-        // console.log(this.listOfData);
+
         this.cdr.detectChanges();
       });
   }

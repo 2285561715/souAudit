@@ -19,13 +19,13 @@
         <app-dashboard-dataup-zxtbk08-index [dataStr]="value"></app-dashboard-dataup-zxtbk08-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k09_jsjbxx'">
-        <app-dashboard-dataup-zxtbk09-index></app-dashboard-dataup-zxtbk09-index>
+        <app-dashboard-dataup-zxtbk09-index [dataStr]="value"></app-dashboard-dataup-zxtbk09-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k10_glryxx'">
         <app-dashboard-dataup-zxtbk10-index [dataStr]="value"></app-dashboard-dataup-zxtbk10-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k10_fdyxx'">
-        <app-dashboard-dataup-zxtbk102-index></app-dashboard-dataup-zxtbk102-index>
+        <app-dashboard-dataup-zxtbk102-index [dataStr]="value"></app-dashboard-dataup-zxtbk102-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k11_jsjbqk'">
         <app-dashboard-dataup-zxtbk11-index [dataStr]="value"></app-dashboard-dataup-zxtbk11-index>
@@ -40,7 +40,7 @@
         <app-dashboard-dataup-zxtbk13-index [dataStr]="value"></app-dashboard-dataup-zxtbk13-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k141_kfjyyj'">
-        <app-dashboard-dataup-zxtbk141-index></app-dashboard-dataup-zxtbk141-index>
+        <app-dashboard-dataup-zxtbk141-index [dataStr]="value"></app-dashboard-dataup-zxtbk141-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k142_shsqjy'">
         <app-dashboard-dataup-zxtbk142-index [dataStr]="value"></app-dashboard-dataup-zxtbk142-index>
@@ -70,7 +70,7 @@
         <app-dashboard-dataup-zxtbk20-index [dataStr]="value"></app-dashboard-dataup-zxtbk20-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k21_rcpygm'">
-        <app-dashboard-dataup-zxtbk21-index></app-dashboard-dataup-zxtbk21-index>
+        <app-dashboard-dataup-zxtbk21-index [dataStr]="value"></app-dashboard-dataup-zxtbk21-index>
       </div>
       <div *ngIf="value.dtNo==='sjzxtb_k22_hjqkxs'">
         <app-dashboard-dataup-zxtbk22-index [dataStr]="value"></app-dashboard-dataup-zxtbk22-index>
@@ -113,7 +113,7 @@
     </nz-tab>
     <nz-tab [nzTitle]="titleTemplate1">
       <ng-template #titleTemplate1><i nz-icon nzType="import" style="color: coral"></i>统计报表</ng-template>
-      <p>请等待数据处理结果...</p>
+      <p>数据统计报表处理中...</p>
     </nz-tab>
     <!-- <nz-tab [nzTitle]="titleTemplate3">
       <ng-template #titleTemplate3><i nz-icon nzType="file-done" style="color: coral"></i>校验规则</ng-template>
@@ -125,7 +125,19 @@
     </nz-tab>
     <nz-tab [nzTitle]="titleTemplate5">
       <ng-template #titleTemplate5><i nz-icon nzType="select" style="color: coral"></i>数据导出</ng-template>
-      <p><b>请选择要导出的数据字段：</b></p>
+      <p><b>导出本表全部数据：</b></p>
+      <br />
+      <button nz-button [nzType]="'primary'" (click)="exportToExcel()">
+        <i nz-icon nzType="check-circle" nzTheme="outline"></i> 导出为 EXCEL >>
+      </button>
+      <nz-modal [(nzVisible)]="isVisible" nzTitle="数据已导出请点击下载！" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+        <p style="align-content: center;">
+          <button nz-button class="mr-sm" down-file [http-url]="downExcelUrl" [file-name]="value.dtName + '.xlsx'">
+            {{ value.dtName }} <i nz-icon nzType="download" style="color:coral"></i>
+          </button>
+        </p>
+      </nz-modal>
+      <!-- <p><b>请选择要导出的数据字段：</b></p>
       <nz-select nzMode="tags" style="width: 100%;" (ngModelChange)="exportToExcel($event)" nzPlaceHolder="请选择数据字段！"
         id="outFields">
         <nz-option *ngFor="let option of listOfFields;let i=index" [nzLabel]="listOfFieldsZH[i]"
@@ -135,7 +147,7 @@
       <br><br>
       <button nz-button nzType="primary" (click)="exportToExcel()"><i nz-icon nzType="check-circle"
           nzTheme="outline"></i> 导出为 EXCEL
-        >></button>
+        >></button> -->
     </nz-tab>
   </nz-tabset>
 </div>

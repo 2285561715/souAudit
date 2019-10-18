@@ -113,7 +113,6 @@ export class UserLoginComponent implements OnDestroy {
         password: this.password.value,
       })
       .subscribe((res: any) => {
-        console.log(res);
         // 清空路由复用信息
         this.reuseTabService.clear();
         // 设置用户Token信息

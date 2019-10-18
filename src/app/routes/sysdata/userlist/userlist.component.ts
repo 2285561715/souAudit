@@ -44,7 +44,7 @@ export class SysdataUserlistComponent implements OnInit {
   loadInfo(): void {
     this.http.get('/api/users').subscribe((res: any[]) => {
       this.listOfData = res;
-      // console.log(res);
+
       this.listOfDisplayData = this.listOfData;
       // this.cdr.detectChanges() 这句一定要加，否则列表不会刷新，导致看不到数据
       this.cdr.detectChanges();
@@ -122,7 +122,7 @@ export class SysdataUserlistComponent implements OnInit {
     const data = record;
     data.modType = 'cz';
     data.userId = record.id;
-    console.log(data);
+
     this.http.post('/api/account/password', data).subscribe((res: any) => {
       this.msgSrv.success('重置密码成功，初始密码：123456！');
     });

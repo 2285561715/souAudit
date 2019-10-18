@@ -21,7 +21,6 @@ export class AuditstepAdProcessViewDataSynchComponent implements OnInit {
   value: string;
 
   ngOnInit() {
-    console.log(this.data);
     this.loadInfo();
   }
 

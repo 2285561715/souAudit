@@ -49,7 +49,8 @@ export class DashboardFileUpFxComponent implements OnInit {
   fileUpFun(dt: any): void {
     const tdata = this.value;
     tdata.dtNo = dt.dtNo;
-    tdata.stepId = 29;
+    tdata.stepId = dt.stepId;
+
     const drawerRef = this.drawerService.create<DashboardFileUpFxWzclComponent, { value: any }, string>({
       nzTitle: '【' + dt.dtName + '】材料上传',
       nzWidth: document.body.clientWidth - 490,

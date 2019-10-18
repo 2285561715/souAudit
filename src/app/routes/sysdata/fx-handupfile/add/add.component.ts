@@ -75,7 +75,6 @@ export class SysdataFxHandupfileAddComponent implements OnInit {
     value.dutyDeptName = '';
     value.modRecords = '';
 
-    console.log(value);
     this.http.post(`/api/wzfile/files`, value).subscribe(res => {
       this.msgSrv.success('保存成功');
       this.modal.close(true);

@@ -23,8 +23,6 @@ export class DashboardDataUpZxtbK01IndexComponent implements OnInit {
   @Input() dataStr: any;
 
   ngOnInit(): void {
-    // console.log(this.loadUser.user.bid);
-    console.log(this.dataStr);
     // 获得数据表的数据
     this.http.get('/api/data/tables/search/zxtb/sjzxtb_k01_ldxx').subscribe((res: any[]) => {
       res.forEach(item => {
@@ -55,7 +53,7 @@ export class DashboardDataUpZxtbK01IndexComponent implements OnInit {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    // console.log(data);
+
     this.http
       .put(
         `/api/data/tables/entry?id=` +

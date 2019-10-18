@@ -25,14 +25,9 @@ export class DashboardFileUpFxWzclComponent implements OnInit {
   fileRemark = '';
   upFileUrl = '';
 
-  // fileList = [];
   fileList: any[] = [];
 
   ngOnInit(): void {
-    console.log('fdsgsdfg=');
-    // /api/uploadFile
-    // this.upFileUrl =
-    //   '/api/uploadFile?tableno=' + this.value.dtNo + '&appId=18&stepId=29&deptId=' + this.loadUser.user.bid;
     this.upFileUrl =
       '/api/uploadFile?tableno=' +
       this.value.dtNo +
@@ -42,8 +37,6 @@ export class DashboardFileUpFxWzclComponent implements OnInit {
       this.value.stepId +
       `&deptId=` +
       this.loadUser.user.bid;
-
-    console.log(this.upFileUrl);
     // 获得文字材料的要求等
     this.http.post('/api/wzfile/filename', { fileName: this.value.dtNo }).subscribe((res: any) => {
       this.fileRemark = res.remark;
@@ -55,7 +48,6 @@ export class DashboardFileUpFxWzclComponent implements OnInit {
       const fileUrl = item.response.fileDownloadUri;
       // 下面一行打印出来应该就是文件地址
       this.msgSrv.success('文件上传成功');
-      console.log({ fileUrl });
     });
   }
 }

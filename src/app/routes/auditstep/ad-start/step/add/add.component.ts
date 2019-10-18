@@ -79,8 +79,6 @@ export class AuditstepAdStartStepAddComponent implements OnInit {
     valueData.fromDate = valueData.fromDate.substring(0, 10);
     valueData.endDate = valueData.endDate.substring(0, 10);
     valueData.isDone = 0;
-
-    console.log(valueData);
     this.http.post(`/api/adapply/steps`, valueData).subscribe(res => {
       this.msgSrv.success('保存成功');
       this.modal.close(true);

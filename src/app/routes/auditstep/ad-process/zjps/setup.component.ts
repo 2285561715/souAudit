@@ -55,13 +55,11 @@ export class AuditstepAdProcessZjpsSetupComponent implements OnInit {
   }
 
   loadInfo(): void {
-    this.http
-      .get('/api/stepwbs/zjz?appId=' + this.data.id + '&stepId=' + this.data.stepId)
-      .subscribe((res: any[]) => {
-        this.listOfData = res;
-        // console.log(this.listOfData);
-        this.cdr.detectChanges();
-      });
+    this.http.get('/api/stepwbs/zjz?appId=' + this.data.id + '&stepId=' + this.data.stepId).subscribe((res: any[]) => {
+      this.listOfData = res;
+
+      this.cdr.detectChanges();
+    });
   }
 
   zjzSetUser(record: any): void {
@@ -162,8 +160,7 @@ export class AuditstepAdProcessZjpsSetupComponent implements OnInit {
     value.appId = this.data.id;
     value.stepId = this.data.stepId;
     value.stepName = this.data.stepName;
-    // value.zjzName=document.getElementById("zjzName").val
-    console.log(value);
+
     this.http.post(`/api/stepwbs/zjz`, value).subscribe(res => {
       this.msgSrv.success('保存成功');
       this.cdr.detectChanges();

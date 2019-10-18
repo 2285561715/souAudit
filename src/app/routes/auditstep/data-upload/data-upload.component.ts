@@ -207,7 +207,7 @@ export class AuditstepDataUploadComponent implements OnInit {
     this.invisible = false;
   }
   ngOnInit() {
-    console.log(this.settingService.user);
+    // console.log(this.settingService.user);
   }
 
   add() {

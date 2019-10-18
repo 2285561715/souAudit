@@ -50,7 +50,6 @@ export class SysdataOrgbranchAddComponent implements OnInit {
         }
       }
     });
-    console.log(this.selectedOptions.toString());
   }
 
   submitForm(): void {
@@ -58,8 +57,6 @@ export class SysdataOrgbranchAddComponent implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    console.log(this.validateForm.value);
-
     const data = this.validateForm.value;
 
     data.btype = this.selectedOptions.toString();

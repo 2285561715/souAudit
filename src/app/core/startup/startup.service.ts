@@ -80,7 +80,7 @@ export class StartupService {
           // Application information: including site name, description, year
           this.settingService.setApp(this.app);
           // User information: including name, avatar, email address
-          console.log(accountData);
+          // console.log(accountData);
           this.settingService.setUser({
             id: accountData.id,
             name: accountData.userName,
@@ -111,8 +111,7 @@ export class StartupService {
             },
           ];
           this.menuService.add(restMenu);
-          console.log(restMenu);
-
+          // console.log(restMenu);
           // Can be set page suffix title, https://ng-alain.com/theme/title
           this.titleService.suffix = this.app.name;
         },

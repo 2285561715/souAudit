@@ -30,7 +30,7 @@ export class SysdataOrgdepartmentComponent implements OnInit {
   loadInfo(): void {
     this.http.get('/api/departments').subscribe((res: any[]) => {
       this.listOfData = res;
-      console.log(this.listOfData);
+      
       // this.cdr.detectChanges() 这句一定要加，否则列表不会刷新，导致看不到数据
       this.cdr.detectChanges();
     });

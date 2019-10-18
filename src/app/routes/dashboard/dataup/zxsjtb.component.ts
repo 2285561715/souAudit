@@ -31,6 +31,8 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
   listOfFields: any = [];
   listOfFieldsZH: any = [];
   outDataUrl = '';
+  downExcelUrl = '';
+  isVisible = false;
 
   // @ViewChild(DashboardDataUpZxtbK09IndexComponent, { static: false })
   // private k09Component: DashboardDataUpZxtbK09IndexComponent;
@@ -38,7 +40,6 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
   // private k10Component: DashboardDataUpZxtbK10IndexComponent;
 
   ngOnInit(): void {
-    this.value.stepId = 21;
     // 导出数据接口地址
     this.outDataUrl =
       '/api/excel/export?tableName=' +
@@ -63,19 +64,26 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
 
   // 数据导出功能
   exportToExcel(event: any): void {
-    // value.id = this.record.id;
-    // dataSet = this.value;
-    // console.log(dataSet);
-    console.log(event);
+    this.isVisible = true;
+    this.http
+      .get(
+        '/api/data/export?tableNo=' +
+          this.value.dtNo +
+          '&tableName=' +
+          this.value.dtName +
+          '&tableLx=zx&deptId=' +
+          this.loadUser.user.bid,
+      )
+      .subscribe(res => {
+        this.downExcelUrl = res.data;
+      });
+  }
 
-    const date = new Date();
-    let month: string | number = date.getMonth() + 1;
-    let strDate: string | number = date.getDate();
-    month = month < 10 ? '0' + month : month;
-    strDate = strDate < 10 ? '0' + strDate : strDate;
+  handleOk(): void {
+    this.isVisible = false;
+  }
 
-    // this.http.post(`/api/main/infos`, dataSet).subscribe(res => {
-    //   this.msgSrv.success('导出数据成功！');
-    // });
+  handleCancel(): void {
+    this.isVisible = false;
   }
 }

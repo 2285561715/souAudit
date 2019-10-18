@@ -42,6 +42,7 @@ export class DashboardFileUpZxComponent implements OnInit {
           }
           this.listOfFileList = [...this.listOfFileList, item];
         });
+        console.log(this.listOfFileList);
         this.cdr.detectChanges();
       });
   }
@@ -50,7 +51,7 @@ export class DashboardFileUpZxComponent implements OnInit {
   fileUpFun(dt: any): void {
     const tdata = this.value;
     tdata.dtNo = dt.dtNo;
-    tdata.stepId = 21;
+    tdata.stepId = dt.stepId;
 
     const drawerRef = this.drawerService.create<DashboardFileUpZxWzclComponent, { value: any }, string>({
       nzTitle: '【' + dt.dtName + '】材料上传',

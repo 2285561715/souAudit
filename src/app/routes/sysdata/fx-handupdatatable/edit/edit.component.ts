@@ -103,7 +103,6 @@ export class SysdataFxHandupdatatableEditComponent implements OnInit {
         this.dutyDeptName = element.bname;
       }
     });
-    console.log(this.dutyDeptName);
   }
 
   changeContent(): void {
@@ -195,8 +194,6 @@ export class SysdataFxHandupdatatableEditComponent implements OnInit {
       date.getMinutes() +
       ':' +
       date.getSeconds();
-
-    console.log(data);
 
     this.http.put(`/api/data/tables`, data).subscribe(res => {
       this.msgSrv.success('保存成功');
