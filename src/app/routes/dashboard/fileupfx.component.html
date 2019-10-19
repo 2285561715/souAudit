@@ -6,7 +6,7 @@
       <th nzAlign="center" nzWidth="12%"><b>对应指标及内涵</b></th>
       <th nzAlign="center" nzWidth="10%"><b>是否上传</b></th>
       <th nzAlign="center" nzWidth="10%"><b>是否确认</b></th>
-      <th nzAlign="center" nzWidth="12%">Action</th>
+      <th nzAlign="center" nzWidth="15%">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -37,7 +37,7 @@
       <td>&nbsp;
         <span nz-tooltip nzTooltipTitle="上传或重传">
           <button nzSize="small" nz-button (click)="fileUpFun(dt)" style="border: 0em">
-            <i nz-icon nzType="upload" style="color: coral"></i></button></span>
+            <i nz-icon nzType="upload" style="color: coral"></i> 上传</button></span>
         <span nz-tooltip nzTooltipTitle="预览">
           <button *ngIf="dt.fileupUrl" nzSize="small" nz-button style="border: 0em" down-file
             http-url="{{dt.fileupUrl}}" file-name="{{dt.dtName}}.{{dt.exName}}"><i nz-icon nzType="search"

@@ -1,4 +1,4 @@
-import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
+import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef, NzModalService } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
@@ -14,6 +14,7 @@ export class DashboardDataUpFxtbB17IndexComponent implements OnInit {
     private msgSrv: NzMessageService,
     private cdr: ChangeDetectorRef,
     public loadUser: SettingsService,
+    private modalService: NzModalService,
   ) {}
 
   editCache: { [key: string]: any } = {};
@@ -48,7 +49,7 @@ export class DashboardDataUpFxtbB17IndexComponent implements OnInit {
           };
         }
       });
-      
+
       this.cdr.detectChanges();
     });
     // this.updateEditCache();
@@ -70,7 +71,6 @@ export class DashboardDataUpFxtbB17IndexComponent implements OnInit {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    
 
     this.http
       .put(
@@ -135,5 +135,41 @@ export class DashboardDataUpFxtbB17IndexComponent implements OnInit {
       this.loadInfo();
     }
   }
-  // ------------
+  // -----------------
+  deleteConfirm(): void {
+    this.modalService.confirm({
+      nzTitle: '<i>是否要删除数据</i>',
+      nzContent: '<b>删除数据后无法恢复，确认要删除？</b>',
+      nzOnOk: () => this.deleteInfo(),
+    });
+  }
+
+  deleteInfo() {
+    this.http
+      .delete(
+        '/api/data/tables/entry/del/nd?tableNo=sjfxtb_b11_sysx&tableLx=fx&deptId=' +
+          this.loadUser.user.bid +
+          '&nd=2016',
+      )
+      .subscribe((res: any) => {});
+
+    this.http
+      .delete(
+        '/api/data/tables/entry/del/nd?tableNo=sjfxtb_b11_sysx&tableLx=fx&deptId=' +
+          this.loadUser.user.bid +
+          '&nd=2017',
+      )
+      .subscribe((res: any) => {});
+
+    this.http
+      .delete(
+        '/api/data/tables/entry/del/nd?tableNo=sjfxtb_b11_sysx&tableLx=fx&deptId=' +
+          this.loadUser.user.bid +
+          '&nd=2018',
+      )
+      .subscribe((res: any) => {
+        this.msgSrv.success('清空数据成功');
+        this.loadInfo();
+      });
+  }
 }

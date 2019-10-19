@@ -141,7 +141,6 @@ export class DashboardDataUpFxtbB09IndexComponent implements OnInit {
   }
 
   deleteInfo() {
-    // /api/data/tables/entry/del/nd?tableNo=sjzxtb_k18_dzts&tableLx=zx&deptId=58&nd=2018
     this.http
       .delete(
         '/api/data/tables/entry/del/nd?tableNo=sjfxtb_b03_jsjbxx&tableLx=fx&deptId=' +

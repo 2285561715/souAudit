@@ -141,7 +141,7 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-  // 文件上传file
+  // 总校文件上传file
   openFileUp(record: any): void {
     const dataValue = record;
     dataValue.deptId = this.loadUser.user.bid;
@@ -149,7 +149,7 @@ export class DashboardComponent implements OnInit {
 
     const drawerRef = this.drawerService.create<DashboardFileUpZxComponent, { value: any }, string>({
       nzTitle: '【' + this.loadUser.user.bname + '】' + '文字材料上传',
-      nzWidth: 490,
+      nzWidth: 500,
       nzPlacement: 'left',
       nzMaskClosable: false,
       nzContent: DashboardFileUpZxComponent,
@@ -169,7 +169,7 @@ export class DashboardComponent implements OnInit {
     });
   }
   // -------------------------------------------
-  // 文件上传file
+  // 分校文件上传file
   openFileUpFx(record: any): void {
     const dataValue = record;
     dataValue.deptId = this.loadUser.user.bid;
@@ -177,7 +177,7 @@ export class DashboardComponent implements OnInit {
 
     const drawerRef = this.drawerService.create<DashboardFileUpFxComponent, { value: any }, string>({
       nzTitle: '【' + this.loadUser.user.bname + '】' + '文字单片材料上传',
-      nzWidth: 800,
+      nzWidth: 830,
       nzPlacement: 'left',
       nzMaskClosable: false,
       nzContent: DashboardFileUpFxComponent,
