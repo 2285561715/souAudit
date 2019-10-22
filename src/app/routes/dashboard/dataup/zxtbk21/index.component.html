@@ -3,6 +3,9 @@
     <div nz-col nzSpan="8">
       <button nz-button nzType="primary" nzSize="small" (click)="addData()">
         <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="danger" nzSize="small" (click)="deleteConfirm()">
+        <i nz-icon nzType="delete"></i> 清空本表2016\2017\2018年数据</button>
     </div>
     <div nz-col nzSpan="16" style="text-align: right">
       <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
@@ -17,7 +20,8 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background-color: linen">
-      <th nzWidth="120px" nzAlign="center">年度</th>
+      <th nzWidth="100px" nzAlign="center">年度</th>
+      <th nzWidth="100px" nzAlign="center">学期</th>
       <th nzWidth="100px" nzAlign="center">学校代码</th>
       <th nzWidth="220px" nzAlign="center">学校名称</th>
       <th nzAlign="center"><b>在籍学生数-本科</b></th>
@@ -37,6 +41,18 @@
         </ng-container>
         <ng-template #ndInputTpl>
           <input type="text" nz-input [(ngModel)]="editCache[data.id].data.nd" />
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xqInputTpl">
+          {{ data.xq }}
+        </ng-container>
+        <ng-template #xqInputTpl>
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xq" /> -->
+          <nz-select style="width: 60px;" [(ngModel)]="editCache[data.id].data.xq" nzAllowClear nzPlaceHolder="学期">
+            <nz-option nzValue="春" nzLabel="春"></nz-option>
+            <nz-option nzValue="秋" nzLabel="秋"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
       <td nzAlign="center">

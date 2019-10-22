@@ -1,14 +1,21 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background-color: linen">
-      <th nzWidth="120px" nzAlign="center">年度</th>
+      <th nzWidth="100px" nzAlign="center">年度</th>
+      <th nzWidth="100px" nzAlign="center">学期</th>
       <th nzWidth="160px" nzAlign="center">学校名称</th>
-      <th nzAlign="center">毕业率<br>百分比（%）</th>
+      <th nzAlign="center">毕业人数</th>
+      <th nzAlign="center">流失人数</th>
+      <th nzAlign="center">学位获得<br>人数</th>
+      <th nzAlign="center"><b>面授辅导课<br>出勤率（%）</b></th>
+      <th nzAlign="center">毕业设计<br>通过人数</th>
+      <th nzAlign="center">毕业设计<br>优秀人数</th>
+      <!-- <th nzAlign="center">毕业率<br>百分比（%）</th>
       <th nzAlign="center">流失率<br>百分比（%）</th>
       <th nzAlign="center">学位获得率<br>百分比（%）</th>
       <th nzAlign="center"><b>面授辅导课<br>出勤率（%）</b></th>
       <th nzAlign="center">毕业设计<br>通过率（%）</th>
-      <th nzAlign="center">毕业设计<br>优秀率（%）</th>
+      <th nzAlign="center">毕业设计<br>优秀率（%）</th> -->
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
@@ -22,6 +29,9 @@
           <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template> -->
+      </td>
+      <td nzAlign="center">
+        {{ data.xq }}
       </td>
       <td nzAlign="center">
         <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxmcInputTpl"> -->
@@ -109,7 +119,8 @@
 <nz-table #gmRowTable nzBordered [nzData]="listOfGMData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background-color: linen">
-      <th nzWidth="120px" nzAlign="center">年度</th>
+      <th nzWidth="100px" nzAlign="center">年度</th>
+      <th nzWidth="100px" nzAlign="center">学期</th>
       <th nzAlign="center">在籍学生数-本科</th>
       <th nzAlign="center">在籍学生数-专科</th>
       <th nzAlign="center">当年度招生数-本科</th>
@@ -121,8 +132,8 @@
   </thead>
   <tbody>
     <tr *ngFor="let data of gmRowTable.data">
-      <td nzAlign="center">{{ data.nd }} 年
-      </td>
+      <td nzAlign="center">{{ data.nd }} 年</td>
+      <td nzAlign="center">{{ data.xq }}</td>
       <td nzAlign="center">{{ data.zjxssbk }}</td>
       <td nzAlign="center">{{ data.zjxsszk }}</td>
       <td nzAlign="center">{{ data.dndzssbk }}</td>
