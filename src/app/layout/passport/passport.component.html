@@ -1,17 +1,37 @@
-<div class="container">
-  <div class="wrap">
-    <div class="top">
-      <div class="head">
-        <img class="logo" src="./assets/logo-color.svg">
-        <span class="title">上海开放大学 - 质量检测平台</span>
-      </div>
-      <div class="desc">适应开放教育办学特色的评估体系，支持总校和分校的数据采集、数据填报、材料上传、数据分析、网上评审等</div>
+<page-header>
+  <div nz-row [nzGutter]="8">
+    <div nz-col [nzSpan]="3">&nbsp;</div>
+    <div nz-col [nzSpan]="9" style="text-align: left;">
+      <img width="55px" src="./assets/kdlogo.png">
+      <span class="title"> 质量检测平台</span>
     </div>
-    <router-outlet></router-outlet>
-    <global-footer [links]="links">
-      Copyright
-      <i class="anticon anticon-copyright"></i> 2019
-      <a href="#" target="_blank">上海开放大学</a>
-    </global-footer>
+    <div nz-col [nzSpan]="9" style="text-align: right; ">
+      <span style="vertical-align: 20px;"></span>
+      <button nz-button nzShape="round" nzType="default" (click)="shoucang('上海开放大学质量测评平台','http://139.224.62.102')">
+        <i nz-icon nzType="share-alt" style="color: coral;"></i> 收藏本站</button>
+    </div>
+    <div nz-col [nzSpan]="3">
+    </div>
+  </div>
+</page-header>
+<p>&nbsp;</p>
+<div nz-row [nzGutter]="8">
+  <div nz-col [nzSpan]="3">&nbsp;</div>
+  <div nz-col [nzSpan]="10" style="height: 400px;">
+    <p style="margin: 10px;font-size: 1.2em; line-height: 2em;">适应开放教育办学特色的评估体系，支持总校和分校的数据采集、数据填报、材料上传、数据分析、网上评审等</p>
+    <img width="500px" src="./assets/main.png" style="position: absolute;right: 150px;bottom:0;">
+  </div>
+  <div nz-col [nzSpan]="8" style="text-align: center; height: 400px;">
+    <nz-card style="width:500px; height: 400px;" nzHoverable>
+      <router-outlet></router-outlet>
+    </nz-card>
+  </div>
+  <div nz-col [nzSpan]="3">
   </div>
 </div>
+<nz-divider nzType="horizontal"></nz-divider>
+<global-footer [links]="links">
+  Copyright
+  <i class="anticon anticon-copyright"></i> 2019
+  <a href="#" target="_blank">上海开放大学</a>
+</global-footer>

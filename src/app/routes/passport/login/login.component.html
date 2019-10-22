@@ -1,6 +1,6 @@
 <form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
   <nz-tabset [nzAnimated]="true" class="tabs" (nzSelectChange)="switch($event)">
-    <nz-tab [nzTitle]="'账户密码登录'">
+    <nz-tab [nzTitle]="titleTemplate1">
       <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
       <nz-form-item>
         <nz-form-control [nzErrorTip]="'请输入账号!'">
@@ -16,12 +16,13 @@
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
+      <ng-template #titleTemplate1><i nz-icon nzType="user" style="color: coral;"></i> 账户密码登录</ng-template>
     </nz-tab>
-    <nz-tab [nzTitle]="'手机号登录'">
+    <nz-tab [nzTitle]="titleTemplate2">
       <nz-form-item>
         <nz-form-control [nzErrorTip]="mobileErrorTip">
           <nz-input-group nzSize="large" nzPrefixIcon="user">
-            <input nz-input formControlName="mobile" placeholder="请输入手机号" />
+            <input nz-input formControlName="mobile" placeholder="暂未开通，请使用用户名登录" />
           </nz-input-group>
           <ng-template #mobileErrorTip let-i>
             <ng-container *ngIf="i.errors.required">
@@ -50,14 +51,15 @@
           </nz-row>
         </nz-form-control>
       </nz-form-item>
+      <ng-template #titleTemplate2><i nz-icon nzType="mobile" style="color: coral;"></i> 手机号登录</ng-template>
     </nz-tab>
   </nz-tabset>
   <nz-form-item>
-    <nz-col [nzSpan]="12">
+    <nz-col [nzSpan]="1">
       <!-- <label nz-checkbox formControlName="remember">自动登录</label> -->
     </nz-col>
-    <nz-col [nzSpan]="12" class="text-right">
-      <a class="forgot" (click)="msg.error('请找管理员：25653047')">忘记密码</a>
+    <nz-col [nzSpan]="23" class="text-right">
+      <a class="forgot" (click)="msg.error('请联系管理员重置密码：25653047！')" style="color: darkgray;">忘记密码</a>
     </nz-col>
   </nz-form-item>
   <nz-form-item>
