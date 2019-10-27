@@ -1,75 +1,40 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background-color: linen">
-      <th nzWidth="100px" nzAlign="center">年度</th>
-      <th nzWidth="100px" nzAlign="center">学期</th>
-      <th nzWidth="160px" nzAlign="center">学校名称</th>
-      <th nzAlign="center">毕业人数</th>
-      <th nzAlign="center">流失人数</th>
-      <th nzAlign="center">学位获得<br>人数</th>
+      <th nzWidth="90px" nzAlign="center">年度</th>
+      <th nzWidth="80px" nzAlign="center">学期</th>
+      <th nzWidth="120px" nzAlign="center">学校名称</th>
+      <th nzAlign="center"><b>毕业环节通过<br>本科人数</b></th>
+      <th nzAlign="center"><b>毕业环节通过<br>专科人数</b></th>
+      <th nzAlign="center"><b>毕业环节<br>本科通过率</b></th>
+      <th nzAlign="center"><b>毕业环节<br>专科通过率</b></th>
+
       <th nzAlign="center"><b>面授辅导课<br>出勤率（%）</b></th>
-      <th nzAlign="center">毕业设计<br>通过人数</th>
-      <th nzAlign="center">毕业设计<br>优秀人数</th>
-      <!-- <th nzAlign="center">毕业率<br>百分比（%）</th>
-      <th nzAlign="center">流失率<br>百分比（%）</th>
-      <th nzAlign="center">学位获得率<br>百分比（%）</th>
-      <th nzAlign="center"><b>面授辅导课<br>出勤率（%）</b></th>
-      <th nzAlign="center">毕业设计<br>通过率（%）</th>
-      <th nzAlign="center">毕业设计<br>优秀率（%）</th> -->
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of editRowTable.data">
       <td nzAlign="center">
-        <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ndInputTpl"> -->
         {{ data.nd }}年
-        <!-- </ng-container>
-        <ng-template #ndInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
-        </ng-template> -->
       </td>
       <td nzAlign="center">
         {{ data.xq }}
       </td>
       <td nzAlign="center">
-        <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxmcInputTpl"> -->
         {{ data.xxmc }}
-        <!-- </ng-container>
-        <ng-template #xxmcInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xxmc" />
-        </ng-template> -->
       </td>
-      <!-- byl,lsl,xwhdl -->
       <td nzAlign="center">
-        <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bylInputTpl"> -->
-        {{ data.byl }}
-        <!-- </ng-container>
-        <ng-template #bylInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.byl" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
-        </ng-template> -->
+        {{ data.bytgrsbk }}
       </td>
-
       <td nzAlign="center">
-        <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else lslInputTpl"> -->
-        {{ data.lsl }}
-        <!-- </ng-container>
-        <ng-template #lslInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.lsl" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
-        </ng-template> -->
+        {{ data.bytgrszk }}
       </td>
-
       <td nzAlign="center">
-        <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xwhdlInputTpl"> -->
-        {{ data.xwhdl }}
-        <!-- </ng-container>
-        <ng-template #xwhdlInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.xwhdl" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
-        </ng-template> -->
+        {{ data.bytglbk }}
+      </td>
+      <td nzAlign="center">
+        {{ data.bytglzk }}
       </td>
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else msfdcqlInputTpl">
@@ -80,24 +45,7 @@
           </nz-input-number>
         </ng-template>
       </td>
-      <td nzAlign="center">
-        <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bysjtglInputTpl"> -->
-        {{ data.bysjtgl }}
-        <!-- </ng-container>
-        <ng-template #bysjtglInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.bysjtgl" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
-        </ng-template> -->
-      </td>
-      <td nzAlign="center">
-        <!-- <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bysjyxlInputTpl"> -->
-        {{ data.bysjyxl }}
-        <!-- </ng-container>
-        <ng-template #bysjyxlInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.bysjyxl" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
-        </ng-template> -->
-      </td>
+
       <td nzAlign="center">
         <div class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
@@ -119,27 +67,40 @@
 <nz-table #gmRowTable nzBordered [nzData]="listOfGMData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background-color: linen">
-      <th nzWidth="100px" nzAlign="center">年度</th>
-      <th nzWidth="100px" nzAlign="center">学期</th>
-      <th nzAlign="center">在籍学生数-本科</th>
-      <th nzAlign="center">在籍学生数-专科</th>
-      <th nzAlign="center">当年度招生数-本科</th>
-      <th nzAlign="center">当年度招生数-专科</th>
-      <th nzAlign="center">续修生数-本科</th>
-      <th nzAlign="center">续修生数-专科</th>
-      <th nzWidth="100px" nzAlign="center">Action</th>
+      <th rowspan="2" nzWidth="90px" nzAlign="center">年度</th>
+      <th rowspan="2" nzWidth="80px" nzAlign="center">学期</th>
+      <th rowspan="2" nzWidth="120px" nzAlign="center">学校名称</th>
+      <th colspan="2" nzAlign="center"><b>当学期招生数</b></th>
+      <th colspan="2" nzAlign="center"><b>在籍学生数</b></th>
+      <th colspan="2" nzAlign="center"><b>在籍续修生数</b></th>
+      <th rowspan="2" nzAlign="center"><b>8年有效期内<br>毕业人数</b></th>
+      <th rowspan="2" nzAlign="center"><b>8年有效期内<br>学位获得人数</b></th>
+      <th rowspan="2" nzAlign="center"><b>新生流失人数</b></th>
+      <th rowspan="2" nzWidth="100px" nzAlign="center">Action</th>
+    </tr>
+    <tr style="background-color: linen">
+      <th nzAlign="center"><b>本科</b></th>
+      <th nzAlign="center"><b>专科</b></th>
+      <th nzAlign="center"><b>本科</b></th>
+      <th nzAlign="center"><b>专科</b></th>
+      <th nzAlign="center"><b>本科</b></th>
+      <th nzAlign="center"><b>专科</b></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of gmRowTable.data">
       <td nzAlign="center">{{ data.nd }} 年</td>
       <td nzAlign="center">{{ data.xq }}</td>
-      <td nzAlign="center">{{ data.zjxssbk }}</td>
-      <td nzAlign="center">{{ data.zjxsszk }}</td>
+      <td nzAlign="center">{{ data.xxmc }}</td>
       <td nzAlign="center">{{ data.dndzssbk }}</td>
       <td nzAlign="center">{{ data.dndzsszk }}</td>
+      <td nzAlign="center">{{ data.zjxssbk }}</td>
+      <td nzAlign="center">{{ data.zjxsszk }}</td>
       <td nzAlign="center">{{ data.xxsbk }}</td>
       <td nzAlign="center">{{ data.xxszk }}</td>
+      <td nzAlign="center">{{ data.byrs8 }}</td>
+      <td nzAlign="center">{{ data.xwhd8 }}</td>
+      <td nzAlign="center">{{ data.xslss }}</td>
       <td nzAlign="center">仅浏览</td>
     </tr>
   </tbody>

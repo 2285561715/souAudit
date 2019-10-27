@@ -10,7 +10,7 @@
     <div nz-col nzSpan="16" style="text-align: right">
       <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
         http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k23_rcpy3l.xlsx" file-name="表K23.人才培养—毕业率、流失率与学位获得率.xlsx">
-        《表K23.人才培养—毕业率、流失率与学位获得率》模板下载 <i nz-icon nzType="download" style="color:coral"></i></button>
+        《表K23.人才培养—学生培养质量》模板下载 <i nz-icon nzType="download" style="color:coral"></i></button>
       <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
         <button nz-button nzSize="small" nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
       </nz-upload>
@@ -24,16 +24,10 @@
       <th nzWidth="100px" nzAlign="center">学期</th>
       <th nzWidth="120px" nzAlign="center">学校代码</th>
       <th nzWidth="230px" nzAlign="center">学校名称</th>
-      <th nzAlign="center"><b>毕业人数</b></th>
-      <th nzAlign="center"><b>流失人数</b></th>
-      <th nzAlign="center"><b>学位获得<br>人数</b></th>
-      <th nzAlign="center"><b>毕业设计<br>通过人数</b></th>
-      <th nzAlign="center"><b>毕业设计<br>优秀人数</b></th>
-      <!-- <th nzAlign="center"><b>毕业率<br>百分比（%）</b></th>
-      <th nzAlign="center"><b>流失率<br>百分比（%）</b></th>
-      <th nzAlign="center"><b>学位获得率<br>百分比（%）</b></th>
-      <th nzAlign="center"><b>毕业设计<br>通过率（%）</b></th>
-      <th nzAlign="center"><b>毕业设计<br>优秀率（%）</b></th> -->
+      <th nzAlign="center"><b>毕业环节通过<br>本科人数</b></th>
+      <th nzAlign="center"><b>毕业环节通过<br>专科人数</b></th>
+      <th nzAlign="center"><b>毕业环节<br>本科通过率</b></th>
+      <th nzAlign="center"><b>毕业环节<br>专科通过率</b></th>
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
@@ -78,52 +72,44 @@
       </td>
       <!-- byl,lsl,xwhdl -->
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bylInputTpl">
-          {{ data.byl }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bytgrsbkInputTpl">
+          {{ data.bytgrsbk }}
         </ng-container>
-        <ng-template #bylInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.byl" [nzMin]="0" [nzStep]="1">
+        <ng-template #bytgrsbkInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.bytgrsbk" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
 
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else lslInputTpl">
-          {{ data.lsl }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bytgrszkInputTpl">
+          {{ data.bytgrszk }}
         </ng-container>
-        <ng-template #lslInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.lsl" [nzMin]="0" [nzStep]="1">
+        <ng-template #bytgrszkInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.bytgrszk" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
 
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xwhdlInputTpl">
-          {{ data.xwhdl }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bytglbkInputTpl">
+          {{ data.bytglbk }}
         </ng-container>
-        <ng-template #xwhdlInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.xwhdl" [nzMin]="0" [nzStep]="1">
+        <ng-template #bytglbkInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.bytglbk" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bysjtglInputTpl">
-          {{ data.bysjtgl }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bytglzkInputTpl">
+          {{ data.bytglzk }}
         </ng-container>
-        <ng-template #bysjtglInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.bysjtgl" [nzMin]="0" [nzStep]="1">
+        <ng-template #bytglzkInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.bytglzk" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
-      <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bysjyxlInputTpl">
-          {{ data.bysjyxl }}
-        </ng-container>
-        <ng-template #bysjyxlInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.bysjyxl" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
-        </ng-template>
-      </td>
+
       <td nzAlign="center">
         <div class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
