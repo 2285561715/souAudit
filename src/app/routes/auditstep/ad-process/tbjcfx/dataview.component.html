@@ -1,0 +1,130 @@
+<div class="modal-header" style="padding-top: 32px">
+  <div class="modal-title">【{{tableNo}}】数据呈现</div>
+</div>
+<nz-collapse>
+  <nz-collapse-panel nzHeader="统计结果数据" nzActive="true">
+    <nz-table nzTemplateMode #borderedTable nzBordered nzSize="small">
+      <thead>
+        <tr>
+          <th rowspan="3">年份</th>
+          <th colspan="8">学历教育</th>
+          <th colspan="2" rowspan="2">非学历教育</th>
+          <th colspan="2" rowspan="2">社区教育</th>
+          <th colspan="2" rowspan="2">其他</th>
+          <th rowspan="3">合计</th>
+        </tr>
+        <tr>
+          <th colspan="2">市区分校</th>
+          <th colspan="2">郊区分校</th>
+          <th colspan="2">行业分校</th>
+          <th rowspan="2">小计</th>
+          <th rowspan="2">比例</th>
+        </tr>
+        <tr>
+          <th>数量</th>
+          <th>比例</th>
+          <th>数量</th>
+          <th>比例</th>
+          <th>数量</th>
+          <th>比例</th>
+          <th>数量</th>
+          <th>比例</th>
+          <th>数量</th>
+          <th>比例</th>
+          <th>数量</th>
+          <th>比例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2016年</td>
+          <td>4544</td>
+          <td>28.79%</td>
+          <td>3321</td>
+          <td>21.04%</td>
+          <td>3113</td>
+          <td>19.73%</td>
+          <td>10206</td>
+          <td>69.56%</td>
+          <td>2341</td>
+          <td>14.83%</td>
+          <td>1231</td>
+          <td>7.80%</td>
+          <td>1231</td>
+          <td>7.80%</td>
+          <td>15009</td>
+        </tr>
+        <tr>
+          <td>2017年</td>
+          <td>4544</td>
+          <td>28.79%<span class="nzColor:#F00">↑</span></td>
+          <td>3321</td>
+          <td>21.04%<span class="nzColor:#F00">↑</span></td>
+          <td>3113</td>
+          <td>19.73%<span class="nzColor:#F00">↓</span></td>
+          <td>10206</td>
+          <td>69.56%<span class="nzColor:#F00">↓</span></td>
+          <td>2341</td>
+          <td>14.83%<span class="nzColor:#F00">-</span></td>
+          <td>1231</td>
+          <td>7.80%<span class="nzColor:#F00">-</span></td>
+          <td>1231</td>
+          <td>7.80%<span class="nzColor:#F00">↑</span></td>
+          <td>15009<span class="nzColor:#F00">↑</span></td>
+        </tr>
+        <tr>
+          <td>2018年</td>
+          <td>4544</td>
+          <td>28.79%<span class="nzColor:#F00">↑</span></td>
+          <td>3321</td>
+          <td>21.04%<span class="nzColor:#F00">↑</span></td>
+          <td>3113</td>
+          <td>19.73%<span class="nzColor:#F00">↓</span></td>
+          <td>10206</td>
+          <td>69.56%<span class="nzColor:#F00">↓</span></td>
+          <td>2341</td>
+          <td>14.83%<span class="nzColor:#F00">-</span></td>
+          <td>1231</td>
+          <td>7.80%<span class="nzColor:#F00">-</span></td>
+          <td>1231</td>
+          <td>7.80%<span class="nzColor:#F00">↑</span></td>
+          <td>15009<span class="nzColor:#F00">↑</span></td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-collapse-panel>
+
+  <nz-collapse-panel nzHeader="统计图表展示" nzActive="true">
+    <div nz-col nzSm="8">
+      <g2-pie [hasLegend]="true" title="学生数" subTitle="学生数" [total]="total" [data]="salesPieData" height="240">
+      </g2-pie>
+    </div>
+    <div nz-col nzSm="8">
+      <g2-pie [hasLegend]="true" title="学生数" subTitle="学生数" [total]="total" [data]="salesPieData" height="240">
+      </g2-pie>
+    </div>
+    <div nz-col nzSm="8">
+      <g2-pie [hasLegend]="true" title="学生数" subTitle="学生数" [total]="total" [data]="salesPieData" height="240">
+      </g2-pie>
+    </div>
+  </nz-collapse-panel>
+
+  <nz-collapse-panel nzHeader="原始数据列表" nzActive="false">
+    <nz-table #borderedTable nzBordered nzSize="small" nzTitle="学生数据 2016年" [nzData]="dataSet">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of borderedTable.data">
+          <td>{{ data.name }}</td>
+          <td>{{ data.age }}</td>
+          <td>{{ data.address }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-collapse-panel>
+</nz-collapse>

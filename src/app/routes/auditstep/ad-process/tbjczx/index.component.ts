@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper } from '@delon/theme';
 import { NzMessageService, NzModalService, NzDrawerService } from 'ng-zorro-antd';
+import { AuditstepAdProcessTbjcZxDataViewComponent } from './dataview.component';
 
 @Component({
   selector: 'app-auditstep-ad-process-tbjczx-index',
@@ -30,8 +31,15 @@ export class AuditstepAdProcessTbjcZxIndexComponent implements OnInit {
     this.http
       .get('/api/tbrwjdcx?appId=' + this.value.appId + '&pglx=zx&conType=' + this.conStr)
       .subscribe((res: any[]) => {
-        this.listOfData = res;
-
+        res.forEach(item => {
+          if (item.fileupUrl) {
+            const idx = item.fileupUrl.lastIndexOf('.');
+            const exName = item.fileupUrl.substring(idx + 1, item.fileupUrl.length);
+            item.exName = exName;
+          }
+          this.listOfData = [...this.listOfData, item];
+        });
+        // this.listOfData = res;
         this.cdr.detectChanges();
       });
   }
@@ -39,5 +47,9 @@ export class AuditstepAdProcessTbjcZxIndexComponent implements OnInit {
   showData(funconstr: string): void {
     this.conStr = funconstr;
     this.loadInfo();
+  }
+
+  dataBarShow(record: any): void {
+    this.modal.create(AuditstepAdProcessTbjcZxDataViewComponent, { size: 'xl' }).subscribe((res: any) => {});
   }
 }

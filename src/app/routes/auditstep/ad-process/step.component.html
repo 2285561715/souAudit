@@ -14,7 +14,7 @@
     <p>时间段：{{astep.fromDate.substring(0,10)}} 至 {{astep.endDate.substring(0,10)}} </p>
   </nz-card>
   <nz-card *ngIf="astep.stepType==='数据填报'" nzSize="small" [nzHoverable]="true" nzType="inner"
-    [nzTitle]='i+1+". " + astep.stepName' [nzActions]="[actionSjbtTask, actionSjbtStatus, actionLookSjtb]">
+    [nzTitle]='i+1+". " + astep.stepName' [nzActions]="[actionSjbtTask, actionSjbtStatus]">
     <p>时间段：{{astep.fromDate.substring(0,10)}} 至 {{astep.endDate.substring(0,10)}} </p>
   </nz-card>
   <nz-card *ngIf="astep.stepType==='数据审核'" nzSize="small" [nzHoverable]="true" nzType="inner"
@@ -56,14 +56,9 @@
 
   <ng-template #actionSjbtStatus>
     <a *ngIf="value.isZx" (click)="zxSjtbProcess(astep)">
-      <i nz-icon nzType="issues-close" style="color: coral"></i> 填报进程</a>
+      <i nz-icon nzType="search" style="color: coral"></i> 填报进程及数据</a>
     <a *ngIf="!value.isZx" (click)="fxSjtbProcess(astep)">
-      <i nz-icon nzType="issues-close" style="color: coral"></i> 填报进程</a>
-  </ng-template>
-
-  <ng-template #actionLookSjtb>
-    <a (click)="lookSjcjTable(astep)">
-      <i nz-icon nzType="search" style="color: coral"></i> 查看数据</a>
+      <i nz-icon nzType="search" style="color: coral"></i> 填报进程及数据</a>
   </ng-template>
 
   <ng-template #actionLockSjtb>

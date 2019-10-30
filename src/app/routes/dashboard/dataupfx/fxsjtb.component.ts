@@ -25,6 +25,7 @@ export class DashboardDataUpFxSjtbComponent implements OnInit {
 
   listOfData: any[] = [];
   value: any = {};
+  listOfSelFlds: any[] = [];
   listOfTableDesc: any = {};
   outDataUrl = '';
   downExcelUrl = '';
@@ -56,7 +57,11 @@ export class DashboardDataUpFxSjtbComponent implements OnInit {
     });
   }
 
-  // 数据导出功能
+  selOutFldsToExcel(fldsvalue: any): void {
+    this.listOfSelFlds = fldsvalue;
+  }
+
+  // 全部数据导出功能
   exportToExcel(event: any): void {
     this.isVisible = true;
     this.http

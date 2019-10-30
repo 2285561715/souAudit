@@ -1,29 +1,32 @@
 <nz-card nzSize="small">
   <div nz-row>
-    <div nz-col nzSpan="24" style="text-align: right;">
-      <button nz-button nzType="primary" nzSize="small" nzShape="round" (click)="showData('sjtb')">
+    <div nz-col nzSpan="12" style="text-align: left;">
+      <button nz-button nzType="primary" style="background: coral;border: coral;" nzSize="small" nzShape="round"
+        (click)="showData('sjtb')">
         <i nz-icon nzType="table"></i> 数据表填报进度</button>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <button nz-button nzType="primary" nzSize="small" nzShape="round" (click)="showData('file')">
+    </div>
+    <div nz-col nzSpan="12" style="text-align: right;">
+      <button nz-button nzType="primary" style="background: royalblue;border: royalblue;" nzSize="small" nzShape="round"
+        (click)="showData('file')">
         <i nz-icon nzType="file-done"></i> 文字材料上传进度</button>
     </div>
   </div>
 </nz-card>
-<nz-table nzSize="small" #colSpanTable [nzData]="listOfData" nzBordered nzPageSize="50" nzHideOnSinglePage="true">
+<nz-table nzSize="small" #colSpanTable [nzData]="listOfData" nzBordered nzPageSize="40" nzHideOnSinglePage="true">
   <thead>
-    <tr *ngIf="conStr==='sjtb'">
-      <th nzAlign="center" nzWidth="40%"><b>数据表名称</b></th>
-      <th nzAlign="center" nzWidth="25%"><b>责任部门</b></th>
-      <th nzAlign="center" nzWidth="18%"><b>是否填报</b></th>
-      <th nzAlign="center" nzWidth="18%"><b>是否确认</b></th>
-      <!-- <th nzAlign="center" nzWidth="12%">Action</th> -->
+    <tr *ngIf="conStr==='sjtb'" style="background: coral;">
+      <th nzAlign="center" nzWidth="50%" style="color:snow;">数据表名称</th>
+      <th nzAlign="center" nzWidth="20%" style="color:snow;">责任部门</th>
+      <th nzAlign="center" nzWidth="14%" style="color:snow;">是否填报</th>
+      <!-- <th nzAlign="center" nzWidth="18%" style="color:snow;">是否确认</th> -->
+      <th nzAlign="center" nzWidth="16%" style="color:snow;">Action</th>
     </tr>
-    <tr *ngIf="conStr==='file'">
-      <th nzAlign="center" nzWidth="40%"><b>文字材料名称</b></th>
-      <th nzAlign="center" nzWidth="25%"><b>责任部门</b></th>
-      <th nzAlign="center" nzWidth="18%"><b>是否上传</b></th>
-      <th nzAlign="center" nzWidth="18%"><b>是否确认</b></th>
-      <!-- <th nzAlign="center" nzWidth="12%">Action</th> -->
+    <tr *ngIf="conStr==='file'" style="background: royalblue;">
+      <th nzAlign="center" nzWidth="50%" style="color:snow;">文字材料名称</th>
+      <th nzAlign="center" nzWidth="20%" style="color:snow;">责任部门</th>
+      <th nzAlign="center" nzWidth="14%" style="color:snow;">是否上传</th>
+      <!-- <th nzAlign="center" nzWidth="18%" style="color:snow;">是否确认</th> -->
+      <th nzAlign="center" nzWidth="16%" style="color:snow;">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -34,27 +37,30 @@
       </td>
       <td nzAlign="center">
         <span *ngIf="!dt.modTime" nz-tooltip nzTooltipTitle="未填报">
-          <i nz-icon nzType="close" style="color: crimson;font-size: 16px;"></i>
+          <i nz-icon nzType="close" style="color: crimson;font-size: 15px;"></i>
         </span>
         <span *ngIf="dt.modTime" nz-tooltip nzTooltipTitle="{{dt.modTime}}">
-          <i nz-icon nzType="check-circle" style="color:lime;font-size: 16px;"></i>
+          <i nz-icon nzType="check-circle" style="color:lime;font-size: 15px;"></i>
         </span>
       </td>
-      <td nzAlign="center">
+      <!-- <td nzAlign="center">
         <span *ngIf="!dt.checkTime" nz-tooltip nzTooltipTitle="待确认">
           <i nz-icon nzType="minus-circle" style="color: crimson;font-size: 16px;"></i>
         </span>
         <span *ngIf="dt.checkTime" nz-tooltip nzTooltipTitle="{{dt.checkTime}}">
           <i nz-icon nzType="check-circle" style="color:lime;font-size: 16px;"></i>
         </span>
-      </td>
-      <!-- <td nzAlign="center">
-        <span nz-tooltip nzTooltipTitle="查看数据统计分析">
-          <button nzSize="small" nz-button style="border: 0em">
-            <i nz-icon nzType="edit" nzTheme="fill" style="color: coral"></i>
-            填报</button>
-        </span>
       </td> -->
+      <td nzAlign="center">
+        <span *ngIf="conStr==='sjtb'&&dt.modTime" nz-tooltip nzTooltipTitle="查看上报数据">
+          <button nz-button style="border: 0em" (click)="dataBarShow(dt)"><i nz-icon nzType="search"
+              style="color: coral"></i>上报数据</button>
+        </span>
+        <span *ngIf="conStr==='file'&&dt.fileupUrl" nz-tooltip nzTooltipTitle="查看上传材料">
+          <button nz-button style="border: 0em" down-file http-url="{{dt.fileupUrl}}"
+            file-name="{{dt.dtName}}.{{dt.exName}}"><i nz-icon nzType="search" style="color: coral"></i>文字材料</button>
+        </span>
+      </td>
     </tr>
   </tbody>
 </nz-table>

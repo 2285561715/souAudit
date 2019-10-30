@@ -5,6 +5,7 @@ import { stringify } from 'querystring';
 import { zip } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { resolve } from 'q';
+import { AuditstepAdProcessTbjcFxDataViewComponent } from './dataview.component';
 
 @Component({
   selector: 'app-auditstep-ad-process-tbjcfx-index',
@@ -79,8 +80,17 @@ export class AuditstepAdProcessTbjcFxIndexComponent implements OnInit {
     this.http
       .get('/api/tbrwjdcx?appId=' + this.value.appId + '&pglx=fx&conType=' + this.conStr)
       .subscribe((res: any[]) => {
-        this.listOfData = res;
+        res.forEach(item => {
+          if (item.fileupUrl) {
+            const idx = item.fileupUrl.lastIndexOf('.');
+            const exName = item.fileupUrl.substring(idx + 1, item.fileupUrl.length);
+            item.exName = exName;
+          }
+          this.listOfData = [...this.listOfData, item];
+        });
+        // this.listOfData = res;
         this.listOfDisplayData = this.listOfData;
+
         this.http.get('/api/branches').subscribe((ress: any[]) => {
           ress.forEach(item => {
             const itemdata = { text: item.bname, value: item.bname };
@@ -148,5 +158,9 @@ export class AuditstepAdProcessTbjcFxIndexComponent implements OnInit {
   showData(funconstr: string): void {
     this.conStr = funconstr;
     this.loadInfo();
+  }
+
+  dataBarShow(record: any): void {
+    this.modal.create(AuditstepAdProcessTbjcFxDataViewComponent, { size: 'xl' }).subscribe((res: any) => {});
   }
 }
