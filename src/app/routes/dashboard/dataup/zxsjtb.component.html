@@ -9,6 +9,9 @@
       <div *ngIf="value.dtNo==='sjzxtb_k04_jftr'">
         <app-dashboard-dataup-zxtbk04-index [dataStr]="value"></app-dashboard-dataup-zxtbk04-index>
       </div>
+      <div *ngIf="value.dtNo==='sjzxtb_k05_develop'">
+        <app-dashboard-dataup-zxtbk05-index [dataStr]="value"></app-dashboard-dataup-zxtbk05-index>
+      </div>
       <div *ngIf="value.dtNo==='sjzxtb_k06_bxxt'">
         <app-dashboard-dataup-zxtbk06-index [dataStr]="value"></app-dashboard-dataup-zxtbk06-index>
       </div>
@@ -119,10 +122,10 @@
       <ng-template #titleTemplate3><i nz-icon nzType="file-done" style="color: coral"></i>校验规则</ng-template>
       <div [innerHTML]="checkRules"></div>
     </nz-tab> -->
-    <nz-tab [nzTitle]="titleTemplate4">
+    <!-- <nz-tab [nzTitle]="titleTemplate4">
       <ng-template #titleTemplate4><i nz-icon nzType="table" style="color: coral"></i>样例数据</ng-template>
       <div [innerHTML]="tableTitle"></div>
-    </nz-tab>
+    </nz-tab> -->
     <nz-tab [nzTitle]="titleTemplate5">
       <ng-template #titleTemplate5><i nz-icon nzType="select" style="color: coral"></i>数据导出</ng-template>
       <p><b>导出本表全部数据：</b></p>

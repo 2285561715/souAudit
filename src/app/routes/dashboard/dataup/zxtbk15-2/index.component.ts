@@ -142,25 +142,19 @@ export class DashboardDataUpZxtbK152IndexComponent implements OnInit {
   deleteInfo() {
     this.http
       .delete(
-        '/api/data/tables/entry/del/nd?tableNo=sjfxtb_b11_sysx&tableLx=fx&deptId=' +
-          this.loadUser.user.bid +
-          '&nd=2016',
+        '/api/data/tables/entry/del/nd?tableNo=sjzxtb_k15_web&tableLx=zx&deptId=' + this.loadUser.user.bid + '&nd=2016',
       )
       .subscribe((res: any) => {});
 
     this.http
       .delete(
-        '/api/data/tables/entry/del/nd?tableNo=sjfxtb_b11_sysx&tableLx=fx&deptId=' +
-          this.loadUser.user.bid +
-          '&nd=2017',
+        '/api/data/tables/entry/del/nd?tableNo=sjzxtb_k15_web&tableLx=zx&deptId=' + this.loadUser.user.bid + '&nd=2017',
       )
       .subscribe((res: any) => {});
 
     this.http
       .delete(
-        '/api/data/tables/entry/del/nd?tableNo=sjfxtb_b11_sysx&tableLx=fx&deptId=' +
-          this.loadUser.user.bid +
-          '&nd=2018',
+        '/api/data/tables/entry/del/nd?tableNo=sjzxtb_k15_web&tableLx=zx&deptId=' + this.loadUser.user.bid + '&nd=2018',
       )
       .subscribe((res: any) => {
         this.msgSrv.success('清空数据成功');

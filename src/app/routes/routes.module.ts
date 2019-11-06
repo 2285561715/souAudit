@@ -13,6 +13,7 @@ import { DashboardFileUpFxComponent } from './dashboard/fileupfx.component';
 import { DashboardDataUpZxSjtbComponent } from './dashboard/dataup/zxsjtb.component';
 import { DashboardDataUpZxtbK01IndexComponent } from './dashboard/dataup/zxtbk01/index.component';
 import { DashboardDataUpZxtbK04IndexComponent } from './dashboard/dataup/zxtbk04/index.component';
+import { DashboardDataUpZxtbK05IndexComponent } from './dashboard/dataup/zxtbk05/index.component';
 import { DashboardDataUpZxtbK06IndexComponent } from './dashboard/dataup/zxtbk06/index.component';
 import { DashboardDataUpZxtbK07IndexComponent } from './dashboard/dataup/zxtbk07/index.component';
 import { DashboardDataUpZxtbK08IndexComponent } from './dashboard/dataup/zxtbk08/index.component';
@@ -103,6 +104,7 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpZxSjtbComponent,
   DashboardDataUpZxtbK01IndexComponent,
   DashboardDataUpZxtbK04IndexComponent,
+  DashboardDataUpZxtbK05IndexComponent,
   DashboardDataUpZxtbK06IndexComponent,
   DashboardDataUpZxtbK07IndexComponent,
   DashboardDataUpZxtbK08IndexComponent,
