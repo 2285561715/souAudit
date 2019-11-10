@@ -11,7 +11,6 @@
     <div *ngIf="!dt.modTime" nz-col nzSpan="12">
       <i nz-icon nzType="diff" style="color:rgb(5, 113, 221)"></i> 未上传
     </div>
-
     <div *ngIf="dt.checkTime" nz-col nzSpan="12">
       <i nz-icon nzType="check-square" style="color:rgb(92, 180, 3)"></i> 确认:{{ dt.checkTime.substring(0, 16) }}
     </div>
@@ -31,7 +30,6 @@
   <ng-template #checkStatus>
     <!-- <a href='./assets/demo.pdf' target="_blank"><i nz-icon nzType="pie-chart" nzTheme="fill" style="color: coral"></i>
       材料预览</a> -->
-
     <span *ngIf="dt.fileupUrl" nz-tooltip nzTooltipTitle="预览">
       <button nzSize="small" nz-button style="border: 0em" down-file http-url="{{dt.fileupUrl}}"
         file-name="{{dt.dtName}}.{{dt.exName}}"><i nz-icon nzType="search" style="color: lime"></i> 材料预览</button>

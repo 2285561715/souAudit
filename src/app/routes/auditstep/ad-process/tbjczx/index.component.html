@@ -54,7 +54,7 @@
       <td nzAlign="center">
         <span *ngIf="conStr==='sjtb'&&dt.modTime" nz-tooltip nzTooltipTitle="查看上报数据">
           <button nz-button style="border: 0em" (click)="dataBarShow(dt)"><i nz-icon nzType="search"
-              style="color: coral"></i>上报数据</button>
+              style="color: coral"></i>查看数据</button>
         </span>
         <span *ngIf="conStr==='file'&&dt.fileupUrl" nz-tooltip nzTooltipTitle="查看上传材料">
           <button nz-button style="border: 0em" down-file http-url="{{dt.fileupUrl}}"

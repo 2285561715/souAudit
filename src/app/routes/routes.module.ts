@@ -68,6 +68,19 @@ import { DashboardDataUpFxtbB18IndexComponent } from './dashboard/dataupfx/fxtbb
 import { DashboardDataUpFxtbB22IndexComponent } from './dashboard/dataupfx/fxtbb22/index.component';
 import { DashboardDataUpFxtbB23IndexComponent } from './dashboard/dataupfx/fxtbb23/index.component';
 import { DashboardDataUpFxtbB25IndexComponent } from './dashboard/dataupfx/fxtbb25/index.component';
+// 分校非学历数据填报
+import { DashboardDataUpFxtbC01IndexComponent } from './dashboard/dataupfx/fxtbc01/index.component';
+import { DashboardDataUpFxtbC02IndexComponent } from './dashboard/dataupfx/fxtbc02/index.component';
+import { DashboardDataUpFxtbC03IndexComponent } from './dashboard/dataupfx/fxtbc03/index.component';
+import { DashboardDataUpFxtbC04IndexComponent } from './dashboard/dataupfx/fxtbc04/index.component';
+// 社区教育数据填报
+import { DashboardDataUpFxtbD01IndexComponent } from './dashboard/dataupfx/fxtbd01/index.component';
+import { DashboardDataUpFxtbD02IndexComponent } from './dashboard/dataupfx/fxtbd02/index.component';
+import { DashboardDataUpFxtbD03IndexComponent } from './dashboard/dataupfx/fxtbd03/index.component';
+import { DashboardDataUpFxtbD032IndexComponent } from './dashboard/dataupfx/fxtbd03-2/index.component';
+import { DashboardDataUpFxtbD04IndexComponent } from './dashboard/dataupfx/fxtbd04/index.component';
+import { DashboardDataUpFxtbD05IndexComponent } from './dashboard/dataupfx/fxtbd05/index.component';
+import { DashboardDataUpFxtbD052IndexComponent } from './dashboard/dataupfx/fxtbd05-2/index.component';
 // -- 文字资料上传
 import { DashboardFileUpZxWzclComponent } from './dashboard/fileup/zxwzcl.component';
 import { DashboardFileUpFxWzclComponent } from './dashboard/fileup/fxwzcl.component';
@@ -159,6 +172,19 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpFxtbB22IndexComponent,
   DashboardDataUpFxtbB23IndexComponent,
   DashboardDataUpFxtbB25IndexComponent,
+  // 非学历教育模块
+  DashboardDataUpFxtbC01IndexComponent,
+  DashboardDataUpFxtbC02IndexComponent,
+  DashboardDataUpFxtbC03IndexComponent,
+  DashboardDataUpFxtbC04IndexComponent,
+  // 非学历教育模块
+  DashboardDataUpFxtbD01IndexComponent,
+  DashboardDataUpFxtbD02IndexComponent,
+  DashboardDataUpFxtbD03IndexComponent,
+  DashboardDataUpFxtbD032IndexComponent,
+  DashboardDataUpFxtbD04IndexComponent,
+  DashboardDataUpFxtbD05IndexComponent,
+  DashboardDataUpFxtbD052IndexComponent,
   // --文字材料上传
   DashboardFileUpZxWzclComponent,
   DashboardFileUpFxWzclComponent,
