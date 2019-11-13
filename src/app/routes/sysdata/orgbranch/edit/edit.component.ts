@@ -83,7 +83,7 @@ export class SysdataOrgbranchEditComponent implements OnInit {
     data.id = this.record.id;
 
     this.http.put('/api/branches', data).subscribe((res: any) => {
-      this.msgSrv.success('修改部门成功');
+      this.msgSrv.success('修改分校信息成功');
       this.cdr.detectChanges();
       this.close(res);
     });

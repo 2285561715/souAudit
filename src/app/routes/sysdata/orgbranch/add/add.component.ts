@@ -62,7 +62,7 @@ export class SysdataOrgbranchAddComponent implements OnInit {
     data.btype = this.selectedOptions.toString();
 
     this.http.post('/api/branches', data).subscribe((res: any) => {
-      this.msgSrv.success('添加部门成功');
+      this.msgSrv.success('添加分校成功');
       this.close(res);
     });
   }

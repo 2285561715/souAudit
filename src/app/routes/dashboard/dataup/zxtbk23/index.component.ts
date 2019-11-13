@@ -143,7 +143,7 @@ export class DashboardDataUpZxtbK23IndexComponent implements OnInit {
   deleteInfo() {
     this.http
       .delete(
-        '/api/data/tables/entry/del/nd?tableNo=sjfxtb_b11_sysx&tableLx=fx&deptId=' +
+        '/api/data/tables/entry/del/nd?tableNo=sjzxtb_k23_rcpy3l&tableLx=zx&deptId=' +
           this.loadUser.user.bid +
           '&nd=2016',
       )
@@ -151,7 +151,7 @@ export class DashboardDataUpZxtbK23IndexComponent implements OnInit {
 
     this.http
       .delete(
-        '/api/data/tables/entry/del/nd?tableNo=sjfxtb_b11_sysx&tableLx=fx&deptId=' +
+        '/api/data/tables/entry/del/nd?tableNo=sjzxtb_k23_rcpy3l&tableLx=zx&deptId=' +
           this.loadUser.user.bid +
           '&nd=2017',
       )
@@ -159,7 +159,7 @@ export class DashboardDataUpZxtbK23IndexComponent implements OnInit {
 
     this.http
       .delete(
-        '/api/data/tables/entry/del/nd?tableNo=sjfxtb_b11_sysx&tableLx=fx&deptId=' +
+        '/api/data/tables/entry/del/nd?tableNo=sjzxtb_k23_rcpy3l&tableLx=zx&deptId=' +
           this.loadUser.user.bid +
           '&nd=2018',
       )
