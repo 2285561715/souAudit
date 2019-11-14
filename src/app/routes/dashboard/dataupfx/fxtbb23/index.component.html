@@ -50,8 +50,6 @@
         <div class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>
-            <!-- <nz-divider nzType="vertical"></nz-divider>
-            <a nz-popconfirm nzTitle="确认删除该条数据?" (nzOnConfirm)="dataDelete(data.id)">删除</a> -->
           </ng-container>
           <ng-template #saveTpl>
             <a (click)="saveEdit(data.id)">保存</a>
