@@ -27,10 +27,19 @@ import { AuditstepAdProcessZjpsSetupComponent } from './ad-process/zjps/setup.co
 import { AuditstepAdProcessZjpsZjzUserComponent } from './ad-process/zjps/zjzuser/zjzuser.component';
 import { AuditstepAdProcessZjpsZjzPszbComponent } from './ad-process/zjps/zjzpszb/zjzpszb.component';
 import { AuditstepAdProcessZjpsZjzPsfxComponent } from './ad-process/zjps/zjzpsfx/zjzpsfx.component';
+// 数据填报进程查询
 import { AuditstepAdProcessTbjcZxIndexComponent } from './ad-process/tbjczx/index.component';
 import { AuditstepAdProcessTbjcZxDataViewComponent } from './ad-process/tbjczx/dataview.component';
 import { AuditstepAdProcessTbjcFxIndexComponent } from './ad-process/tbjcfx/index.component';
 import { AuditstepAdProcessTbjcFxDataViewComponent } from './ad-process/tbjcfx/dataview.component';
+// 专家评审进程查询
+
+import { AuditstepAdProcessZjpsjcComponent } from './ad-process/zjpsjc.component';
+import { AuditstepAdProcessPsjcZxIndexComponent } from './ad-process/psjczx/index.component';
+import { AuditstepAdProcessPsjcZxDataViewComponent } from './ad-process/psjczx/dataview.component';
+import { AuditstepAdProcessPsjcFxIndexComponent } from './ad-process/psjcfx/index.component';
+import { AuditstepAdProcessPsjcFxDataViewComponent } from './ad-process/psjcfx/dataview.component';
+
 import { AuditstepAdProcessSetFxComponent } from './ad-process/setfx/setfx.component';
 
 const COMPONENTS = [
@@ -66,6 +75,13 @@ const COMPONENTS_NOROUNT = [
   AuditstepAdProcessTbjcZxDataViewComponent,
   AuditstepAdProcessTbjcFxIndexComponent,
   AuditstepAdProcessTbjcFxDataViewComponent,
+  // 专家评审进程
+  AuditstepAdProcessZjpsjcComponent,
+  AuditstepAdProcessPsjcZxIndexComponent,
+  AuditstepAdProcessPsjcZxDataViewComponent,
+  AuditstepAdProcessPsjcFxIndexComponent,
+  AuditstepAdProcessPsjcFxDataViewComponent,
+
   AuditstepAdProcessSetFxComponent,
 ];
 

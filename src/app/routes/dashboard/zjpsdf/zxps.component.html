@@ -1,0 +1,54 @@
+<div class="card-container">
+  <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+
+    <nz-tab [nzTitle]="titleTemplate">
+      <ng-template #titleTemplate><i nz-icon nzType="form" style="color: coral"></i>评分及反馈意见</ng-template>
+      <div>
+        <!-- <nz-spin *ngIf="!i" class="modal-spin"></nz-spin>
+        <sf *ngIf="i" #sf mode="edit" [schema]="schema" [ui]="ui" [formData]="i" button="none">
+          <button nz-button type="button" (click)="close()">关闭</button>
+          <button nz-button type="submit" nzType="primary" (click)="save(sf.value)" [disabled]="!sf.valid">保存</button>
+        </sf> -->
+        <p style="color: dimgray;font-weight: bold;">评审打分:</p>
+        <p>
+          <nz-radio-group [(ngModel)]="radioValue">
+            <label nz-radio [ngStyle]="style" nzValue="A"> 发展态势趋向正面且加速度为正，设为A档</label>
+            <label nz-radio [ngStyle]="style" nzValue="B"> 发展态势趋向正面且加速度为负，设为B档</label>
+            <label nz-radio [ngStyle]="style" nzValue="C"> 发展态势平稳或出现波动，设为C档</label>
+            <label nz-radio [ngStyle]="style" nzValue="D"> 发展态势趋向负面，设为D档 </label>
+          </nz-radio-group>
+        </p>
+        <p style="color: dimgray;font-weight: bold;">反馈意见:</p>
+        <p>
+          <textarea nz-input rows="5" placeholder="在此输入评审意见"></textarea>
+        </p>
+        <p>
+          <button nz-button nzType="primary">确认提交</button>
+        </p>
+      </div>
+    </nz-tab>
+
+    <nz-tab [nzTitle]="titleTemplate2">
+      <ng-template #titleTemplate2><i nz-icon nzType="profile" style="color: coral"></i>数据分析</ng-template>
+      <div>
+        <app-dashboard-zjpsdf-data-board></app-dashboard-zjpsdf-data-board>
+      </div>
+    </nz-tab>
+    <nz-tab [nzTitle]="titleTemplate1">
+      <ng-template #titleTemplate1><i nz-icon nzType="import" style="color: coral"></i>单片材料</ng-template>
+      <p>文字材料加载中...</p>
+    </nz-tab>
+    <nz-tab [nzTitle]="titleTemplate5">
+      <ng-template #titleTemplate5><i nz-icon nzType="select" style="color: coral"></i>评分细则</ng-template>
+      <p>{{value.auditDesc}}
+        发展态势趋向正面且加速度为正，设为A档
+
+        发展态势趋向正面且加速度为负，设为B档
+
+        发展态势平稳或出现波动，设为C档
+
+        发展态势趋向负面，设为D档
+      </p>
+    </nz-tab>
+  </nz-tabset>
+</div>

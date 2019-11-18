@@ -55,9 +55,9 @@
   </ng-template>
 
   <ng-template #actionSjbtStatus>
-    <a *ngIf="value.isZx" (click)="zxSjtbProcess(astep)">
+    <a *ngIf="value.verIndex.substring(4,6)==='zx'" (click)="zxSjtbProcess(astep)">
       <i nz-icon nzType="search" style="color: coral"></i> 填报进程及数据</a>
-    <a *ngIf="!value.isZx" (click)="fxSjtbProcess(astep)">
+    <a *ngIf="value.verIndex.substring(4,6)==='fx'" (click)="fxSjtbProcess(astep)">
       <i nz-icon nzType="search" style="color: coral"></i> 填报进程及数据</a>
   </ng-template>
 
@@ -74,13 +74,17 @@
   </ng-template>
 
   <ng-template #actionPgProcess>
-    <a (click)="lookSjcjTable(astep)">
-      <i nz-icon nzType="pic-right" style="color: coral"></i> 评审进程</a>
+    <a *ngIf="!astep.isTaskOut" (click)="appZjpsTask(astep)">
+      <i nz-icon nzType="pic-right" style="color: coral"></i> 启动评审</a>
+    <a *ngIf="astep.isTaskOut">
+      <i nz-icon nzType="check-circle" nzTheme="fill" style="color:chartreuse"></i> 任务已发布</a>
   </ng-template>
 
   <ng-template #actionPgyj>
-    <a (click)="lookSjcjTable(astep)">
-      <i nz-icon nzType="file-pdf" style="color: coral"></i> 评审意见</a>
+    <a *ngIf="value.verIndex.substring(4,6)==='zx'" (click)="zjPsjcSee(astep)">
+      <i nz-icon nzType="search" style="color: coral"></i> 进程及意见</a>
+    <a *ngIf="value.verIndex.substring(4,6)==='fx'" (click)="zjPsjcSee(astep)">
+      <i nz-icon nzType="search" style="color: coral"></i> 进程及意见</a>
   </ng-template>
 
   <ng-template #actionPgbg>

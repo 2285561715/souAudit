@@ -7,9 +7,13 @@ import { DashboardDataUpFxComponent } from './dataupfx.component';
 import { DashboardFileUpZxComponent } from './fileupzx.component';
 import { DashboardFileUpFxComponent } from './fileupfx.component';
 
+import { DashboardZjpsZxComponent } from './zjpszx.component';
+import { DashboardZjpsFxComponent } from './zjpsfx.component';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.less'],
 })
 export class DashboardComponent implements OnInit {
   constructor(
@@ -66,7 +70,6 @@ export class DashboardComponent implements OnInit {
         this.http.get('/api/zjps/index?userId=' + this.loadUser.user.id).subscribe((res: any) => {
           this.listOfData.push(res);
           // this.listOfData = [...this.listOfData, res];
-          console.log(res);
           this.cdr.detectChanges();
         });
         break;
@@ -74,6 +77,7 @@ export class DashboardComponent implements OnInit {
         break;
     }
 
+    // console.log(this.listOfData);
     // this.http.get('/api/adapply').subscribe((res: any[]) => {
     //   res.forEach(item => {
     //     if (item.isZx && this.loadUser.user.userFrom === 'zx') {
@@ -181,6 +185,62 @@ export class DashboardComponent implements OnInit {
       nzPlacement: 'left',
       nzMaskClosable: false,
       nzContent: DashboardFileUpFxComponent,
+      nzContentParams: {
+        value: dataValue,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
+  }
+
+  // 专家评审——总校评估
+  zxZjpsWeb(record: any): void {
+    const dataValue = record;
+    dataValue.ZjId = this.loadUser.user.id;
+
+    const drawerRef = this.drawerService.create<DashboardZjpsZxComponent, { value: any }, string>({
+      nzTitle: '【' + record.appName + ' - ' + record.stepName + '】' + '专家评审',
+      nzWidth: 890,
+      nzPlacement: 'left',
+      nzMaskClosable: false,
+      nzContent: DashboardZjpsZxComponent,
+      nzContentParams: {
+        value: dataValue,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
+  }
+
+  // 专家评审——分校评估
+  fxZjpsWeb(record: any): void {
+    // console.log('hellooo');
+    // console.log(record);
+    const dataValue = record;
+    dataValue.ZjId = this.loadUser.user.id;
+
+    const drawerRef = this.drawerService.create<DashboardZjpsFxComponent, { value: any }, string>({
+      nzTitle: '【' + record.appName + ' - 虹口分校 - ' + record.stepName + '】' + '专家评审',
+      nzWidth: 890,
+      nzPlacement: 'left',
+      nzMaskClosable: false,
+      nzContent: DashboardZjpsFxComponent,
       nzContentParams: {
         value: dataValue,
       },

@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <div class="modal-title">{{data.stepName}}【{{data.stepStartDate.substring(0,10)}} -
+    {{data.stepEndDate.substring(0,10)}}】专家组评审进程及反馈意见查询
+  </div>
+</div>
+<nz-table #deptTable nzSize="small" [nzData]="listOfData" nzPageSize="20" nzHideOnSinglePage="true">
+  <thead>
+    <tr>
+      <th nzWidth="4%" nzAlign="center">序号</th>
+      <th nzWidth="15%" nzAlign="center">专家组名称</th>
+      <th>成员专家列表</th>
+      <th nzWidth="36%" nzAlign="center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let zjzdata of deptTable.data;let i=index;">
+      <td nzAlign="center">{{ i+1 }}</td>
+      <td nzAlign="center">{{ zjzdata.zjzName }}</td>
+      <td></td>
+      <td nzAlign="center">
+        <button nz-button nzSize="small" nzType="link">
+          <i nz-icon nzType="usergroup-add" style="color: coral"></i>组成员</button>
+        <nz-divider nzType="vertical"></nz-divider>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<div class="modal-footer">
+  <!-- <button nz-button type="submit" nzType="primary">
+    <i nz-icon nzType="save"></i>保存专家组名称</button> -->
+</div>

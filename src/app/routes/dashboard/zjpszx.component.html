@@ -1,0 +1,62 @@
+<nz-table nzSize="small" #colSpanTable [nzData]="listOfTableList" nzBordered nzPageSize="50" nzHideOnSinglePage="true">
+  <thead>
+    <tr style="background-color: linen">
+      <th nzAlign="center" nzWidth="40%" rowspan="2"><b>指标名称</b></th>
+      <th nzAlign="center" nzWidth="10%" rowspan="2"><b>关键指标</b></th>
+      <th nzAlign="center" colspan="3"><b>{{value.zjzName}} 评分</b></th>
+      <th nzAlign="center" nzWidth="10%" rowspan="2"><b>意见</b></th>
+      <th nzAlign="center" nzWidth="10%" rowspan="2"><b>Action</b></th>
+    </tr>
+    <tr style="background-color: linen">
+      <th nzAlign="center" nzWidth="10%"><b>zjd</b></th>
+      <th nzAlign="center" nzWidth="10%"><b>zje</b></th>
+      <th nzAlign="center" nzWidth="10%"><b>zjf</b></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dt of colSpanTable.data; index as i">
+      <td>
+        <span nz-tooltip nzTooltipTitle="点击浏览内涵" (click)="showComet(dt.indexName,dt.indexRemark)">
+          <i nz-icon nzType="info-circle" style="color:dodgerblue;font-size: 16px;"></i>
+          {{dt.indexName}}</span>
+      </td>
+      <td nzAlign="center">
+        <span *ngIf="dt.isStar" nz-tooltip nzTooltipTitle="关键指标">
+          <i nz-icon nzType="star" nzTheme="fill"></i>
+        </span>
+        <span *ngIf="!dt.isStar" nz-tooltip nzTooltipTitle="普通指标">
+          <i nz-icon nzType="star"></i>
+        </span>
+      </td>
+
+      <td nzAlign="center">
+        <span nz-tooltip nzTooltipTitle="得分" style="color:coral">
+          {{dt.psPonit}}
+        </span>
+      </td>
+      <td nzAlign="center">
+        <span nz-tooltip nzTooltipTitle="得分" style="color:coral">
+          {{dt.psPonit}}
+        </span>
+      </td>
+      <td nzAlign="center">
+        <span nz-tooltip nzTooltipTitle="得分" style="color:coral">
+          {{dt.psPonit}}
+        </span>
+      </td>
+
+      <td nzAlign="center">
+        <span nz-tooltip nzTooltipTitle="{{dt.psText}}">
+          <i nz-icon nzType="info-circle" nzTheme="fill" style="color:coral"></i>
+        </span>
+      </td>
+      <td nzAlign="center">
+        <span nz-tooltip nzTooltipTitle="评分反馈">
+          <button nzSize="small" nz-button (click)="dataUpFun(dt)" style="border: 0em">
+            <i nz-icon nzType="edit" nzTheme="fill" style="color: coral"></i>
+            评分</button>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

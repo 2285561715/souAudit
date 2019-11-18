@@ -8,6 +8,8 @@ import { AuditstepAdProcessSetFxComponent } from './setfx/setfx.component';
 import { AuditstepAdProcessTbjcZxIndexComponent } from './tbjczx/index.component';
 import { AuditstepAdProcessTbjcFxIndexComponent } from './tbjcfx/index.component';
 
+import { AuditstepAdProcessZjpsjcComponent } from './zjpsjc.component';
+
 @Component({
   selector: 'app-auditstep-ad-process-step',
   templateUrl: './step.component.html',
@@ -152,6 +154,38 @@ export class AuditstepAdProcessStepComponent implements OnInit {
     data.stepIsTaskOut = astep.isTaskOut;
     this.modal.create(AuditstepAdProcessZjpsSetupComponent, { data }, { size: 'xl' }).subscribe((res: any) => {});
   }
+
+  // 专家评审任务发布
+  appZjpsTask(astep: any) {
+    this.http
+      .post(
+        '/api/stepwbs/zjpsrwSet/' +
+          this.value.verIndex.substring(4, 6) +
+          '?appId=' +
+          this.value.id +
+          '&stepId=' +
+          astep.id +
+          '&verIndex=' +
+          this.value.verIndex,
+      )
+      .subscribe((res: any) => {
+        this.msgSrv.success('专家评审任务发布成功');
+        this.loadSteps();
+      });
+  }
+
+  // 专家组设置、专家组设置
+  zjPsjcSee(astep: any) {
+    const data = this.value;
+    data.stepStartDate = astep.fromDate;
+    data.stepEndDate = astep.endDate;
+    data.stepId = astep.id;
+    data.stepName = astep.stepName;
+    data.stepIsTaskOut = astep.isTaskOut;
+    this.modal.create(AuditstepAdProcessZjpsjcComponent, { data }, { size: 'xl' }).subscribe((res: any) => {});
+  }
+
+  // ----------------------------------------------------------------------------
 
   // close(res: any) {
   //   this.modal.close(res);

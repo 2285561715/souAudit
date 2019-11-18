@@ -9,6 +9,11 @@ import { DashboardDataUpZxComponent } from './dashboard/dataupzx.component';
 import { DashboardDataUpFxComponent } from './dashboard/dataupfx.component';
 import { DashboardFileUpZxComponent } from './dashboard/fileupzx.component';
 import { DashboardFileUpFxComponent } from './dashboard/fileupfx.component';
+import { DashboardZjpsZxComponent } from './dashboard/zjpszx.component';
+import { DashboardZjpsFxComponent } from './dashboard/zjpsfx.component';
+import { DashboardZjpsdfZxpsComponent } from './dashboard/zjpsdf/zxps.component';
+import { DashboardZjpsdfFxpsComponent } from './dashboard/zjpsdf/fxps.component';
+import { DashboardZjpsdfDataBoardComponent } from './dashboard/zjpsdf/databoard.component';
 // --总校数据填报
 import { DashboardDataUpZxSjtbComponent } from './dashboard/dataup/zxsjtb.component';
 import { DashboardDataUpZxtbK01IndexComponent } from './dashboard/dataup/zxtbk01/index.component';
@@ -114,6 +119,11 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpFxComponent,
   DashboardFileUpZxComponent,
   DashboardFileUpFxComponent,
+  DashboardZjpsZxComponent,
+  DashboardZjpsFxComponent,
+  DashboardZjpsdfZxpsComponent,
+  DashboardZjpsdfFxpsComponent,
+  DashboardZjpsdfDataBoardComponent,
   // --总校数据填报
   DashboardDataUpZxSjtbComponent,
   DashboardDataUpZxtbK01IndexComponent,
