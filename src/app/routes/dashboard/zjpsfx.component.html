@@ -14,7 +14,7 @@
   <tbody>
     <tr *ngFor="let dt of colSpanTable.data; index as i">
       <td>
-        <span nz-tooltip nzTooltipTitle="点击浏览内涵" (click)="showComet(dt.indexName,dt.indexRemark)">
+        <span nz-tooltip nzTooltipTitle="点击浏览内涵" (click)="showComet(dt.indexName,dt.remark)">
           <i nz-icon nzType="info-circle" style="color:dodgerblue;font-size: 16px;"></i>
           {{dt.indexName}}</span>
       </td>
