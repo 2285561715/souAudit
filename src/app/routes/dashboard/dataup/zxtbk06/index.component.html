@@ -1,14 +1,22 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background-color: linen">
-      <th nzWidth="100px" nzAlign="center">年度</th>
-      <th nzWidth="160px" nzAlign="center">学历教育<b>新设</b><br>办学点或项目数</th>
-      <th nzWidth="160px" nzAlign="center">学历教育<b>退出</b><br>办学点或项目数</th>
-      <th nzWidth="160px" nzAlign="center">非学历教育<b>新设</b><br>办学点或项目数</th>
-      <th nzWidth="160px" nzAlign="center">非学历教育<b>退出</b><br>办学点或项目数</th>
-      <th nzWidth="160px" nzAlign="center">社区历教育<b>新设</b><br>办学点或项目数</th>
-      <th nzWidth="160px" nzAlign="center">社区教育<b>退出</b><br>办学点或项目数</th>
-      <th nzWidth="100px" nzAlign="center">Action</th>
+      <th rowspan="2" nzWidth="100px" nzAlign="center">年度</th>
+      <th colspan="3" nzAlign="center"><b>学历教育——分校（教学点）</b></th>
+      <th colspan="3" nzAlign="center" style="background-color:  rgb(208, 238, 247)"><b>非学历教育——项目</b></th>
+      <th colspan="3" nzAlign="center"><b>社区教育——社区学院</b></th>
+      <th rowspan="2" nzWidth="100px" nzAlign="center">Action</th>
+    </tr>
+    <tr style="background-color: linen">
+      <th nzAlign="center"><b>总数</b></th>
+      <th nzAlign="center"><b>新设数</b></th>
+      <th nzAlign="center"><b>退出数</b></th>
+      <th nzAlign="center" style="background-color: rgb(208, 238, 247)"><b>总数</b></th>
+      <th nzAlign="center" style="background-color: rgb(208, 238, 247)"><b>新设数</b></th>
+      <th nzAlign="center" style="background-color: rgb(208, 238, 247)"><b>退出数</b></th>
+      <th nzAlign="center"><b>总数</b></th>
+      <th nzAlign="center"><b>新设数</b></th>
+      <th nzAlign="center"><b>退出数</b></th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +25,16 @@
         {{ data.nd }} 年
       </td>
 
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xlnumInputTpl">
+          {{ data.xl_num }}
+        </ng-container>
+        <ng-template #xlnumInputTpl>
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_newnum" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.xl_num" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xlnewnumInputTpl">
           {{ data.xl_newnum }}
@@ -37,6 +55,17 @@
           </nz-input-number>
         </ng-template>
       </td>
+
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else fxlnumInputTpl">
+          {{ data.fxl_num }}
+        </ng-container>
+        <ng-template #fxlnumInputTpl>
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_newnum" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.fxl_num" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else fxlnewnumInputTpl">
           {{ data.fxl_newnum }}
@@ -54,6 +83,17 @@
         <ng-template #fxloutnumInputTpl>
           <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_outnum" /> -->
           <nz-input-number [(ngModel)]="editCache[data.id].data.fxl_outnum" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
+
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else sqnumInputTpl">
+          {{ data.sq_num }}
+        </ng-container>
+        <ng-template #sqnumInputTpl>
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_newnum" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.sq_num" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
