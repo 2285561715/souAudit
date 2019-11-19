@@ -32,7 +32,13 @@
   <tbody>
     <tr *ngFor="let data of editRowTable.data">
       <td nzAlign="center">
-        {{ data.nd }} 年
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ndInputTpl">
+          {{ data.nd }} 年
+        </ng-container>
+        <ng-template #ndInputTpl>
+          <nz-input-number style="max-width: 5em" [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
       </td>
 
       <td nzAlign="center">
