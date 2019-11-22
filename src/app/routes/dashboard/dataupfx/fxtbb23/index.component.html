@@ -25,16 +25,40 @@
         {{ data.xxmc }}
       </td>
       <td nzAlign="center">
-        {{ data.bytgrsbk }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bytgrsbkInputTpl">
+          {{ data.bytgrsbk }}
+        </ng-container>
+        <ng-template #bytgrsbkInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.bytgrsbk" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
       </td>
       <td nzAlign="center">
-        {{ data.bytgrszk }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bytgrszkInputTpl">
+          {{ data.bytgrszk }}
+        </ng-container>
+        <ng-template #bytgrszkInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.bytgrszk" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
       </td>
       <td nzAlign="center">
-        {{ data.bytglbk }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bytglbkInputTpl">
+          {{ data.bytglbk }}
+        </ng-container>
+        <ng-template #bytglbkInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.bytglbk" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
       </td>
       <td nzAlign="center">
-        {{ data.bytglzk }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bytglzkInputTpl">
+          {{ data.bytglzk }}
+        </ng-container>
+        <ng-template #bytglzkInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.bytglzk" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
       </td>
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else msfdcqlInputTpl">
