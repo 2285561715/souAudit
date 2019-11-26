@@ -102,7 +102,7 @@ export class AuditstepAdProcessStepComponent implements OnInit {
   zxSjtbProcess(record: any): void {
     const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcZxIndexComponent, { value: any }, string>({
       nzTitle: '【' + record.stepName + '】 填报进程',
-      nzWidth: document.body.clientWidth - 440,
+      nzWidth: document.body.clientWidth - 500,
       nzPlacement: 'left',
       nzContent: AuditstepAdProcessTbjcZxIndexComponent,
       nzContentParams: {
@@ -124,7 +124,7 @@ export class AuditstepAdProcessStepComponent implements OnInit {
   fxSjtbProcess(record: any): void {
     const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcFxIndexComponent, { value: any }, string>({
       nzTitle: '【' + record.stepName + '】 填报进程',
-      nzWidth: document.body.clientWidth - 440,
+      nzWidth: document.body.clientWidth - 500,
       nzPlacement: 'left',
       nzContent: AuditstepAdProcessTbjcFxIndexComponent,
       nzContentParams: {

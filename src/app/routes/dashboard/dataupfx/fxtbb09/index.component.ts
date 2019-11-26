@@ -145,7 +145,7 @@ export class DashboardDataUpFxtbB09IndexComponent implements OnInit {
       .delete(
         '/api/data/tables/entry/del/nd?tableNo=sjfxtb_b03_jsjbxx&tableLx=fx&deptId=' +
           this.loadUser.user.bid +
-          '&nd=2018',
+          '&nd=2019',
       )
       .subscribe((res: any) => {
         this.msgSrv.success('清空数据成功');

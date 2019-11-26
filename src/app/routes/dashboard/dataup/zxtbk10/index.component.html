@@ -86,7 +86,13 @@
           {{ data.zglx }}
         </ng-container>
         <ng-template #zglxInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zglx" />
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zglx" /> -->
+          <nz-select style="width: 130px;" [(ngModel)]="editCache[data.id].data.zglx" nzAllowClear nzPlaceHolder="职工类型">
+            <nz-option nzValue="教学管理与服务人员" nzLabel="教学管理与服务人员"></nz-option>
+            <nz-option nzValue="行政管理人员" nzLabel="行政管理人员"></nz-option>
+            <nz-option nzValue="技术人员" nzLabel="技术人员"></nz-option>
+            <nz-option nzValue="其他" nzLabel="其他"></nz-option>
+          </nz-select>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -102,14 +108,14 @@
           {{ data.zyjszw }}
         </ng-container>
         <ng-template #zyjszwInputTpl>
-          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zyjszw" /> -->
-          <nz-select style="width: 110px;" [(ngModel)]="editCache[data.id].data.zyjszw" nzAllowClear nzPlaceHolder="职称">
-            <nz-option nzValue="正高级" nzLabel="正高级"></nz-option>
-            <nz-option nzValue="副高级" nzLabel="副高级"></nz-option>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zyjszw" />
+          <!-- <nz-select style="width: 110px;" [(ngModel)]="editCache[data.id].data.zyjszw" nzAllowClear nzPlaceHolder="职称">
+            <nz-option nzValue="正高" nzLabel="正高"></nz-option>
+            <nz-option nzValue="副高" nzLabel="副高"></nz-option>
             <nz-option nzValue="中级" nzLabel="中级"></nz-option>
             <nz-option nzValue="初级" nzLabel="初级"></nz-option>
             <nz-option nzValue="无" nzLabel="无"></nz-option>
-          </nz-select>
+          </nz-select> -->
         </ng-template>
       </td>
       <td nzAlign="center">

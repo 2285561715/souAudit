@@ -36,7 +36,7 @@ export class AuditstepAdProcessComponent implements OnInit {
   openStepInfo(record: any): void {
     const drawerRef = this.drawerService.create<AuditstepAdProcessStepComponent, { value: any }, string>({
       nzTitle: '【' + record.appName + '】进程',
-      nzWidth: 440,
+      nzWidth: 500,
       nzPlacement: 'right',
       // nzMaskClosable: false,
       // nzClosable: false,

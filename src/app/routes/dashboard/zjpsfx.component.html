@@ -27,9 +27,9 @@
         </span>
       </td>
 
-      <td nzAlign="center">
+      <td nzAlign="center" *ngFor="let bdf of dt.branchPf;">
         <span nz-tooltip nzTooltipTitle="得分" style="color:coral">
-          {{dt.psPonit}}
+          {{bdf.psPonit}}
         </span>
       </td>
       <td nzAlign="center">
