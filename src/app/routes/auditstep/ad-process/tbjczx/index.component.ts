@@ -50,6 +50,8 @@ export class AuditstepAdProcessTbjcZxIndexComponent implements OnInit {
   }
 
   dataBarShow(record: any): void {
-    this.modal.create(AuditstepAdProcessTbjcZxDataViewComponent, { size: 'xl' }).subscribe((res: any) => {});
+    this.modal
+      .create(AuditstepAdProcessTbjcZxDataViewComponent, { record }, { size: 'xl' })
+      .subscribe((res: any) => {});
   }
 }

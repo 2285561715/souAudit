@@ -30,10 +30,12 @@ import { AuditstepAdProcessZjpsZjzPsfxComponent } from './ad-process/zjps/zjzpsf
 // 数据填报进程查询
 import { AuditstepAdProcessTbjcZxIndexComponent } from './ad-process/tbjczx/index.component';
 import { AuditstepAdProcessTbjcZxDataViewComponent } from './ad-process/tbjczx/dataview.component';
+
+import { StepTbjcZxtbK06IndexComponent } from './ad-process/tbjczx/zxtbk06/index.component';
+
 import { AuditstepAdProcessTbjcFxIndexComponent } from './ad-process/tbjcfx/index.component';
 import { AuditstepAdProcessTbjcFxDataViewComponent } from './ad-process/tbjcfx/dataview.component';
 // 专家评审进程查询
-
 import { AuditstepAdProcessZjpsjcComponent } from './ad-process/zjpsjc.component';
 import { AuditstepAdProcessPsjcZxIndexComponent } from './ad-process/psjczx/index.component';
 import { AuditstepAdProcessPsjcZxDataViewComponent } from './ad-process/psjczx/dataview.component';
@@ -73,6 +75,8 @@ const COMPONENTS_NOROUNT = [
   AuditstepAdProcessZjpsZjzPsfxComponent,
   AuditstepAdProcessTbjcZxIndexComponent,
   AuditstepAdProcessTbjcZxDataViewComponent,
+  StepTbjcZxtbK06IndexComponent,
+
   AuditstepAdProcessTbjcFxIndexComponent,
   AuditstepAdProcessTbjcFxDataViewComponent,
   // 专家评审进程

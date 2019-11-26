@@ -132,20 +132,21 @@ export class DashboardDataUpFxtbB09IndexComponent implements OnInit {
     }
   }
   // -----------------
-  deleteConfirm(): void {
+  deleteConfirm(nd: string): void {
     this.modalService.confirm({
       nzTitle: '<i>是否要删除数据</i>',
       nzContent: '<b>删除数据后无法恢复，确认要删除？</b>',
-      nzOnOk: () => this.deleteInfo(),
+      nzOnOk: () => this.deleteInfo(nd),
     });
   }
 
-  deleteInfo() {
+  deleteInfo(ndY: string) {
     this.http
       .delete(
         '/api/data/tables/entry/del/nd?tableNo=sjfxtb_b03_jsjbxx&tableLx=fx&deptId=' +
           this.loadUser.user.bid +
-          '&nd=2019',
+          '&nd=' +
+          ndY,
       )
       .subscribe((res: any) => {
         this.msgSrv.success('清空数据成功');

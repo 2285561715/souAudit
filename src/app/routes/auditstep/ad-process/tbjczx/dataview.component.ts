@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-auditstep-ad-process-tbjczx-data-view',
@@ -8,7 +9,12 @@ import { Router } from '@angular/router';
 })
 export class AuditstepAdProcessTbjcZxDataViewComponent implements OnInit {
   tableNo: string;
-  constructor(public http: _HttpClient, private cdr: ChangeDetectorRef, private router: Router) {
+  constructor(
+    public http: _HttpClient,
+    private cdr: ChangeDetectorRef,
+    private sanitizer: DomSanitizer,
+    private router: Router,
+  ) {
     const currentUrls = router.url.split('=');
     if (currentUrls[1]) {
       this.tableNo = currentUrls[1];
@@ -16,55 +22,8 @@ export class AuditstepAdProcessTbjcZxDataViewComponent implements OnInit {
     }
   }
   record: any = [];
-  dataSet = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
-  ];
-
-  salesPieData = [
-    {
-      x: '市区',
-      y: 4544,
-    },
-    {
-      x: '郊区',
-      y: 3321,
-    },
-    {
-      x: '行业',
-      y: 3113,
-    },
-    {
-      x: '非学历培训',
-      y: 2341,
-    },
-    {
-      x: '社区教育',
-      y: 1231,
-    },
-    {
-      x: '其他',
-      y: 1231,
-    },
-  ];
-  total: string;
   ngOnInit() {
+    console.log(this.record);
     this.loadInfo();
   }
 

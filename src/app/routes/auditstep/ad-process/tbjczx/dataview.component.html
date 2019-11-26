@@ -1,7 +1,9 @@
 <div class="modal-header" style="padding-top: 32px">
-  <div class="modal-title">【{{tableNo}}】数据呈现</div>
+  <div class="modal-title">【{{record.dtName}}】</div>
 </div>
-<nz-collapse>
+<app-tbjczx-zxtbk06-index [dataStr]="record"></app-tbjczx-zxtbk06-index>
+
+<!-- <nz-collapse>
   <nz-collapse-panel nzHeader="统计结果数据" nzActive="true">
     <nz-table nzTemplateMode #borderedTable nzBordered nzSize="small">
       <thead>
@@ -127,4 +129,4 @@
       </tbody>
     </nz-table>
   </nz-collapse-panel>
-</nz-collapse>
+</nz-collapse> -->

@@ -1,0 +1,231 @@
+<nz-collapse>
+  <nz-collapse-panel nzHeader="统计结果数据" nzActive="true">
+    <nz-table nzTemplateMode #borderedTable nzBordered nzSize="small">
+      <thead>
+        <tr>
+          <th rowspan="3">年份</th>
+          <th colspan="8">学历教育</th>
+          <th colspan="2" rowspan="2">非学历教育</th>
+          <th colspan="2" rowspan="2">社区教育</th>
+          <th colspan="2" rowspan="2">其他</th>
+          <th rowspan="3">合计</th>
+        </tr>
+        <tr>
+          <th colspan="2">市区分校</th>
+          <th colspan="2">郊区分校</th>
+          <th colspan="2">行业分校</th>
+          <th rowspan="2">小计</th>
+          <th rowspan="2">比例</th>
+        </tr>
+        <tr>
+          <th>数量</th>
+          <th>比例</th>
+          <th>数量</th>
+          <th>比例</th>
+          <th>数量</th>
+          <th>比例</th>
+          <th>数量</th>
+          <th>比例</th>
+          <th>数量</th>
+          <th>比例</th>
+          <th>数量</th>
+          <th>比例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2016年</td>
+          <td>4544</td>
+          <td>28.79%</td>
+          <td>3321</td>
+          <td>21.04%</td>
+          <td>3113</td>
+          <td>19.73%</td>
+          <td>10206</td>
+          <td>69.56%</td>
+          <td>2341</td>
+          <td>14.83%</td>
+          <td>1231</td>
+          <td>7.80%</td>
+          <td>1231</td>
+          <td>7.80%</td>
+          <td>15009</td>
+        </tr>
+        <tr>
+          <td>2017年</td>
+          <td>4544</td>
+          <td>28.79%<span class="nzColor:#F00">↑</span></td>
+          <td>3321</td>
+          <td>21.04%<span class="nzColor:#F00">↑</span></td>
+          <td>3113</td>
+          <td>19.73%<span class="nzColor:#F00">↓</span></td>
+          <td>10206</td>
+          <td>69.56%<span class="nzColor:#F00">↓</span></td>
+          <td>2341</td>
+          <td>14.83%<span class="nzColor:#F00">-</span></td>
+          <td>1231</td>
+          <td>7.80%<span class="nzColor:#F00">-</span></td>
+          <td>1231</td>
+          <td>7.80%<span class="nzColor:#F00">↑</span></td>
+          <td>15009<span class="nzColor:#F00">↑</span></td>
+        </tr>
+        <tr>
+          <td>2018年</td>
+          <td>4544</td>
+          <td>28.79%<span class="nzColor:#F00">↑</span></td>
+          <td>3321</td>
+          <td>21.04%<span class="nzColor:#F00">↑</span></td>
+          <td>3113</td>
+          <td>19.73%<span class="nzColor:#F00">↓</span></td>
+          <td>10206</td>
+          <td>69.56%<span class="nzColor:#F00">↓</span></td>
+          <td>2341</td>
+          <td>14.83%<span class="nzColor:#F00">-</span></td>
+          <td>1231</td>
+          <td>7.80%<span class="nzColor:#F00">-</span></td>
+          <td>1231</td>
+          <td>7.80%<span class="nzColor:#F00">↑</span></td>
+          <td>15009<span class="nzColor:#F00">↑</span></td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-collapse-panel>
+
+  <nz-collapse-panel nzHeader="统计图表展示" nzActive="true">
+    <div nz-col nzSm="8">
+      <g2-pie [hasLegend]="true" title="学生数" subTitle="学生数" [total]="total" [data]="salesPieData" height="240">
+      </g2-pie>
+    </div>
+    <div nz-col nzSm="8">
+      <g2-pie [hasLegend]="true" title="学生数" subTitle="学生数" [total]="total" [data]="salesPieData" height="240">
+      </g2-pie>
+    </div>
+    <div nz-col nzSm="8">
+      <g2-pie [hasLegend]="true" title="学生数" subTitle="学生数" [total]="total" [data]="salesPieData" height="240">
+      </g2-pie>
+    </div>
+  </nz-collapse-panel>
+
+  <nz-collapse-panel nzHeader="原始数据列表" nzActive="false">
+    <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
+      <thead>
+        <tr style="background-color: linen">
+          <th rowspan="2" nzWidth="100px" nzAlign="center">年度</th>
+          <th colspan="3" nzAlign="center"><b>学历教育——分校（教学点）</b></th>
+          <th colspan="3" nzAlign="center" style="background-color:  rgb(208, 238, 247)"><b>非学历教育——项目</b></th>
+          <th colspan="3" nzAlign="center"><b>社区教育——社区学院</b></th>
+        </tr>
+        <tr style="background-color: linen">
+          <th nzAlign="center"><b>总数</b></th>
+          <th nzAlign="center"><b>新设数</b></th>
+          <th nzAlign="center"><b>退出数</b></th>
+          <th nzAlign="center" style="background-color: rgb(208, 238, 247)"><b>总数</b></th>
+          <th nzAlign="center" style="background-color: rgb(208, 238, 247)"><b>新设数</b></th>
+          <th nzAlign="center" style="background-color: rgb(208, 238, 247)"><b>退出数</b></th>
+          <th nzAlign="center"><b>总数</b></th>
+          <th nzAlign="center"><b>新设数</b></th>
+          <th nzAlign="center"><b>退出数</b></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of editRowTable.data">
+          <td nzAlign="center">
+            {{ data.nd }} 年
+          </td>
+          <td nzAlign="center">
+            <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xlnumInputTpl">
+              {{ data.xl_num }}
+            </ng-container>
+            <ng-template #xlnumInputTpl>
+              <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_newnum" /> -->
+              <nz-input-number [(ngModel)]="editCache[data.id].data.xl_num" [nzMin]="0" [nzStep]="1">
+              </nz-input-number>
+            </ng-template>
+          </td>
+          <td nzAlign="center">
+            <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xlnewnumInputTpl">
+              {{ data.xl_newnum }}
+            </ng-container>
+            <ng-template #xlnewnumInputTpl>
+              <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_newnum" /> -->
+              <nz-input-number [(ngModel)]="editCache[data.id].data.xl_newnum" [nzMin]="0" [nzStep]="1">
+              </nz-input-number>
+            </ng-template>
+          </td>
+          <td nzAlign="center">
+            <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xloutnumInputTpl">
+              {{ data.xl_outnum }}
+            </ng-container>
+            <ng-template #xloutnumInputTpl>
+              <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_outnum" /> -->
+              <nz-input-number [(ngModel)]="editCache[data.id].data.xl_outnum" [nzMin]="0" [nzStep]="1">
+              </nz-input-number>
+            </ng-template>
+          </td>
+
+          <td nzAlign="center">
+            <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else fxlnumInputTpl">
+              {{ data.fxl_num }}
+            </ng-container>
+            <ng-template #fxlnumInputTpl>
+              <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_newnum" /> -->
+              <nz-input-number [(ngModel)]="editCache[data.id].data.fxl_num" [nzMin]="0" [nzStep]="1">
+              </nz-input-number>
+            </ng-template>
+          </td>
+          <td nzAlign="center">
+            <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else fxlnewnumInputTpl">
+              {{ data.fxl_newnum }}
+            </ng-container>
+            <ng-template #fxlnewnumInputTpl>
+              <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_newnum" /> -->
+              <nz-input-number [(ngModel)]="editCache[data.id].data.fxl_newnum" [nzMin]="0" [nzStep]="1">
+              </nz-input-number>
+            </ng-template>
+          </td>
+          <td nzAlign="center">
+            <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else fxloutnumInputTpl">
+              {{ data.fxl_outnum }}
+            </ng-container>
+            <ng-template #fxloutnumInputTpl>
+              <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_outnum" /> -->
+              <nz-input-number [(ngModel)]="editCache[data.id].data.fxl_outnum" [nzMin]="0" [nzStep]="1">
+              </nz-input-number>
+            </ng-template>
+          </td>
+
+          <td nzAlign="center">
+            <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else sqnumInputTpl">
+              {{ data.sq_num }}
+            </ng-container>
+            <ng-template #sqnumInputTpl>
+              <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_newnum" /> -->
+              <nz-input-number [(ngModel)]="editCache[data.id].data.sq_num" [nzMin]="0" [nzStep]="1">
+              </nz-input-number>
+            </ng-template>
+          </td>
+          <td nzAlign="center">
+            <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else sqnewnumInputTpl">
+              {{ data.sq_newnum }}
+            </ng-container>
+            <ng-template #sqnewnumInputTpl>
+              <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.sq_newnum" /> -->
+              <nz-input-number [(ngModel)]="editCache[data.id].data.sq_newnum" [nzMin]="0" [nzStep]="1">
+              </nz-input-number>
+            </ng-template>
+          </td>
+          <td nzAlign="center">
+            <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else sqoutnumInputTpl">
+              {{ data.sq_outnum }}
+            </ng-container>
+            <ng-template #sqoutnumInputTpl>
+              <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.sq_outnum" /> -->
+              <nz-input-number [(ngModel)]="editCache[data.id].data.sq_outnum" [nzMin]="0" [nzStep]="1">
+              </nz-input-number>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-collapse-panel>
+</nz-collapse>
