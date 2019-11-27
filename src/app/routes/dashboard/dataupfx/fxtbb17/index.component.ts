@@ -103,7 +103,9 @@ export class DashboardDataUpFxtbB17IndexComponent implements OnInit {
           `&stepId=` +
           this.dataStr.stepId +
           `&deptId=` +
-          this.loadUser.user.bid,
+          this.loadUser.user.bid +
+          `&deptName=` +
+          this.loadUser.user.bname,
       )
       .subscribe(res => {
         this.msgSrv.success('新增成功');

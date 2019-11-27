@@ -47,7 +47,7 @@ export class DashboardDataUpFxtbB153IndexComponent implements OnInit {
           };
         }
       });
-      
+
       this.cdr.detectChanges();
     });
   }
@@ -68,7 +68,7 @@ export class DashboardDataUpFxtbB153IndexComponent implements OnInit {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    
+
     // 登录用户部门id
     this.http
       .put(
@@ -101,7 +101,9 @@ export class DashboardDataUpFxtbB153IndexComponent implements OnInit {
           `&stepId=` +
           this.dataStr.stepId +
           `&deptId=` +
-          this.loadUser.user.bid,
+          this.loadUser.user.bid +
+          `&deptName=` +
+          this.loadUser.user.bname,
       )
       .subscribe(res => {
         this.msgSrv.success('新增数据成功');

@@ -45,7 +45,7 @@ export class DashboardDataUpZxtbK27IndexComponent implements OnInit {
           data: { ...item },
         };
       });
-      
+
       this.cdr.detectChanges();
     });
     // this.updateEditCache();
@@ -98,8 +98,7 @@ export class DashboardDataUpZxtbK27IndexComponent implements OnInit {
           this.dataStr.id +
           `&stepId=` +
           this.dataStr.stepId +
-          `&deptId=` +
-          this.loadUser.user.bid,
+          `&deptId=51252&deptName=上海开放大学`,
       )
       .subscribe(res => {
         this.msgSrv.success('新增数据成功');

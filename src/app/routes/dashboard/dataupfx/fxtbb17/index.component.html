@@ -21,7 +21,8 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background: linen">
-      <th nzAlign="center" nzWidth="150px">年度</th>
+      <th nzAlign="center" nzWidth="120px">年度</th>
+      <th nzAlign="center" nzWidth="120px">学期</th>
       <th nzAlign="center" nzWidth="350px">课程名称</th>
       <th nzAlign="center" nzWidth="200px">建设类型</th>
       <th nzAlign="center" nzWidth="150px">使用率<br>应完成人次</th>
@@ -38,6 +39,19 @@
         <ng-template #ndInputTpl>
           <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1" nzSize="4">
           </nz-input-number> 年
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xqInputTpl">
+          {{ data.xq }}
+        </ng-container>
+        <ng-template #xqInputTpl>
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xq" /> -->
+          <nz-select style="width: 90px;" [(ngModel)]="editCache[data.id].data.xq" nzAllowClear nzPlaceHolder="学期">
+            <nz-option nzValue="春" nzLabel="春"></nz-option>
+            <nz-option nzValue="秋" nzLabel="秋"></nz-option>
+          </nz-select>
+
         </ng-template>
       </td>
       <td nzAlign="center">
