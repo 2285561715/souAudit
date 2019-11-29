@@ -13,6 +13,7 @@ export class LeadboardV1Component implements OnInit {
     x: `${idx + 1}月`,
     y: Math.floor(Math.random() * 1000) + 200,
   }));
+
   chartData: any[] = [];
   radarData: any[] = [];
 
@@ -51,7 +52,8 @@ export class LeadboardV1Component implements OnInit {
       this.chartData.push({
         x: new Date().getTime() + 1000 * 60 * 30 * i,
         y1: Math.floor(Math.random() * 100) + 1000,
-        y2: Math.floor(Math.random() * 100) + 10,
+        y2: Math.floor(Math.random() * 100) + 500,
+        y3: Math.floor(Math.random() * 100) + 500,
       });
     }
 

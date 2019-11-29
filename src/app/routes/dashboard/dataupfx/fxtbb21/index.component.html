@@ -109,7 +109,8 @@
         </ng-template>
       </td>
       <td nzAlign="center">
-        <div class="editable-row-operations">
+        仅浏览
+        <!-- <div class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>
           </ng-container>
@@ -118,7 +119,7 @@
             <nz-divider nzType="vertical"></nz-divider>
             <a nz-popconfirm nzTitle="确认取消?" (nzOnConfirm)="cancelEdit(data.id)">取消</a>
           </ng-template>
-        </div>
+        </div> -->
       </td>
     </tr>
   </tbody>
