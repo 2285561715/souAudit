@@ -76,6 +76,7 @@ export class DashboardDataUpFxSjtbComponent implements OnInit {
       .subscribe(res => {
         this.downExcelUrl = res.data;
       });
+    // console.log(this.downExcelUrl);
   }
 
   handleOk(): void {

@@ -31,7 +31,15 @@ export class DashboardComponent implements OnInit {
   visible = false;
   statusStr = '1';
 
+  bname = '';
+  unitName = '';
+  unitNo = '';
+
   ngOnInit() {
+    this.bname = this.loadUser.user.bname;
+    this.unitName = this.loadUser.user.unitName;
+    this.unitNo = this.loadUser.user.unitNo;
+
     this.loadInfo();
   }
 

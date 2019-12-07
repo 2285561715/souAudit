@@ -1,6 +1,9 @@
-import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
+import { NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { UploadFile, UploadFilter } from 'ng-zorro-antd/upload';
+import { Observable, Observer } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-fileup-zxwzcl',
@@ -16,18 +19,52 @@ export class DashboardFileUpFxWzclComponent implements OnInit {
     private drawerService: NzDrawerService,
     private drawerRef: NzDrawerRef<string>,
     public loadUser: SettingsService,
+    private msg: NzMessageService,
   ) {}
 
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
-  value: any = {};
+  value: any = [];
+  fileList: any = [];
+
   listOfFileDesc: any = {};
   fileRemark = '';
   upFileUrl = '';
 
-  fileList: any[] = [];
+  // fileList: any[] = [];
+  // filters: UploadFilter[] = [
+  //   {
+  //     name: 'type',
+  //     fn: (fileList: UploadFile[]) => {
+  //       const filterFiles = fileList.filter(w => ~['application/msword'].indexOf(w.type));
+  //       if (filterFiles.length !== fileList.length) {
+  //         this.msg.error(`包含文件格式不正确，只支持MS Office Word格式`);
+  //         return filterFiles;
+  //       }
+  //       return fileList;
+  //     },
+  //   },
+  //   {
+  //     name: 'async',
+  //     fn: (fileList: UploadFile[]) => {
+  //       return new Observable((observer: Observer<UploadFile[]>) => {
+  //         // doing
+  //         observer.next(fileList);
+  //         observer.complete();
+  //       });
+  //     },
+  //   },
+  // ];
+
+  upedFileUrl = ''; // 已上传文件地址
+  upedFileName = ''; // 已上传文件地址
+  updedFile: any = [];
 
   ngOnInit(): void {
+    // console.log(this.value);
+    this.upedFileUrl = this.value.fileupUrl;
+    this.upedFileName = this.value.dtName + '.' + this.value.exName;
+
     this.upFileUrl =
       '/api/uploadFile?tableno=' +
       this.value.dtNo +
@@ -46,8 +83,14 @@ export class DashboardFileUpFxWzclComponent implements OnInit {
   fupChange(event): void {
     event.fileList.forEach(item => {
       const fileUrl = item.response.fileDownloadUri;
+      const fileName = item.response.fileName;
       // 下面一行打印出来应该就是文件地址
-      this.msgSrv.success('文件上传成功');
+      // console.log(item);
+      // console.log(fileUrl);
+      this.upedFileUrl = fileUrl;
+      this.upedFileName = fileName;
+
+      this.msgSrv.success('文件上传成功，可在已上传文件链接查看');
     });
   }
 }

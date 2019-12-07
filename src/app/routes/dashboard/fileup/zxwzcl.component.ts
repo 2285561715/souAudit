@@ -27,10 +27,16 @@ export class DashboardFileUpZxWzclComponent implements OnInit {
 
   // fileList = [];
   fileList: any[] = [];
+  upedFileUrl = ''; // 已上传文件地址
+  upedFileName = ''; // 已上传文件地址
+  updedFile: any = [];
 
   ngOnInit(): void {
     // console.log(this.value);
     // /api/uploadFile
+    this.upedFileUrl = this.value.fileupUrl;
+    this.upedFileName = this.value.dtName + '.' + this.value.exName;
+
     this.upFileUrl =
       '/api/uploadFile?tableno=' +
       this.value.dtNo +
@@ -49,9 +55,13 @@ export class DashboardFileUpZxWzclComponent implements OnInit {
   fupChange(event): void {
     event.fileList.forEach(item => {
       const fileUrl = item.response.fileDownloadUri;
+      const fileName = item.response.fileName;
       // 下面一行打印出来应该就是文件地址
-      this.msgSrv.success('文件上传成功');
-      // console.log({ fileUrl });
+      // console.log(item);
+      // console.log(fileUrl);
+      this.upedFileUrl = fileUrl;
+      this.upedFileName = fileName;
+      this.msgSrv.success('文件上传成功，可在已上传文件链接查看');
     });
   }
 }

@@ -1,20 +1,20 @@
 <page-header [action]="phActionTpl">
   <ng-template #phActionTpl> </ng-template>
-  <p>欢迎您：{{loadUser.user.bname}} -> {{loadUser.user.name}} （{{loadUser.user.unitName}}）</p>
+  <p>欢迎您：{{bname}} -> {{loadUser.user.name}} （{{unitName}}）</p>
 </page-header>
 <div nz-row *ngFor="let divData of listOfData">
   <!-- 填报员 -->
-  <div nz-row [nzGutter]="8" *ngIf="!(loadUser.user.unitNo==='xnzj'||loadUser.user.unitNo==='xwzj')">
+  <div nz-row [nzGutter]="8" *ngIf="!(unitNo==='xnzj'||unitNo==='xwzj')">
     <div nz-col [nzSpan]="10">
       <nz-card nzTitle="【{{divData.appName}}】" style="background-color: rgb(252, 251, 228);border-radius: 10px;">
         <p style="line-height: 2em">周期：{{ divData.startDate }}至{{ divData.endDate }}</p>
         <p style="line-height: 2em">类别：{{ divData.esType }} &nbsp;&nbsp;&nbsp;
-          <button *ngIf="loadUser.user.unitNo==='zxbmtb'" nz-button nzSize="small" nzType="primary"
+          <button *ngIf="unitNo==='zxbmtb'" nz-button nzSize="small" nzType="primary"
             style="border: 0em;background: coral;" down-file
             [http-url]="'http://139.224.62.102/assets/'+divData.verIndex+'.pdf'" [file-name]="divData.esName+'.pdf'">
             <i nz-icon nzType="download"></i> 评估指标体系及内涵</button>
 
-          <button *ngIf="loadUser.user.unitNo==='fxtb'" nzSize="small" nz-button nzType="primary"
+          <button *ngIf="unitNo==='fxtb'" nzSize="small" nz-button nzType="primary"
             style="border: 0em;background: coral;" down-file
             [http-url]="'http://139.224.62.102/assets/'+divData.verIndex+'.pdf'" [file-name]="divData.esName+'.pdf'">
             <i nz-icon nzType="download"></i> 评估指标体系及内涵</button>
@@ -45,7 +45,7 @@
     </div>
   </div>
   <!-- 专家组 -->
-  <div nz-row [nzGutter]="8" *ngIf="loadUser.user.unitNo==='xnzj'||loadUser.user.unitNo==='xwzj'">
+  <div nz-row [nzGutter]="8" *ngIf="unitNo==='xnzj'||unitNo==='xwzj'">
     <div nz-col [nzSpan]="24">
       <nz-card [nzTitle]="titleTemplate3" style="background-color:#EEE;border-radius: 10px;">
 

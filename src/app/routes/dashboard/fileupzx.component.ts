@@ -52,6 +52,9 @@ export class DashboardFileUpZxComponent implements OnInit {
     const tdata = this.value;
     tdata.dtNo = dt.dtNo;
     tdata.stepId = dt.stepId;
+    tdata.fileupUrl = dt.fileupUrl;
+    tdata.dtName = dt.dtName;
+    tdata.exName = dt.exName;
 
     const drawerRef = this.drawerService.create<DashboardFileUpZxWzclComponent, { value: any }, string>({
       nzTitle: '【' + dt.dtName + '】材料上传',
