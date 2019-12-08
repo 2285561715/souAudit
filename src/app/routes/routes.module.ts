@@ -9,6 +9,7 @@ import { DashboardDataUpZxComponent } from './dashboard/dataupzx.component';
 import { DashboardDataUpFxComponent } from './dashboard/dataupfx.component';
 import { DashboardFileUpZxComponent } from './dashboard/fileupzx.component';
 import { DashboardFileUpFxComponent } from './dashboard/fileupfx.component';
+import { DashboardJhzjFxComponent } from './dashboard/jhzjfx.component';
 import { DashboardZjpsZxComponent } from './dashboard/zjpszx.component';
 import { DashboardZjpsFxComponent } from './dashboard/zjpsfx.component';
 import { DashboardZjpsdfZxpsComponent } from './dashboard/zjpsdf/zxps.component';
@@ -90,6 +91,7 @@ import { DashboardDataUpFxtbD052IndexComponent } from './dashboard/dataupfx/fxtb
 // -- 文字资料上传
 import { DashboardFileUpZxWzclComponent } from './dashboard/fileup/zxwzcl.component';
 import { DashboardFileUpFxWzclComponent } from './dashboard/fileup/fxwzcl.component';
+import { DashboardFileUpFxJhzjComponent } from './dashboard/fileup/fxjhzj.component';
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
 import { UserRegisterComponent } from './passport/register/register.component';
@@ -119,6 +121,7 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpFxComponent,
   DashboardFileUpZxComponent,
   DashboardFileUpFxComponent,
+  DashboardJhzjFxComponent,
   DashboardZjpsZxComponent,
   DashboardZjpsFxComponent,
   DashboardZjpsdfZxpsComponent,
@@ -200,6 +203,7 @@ const COMPONENTS_NOROUNT = [
   // --文字材料上传
   DashboardFileUpZxWzclComponent,
   DashboardFileUpFxWzclComponent,
+  DashboardFileUpFxJhzjComponent,
 ];
 
 @NgModule({

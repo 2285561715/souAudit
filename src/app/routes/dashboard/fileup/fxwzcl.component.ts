@@ -6,7 +6,7 @@ import { UploadFile, UploadFilter } from 'ng-zorro-antd/upload';
 import { Observable, Observer } from 'rxjs';
 
 @Component({
-  selector: 'app-dashboard-fileup-zxwzcl',
+  selector: 'app-dashboard-fileup-fxwzcl',
   templateUrl: './fxwzcl.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

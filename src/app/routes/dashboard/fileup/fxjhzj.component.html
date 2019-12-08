@@ -1,0 +1,32 @@
+<div class="card-container">
+
+  <nz-upload nzType="drag" [nzAction]="upNcjhFileUrl" (nzChange)="fupNcChange($event)">
+    <p class="ant-upload-drag-icon">
+      <i nz-icon nzType="inbox"></i> <span style="font-weight: bold;font-size: 1.5;">年初计划</span>
+    </p>
+    <p class="ant-upload-text">
+      <span *ngIf="upedNcjhFileUrl" nz-tooltip nzTooltipTitle="预览已上传文字材料">
+        <button nzSize="small" nz-button nzType="link" down-file [http-url]="upedNcjhFileUrl"
+          [file-name]="upedNcjhFileName">
+          <i nz-icon nzType="search" style="color: coral"></i>已上传：{{upedNcjhFileName}}</button>
+      </span>
+      <span *ngIf="!upedNcjhFileUrl">尚未上传年初计划</span>
+    </p>
+    <p class="ant-upload-hint">点击区域框或拖拽文件到此处</p>
+  </nz-upload>
+  <br>
+  <nz-upload nzType="drag" [nzAction]="upNzzjFileUrl" (nzChange)="fupNzChange($event)">
+    <p class="ant-upload-drag-icon">
+      <i nz-icon nzType="inbox" style="color: coral;"></i> <span style="font-weight: bold;font-size: 1.5;">年终总结</span>
+    </p>
+    <p class="ant-upload-text">
+      <span *ngIf="upedNzzjFileUrl" nz-tooltip nzTooltipTitle="预览已上传文字材料">
+        <button nzSize="small" nz-button nzType="link" down-file [http-url]="upedNzzjFileUrl"
+          [file-name]="upedNzzjFileName">
+          <i nz-icon nzType="search" style="color: coral"></i>已上传：{{upedNzzjFileName}}</button>
+      </span>
+      <span *ngIf="!upedNzzjFileUrl">尚未上传年初计划</span>
+    </p>
+    <p class="ant-upload-hint">点击区域框或拖拽文件到此处</p>
+  </nz-upload>
+</div>

@@ -9,6 +9,7 @@ import { DashboardFileUpFxComponent } from './fileupfx.component';
 
 import { DashboardZjpsZxComponent } from './zjpszx.component';
 import { DashboardZjpsFxComponent } from './zjpsfx.component';
+import { DashboardJhzjFxComponent } from './jhzjfx.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -41,6 +42,7 @@ export class DashboardComponent implements OnInit {
     this.unitNo = this.loadUser.user.unitNo;
 
     this.loadInfo();
+    // console.log(this.listOfData);
   }
 
   loadInfo(): void {
@@ -193,6 +195,35 @@ export class DashboardComponent implements OnInit {
       nzPlacement: 'left',
       nzMaskClosable: false,
       nzContent: DashboardFileUpFxComponent,
+      nzContentParams: {
+        value: dataValue,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
+  }
+
+  // -------------------------------------------
+  // 分校年初计划年终总结上传file
+  openJhZjFx(record: any): void {
+    const dataValue = record;
+    dataValue.deptId = this.loadUser.user.bid;
+    dataValue.deptName = this.loadUser.user.bname;
+
+    const drawerRef = this.drawerService.create<DashboardJhzjFxComponent, { value: any }, string>({
+      nzTitle: '【' + this.loadUser.user.bname + '】 - 【' + '年初计划、年度总结】上报',
+      nzWidth: 830,
+      nzPlacement: 'left',
+      nzMaskClosable: false,
+      nzContent: DashboardJhzjFxComponent,
       nzContentParams: {
         value: dataValue,
       },

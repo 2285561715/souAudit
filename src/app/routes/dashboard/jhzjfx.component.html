@@ -1,0 +1,38 @@
+<nz-table nzSize="small" #colSpanTable [nzData]="listOfFileList" nzBordered nzPageSize="20" nzHideOnSinglePage="true">
+  <thead>
+    <tr style="background-color: linen;font-weight: bold;height: 50px;">
+      <th nzAlign="center" nzWidth="90px" style="font-weight: bold">年度</th>
+      <th nzAlign="center" nzWidth="270px" style="font-weight: bold">年初计划</th>
+      <th nzAlign="center" nzWidth="270px" style="font-weight: bold">年度总结</th>
+      <th nzAlign="center" nzWidth="100px">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dt of colSpanTable.data; index as i">
+      <td nzAlign="center" style="font-weight: bold;height: 50px;">{{ dt.nd }}</td>
+      <td nzAlign="center">
+        <span *ngIf="dt.ncjhFile" nz-tooltip nzTooltipTitle="点击下载查看，{{dt.ncjhUptime}}">
+          <button nzSize="small" nz-button style="border: 0em" down-file http-url="{{dt.ncjhFile}}"
+            file-name="{{dt.nd}}-年度计划.{{dt.exNcName}}">
+            {{dt.nd}} 年度计划 <i nz-icon nzType="search" style="color: coral"></i></button>
+        </span>
+        <span *ngIf="!dt.ncjhFile">未上传
+        </span>
+      </td>
+      <td nzAlign="center">
+        <span *ngIf="dt.nzzjFile" nz-tooltip nzTooltipTitle="点击下载查看，{{dt.nzzjUptime}}">
+          <button nzSize="small" nz-button style="border: 0em" down-file http-url="{{dt.nzzjFile}}"
+            file-name="{{dt.nd}}-年终总结.{{dt.exNzName}}">
+            {{dt.nd}} 年终总结 <i nz-icon nzType="search" style="color: coral"></i></button>
+        </span>
+        <span *ngIf="!dt.ncjhFile">未上传</span>
+      </td>
+      <td nzAlign="center">
+        <span *ngIf="dt.isOn" nz-tooltip nzTooltipTitle="上报或再报">
+          <button nzSize="small" nz-button (click)="fileUpFun(dt)" style="border: 0em">
+            <i nz-icon nzType="up-square" nzTheme="fill" style="color: coral"></i>上报</button></span>
+        <span *ngIf="!dt.isOn">已上报</span>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

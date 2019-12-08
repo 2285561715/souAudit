@@ -4,45 +4,72 @@
 </page-header>
 <div nz-row *ngFor="let divData of listOfData">
   <!-- 填报员 -->
-  <div nz-row [nzGutter]="8" *ngIf="!(unitNo==='xnzj'||unitNo==='xwzj')">
-    <div nz-col [nzSpan]="10">
-      <nz-card nzTitle="【{{divData.appName}}】" style="background-color: rgb(252, 251, 228);border-radius: 10px;">
-        <p style="line-height: 2em">周期：{{ divData.startDate }}至{{ divData.endDate }}</p>
-        <p style="line-height: 2em">类别：{{ divData.esType }} &nbsp;&nbsp;&nbsp;
-          <button *ngIf="unitNo==='zxbmtb'" nz-button nzSize="small" nzType="primary"
-            style="border: 0em;background: coral;" down-file
-            [http-url]="'http://139.224.62.102/assets/'+divData.verIndex+'.pdf'" [file-name]="divData.esName+'.pdf'">
-            <i nz-icon nzType="download"></i> 评估指标体系及内涵</button>
-
-          <button *ngIf="unitNo==='fxtb'" nzSize="small" nz-button nzType="primary"
-            style="border: 0em;background: coral;" down-file
-            [http-url]="'http://139.224.62.102/assets/'+divData.verIndex+'.pdf'" [file-name]="divData.esName+'.pdf'">
-            <i nz-icon nzType="download"></i> 评估指标体系及内涵</button>
-        </p>
+  <div nz-row [nzGutter]="16" *ngIf="!(unitNo==='xnzj'||unitNo==='xwzj')">
+    <div nz-col [nzSpan]="9">
+      <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTb1" [nzActions]="[indexDownFile]">
+        <p style="line-height: 2em;font-size: 1.1em;">评估周期：{{ divData.startDate }}至{{ divData.endDate }}</p>
+        <p style="line-height: 2em;font-size: 1.1em;">评估类别：{{ divData.esType }} </p>
       </nz-card>
-    </div>
-    <div nz-col [nzSpan]="14">
-      <nz-card nzTitle="当前阶段：数据填报" [nzExtra]="extraTemplate" style="border-radius: 10px;">
-        <p style="line-height: 2em">
-          阶段周期：{{ divData.startDate }} 至 {{ divData.endDate }}
-        </p>
-        <p style="line-height: 2em">
-          <button *ngIf="divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openDataUp(divData)">
-            <i nz-icon nzType="edit"></i>数据填报</button>
-          <button *ngIf="!divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openDataUpFx(divData)">
-            <i nz-icon nzType="edit"></i>数据填报</button>
-          <nz-divider nzType="vertical"></nz-divider>
-          <button *ngIf="divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openFileUp(divData)">
-            <i nz-icon nzType="upload"></i>材料上传</button>
-          <button *ngIf="!divData.isZx" nz-button nzSize="small" nzType="primary" (click)="openFileUpFx(divData)">
-            <i nz-icon nzType="upload"></i>材料上传</button>
-        </p>
-      </nz-card>
-      <ng-template #extraTemplate>状态：
-        <nz-tag *ngIf="statusStr==='1'" [nzColor]="'#f50'">未填报</nz-tag>
-        <nz-tag *ngIf="statusStr==='1'" [nzColor]="'#f50'">未上传</nz-tag>
+      <ng-template #titleTemplateTb1>
+        <span style="line-height: 1.5em;font-size: 1.1em;"><b><i nz-icon nzType="aliyun" style="color: coral;"></i>
+            {{divData.appName}} </b></span>
+      </ng-template>
+      <ng-template #indexDownFile>
+        <button *ngIf="unitNo==='zxbmtb'" nz-button nzType="link" down-file
+          [http-url]="'http://139.224.62.102/assets/'+divData.verIndex+'.pdf'" [file-name]="divData.esName+'.pdf'">
+          《{{divData.esName}}》下载<i nz-icon nzType="cloud-download" style="color: coral;"></i> </button>
+        <button *ngIf="unitNo==='fxtb'" nz-button nzType="link" down-file
+          [http-url]="'http://139.224.62.102/assets/'+divData.verIndex+'.pdf'" [file-name]="divData.esName+'.pdf'">
+          《{{divData.esName}}》下载<i nz-icon nzType="cloud-download" style="color: coral;"></i> </button>
       </ng-template>
     </div>
+
+    <div nz-col [nzSpan]="9">
+      <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTb2"
+        [nzActions]="[dataUpButton,fileUpButton]">
+        <p style="line-height: 2em;font-size: 1.1em;">
+          填报周期：<b>{{ divData.startDate }} 至 {{ divData.endDate }}</b>
+        </p>
+        <p style="line-height: 2em;font-size: 1.1em;"> &nbsp; </p>
+      </nz-card>
+      <ng-template #titleTemplateTb2>
+        <span style="line-height: 1.5em;font-size: 1.1em;"><b><i nz-icon nzType="codepen-square" nzTheme="fill"
+              style="color: coral;"></i> 数据填报和文字材料上传</b></span>
+      </ng-template>
+      <ng-template #dataUpButton>
+        <button *ngIf="divData.verIndex.toString().substring(4,6)==='zx'" nz-button nzType="default"
+          (click)="openDataUp(divData)">
+          <i nz-icon nzType="edit" nzTheme="fill" style="color: coral;"></i><b> 数据填报</b></button>
+        <button *ngIf="divData.verIndex.toString().substring(4,6)==='fx'" nz-button nzType="default"
+          (click)="openDataUpFx(divData)">
+          <i nz-icon nzType="edit" nzTheme="fill" style="color: coral;"></i><b> 数据填报</b></button>
+      </ng-template>
+      <ng-template #fileUpButton>
+        <button *ngIf="divData.verIndex.toString().substring(4,6)==='zx'" nz-button nzType="default"
+          (click)="openFileUp(divData)">
+          <i nz-icon nzType="upload" style="color: coral;"></i><b> 材料上传</b></button>
+        <button *ngIf="divData.verIndex.toString().substring(4,6)==='fx'" nz-button nzType="default"
+          (click)="openFileUpFx(divData)">
+          <i nz-icon nzType="upload" style="color: coral;"></i><b> 材料上传</b></button>
+      </ng-template>
+    </div>
+
+    <div *ngIf="unitNo==='fxtb'" nz-col [nzSpan]="6">
+      <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTbnd" [nzActions]="[jhzjUpButton]">
+        <p style="line-height: 2em;font-size: 1.1em;">本次要求上报【<b>2016-2018</b>】年初计划</p>
+        <p style="line-height: 2em;font-size: 1.1em;">本次要求上报【<b>2016-2018</b>】年终总结</p>
+      </nz-card>
+      <ng-template #titleTemplateTbnd>
+        <span style="line-height: 1.5em;font-size: 1.1em;"><b><i nz-icon nzType="build" nzTheme="fill"
+              style="color: coral;"></i>
+            年度计划、总结上报 </b></span>
+      </ng-template>
+      <ng-template #jhzjUpButton>
+        <button nz-button nzType="default" (click)="openJhZjFx(divData)">
+          <i nz-icon nzType="reconciliation" style="color: coral;"></i> <b>上报计划总结</b></button>
+      </ng-template>
+    </div>
+
   </div>
   <!-- 专家组 -->
   <div nz-row [nzGutter]="8" *ngIf="unitNo==='xnzj'||unitNo==='xwzj'">
