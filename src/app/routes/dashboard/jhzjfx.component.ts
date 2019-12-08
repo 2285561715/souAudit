@@ -54,13 +54,14 @@ export class DashboardJhzjFxComponent implements OnInit {
     const tdata = this.value;
     tdata.xxdm = dt.xxdm;
     tdata.nd = dt.nd;
+    tdata.jhzjid = dt.id;
     tdata.ncjhFile = dt.ncjhFile;
     tdata.nzzjFile = dt.nzzjFile;
     tdata.exNcName = dt.exNcName;
     tdata.exNzName = dt.exNzName;
 
     const drawerRef = this.drawerService.create<DashboardFileUpFxJhzjComponent, { value: any }, string>({
-      nzTitle: '<' + this.value.deptName + '>【' + dt.nd + '】计划总结上报',
+      nzTitle: '【' + dt.nd + '】<' + this.value.deptName + '> 计划总结上报',
       nzWidth: document.body.clientWidth - 830,
       nzPlacement: 'right',
       // nzMaskClosable: false,

@@ -41,8 +41,8 @@ export class DashboardFileUpFxJhzjComponent implements OnInit {
     this.upedNzzjFileUrl = this.value.nzzjFile;
     this.upedNzzjFileName = this.value.nd + '年初计划.' + this.value.exNzName;
 
-    this.upNcjhFileUrl = '/api/uploadFile/fxjhzjup?xxdm=' + this.value.xxdm + '&zdType=ncjh';
-    this.upNzzjFileUrl = '/api/uploadFile/fxjhzjup?xxdm=' + this.value.xxdm + '&zdType=nzzj';
+    this.upNcjhFileUrl = '/api/uploadFile/fxjhzjup?id=' + this.value.jhzjid + '&zdType=ncjh';
+    this.upNzzjFileUrl = '/api/uploadFile/fxjhzjup?id=' + this.value.jhzjid + '&zdType=nzzj';
   }
 
   fupNcChange(event): void {
