@@ -1,6 +1,7 @@
 <page-header [action]="phActionTpl">
   <ng-template #phActionTpl> </ng-template>
-  <p>欢迎您：{{bname}} -> {{loadUser.user.name}} （{{unitName}}）</p>
+  <p style="font-size: 1.2em;">欢迎您：{{bname}} -> {{loadUser.user.name}} <{{unitName}}>
+  </p>
 </page-header>
 <div nz-row *ngFor="let divData of listOfData">
   <!-- 填报员 -->

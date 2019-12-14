@@ -1,8 +1,9 @@
 <div class="modal-header" style="padding-top: 32px">
   <div class="modal-title">【{{record.dtName}}】</div>
 </div>
-<app-tbjczx-zxtbk06-index [dataStr]="record"></app-tbjczx-zxtbk06-index>
-
+<div *ngIf="record.dtNo==='sjzxtb_k06_bxxt'">
+  <app-tbjczx-zxtbk06-index [dataStr]="record"></app-tbjczx-zxtbk06-index>
+</div>
 <!-- <nz-collapse>
   <nz-collapse-panel nzHeader="统计结果数据" nzActive="true">
     <nz-table nzTemplateMode #borderedTable nzBordered nzSize="small">

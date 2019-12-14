@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper } from '@delon/theme';
 import { NzMessageService, NzModalService, NzDrawerService } from 'ng-zorro-antd';
+
 import { AuditstepAdProcessTbjcZxDataViewComponent } from './dataview.component';
+// 调用可修改原始数据
+import { DashboardDataUpZxtbK05IndexComponent } from '../../../dashboard/dataup/zxtbk05/index.component';
 
 @Component({
   selector: 'app-auditstep-ad-process-tbjczx-index',

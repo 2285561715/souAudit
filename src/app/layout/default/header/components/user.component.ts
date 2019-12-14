@@ -11,7 +11,7 @@ import { HeaderStorageComponent } from './storage.component';
     <nz-dropdown nzPlacement="bottomRight">
       <div class="alain-default__nav-item d-flex align-items-center px-sm" nz-dropdown>
         <nz-avatar [nzSrc]="settings.user.avatar" nzSize="small" class="mr-sm"></nz-avatar>
-        {{ settings.user.name }}
+        退出
       </div>
 
       <div nz-menu class="width-sm">

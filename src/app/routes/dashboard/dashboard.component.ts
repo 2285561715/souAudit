@@ -6,7 +6,6 @@ import { DashboardDataUpZxComponent } from './dataupzx.component';
 import { DashboardDataUpFxComponent } from './dataupfx.component';
 import { DashboardFileUpZxComponent } from './fileupzx.component';
 import { DashboardFileUpFxComponent } from './fileupfx.component';
-
 import { DashboardZjpsZxComponent } from './zjpszx.component';
 import { DashboardZjpsFxComponent } from './zjpsfx.component';
 import { DashboardJhzjFxComponent } from './jhzjfx.component';
