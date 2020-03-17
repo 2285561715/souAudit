@@ -7,30 +7,33 @@
     <thead>
       <tr>
         <th nzShowExpand nzwidth="2%"></th>
-        <th nzWidth="10%" nzAlign="center">评估类别</th>
-        <th nzWidth="30%">评估体系名称</th>
-        <th nzWidth="7%" nzAlign="center">实施年月</th>
+        <th nzWidth="34%" nzAlign="center">评估类别及体系名称</th>
+        <th nzWidth="9%" nzAlign="center">实施年月</th>
         <th nzWidth="6%" nzAlign="center">是否在用</th>
-        <th nzAlign="center">数据采集周期</th>
-        <th nzWidth="13%" nzAlign="center">指标体系版本</th>
-        <th nzWidth="17%" nzAlign="center">Action</th>
+        <th nzWidth="11%" nzAlign="center">数据采集周期</th>
+        <th nzWidth="12%" nzAlign="center">指标体系版本</th>
+        <th nzAlign="center">Action</th>
       </tr>
     </thead>
     <tbody>
       <ng-template ngFor let-data [ngForOf]="nzTable.data">
         <tr>
           <td nzShowExpand [(nzExpand)]="mapOfExpandData[data.id]"></td>
-          <td>{{ data.esType }}</td>
-          <td><a (click)="viewInfo(data)">{{ data.esName }}</a></td>
+          <td><span style="color: darkgrey;">【{{ data.esType }}】</span><br>
+            <span style="font-size: 1.1em;font-weight: bold;">{{ data.esName }}</span></td>
           <td nzAlign="center">{{ data.releaseDate }}</td>
           <td nzAlign="center">
             <span [ngClass]="{'text-danger':data.status==false}">{{ data.status?'在用':'停用' }}</span>
           </td>
-          <td nzAlign="center">{{ data.dataFromDate }}∽{{ data.dataEndDate }}</td>
+          <td nzAlign="center">{{ data.dataFromDate }}<br>{{ data.dataEndDate }}</td>
           <td nzAlign="center">{{ data.verIndex }}</td>
           <td nzAlign="center">
-            <button nz-button nzSize="small" nzType="link" (click)="openComponent(data)">
-              <i nz-icon nzType="unordered-list" nzTheme="outline" style="color: coral"></i> 指标设置及规则管理
+            <button nz-button nzSize="small" nzType="primary" (click)="openComponent(data)">
+              <i nz-icon nzType="setting" nzTheme="fill"></i>指标管理及设置
+            </button>
+            <nz-divider nzType="vertical"></nz-divider>
+            <button nz-button nzSize="small" nzType="default" (click)="openProfile(data)">
+              <i nz-icon nzType="profile" nzTheme="fill" style="color: coral"></i>模版管理
             </button>
           </td>
         </tr>

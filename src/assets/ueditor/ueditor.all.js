@@ -1194,24 +1194,17 @@ var utils = UE.utils = {
      * @param { String } èŠ‚ç‚¹åç§°
      * @grammar UE.utils.cssRule('æ·»åŠ çš„æ ·å¼çš„èŠ‚ç‚¹åç§°',['æ ·å¼'ï¼Œ'æ”¾åˆ°å“ªä¸ªdocumentä¸Š'])
      * @grammar UE.utils.cssRule('body','body{background:#ccc}') => null  //ç»™bodyæ·»åŠ èƒŒæ™¯é¢œè‰²
-     * @grammar UE.utils.cssRule('body') =>æ ·å¼çš„å­—ç¬¦ä¸²  //å–å¾—keyå€¼ä¸ºbodyçš„æ ·å¼çš„å†…å®¹,å¦‚æœæ²¡æœ‰æ‰¾åˆ°keyå€¼å…ˆå…³çš„æ ·å¼å°†è¿”å›ç©ºï¼Œä¾‹å¦‚åˆšæ‰é‚£ä¸ªèƒŒæ™¯é¢œè‰²ï¼Œå°†è¿”å› body{background:#ccc}
-     * @grammar UE.utils.cssRule('body',document) => è¿”å›æŒ‡å®škeyçš„æ ·å¼ï¼Œå¹¶ä¸”æŒ‡å®šæ˜¯å“ªä¸ªdocument
-     * @grammar UE.utils.cssRule('body','') =>null //æ¸…ç©ºç»™å®šçš„keyå€¼çš„èƒŒæ™¯é¢œè‰²
-     */
-    cssRule:browser.ie && browser.version != 11 ? function (key, style, doc) {
-        var indexList, index;
-        if(style === undefined || style && style.nodeType && style.nodeType == 9){
-            //è·å–æ ·å¼
-            doc = style && style.nodeType && style.nodeType == 9 ? style : (doc || document);
-            indexList = doc.indexList || (doc.indexList = {});
-            index = indexList[key];
-            if(index !==  undefined){
-                return doc.styleSheets[index].cssText
-            }
-            return undefined;
-        }
-        doc = doc || document;
-        indexList = doc.indexList || (doc.indexList = {});
+     * @grammar Èëf¥İÙÈkaíPÚ]:;£%©GÏØ
+¾(BÄ~øÓqŒ\Œ–h
+„Ò„ãò~"%=.w9Ÿ
+ÓKOwÊ–zÄÍFÂfU‚“ƒóÒĞ-{Ün‹0{é3‡«(«Ö!ï*»iGé7'ÔÄ3ÓgÔÅçHIS3•‚ÏjøîÔh
+¿ÎB7ìgéÌ/è¦†^±­ï
+¥ö‰ç5Ó“(›ì(ø[,c]ã¼ãöe;xy@¹E/¿]©8ìVGÜÁ1”Ì^Ô–1Ïàav–/®¸6…¿œ£ŒD­©z§i#	@%C[B…Í#‡ÜéÇŒÊe}=â1<3¨s$qìu|˜K¯lâöó]8nUùå5[é¶Û´<ŸR´òÈ°HÚ ˜¸]µª¨È8¶Çş|ƒ¾aÖı
+È«õje`×‡¾zF´i,=¿-}7`¤@œ1¦¨¿æ˜/"8òK×’ë¡uNW°¸'ßÙ~2”\3—æeÌ ˆr”Dè—N½À°K·|ŸÔKìiÃ¥üfğlÕ@:âüÖıbá›ŠÔxd¼^#„Ïq‚È˜‡V¶–½¹Oe%„lÏâé£q	±¶›İİëŞÕ"Ñãè7nuàØ?:!·é˜£N­¬ 2:PßOß½6PÂb·‹§´È8ñºxåÆµœ@ÚÊ
+iQØ\ùA¤‰v‡+S«¼EJûjQ²ÊHà½¼­4uDº°%y÷÷µyv"Ì÷×¨n\P@á²u¼“lÌ’Ã'Üäë¼¢Ïû gşóP"¥Yƒä“ÚRÊ"¸¥Ÿºâƒµ‡³6‡ÌÊiV±¦ğ@GŒD¹¿X•´šrÿ‘I#"-ÿ´S”Å6õ“SœÆÁ6Ñ:Aá×­Ç±Í±?œ2±‡ëE¼ÃÇ½ÀTh˜ö'ø«Ššœ¢éĞu»Û,(ãmğ&8hìÕÈ¯VğmÌÜZs~µÆ†¹V¦tıdXxpûä†qÒàŠìEçíhÕ£!™® ÿÛïW)nHgeê PKÜùÈ}±pŞÜßà‚AZ ¦,/ª‰(©¦'"ÌXF†ıÈ•­‡IDîE,¾,2¿Zƒk8¶
+/_EıBˆiä@Û
+¾—eÓ.M«™*.?ì$ÜÚy´,«´:§^Ó¹
+kjæE©´-ˆe«Æß(ëõ5ßUÓ«Hú£©V©6…@†Éˆl]˜øtI?‰¾`j£æÂË6*4åóÔ±m‹Â=ZxÁşëXIö'°JÑ{'<ÛLçK>Æ¶Ä­¶=”éÆXËÏl[Ğ&Í2PâÖŠø9qE»X’aüÂa(ĞhºšÆç5Êã21Ìl¢ıƒoc.indexList || (doc.indexList = {});
         index = indexList[key];
         //æ¸…é™¤æ ·å¼
         if(style === ''){

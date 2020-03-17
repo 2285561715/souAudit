@@ -15,6 +15,7 @@ import { StartupService } from '@core';
   providers: [SocialService],
 })
 export class UserLoginComponent implements OnDestroy {
+  serverUrl = environment.SERVER_URL;
   constructor(
     fb: FormBuilder,
     modalSrv: NzModalService,
@@ -34,6 +35,7 @@ export class UserLoginComponent implements OnDestroy {
       password: [null, Validators.required],
       mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
       captcha: [null, [Validators.required]],
+      imgCaptcha: [null, [Validators.required]],
       remember: [true],
     });
     modalSrv.closeAll();
@@ -52,6 +54,9 @@ export class UserLoginComponent implements OnDestroy {
   }
   get captcha() {
     return this.form.controls.captcha;
+  }
+  get imgCaptcha() {
+    return this.form.controls.imgCaptcha;
   }
   form: FormGroup;
   error = '';
@@ -105,26 +110,41 @@ export class UserLoginComponent implements OnDestroy {
       }
     }
 
-    // 默认配置中对所有HTTP请求都会强制 [校验](https://ng-alain.com/auth/getting-started) 用户 Token
-    // 然一般来说登录请求不需要校验，因此可以在请求URL加上：`/login?_allow_anonymous=true` 表示不触发用户 Token 校验
+    console.log({ captcha: this.imgCaptcha.value });
+    if (!this.imgCaptcha.value) {
+      this.msg.error('请输入验证码');
+      return;
+    }
+
     this.http
-      .post('/api/authenticate?_allow_anonymous=true', {
-        username: this.userName.value,
-        password: this.password.value,
-      })
-      .subscribe((res: any) => {
-        // 清空路由复用信息
-        this.reuseTabService.clear();
-        // 设置用户Token信息
-        this.tokenService.set({ token: res.id_token });
-        // 重新获取 StartupService 内容，我们始终认为应用信息一般都会受当前用户授权范围而影响
-        this.startupSrv.load().then(() => {
-          let url = this.tokenService.referrer!.url || '/';
-          if (url.includes('/passport')) {
-            url = '/';
-          }
-          this.router.navigateByUrl(url);
-        });
+      .get('/api/captcha/check?_allow_anonymous=true', { code: this.imgCaptcha.value }, { withCredentials: true })
+      .subscribe((rst: any) => {
+        if (!rst) {
+          this.msg.error('验证码不正确，请重新输入');
+          return;
+        } else {
+          this.http
+            .post('/api/authenticate?_allow_anonymous=true', {
+              username: btoa(this.userName.value),
+              password: btoa(this.password.value),
+            })
+            .subscribe((res: any) => {
+              console.log({ res });
+
+              // 清空路由复用信息
+              this.reuseTabService.clear();
+              // 设置用户Token信息
+              this.tokenService.set({ token: res.id_token });
+              // 重新获取 StartupService 内容，我们始终认为应用信息一般都会受当前用户授权范围而影响
+              this.startupSrv.load().then(() => {
+                let url = this.tokenService.referrer!.url || '/';
+                if (url.includes('/passport')) {
+                  url = '/';
+                }
+                this.router.navigateByUrl(url);
+              });
+            });
+        }
       });
   }
 

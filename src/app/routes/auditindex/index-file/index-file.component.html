@@ -10,13 +10,13 @@
     <thead>
       <tr>
         <th nzShowExpand nzwidth="2%"></th>
-        <th nzWidth="10%" nzAlign="center">评估类别</th>
+        <th nzWidth="11%" nzAlign="center">评估类别</th>
         <th nzWidth="30%">评估体系名称</th>
-        <th nzWidth="8%" nzAlign="center">实施年月</th>
+        <th nzWidth="9%" nzAlign="center">实施年月</th>
         <th nzWidth="6%" nzAlign="center">是否在用</th>
-        <th nzAlign="center">数据采集周期</th>
-        <th nzWidth="15%" nzAlign="center">指标体系版本</th>
-        <th nzWidth="13%" nzAlign="center">Action</th>
+        <th nzWidth="12%" nzAlign="center">数据采集周期</th>
+        <th nzWidth="13%" nzAlign="center">指标体系版本</th>
+        <th nzAlign="center">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -29,7 +29,7 @@
           <td nzAlign="center">
             <span [ngClass]="{'text-danger':data.status==false}">{{ data.status?'在用':'停用' }}</span>
           </td>
-          <td nzAlign="center">{{ data.dataFromDate }}∽{{ data.dataEndDate }}</td>
+          <td nzAlign="center">{{ data.dataFromDate }}<br>{{ data.dataEndDate }}</td>
           <td nzAlign="center">{{ data.verIndex }}</td>
           <td nzAlign="center">
             <button nz-button nzSize="small" nzType="default" (click)="editInfo(data)">修改</button>

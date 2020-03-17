@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared';
 import { AuditindexRoutingModule } from './auditindex-routing.module';
 import { AuditindexIndexManaComponent } from './index-mana/index-mana.component';
-import { AuditindexIndexManaViewComponent } from './index-mana/view/view.component';
+import { AuditindexIndexManaProfileViewComponent } from './index-mana/profile/view.component';
+import { AuditindexIndexManaProfileEditComponent } from './index-mana/profile/edit/edit.component';
 import { AuditindexIndexManaXdrawerComponent } from './index-mana/xdrawer/xdrawer.component';
 import { AuditindexIndexManaIdaddComponent } from './index-mana/xdrawer/idadd/add.component';
 import { AuditindexIndexManaIdeditComponent } from './index-mana/xdrawer/idedit/edit.component';
@@ -14,7 +15,8 @@ import { AuditindexIndexFileEditComponent } from './index-file/edit/edit.compone
 
 const COMPONENTS = [AuditindexIndexManaComponent, AuditindexIndexFileComponent];
 const COMPONENTS_NOROUNT = [
-  AuditindexIndexManaViewComponent,
+  AuditindexIndexManaProfileViewComponent,
+  AuditindexIndexManaProfileEditComponent,
   AuditindexIndexManaXdrawerComponent,
   AuditindexIndexManaIdaddComponent,
   AuditindexIndexManaIdeditComponent,

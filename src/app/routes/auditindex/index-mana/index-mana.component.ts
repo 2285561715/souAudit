@@ -4,7 +4,7 @@ import { STColumn, STComponent } from '@delon/abc';
 import { SFSchema } from '@delon/form';
 import { NzFormatEmitEvent, NzDrawerRef, NzDrawerService, NzMessageService, NzModalService } from 'ng-zorro-antd';
 
-import { AuditindexIndexManaViewComponent } from './view/view.component';
+import { AuditindexIndexManaProfileViewComponent } from './profile/view.component';
 import { AuditindexIndexManaXdrawerComponent } from './xdrawer/xdrawer.component';
 
 @Component({
@@ -37,12 +37,6 @@ export class AuditindexIndexManaComponent implements OnInit {
     });
   }
 
-  viewInfo(record: any[]) {
-    this.modal.create(AuditindexIndexManaViewComponent, { record }, { size: 'lg' }).subscribe((res: any) => {
-      this.loadInfo();
-    });
-  }
-
   deleteConfirm(id: number): void {
     this.modalService.confirm({
       nzTitle: '<i>是否要删除数据</i>',
@@ -69,6 +63,31 @@ export class AuditindexIndexManaComponent implements OnInit {
       nzContent: AuditindexIndexManaXdrawerComponent,
       nzContentParams: {
         // value: this.value,
+        value: record.verIndex,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      console.log('关闭=' + data);
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
+  }
+
+  // 打开模版预览抽屉
+  openProfile(record: any): void {
+    const drawerRef = this.drawerService.create<AuditindexIndexManaProfileViewComponent, { value: string }, string>({
+      nzTitle: record.esName + ' 评估模版',
+      nzWidth: 1280,
+      nzPlacement: 'left',
+      nzMaskClosable: false,
+      nzContent: AuditindexIndexManaProfileViewComponent,
+      nzContentParams: {
         value: record.verIndex,
       },
     });

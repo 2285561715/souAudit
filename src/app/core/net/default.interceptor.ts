@@ -38,6 +38,7 @@ const CODEMESSAGE = {
  */
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
+  errShown = false;
   constructor(private injector: Injector, private modalService: NzModalService) {}
 
   private get notification(): NzNotificationService {
@@ -96,11 +97,14 @@ export class DefaultInterceptor implements HttpInterceptor {
         // this.notification.error(`未登录或登录已过期，请重新登录。`, ``);
         // 清空 token 信息
         (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).clear();
-        this.modalService.info({
-          nzTitle: '操作提醒',
-          nzContent: '用户名密码输入有误或登录已过期，请重试！',
-          nzOnOk: () => this.goTo('/passport/login'),
-        });
+        // if (!this.errShown) {
+        //   this.errShown = true;
+        //   this.modalService.info({
+        //     nzTitle: '操作提醒',
+        //     nzContent: '用户名密码输入有误或登录已过期，请重试！',
+        //     nzOnOk: () => this.goTo('/passport/login'),
+        //   });
+        // }
         break;
       case 403:
         this.modalService.error({
@@ -144,7 +148,7 @@ export class DefaultInterceptor implements HttpInterceptor {
       url = environment.SERVER_URL + url;
     }
 
-    const newReq = req.clone({ url });
+    const newReq = req.clone({ url, withCredentials: true });
     return next.handle(newReq).pipe(
       mergeMap((event: any) => {
         // 允许统一对请求错误处理

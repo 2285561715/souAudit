@@ -7,7 +7,7 @@
     <thead>
       <tr>
         <th nzAlign="center">评估过程管理及进度监控</th>
-        <th nzWidth="32%">评估工作</th>
+        <th nzWidth="32%" nzAlign="center">评估工作名称</th>
         <th nzWidth="10%" nzAlign="center">起讫时间</th>
         <th nzWidth="10%" nzAlign="center">评估周期</th>
         <th nzWidth="32%" nzAlign="center">适用评估指标体系版本</th>
@@ -17,13 +17,14 @@
       <ng-template ngFor let-data [ngForOf]="nzTable.data">
         <tr>
           <td nzAlign="center">
-            <button nz-button nzSize="middle" nzType="default" (click)="openStepInfo(data)">
-              <i nz-icon nzType="setting" nzTheme="fill" style="color: coral"></i>阶段管理及进度监控</button>
+            <button nz-button nzSize="small" nzType="primary" (click)="openStepInfo(data)">
+              <i nz-icon nzType="setting" nzTheme="fill"></i>进度管理及监控</button>
           </td>
-          <td>{{ data.appName }}<br>{{ data.esType }}【{{ data.inTime.substring(0,4) }}】</td>
+          <td><span style="font-size: 1.1em;font-weight: bold;">{{ data.appName }}</span><br><span
+              style="color: darkgrey;">【{{ data.esType }}】</span></td>
           <td nzAlign="center">{{ data.startDate }}<br>{{ data.endDate }}</td>
           <td nzAlign="center">{{ data.dataFromDate }}<br>{{ data.dataEndDate }}</td>
-          <td>{{ data.esName }}<br>【{{ data.verIndex }}】</td>
+          <td>{{ data.esName }}<br><span style="color: darkgrey;">【{{ data.verIndex }}】</span></td>
         </tr>
       </ng-template>
     </tbody>

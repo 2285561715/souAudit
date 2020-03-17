@@ -10,11 +10,10 @@
     <thead>
       <tr>
         <th nzWidth="4%" nzAlign="center">年份</th>
-        <th nzWidth="10%" nzAlign="center">评估类别</th>
-        <th nzWidth="25%">评估名称</th>
-        <th nzWidth="7%" nzAlign="center">起讫时间</th>
-        <th nzWidth="7%" nzAlign="center">评估周期</th>
-        <th nzWidth="29%" nzAlign="center">适用评估指标体系版本</th>
+        <th nzWidth="28%" nzAlign="center">评估类别及任务名称</th>
+        <th nzWidth="9%" nzAlign="center">起讫时间</th>
+        <th nzWidth="9%" nzAlign="center">评估周期</th>
+        <th nzAlign="center" nzWidth="32%">适用评估指标体系版本</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -22,16 +21,18 @@
       <ng-template ngFor let-data [ngForOf]="nzTable.data">
         <tr>
           <td nzAlign="center">{{ data.inTime.substring(0,4) }}</td>
-          <td nzAlign="center">{{ data.esType }}</td>
-          <td>{{ data.appName }}</td>
+          <td>
+            <span style="font-size: 1.1em;font-weight: bold;">{{ data.appName }}</span><br>
+            <span style="color: darkgrey;">【{{ data.esType }}】</span>
+          </td>
           <td nzAlign="center">{{ data.startDate }}<br>{{ data.endDate }}</td>
           <td nzAlign="center">{{ data.dataFromDate }}<br>{{ data.dataEndDate }}</td>
           <td>{{ data.esName }}<br>【{{ data.verIndex }}】</td>
-          <td>
-            <button nz-button nzSize="middle" nzType="default" (click)="openStepInfo(data)">
-              <i nz-icon nzType="ordered-list" style="color:coral"></i>阶段安排</button>
-            <button nz-button nzSize="middle" nzType="default" (click)="editInfo(data)">
-              <i nz-icon nzType="form" style="color:coral"></i>编辑</button>
+          <td nzAlign="center">
+            <button nz-button nzSize="small" nzType="primary" (click)="openStepInfo(data)">
+              <i nz-icon nzType="hdd" nzTheme="fill"></i>阶段安排</button>
+            <button nz-button nzSize="small" nzType="default" (click)="editInfo(data)">
+              <i nz-icon nzType="edit" style="color:coral" nzTheme="fill"></i>编辑</button>
           </td>
         </tr>
       </ng-template>
