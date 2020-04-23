@@ -56,7 +56,7 @@ export class AuditindexIndexManaComponent implements OnInit {
   openComponent(record: any): void {
     const drawerRef = this.drawerService.create<AuditindexIndexManaXdrawerComponent, { value: string }, string>({
       nzTitle: record.esName,
-      nzWidth: 480,
+      nzWidth: 520,
       nzPlacement: 'left',
       nzMaskClosable: false,
       // nzClosable: false,

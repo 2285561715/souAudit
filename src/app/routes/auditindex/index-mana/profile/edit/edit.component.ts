@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NzModalRef, NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { SFSchema, SFUISchema } from '@delon/form';
-// import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-auditindex-index-mana-profile-edit',
@@ -65,48 +65,19 @@ export class AuditindexIndexManaProfileEditComponent implements OnInit {
 
   schema: SFSchema = {
     properties: {
-      esName: { type: 'string', title: '体系名称' },
-      verIndex: { type: 'string', title: '版本号' },
-      esType: { type: 'string', title: '体系类别', enum: ['整体办学水平评估', '分校办学水平评估'] },
-      dataFromDate: { type: 'string', title: '数据开始日期' },
-      dataEndDate: { type: 'string', title: '数据截止日期' },
-      releaseDate: { type: 'string', title: '发布日期' },
-      status: { type: 'boolean', title: '是否在用' },
+      remark: { type: 'string', title: '模板范文' },
     },
-    required: ['esName', 'verIndex', 'dataFromDate', 'dataEndDate'],
+    required: ['remark'],
   };
   ui: SFUISchema = {
     '*': {
       spanLabelFixed: 130,
-      grid: { span: 12 },
+      grid: { span: 11 },
     },
-    $esName: {
-      widget: 'string',
-      grid: { span: 20 },
-    },
-    $verIndex: {
-      widget: 'ueditor',
-      grid: { span: 10 },
-    },
-    $esType: {
-      widget: 'select',
-      grid: { span: 10 },
-    },
-    $dataFromDate: {
-      widget: 'date',
-      grid: { span: 10 },
-    },
-    $dataEndDate: {
-      widget: 'date',
-      grid: { span: 10 },
-    },
-    $releaseDate: {
-      widget: 'date',
-      grid: { span: 10 },
-    },
-    $status: {
-      widget: 'checkbox',
-      grid: { span: 10 },
+    $remark: {
+      widget: 'textarea',
+      grid: { span: 22 },
+      autosize: { minRows: 10, maxRows: 15 },
     },
   };
 
@@ -118,34 +89,46 @@ export class AuditindexIndexManaProfileEditComponent implements OnInit {
 
   save(value: any) {
     value.id = this.record.id;
-    value.dataFromDate = value.dataFromDate.substring(0, 10);
-    value.dataEndDate = value.dataEndDate.substring(0, 10);
-    value.releaseDate = value.releaseDate.substring(0, 10);
-
-    const date = new Date();
-    let month: string | number = date.getMonth() + 1;
-    let strDate: string | number = date.getDate();
-    month = month < 10 ? '0' + month : month;
-    strDate = strDate < 10 ? '0' + strDate : strDate;
-
-    value.lastModTime =
-      date.getFullYear() +
-      '-' +
-      month +
-      '-' +
-      strDate +
-      ' ' +
-      date.getHours() +
-      ':' +
-      date.getMinutes() +
-      ':' +
-      date.getSeconds();
-
-    this.http.put(`/api/main/infos`, value).subscribe(res => {
+    const subData = {
+      tableName: 'ad_indexes',
+      updateValues: "report_model='" + value.remark + "'",
+      predication: 'id=' + value.id,
+    };
+    this.http.put('/api/dynamic/update', subData).subscribe(res => {
       this.msgSrv.success('保存成功');
       this.modal.close(true);
     });
   }
+  // save(value: any) {
+  //   value.id = this.record.id;
+  //   value.dataFromDate = value.dataFromDate.substring(0, 10);
+  //   value.dataEndDate = value.dataEndDate.substring(0, 10);
+  //   value.releaseDate = value.releaseDate.substring(0, 10);
+
+  //   const date = new Date();
+  //   let month: string | number = date.getMonth() + 1;
+  //   let strDate: string | number = date.getDate();
+  //   month = month < 10 ? '0' + month : month;
+  //   strDate = strDate < 10 ? '0' + strDate : strDate;
+
+  //   value.lastModTime =
+  //     date.getFullYear() +
+  //     '-' +
+  //     month +
+  //     '-' +
+  //     strDate +
+  //     ' ' +
+  //     date.getHours() +
+  //     ':' +
+  //     date.getMinutes() +
+  //     ':' +
+  //     date.getSeconds();
+
+  //   this.http.put(`/api/main/infos`, value).subscribe(res => {
+  //     this.msgSrv.success('保存成功');
+  //     this.modal.close(true);
+  //   });
+  // }
 
   close() {
     this.modal.destroy();

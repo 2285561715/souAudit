@@ -39,8 +39,11 @@ import { SysdataFxHandupdatatableUdrawerComponent } from './fx-handupdatatable/u
 import { SysdataFxHandupfileComponent } from './fx-handupfile/fx-handupfile.component';
 import { SysdataFxHandupfileEditComponent } from './fx-handupfile/edit/edit.component';
 import { SysdataFxHandupfileAddComponent } from './fx-handupfile/add/add.component';
-import { UEditorModule } from 'ngx-ueditor';
 import { SysdataZpwdComponent } from './zpwd/zpwd.component';
+import { SysdataPortDataComponent } from './portdata/portdata.component';
+import { SysdataPortDataAddComponent } from './portdata/add/add.component';
+import { SysdataPortDataEditComponent } from './portdata/edit/edit.component';
+import { UEditorModule } from 'ngx-ueditor';
 
 const COMPONENTS = [
   SysdataUserlistComponent,
@@ -56,6 +59,7 @@ const COMPONENTS = [
   SysdataFxHandupdatatableComponent,
   SysdataFxHandupfileComponent,
   SysdataZpwdComponent,
+  SysdataPortDataComponent,
 ];
 const COMPONENTS_NOROUNT = [
   SysdataUserlistEditComponent,
@@ -84,6 +88,8 @@ const COMPONENTS_NOROUNT = [
   SysdataFxHandupdatatableUdrawerComponent,
   SysdataFxHandupfileEditComponent,
   SysdataFxHandupfileAddComponent,
+  SysdataPortDataAddComponent,
+  SysdataPortDataEditComponent,
 ];
 
 @NgModule({

@@ -23,6 +23,7 @@ export class AuditstepAdStartComponent implements OnInit {
   ) {}
 
   listOfData: any[] = [];
+
   value: string;
   visible = false;
 
@@ -48,22 +49,6 @@ export class AuditstepAdStartComponent implements OnInit {
       this.loadInfo();
     });
   }
-
-  // deleteConfirm(id: number): void {
-  //   this.modalService.confirm({
-  //     nzTitle: '<i>是否要删除数据</i>',
-  //     nzContent: '<b>删除数据后无法恢复，确认要删除？</b>',
-  //     nzOnOk: () => this.deleteInfo(id),
-  //   });
-  // }
-
-  // deleteInfo(id: number) {
-  //   this.http.delete('/api/adapply/' + id).subscribe((res: any) => {
-  //     this.msgSrv.success('删除用户成功');
-  //     this.cdr.detectChanges();
-  //     this.loadInfo();
-  //   });
-  // }
 
   openStepInfo(record: any): void {
     const drawerRef = this.drawerService.create<AuditstepAdStartStepComponent, { value: any }, string>({

@@ -12,6 +12,7 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRe
 import { _HttpClient, ModalHelper } from '@delon/theme';
 
 import { AuditindexIndexManaProfileEditComponent } from './edit/edit.component';
+import { ArrayService } from '@delon/util';
 
 @Component({
   selector: 'app-auditindex-index-mana-profile-view',
@@ -29,6 +30,7 @@ export class AuditindexIndexManaProfileViewComponent implements OnInit {
     private modalService: NzModalService,
     private drawerRef: NzDrawerRef<string>,
     private nzContextMenuService: NzContextMenuService,
+    private trToArry: ArrayService,
   ) {}
 
   searchValue = '';
@@ -45,17 +47,23 @@ export class AuditindexIndexManaProfileViewComponent implements OnInit {
   levTempThr: any[] = [];
   levTempFou: any[] = [];
   levTempFiv: any[] = [];
+  isFirst = false;
 
   ngOnInit() {
     this.loadInfo();
   }
 
   loadInfo(): void {
+    // 查询指标体系
     this.listOfData = [];
     this.http.get('/api/indexes/' + this.value).subscribe((res: any) => {
       this.nodes = res.nodes;
+
       console.log(this.nodes);
-      // console.log(this.nodes[0].children);
+      // res.nodes.deep = 5;
+      // this.listOfData = this.trToArry.treeToArr(res.nodes);
+      // console.log(this.listOfData);
+
       this.levTempOne = this.nodes[0].children;
       let i = 0;
       // 第一层
@@ -159,13 +167,7 @@ export class AuditindexIndexManaProfileViewComponent implements OnInit {
       });
       this.cdr.detectChanges();
     });
-    console.log(this.listOfData);
-    // customStyle: {
-    //   background: '#f7f7f7',
-    //   'border-radius': '4px',
-    //   'margin-bottom': '12px',
-    //   border: '1px',
-    // },
+    // console.log(this.listOfData);
   }
 
   openFolder(data: NzTreeNode | Required<NzFormatEmitEvent>): void {
@@ -203,7 +205,7 @@ export class AuditindexIndexManaProfileViewComponent implements OnInit {
   }
 
   openEdit(record: any[]) {
-    this.modal.create(AuditindexIndexManaProfileEditComponent, { record }, { size: 'lg' }).subscribe((res: any) => {
+    this.modal.create(AuditindexIndexManaProfileEditComponent, { record }, { size: 'xl' }).subscribe((res: any) => {
       this.loadInfo();
     });
   }
