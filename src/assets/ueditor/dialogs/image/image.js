@@ -703,6 +703,10 @@
 
             uploader.on('uploadBeforeSend', function (file, data, header) {
                 //这里可以通过data对象添加POST参数
+                var token = window.localStorage.getItem('_token') || '';
+                if (token) {
+                   header['Authorization']='Bearer '+ JSON.parse(token).token;
+                }
                 header['X_Requested_With'] = 'XMLHttpRequest';
             });
 

@@ -191,3 +191,67 @@
     </div> -->
   </div>
 </div>
+
+<div nz-row>
+  <nz-card>
+    <nz-table #nzTable nzSize="middle" nzPageSize="6" [nzData]="termData" nzHideOnSinglePage="true">
+      <thead>
+        <tr>
+          <th nzShowExpand nzwidth="5%"></th>
+          <th nzWidth="5%" nzAlign="center">序号</th>
+          <th nzAlign="center">学期名称</th>
+          <th nzWidth="5%" nzAlign="center">是否评估</th>
+          <th nzWidth="22%" nzAlign="center">年初计划</th>
+          <th nzWidth="15%" nzAlign="center">数据填报</th>
+          <th nzWidth="15%" nzAlign="center">文字材料</th>
+          <th nzWidth="22%" nzAlign="center">年底总结</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-template ngFor let-data [ngForOf]="nzTable.data">
+          <tr>
+            <td nzShowExpand [(nzExpand)]="mapOfExpandData[data.key]"></td>
+            <td nzAlign="center">{{ data.key }}</td>
+            <td nzAlign="center">
+              <span *ngIf="data.termno.toString().substring(5,6)==='1'"
+                style="font-weight: bold;font-size: large;color: orangered;">{{ data.termname }}</span>
+              <span *ngIf="data.termno.toString().substring(5,6)==='2'"
+                style="font-weight: bold;font-size: large;">{{ data.termname }}</span>
+            </td>
+            <td nzAlign="center"><span style="color: yellowgreen;">{{ data.flag }}</span></td>
+            <td nzAlign="center">
+              <button nz-button nzType="default" style="background-color:lightgreen" nzTooltipTitle="上传年初计划"
+                (click)="openJhZjFx(data)" nzTooltipPlacement="topCenter" nz-tooltip>
+                <i nz-icon nzType="upload"></i> 上传计划</button>
+            </td>
+            <td nzAlign="center">
+              <button nz-button nzType="default" style="background-color: lightgoldenrodyellow;"
+                nzTooltipTitle="按学期填报数据" (click)="openDataUpFx(data)" nzTooltipPlacement="topCenter" nz-tooltip>
+                <i nz-icon nzType="upload"></i> 数据填报</button>
+            </td>
+            <td nzAlign="center">
+              <button nz-button nzType="default" style="background-color:lightgoldenrodyellow" nzTooltipTitle="按学期上传材料"
+                (click)="openProfile(data)" nzTooltipPlacement="topCenter" nz-tooltip>
+                <i nz-icon nzType="upload"></i> 上传材料</button>
+            </td>
+            <td nzAlign="center">
+              <button nz-button nzType="default" style="background-color:lightblue" nzTooltipTitle="上传年初总结"
+                (click)="openJhZjFx(data)" nzTooltipPlacement="topCenter" nz-tooltip>
+                <i nz-icon nzType="upload"></i> 上传总结</button>
+            </td>
+          </tr>
+          <tr [nzExpand]="mapOfExpandData[data.key]">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td nzAlign="center"><span>上传时间2020-04-26 12:18:19</span></td>
+            <td nzAlign="center"><span>上传时间2020-04-26 12:18:19</span></td>
+            <td nzAlign="center"><span>上传时间2020-04-26 12:18:19</span></td>
+            <td nzAlign="center"><span>上传时间2020-04-26 12:18:19</span></td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </nz-table>
+  </nz-card>
+</div>

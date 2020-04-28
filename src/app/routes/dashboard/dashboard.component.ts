@@ -9,6 +9,7 @@ import { DashboardFileUpFxComponent } from './fileupfx.component';
 import { DashboardZjpsZxComponent } from './zjpszx.component';
 import { DashboardZjpsFxComponent } from './zjpsfx.component';
 import { DashboardJhzjFxComponent } from './jhzjfx.component';
+import { DashboardProfileViewComponent } from './fileup/pfofileview.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -35,13 +36,77 @@ export class DashboardComponent implements OnInit {
   unitName = '';
   unitNo = '';
 
+  // -------------------------------------
+  termData = [
+    {
+      key: 1,
+      flag: '评估学期',
+      termname: '2020 年',
+      termno: '2020-1',
+      appName: '上海开放大学2019年分校办学水平评估',
+      dataEndDate: '2019-08-01',
+      dataFromDate: '2016-08-01',
+      deptId: '31030',
+      deptName: '杨浦分校 ',
+      endDate: '2019-12-31',
+      esName: '上海开放大学分校办学水平评估指标及内涵（2019版）',
+      esType: '分校办学水平评估',
+      id: 18,
+      inTime: '2019-08-16',
+      isZx: false,
+      startDate: '2019-08-31',
+      verIndex: 'sou-zx-bxsp-2020',
+      dtNo: 'sjfxtb_b08_hzbx',
+    },
+    {
+      key: 2,
+      termname: '2019 年',
+      termno: '2019-2',
+      appName: '上海开放大学2019年分校办学水平评估',
+      dataEndDate: '2019-08-01',
+      dataFromDate: '2016-08-01',
+      deptId: '31030',
+      deptName: '杨浦分校 ',
+      endDate: '2019-12-31',
+      esName: '上海开放大学分校办学水平评估指标及内涵（2019版）',
+      esType: '分校办学水平评估',
+      id: 18,
+      inTime: '2019-08-16',
+      isZx: false,
+      startDate: '2019-08-31',
+      verIndex: 'sou-fx-bxsp-2019',
+      dtNo: 'sjfxtb_b08_hzbx',
+    },
+    {
+      key: 3,
+      termname: '2018 年',
+      termno: '2019-1',
+      appName: '上海开放大学2019年分校办学水平评估',
+      dataEndDate: '2019-08-01',
+      dataFromDate: '2016-08-01',
+      deptId: '31030',
+      deptName: '杨浦分校 ',
+      endDate: '2019-12-31',
+      esName: '上海开放大学分校办学水平评估指标及内涵（2019版）',
+      esType: '分校办学水平评估',
+      id: 18,
+      inTime: '2019-08-16',
+      isZx: false,
+      startDate: '2019-08-31',
+      verIndex: 'sou-fx-bxsp-2019',
+      dtNo: 'sjfxtb_b08_hzbx',
+    },
+  ];
+  mapOfExpandData: { [key: string]: boolean } = {};
+  // -------------------------------------
+
   ngOnInit() {
     this.bname = this.loadUser.user.bname;
     this.unitName = this.loadUser.user.unitName;
     this.unitNo = this.loadUser.user.unitNo;
 
     this.loadInfo();
-    // console.log(this.listOfData);
+    console.log(this.listOfData);
   }
 
   loadInfo(): void {
@@ -295,4 +360,28 @@ export class DashboardComponent implements OnInit {
     });
   }
   // --------------------------------------------
+  // 打开模版预览抽屉
+  openProfile(record: any): void {
+    const drawerRef = this.drawerService.create<DashboardProfileViewComponent, { value: string }, string>({
+      nzTitle: record.esName + ' 评估模版',
+      nzWidth: 1280,
+      nzPlacement: 'left',
+      nzMaskClosable: false,
+      nzContent: DashboardProfileViewComponent,
+      nzContentParams: {
+        value: record.verIndex,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      console.log('关闭=' + data);
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
+  }
 }

@@ -13,6 +13,8 @@ import { AuditindexIndexFileComponent } from './index-file/index-file.component'
 import { AuditindexIndexFileAddComponent } from './index-file/add/add.component';
 import { AuditindexIndexFileEditComponent } from './index-file/edit/edit.component';
 
+import { UEditorModule } from 'ngx-ueditor';
+
 const COMPONENTS = [AuditindexIndexManaComponent, AuditindexIndexFileComponent];
 const COMPONENTS_NOROUNT = [
   AuditindexIndexManaProfileViewComponent,
@@ -27,7 +29,17 @@ const COMPONENTS_NOROUNT = [
 ];
 
 @NgModule({
-  imports: [SharedModule, AuditindexRoutingModule],
+  imports: [
+    SharedModule,
+    AuditindexRoutingModule,
+    UEditorModule.forRoot({
+      js: [`./assets/ueditor/ueditor.config.js`, `./assets/ueditor/ueditor.all.js`],
+      // 默认前端配置项
+      options: {
+        UEDITOR_HOME_URL: './assets/ueditor/',
+      },
+    }),
+  ],
   declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
   entryComponents: COMPONENTS_NOROUNT,
 })

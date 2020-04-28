@@ -36,7 +36,7 @@ export class AuditindexIndexManaXdrawerComponent implements OnInit {
 
   searchValue = '';
   defaultExpandedKeys = ['0'];
-  value: string;
+  value: any;
 
   nodes: any = [];
   // nodes = [
@@ -184,7 +184,8 @@ export class AuditindexIndexManaXdrawerComponent implements OnInit {
   }
 
   loadInfo(): void {
-    this.http.get('/api/indexes/' + this.value).subscribe((res: any) => {
+    // this.http.get('/api/indexes/' + this.value).subscribe((res: any) => {
+    this.http.get('/api/indexes/' + this.value.verIndex, { esName: this.value.esName }).subscribe((res: any) => {
       this.nodes = res.nodes;
       this.cdr.detectChanges();
     });

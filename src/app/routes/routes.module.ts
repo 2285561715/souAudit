@@ -92,6 +92,9 @@ import { DashboardDataUpFxtbD052IndexComponent } from './dashboard/dataupfx/fxtb
 import { DashboardFileUpZxWzclComponent } from './dashboard/fileup/zxwzcl.component';
 import { DashboardFileUpFxWzclComponent } from './dashboard/fileup/fxwzcl.component';
 import { DashboardFileUpFxJhzjComponent } from './dashboard/fileup/fxjhzj.component';
+import { DashboardProfileViewComponent } from './dashboard/fileup/pfofileview.component';
+import { DashboardFileupProfileEditComponent } from './dashboard/fileup/profile/edit.component';
+
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
 import { UserRegisterComponent } from './passport/register/register.component';
@@ -102,6 +105,8 @@ import { UserLockComponent } from './passport/lock/lock.component';
 // auditstep datasynchshow
 // import { AuditstepAdProcessViewDataSynchComponent } from './auditstep/ad-process/view/datasynch.component';
 import { AuditstepAdProcessViewDataSynchShowComponent } from './auditstep/ad-process/view/datasynchshow.component';
+
+import { UEditorModule } from 'ngx-ueditor';
 
 const COMPONENTS = [
   DashboardComponent,
@@ -204,10 +209,23 @@ const COMPONENTS_NOROUNT = [
   DashboardFileUpZxWzclComponent,
   DashboardFileUpFxWzclComponent,
   DashboardFileUpFxJhzjComponent,
+  DashboardProfileViewComponent,
+  DashboardFileupProfileEditComponent,
 ];
 
 @NgModule({
-  imports: [SharedModule, RouteRoutingModule, NzIconModule],
+  imports: [
+    SharedModule,
+    RouteRoutingModule,
+    NzIconModule,
+    UEditorModule.forRoot({
+      js: [`./assets/ueditor/ueditor.config.js`, `./assets/ueditor/ueditor.all.js`],
+      // 默认前端配置项
+      options: {
+        UEDITOR_HOME_URL: './assets/ueditor/',
+      },
+    }),
+  ],
   declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
   entryComponents: COMPONENTS_NOROUNT,
 })

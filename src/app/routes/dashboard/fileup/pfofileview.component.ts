@@ -10,18 +10,19 @@ import {
 } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper } from '@delon/theme';
-
-import { AuditindexIndexManaProfileEditComponent } from './edit/edit.component';
 import { ArrayService } from '@delon/util';
+import { DashboardFileupProfileEditComponent } from './profile/edit.component';
+
+import { DashboardDataUpFxSjtbComponent } from '../dataupfx/fxsjtb.component';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-auditindex-index-mana-profile-view',
-  templateUrl: './view.component.html',
-  styleUrls: ['./view.component.less'],
+  selector: 'app-dashboard-profile-view',
+  templateUrl: './pfofileview.component.html',
+  styleUrls: ['./pfofileview.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AuditindexIndexManaProfileViewComponent implements OnInit {
+export class DashboardProfileViewComponent implements OnInit {
   activedNode: NzTreeNode;
   constructor(
     private http: _HttpClient,
@@ -32,12 +33,13 @@ export class AuditindexIndexManaProfileViewComponent implements OnInit {
     private drawerRef: NzDrawerRef<string>,
     private nzContextMenuService: NzContextMenuService,
     private trToArry: ArrayService,
+    private drawerService: NzDrawerService,
     private sanitizer: DomSanitizer,
   ) {}
 
   searchValue = '';
   defaultExpandedKeys = ['0'];
-  value: any;
+  value: string;
 
   nodes: any = [];
   panels: any = [];
@@ -58,11 +60,9 @@ export class AuditindexIndexManaProfileViewComponent implements OnInit {
   loadInfo(): void {
     // 查询指标体系
     this.listOfData = [];
-    // this.http.get('/api/indexes/sou-zx-bxsp-2019', { esName: 'A.办学方向与管理水平' }).subscribe((res: any) => {
-    //   console.log({ indexData: res });
-    // });
-    this.http.get('/api/indexes/' + this.value.verIndex, { esName: this.value.esName }).subscribe((res: any) => {
+    this.http.get('/api/indexes/' + this.value).subscribe((res: any) => {
       this.nodes = res.nodes;
+
       console.log(this.nodes);
       // res.nodes.deep = 5;
       // this.listOfData = this.trToArry.treeToArr(res.nodes);
@@ -84,6 +84,9 @@ export class AuditindexIndexManaProfileViewComponent implements OnInit {
           remark: item.remark,
           vp: item.viewPoint,
           viewPoint: this.sanitizer.bypassSecurityTrustHtml(item.viewPoint),
+          dtNo: 'sjfxtb_b08_hzbx',
+          dtName: '合作办学',
+          stepId: 29,
         });
         // this.listOfData = [...this.listOfData, item];
 
@@ -105,6 +108,9 @@ export class AuditindexIndexManaProfileViewComponent implements OnInit {
               remark: itemtwo.remark,
               vp: itemtwo.viewPoint,
               viewPoint: this.sanitizer.bypassSecurityTrustHtml(itemtwo.viewPoint),
+              dtNo: 'sjfxtb_b08_hzbx',
+              dtName: '合作办学',
+              stepId: 29,
             });
 
             // 第三层
@@ -125,6 +131,9 @@ export class AuditindexIndexManaProfileViewComponent implements OnInit {
                   remark: itemthr.remark,
                   vp: itemthr.viewPoint,
                   viewPoint: this.sanitizer.bypassSecurityTrustHtml(itemthr.viewPoint),
+                  dtNo: 'sjfxtb_b08_hzbx',
+                  dtName: '合作办学',
+                  stepId: 29,
                 });
 
                 // 第四层
@@ -145,6 +154,9 @@ export class AuditindexIndexManaProfileViewComponent implements OnInit {
                       remark: itemfou.remark,
                       vp: itemfou.viewPoint,
                       viewPoint: this.sanitizer.bypassSecurityTrustHtml(itemfou.viewPoint),
+                      dtNo: 'sjfxtb_b08_hzbx',
+                      dtName: '合作办学',
+                      stepId: 29,
                     });
 
                     // 第五层
@@ -165,6 +177,9 @@ export class AuditindexIndexManaProfileViewComponent implements OnInit {
                           remark: itemfiv.remark,
                           vp: itemfiv.viewPoint,
                           viewPoint: this.sanitizer.bypassSecurityTrustHtml(itemfiv.viewPoint),
+                          dtNo: 'sjfxtb_b08_hzbx',
+                          dtName: '合作办学',
+                          stepId: 29,
                         });
 
                         // 第六层
@@ -223,11 +238,35 @@ export class AuditindexIndexManaProfileViewComponent implements OnInit {
   }
 
   openEdit(record: any[]) {
-    this.modal.create(AuditindexIndexManaProfileEditComponent, { record }, { size: 'xl' }).subscribe((res: any) => {
+    this.modal.create(DashboardFileupProfileEditComponent, { record }, { size: 'xl' }).subscribe((res: any) => {
       this.loadInfo();
     });
   }
+  // -------------------------------------------------------------
+  // 分校数据填报，弹出框
+  dataUpFun(panel: any): void {
+    console.log(panel);
+    const tdata = this.value;
+    // tdata.dtNo = 'sjfxtb_b08_hzbx';
+    // tdata.dtName = '合作办学';
+    // tdata.stepId = 29;
 
+    const drawerRef = this.drawerService.create<DashboardDataUpFxSjtbComponent, { value: any }, string>({
+      nzTitle: '【' + panel.dtName + '】数据填报',
+      nzWidth: document.body.clientWidth - 100,
+      nzPlacement: 'right',
+      // nzMaskClosable: false,
+      nzContent: DashboardDataUpFxSjtbComponent,
+      nzContentParams: {
+        value: panel,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+  }
+  // --------------------------------------------------------------
   nzEvent(event: NzFormatEmitEvent): void {
     console.log(event);
   }

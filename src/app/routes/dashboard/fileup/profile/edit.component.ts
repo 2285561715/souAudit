@@ -1,18 +1,19 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { NzModalRef, NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { SFSchema, SFUISchema } from '@delon/form';
 import { format } from 'date-fns';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UploadChangeParam } from 'ng-zorro-antd/upload';
 
 @Component({
-  selector: 'app-auditindex-index-mana-profile-edit',
+  selector: 'app-dashboard-fileup-profile-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.less'],
 })
-export class AuditindexIndexManaProfileEditComponent implements OnInit {
+export class DashboardFileupProfileEditComponent implements OnInit {
   record: any = [];
-  validateForm: FormGroup;
+  i: any;
 
   config = {
     toolbars: [
@@ -65,18 +66,22 @@ export class AuditindexIndexManaProfileEditComponent implements OnInit {
     initialFrameHeight: 200,
   };
 
+  validateForm: FormGroup;
   constructor(
     private modal: NzModalRef,
     private msgSrv: NzMessageService,
-    private fb: FormBuilder,
     public http: _HttpClient,
+    private cdr: ChangeDetectorRef,
+    private fb: FormBuilder,
+    private msg: NzMessageService,
   ) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       remark: [this.record.remark, [Validators.required]],
-      viewPoint: [this.record.vp, [Validators.required]],
     });
+
+    this.i = this.record;
   }
 
   // --------------------------------------------------------------------------
@@ -88,13 +93,26 @@ export class AuditindexIndexManaProfileEditComponent implements OnInit {
     console.log('enter  destory');
   }
   _change(event: any) {}
+
+  handleChange({ file, fileList }: UploadChangeParam): void {
+    const status = file.status;
+    if (status !== 'uploading') {
+      console.log(file, fileList);
+    }
+    if (status === 'done') {
+      this.msg.success(`${file.name} file uploaded successfully.`);
+    } else if (status === 'error') {
+      this.msg.error(`${file.name} file upload failed.`);
+    }
+  }
   // --------------------------------------------------------------------------
-  submitForm() {
-    const fdata = this.validateForm.value;
+
+  save(value: any) {
+    value.id = this.record.id;
     const subData = {
       tableName: 'ad_indexes',
-      updateValues: "remark='" + fdata.remark + "',view_point='" + fdata.viewPoint + "' ",
-      predication: 'id=' + this.record.id,
+      updateValues: "report_model='" + value.remark + "'",
+      predication: 'id=' + value.id,
     };
     this.http.put('/api/dynamic/update', subData).subscribe(res => {
       this.msgSrv.success('保存成功');

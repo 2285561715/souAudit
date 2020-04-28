@@ -1,61 +1,35 @@
-<form nz-form>
-  <div nz-row nzGutter="8">
-    <p style="text-align: center;font-size: 24px;font-weight: bold;color: dimgray;">上海开放大学办学水平评估报告模板</p>
-    <nz-collapse [nzBordered]="false">
-      <nz-collapse-panel *ngFor="let panel of listOfData" [nzHeader]="panelHead" nzActive="true" [nzExtra]="extraTpl"
-        nzDisabled="false" nzShowArrow="false" [nzExpandedIcon]="!isFirst && (panel.icon || expandedIcon)"
-        style="border: 0px;">
+<div nz-row nzGutter="8">
+  <p style="text-align: center;font-size: 22px;color: dimgray;">【{{value.esName}}】 <b>指标内涵及观测点</b></p>
+  <nz-collapse [nzBordered]="false">
+    <nz-collapse-panel *ngFor="let panel of listOfData" [nzHeader]="panelHead" nzActive="true" [nzExtra]="extraTpl"
+      nzDisabled="false" nzShowArrow="false" [nzExpandedIcon]="!isFirst && (panel.icon || expandedIcon)"
+      style="border: 0px;">
+      <div *ngIf="panel.isLeaf===true" nz-row nzGutter="8">
         <p style="margin:0;text-align: right;">
-          <!-- <button nz-button nzSize="small" nzType="default" nzShape="round" (click)="openEdit(panel)"
-            nzTooltipTitle="数据填报" nzTooltipPlacement="topCenter" nz-tooltip>
-            <i nz-icon nzType="edit" nzTheme="fill" style="color: coral"></i> 模板
-          </button>
-          <nz-divider nzType="vertical"></nz-divider>
           <button nz-button nzSize="small" nzType="default" nzShape="round" (click)="openEdit(panel)"
-            nzTooltipTitle="数据统计" nzTooltipPlacement="topCenter" nz-tooltip>
-            <i nz-icon nzType="bar-chart" nzTheme="outline" style="color:darkgreen"></i> 填报
-          </button>
-          <nz-divider nzType="vertical"></nz-divider> -->
-          <button nz-button nzSize="small" nzType="default" nzShape="round" (click)="openEdit(panel)"
-            nzTooltipTitle="编辑模版" nzTooltipPlacement="topCenter" nz-tooltip>
-            <i nz-icon nzType="setting" nzTheme="fill" style="color:coral"></i> 设置
+            nzTooltipTitle="编辑观测点" nzTooltipPlacement="topCenter" nz-tooltip>
+            <i nz-icon nzType="setting" nzTheme="fill" style="color:coral"></i> 内涵和观测点
           </button>
         </p>
-        <p style="margin:0;color: #222222;font-size: 16px;text-align: justify;line-height: 1.5em;">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上海开放大学是由上海市人民政府举办，教育部批准成立，上海市教育委员会管理的新型高等学校。学校前身为上海电视大学，创办于1960年。
-          学校以现代信息技术为支撑，以远程开放教育为主要形式，主要面向成人开展专科、专升本科教育。学校共开设46个专业，注册在读学生约7万名，自学校开办以来共计培养本、专科毕业生47万余名。
-          学校顺应上海经济社会发展需求开展大规模的非学历教育培训，每年举办各类培训和考试约50万人次，并面向特定学习人群建设了一批特色学院。
-        </p>
-        <ng-template #panelHead>
-          <span *ngIf="panel.level==='1'"
-            style="color:crimson;font-weight: bold;font-size: 18px;">·{{panel.name}}</span>
-          <span *ngIf="panel.level==='2'"
-            style="color:saddlebrown;font-weight: bold;font-size: 17px;">·{{panel.name}}</span>
-          <span *ngIf="panel.level==='3'" style="font-weight: bold;font-size: 16px;">·{{panel.name}}</span>
-          <span *ngIf="panel.level==='4'"
-            style="color:rgb(49, 49, 240);font-weight: bold;font-size: 15px;">·{{panel.name}}</span>
-        </ng-template>
-        <ng-template #expandedIcon let-active>
-          {{ active }}
-          <i nz-icon nzType="caret-right" class="ant-collapse-arrow"></i>
-        </ng-template>
-        <ng-template #extraTpl>
-          <!-- <button nz-button nzSize="small" nzType="default" nzShape="circle" (click)="openEdit(panel)"
+        <div style="margin:0;color: #222222;font-size: 16px;text-align: justify;line-height: 1.35em;"
+          [innerHTML]="panel.viewPoint"></div>
+      </div>
+      <ng-template #panelHead>
+        <span *ngIf="panel.level==='1'" style="font-weight: bold;font-size: 20px;">{{panel.name}}</span>
+        <span *ngIf="panel.level==='2'" style="font-weight: bold;font-size: 18px;">{{panel.name}}</span>
+        <span *ngIf="panel.level==='3'" style="font-weight: bold;font-size: 17px;">·{{panel.name}}</span>
+        <span *ngIf="panel.level==='4'" style="font-weight: bold;font-size: 16px;">·{{panel.name}}</span>
+      </ng-template>
+      <ng-template #expandedIcon let-active>
+        {{ active }}
+        <i nz-icon nzType="caret-right" class="ant-collapse-arrow"></i>
+      </ng-template>
+      <ng-template #extraTpl>
+        <!-- <button nz-button nzSize="small" nzType="default" nzShape="circle" (click)="openEdit(panel)"
             nzTooltipTitle="数据填报" nzTooltipPlacement="topCenter" nz-tooltip>
             <i nz-icon nzType="edit" nzTheme="fill" style="color: coral"></i>
-          </button>
-          <nz-divider nzType="vertical"></nz-divider>
-          <button nz-button nzSize="small" nzType="default" nzShape="circle" (click)="openEdit(panel)"
-            nzTooltipTitle="数据统计" nzTooltipPlacement="topCenter" nz-tooltip>
-            <i nz-icon nzType="bar-chart" nzTheme="outline" style="color:darkgreen"></i>
-          </button>
-          <nz-divider nzType="vertical"></nz-divider>
-          <button nz-button nzSize="small" nzType="default" nzShape="circle" (click)="openEdit(panel)"
-            nzTooltipTitle="编辑模版" nzTooltipPlacement="topCenter" nz-tooltip>
-            <i nz-icon nzType="setting" nzTheme="fill"></i>
-          </button> -->
-        </ng-template>
-      </nz-collapse-panel>
-    </nz-collapse>
-  </div>
-</form>
+          </button>-->
+      </ng-template>
+    </nz-collapse-panel>
+  </nz-collapse>
+</div>

@@ -52,9 +52,14 @@ export class AuditindexIndexManaComponent implements OnInit {
       this.loadInfo();
     });
   }
+
   // 打开指标的抽屉
   openComponent(record: any): void {
-    const drawerRef = this.drawerService.create<AuditindexIndexManaXdrawerComponent, { value: string }, string>({
+    const subData = {
+      verIndex: record.verIndex,
+      esName: record.esName,
+    };
+    const drawerRef = this.drawerService.create<AuditindexIndexManaXdrawerComponent, { value: any }, string>({
       nzTitle: record.esName,
       nzWidth: 520,
       nzPlacement: 'left',
@@ -63,7 +68,8 @@ export class AuditindexIndexManaComponent implements OnInit {
       nzContent: AuditindexIndexManaXdrawerComponent,
       nzContentParams: {
         // value: this.value,
-        value: record.verIndex,
+        // value: record.verIndex,
+        value: subData,
       },
     });
 
@@ -81,14 +87,19 @@ export class AuditindexIndexManaComponent implements OnInit {
 
   // 打开模版预览抽屉
   openProfile(record: any): void {
-    const drawerRef = this.drawerService.create<AuditindexIndexManaProfileViewComponent, { value: string }, string>({
+    const subData = {
+      verIndex: record.verIndex,
+      esName: record.esName,
+    };
+
+    const drawerRef = this.drawerService.create<AuditindexIndexManaProfileViewComponent, { value: any }, string>({
       nzTitle: record.esName + ' 评估模版',
       nzWidth: 1280,
       nzPlacement: 'left',
       nzMaskClosable: false,
       nzContent: AuditindexIndexManaProfileViewComponent,
       nzContentParams: {
-        value: record.verIndex,
+        value: subData,
       },
     });
 
