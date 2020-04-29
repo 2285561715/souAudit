@@ -6,13 +6,12 @@
       style="border: 0px;">
       <div *ngIf="panel.isLeaf===true" nz-row nzGutter="8">
         <p style="margin:0;text-align: right;">
-          <button nz-button nzSize="small" nzType="default" nzShape="round" (click)="openEdit(panel)"
-            nzTooltipTitle="编辑观测点" nzTooltipPlacement="topCenter" nz-tooltip>
-            <i nz-icon nzType="setting" nzTheme="fill" style="color:coral"></i> 内涵和观测点
+          <button nz-button nzSize="small" nzType="link" (click)="openEdit(panel)" nzTooltipTitle="编辑观测点"
+            nzTooltipPlacement="topCenter" nz-tooltip>
+            <i nz-icon nzType="setting" nzTheme="fill" style="color:coral"></i>内涵和观测点
           </button>
         </p>
-        <div style="margin:0;color: #222222;font-size: 16px;text-align: justify;line-height: 1.35em;"
-          [innerHTML]="panel.viewPoint"></div>
+        <div class="steps-content" [innerHTML]="panel.viewPoint"></div>
       </div>
       <ng-template #panelHead>
         <span *ngIf="panel.level==='1'" style="font-weight: bold;font-size: 20px;">{{panel.name}}</span>

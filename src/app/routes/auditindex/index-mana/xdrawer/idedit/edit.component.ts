@@ -33,6 +33,7 @@ export class AuditindexIndexManaIdeditComponent implements OnInit {
         type: 'string',
         title: '指标类别',
         enum: [
+          { label: '校级', value: 'xx' },
           { label: '学历教育', value: 'xl' },
           { label: '非学历教育', value: 'fxl' },
           { label: '社区教育', value: 'sq' },

@@ -29,11 +29,12 @@ export class AuditindexIndexManaIdaddComponent implements OnInit {
         type: 'string',
         title: '指标类别',
         enum: [
+          { label: '校级', value: 'xx' },
           { label: '学历教育', value: 'xl' },
           { label: '非学历教育', value: 'fxl' },
           { label: '社区教育', value: 'sq' },
         ],
-        default: 'xl',
+        default: 'xx',
       },
       // orderIndex: { type: 'number', title: '组内排序', minimum: 0, default: 1 },
       // remark: { type: 'string', title: '指标内涵' },
@@ -69,7 +70,7 @@ export class AuditindexIndexManaIdaddComponent implements OnInit {
     valueData.verIndex = this.activeNode.verIndex;
     valueData.level = this.activeNode.level + 1;
     valueData.parentId = this.activeNode.key;
-    console.log(valueData);
+    // console.log(valueData);
     this.http.post(`/api/indexes`, valueData).subscribe(res => {
       this.msgSrv.success('保存成功');
       this.modal.close(true);
