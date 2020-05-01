@@ -1,17 +1,18 @@
 <div nz-row [nzGutter]="8" *ngFor="let dt of listOfTableList; let i = index">
-  <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="'指标：' + dt.indexName" [nzActions]="[upStatus, checkStatus]"
+  <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="'【' + dt.index_name+'】'" [nzActions]="[upStatus, checkStatus]"
     [nzExtra]="extraTemplate">
     <div nz-col nzSpan="24">
-      <b> <i nz-icon nzType="golden" nzTheme="fill" style="color: coral"></i> {{ dt.dtName }} </b>
+      <i nz-icon nzType="star" nzTheme="fill" style="font-weight: bold;color: crimson;"></i>
+      <span style="font-size: medium;font-weight: bold;color: crimson;"> {{ dt.dt_name }} </span>
     </div>
-    <!-- <nz-divider nzType="horizontal"></nz-divider>
-    <div *ngIf="dt.modTime" nz-col nzSpan="12">
-      <i nz-icon nzType="diff" style="color:rgb(5, 113, 221)"></i> 填报:{{ dt.modTime.substring(0, 16) }}
+
+    <div *ngIf="dt.mod_time" nz-col nzSpan="24" style="line-height: 2.5em;">
+      <i nz-icon nzType="check-circle" style="color:lawngreen"></i> 已填报:{{ dt.mod_time.substring(0, 16) }}
     </div>
-    <div *ngIf="!dt.modTime" nz-col nzSpan="12">
-      <i nz-icon nzType="diff" style="color:rgb(5, 113, 221)"></i> 未上传
+    <div *ngIf="!dt.mod_time" nz-col nzSpan="24" style="line-height: 2.5em;">
+      <i nz-icon nzType="close-circle" style="color:crimson"></i> 未填报
     </div>
-    <div *ngIf="dt.checkTime" nz-col nzSpan="12">
+    <!-- <div *ngIf="dt.checkTime" nz-col nzSpan="12">
       <i nz-icon nzType="check-square" style="color:rgb(92, 180, 3)"></i> 确认:{{ dt.checkTime.substring(0, 16) }}
     </div>
     <div *ngIf="!dt.checkTime" nz-col nzSpan="12">
@@ -20,14 +21,18 @@
     </div> -->
   </nz-card>
   <ng-template #extraTemplate>
-    <span nz-tooltip nzTooltipTitle="点击浏览内涵">
-      <i nz-icon nzType="info-circle" nzTheme="fill" style="color:dodgerblue;font-size: 18px;"
-        (click)="showComet(dt.indexName,dt.indexRemark)"></i></span>
+    <span nz-tooltip nzTooltipTitle="查看指标内涵">
+      <i nz-icon nzType="info-circle" nzTheme="fill" style="font-size: 16px;color:slategray;"
+        (click)="showComet(dt.index_name,dt.index_remark)"></i></span>
   </ng-template>
   <ng-template #upStatus>
-    <a (click)="dataUpFun(dt)"><i nz-icon nzType="edit" nzTheme="fill" style="color: coral"></i> 数据填报</a>
+    <button nz-button nzType="link" style="color:slategray;" nzTooltipTitle="数据填报或修改" (click)="dataUpFun(dt)"
+      nzTooltipPlacement="topCenter" nz-tooltip>
+      <i nz-icon nzType="edit" nzTheme="fill" style="color: coral;"></i> <b>填报数据</b></button>
   </ng-template>
   <ng-template #checkStatus>
-    <a><i nz-icon nzType="radar-chart" nzTheme="outline" style="color: coral"></i> 数据预览</a>
+    <button nz-button nzType="link" style="color:slategray;" nzTooltipTitle="查看数据统计分析" (click)="dataUpFun(dt)"
+      nzTooltipPlacement="topCenter" nz-tooltip>
+      <i nz-icon nzType="radar-chart" style="color: coral;"></i> <b>数据预览</b></button>
   </ng-template>
 </div>

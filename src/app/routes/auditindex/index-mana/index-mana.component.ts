@@ -85,7 +85,7 @@ export class AuditindexIndexManaComponent implements OnInit {
     });
   }
 
-  // 打开模版预览抽屉
+  // 打开内涵观测点预览抽屉
   openProfile(record: any): void {
     const subData = {
       verIndex: record.verIndex,
@@ -93,7 +93,7 @@ export class AuditindexIndexManaComponent implements OnInit {
     };
 
     const drawerRef = this.drawerService.create<AuditindexIndexManaProfileViewComponent, { value: any }, string>({
-      nzTitle: record.esName + ' 评估模版',
+      nzTitle: '【' + record.esName + '】 指标内涵及观测点',
       nzWidth: 1280,
       nzPlacement: 'left',
       nzMaskClosable: false,

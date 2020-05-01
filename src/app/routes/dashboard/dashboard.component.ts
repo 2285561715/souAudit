@@ -172,8 +172,8 @@ export class DashboardComponent implements OnInit {
     dataValue.deptName = this.loadUser.user.bname;
 
     const drawerRef = this.drawerService.create<DashboardDataUpZxComponent, { value: any }, string>({
-      nzTitle: '【' + this.loadUser.user.bname + '】' + '填报任务',
-      nzWidth: 490,
+      nzTitle: '【' + this.loadUser.user.bname + '】' + '填报数据表',
+      nzWidth: 590,
       nzPlacement: 'left',
       nzMaskClosable: false,
       nzContent: DashboardDataUpZxComponent,

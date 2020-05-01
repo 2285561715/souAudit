@@ -8,8 +8,11 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 })
 export class SysdataFxHandupdatatableViewComponent implements OnInit {
   record: any = {};
-  i: any;
-  Catcha: SafeHtml;
+
+  checkRules: SafeHtml;
+  descRules: SafeHtml;
+  tableHtml: SafeHtml;
+
   constructor(
     private modal: NzModalRef,
     public msgSrv: NzMessageService,
@@ -18,8 +21,9 @@ export class SysdataFxHandupdatatableViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.Catcha = this.sanitizer.bypassSecurityTrustHtml(this.record.tableHtml);
-    // this.http.get(`/user/${this.record.id}`).subscribe(res => this.i = res);
+    this.checkRules = this.sanitizer.bypassSecurityTrustHtml(this.record.checkRules);
+    this.descRules = this.sanitizer.bypassSecurityTrustHtml(this.record.descRules);
+    this.tableHtml = this.sanitizer.bypassSecurityTrustHtml(this.record.tableHtml);
   }
 
   close() {

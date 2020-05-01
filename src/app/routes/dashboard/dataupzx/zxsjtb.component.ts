@@ -2,8 +2,6 @@ import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-z
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 import { DomSanitizer } from '@angular/platform-browser';
-// import { DashboardDataUpZxtbK09IndexComponent } from './zxtbk09/index.component';
-// import { DashboardDataUpZxtbK10IndexComponent } from './zxtbk10/index.component';
 
 @Component({
   selector: 'app-dashboard-dataup-zxsjtb',
@@ -34,12 +32,8 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
   downExcelUrl = '';
   isVisible = false;
 
-  // @ViewChild(DashboardDataUpZxtbK09IndexComponent, { static: false })
-  // private k09Component: DashboardDataUpZxtbK09IndexComponent;
-  // @ViewChild(DashboardDataUpZxtbK10IndexComponent, { static: false })
-  // private k10Component: DashboardDataUpZxtbK10IndexComponent;
-
   ngOnInit(): void {
+    console.log(this.value.dtNo);
     // 导出数据接口地址
     this.outDataUrl =
       '/api/excel/export?tableName=' +

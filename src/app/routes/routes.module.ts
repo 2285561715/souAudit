@@ -16,42 +16,47 @@ import { DashboardZjpsdfZxpsComponent } from './dashboard/zjpsdf/zxps.component'
 import { DashboardZjpsdfFxpsComponent } from './dashboard/zjpsdf/fxps.component';
 import { DashboardZjpsdfDataBoardComponent } from './dashboard/zjpsdf/databoard.component';
 // --总校数据填报
-import { DashboardDataUpZxSjtbComponent } from './dashboard/dataup/zxsjtb.component';
-import { DashboardDataUpZxtbK01IndexComponent } from './dashboard/dataup/zxtbk01/index.component';
-import { DashboardDataUpZxtbK04IndexComponent } from './dashboard/dataup/zxtbk04/index.component';
-import { DashboardDataUpZxtbK05IndexComponent } from './dashboard/dataup/zxtbk05/index.component';
-import { DashboardDataUpZxtbK06IndexComponent } from './dashboard/dataup/zxtbk06/index.component';
-import { DashboardDataUpZxtbK07IndexComponent } from './dashboard/dataup/zxtbk07/index.component';
-import { DashboardDataUpZxtbK08IndexComponent } from './dashboard/dataup/zxtbk08/index.component';
-import { DashboardDataUpZxtbK09IndexComponent } from './dashboard/dataup/zxtbk09/index.component';
-import { DashboardDataUpZxtbK10IndexComponent } from './dashboard/dataup/zxtbk10/index.component';
-import { DashboardDataUpZxtbK102IndexComponent } from './dashboard/dataup/zxtbk10-2/index.component';
-import { DashboardDataUpZxtbK11IndexComponent } from './dashboard/dataup/zxtbk11/index.component';
-import { DashboardDataUpZxtbK121IndexComponent } from './dashboard/dataup/zxtbk12-1/index.component';
-import { DashboardDataUpZxtbK122IndexComponent } from './dashboard/dataup/zxtbk12-2/index.component';
-import { DashboardDataUpZxtbK13IndexComponent } from './dashboard/dataup/zxtbk13/index.component';
-import { DashboardDataUpZxtbK141IndexComponent } from './dashboard/dataup/zxtbk14-1/index.component';
-import { DashboardDataUpZxtbK142IndexComponent } from './dashboard/dataup/zxtbk14-2/index.component';
-import { DashboardDataUpZxtbK15IndexComponent } from './dashboard/dataup/zxtbk15/index.component';
-import { DashboardDataUpZxtbK152IndexComponent } from './dashboard/dataup/zxtbk15-2/index.component';
-import { DashboardDataUpZxtbK153IndexComponent } from './dashboard/dataup/zxtbk15-3/index.component';
-import { DashboardDataUpZxtbK16IndexComponent } from './dashboard/dataup/zxtbk16/index.component';
-import { DashboardDataUpZxtbK17IndexComponent } from './dashboard/dataup/zxtbk17/index.component';
-import { DashboardDataUpZxtbK18IndexComponent } from './dashboard/dataup/zxtbk18/index.component';
-import { DashboardDataUpZxtbK19IndexComponent } from './dashboard/dataup/zxtbk19/index.component';
-import { DashboardDataUpZxtbK20IndexComponent } from './dashboard/dataup/zxtbk20/index.component';
-import { DashboardDataUpZxtbK21IndexComponent } from './dashboard/dataup/zxtbk21/index.component';
-import { DashboardDataUpZxtbK22IndexComponent } from './dashboard/dataup/zxtbk22/index.component';
-import { DashboardDataUpZxtbK23IndexComponent } from './dashboard/dataup/zxtbk23/index.component';
-import { DashboardDataUpZxtbK24IndexComponent } from './dashboard/dataup/zxtbk24/index.component';
-import { DashboardDataUpZxtbK25IndexComponent } from './dashboard/dataup/zxtbk25/index.component';
-import { DashboardDataUpZxtbK26IndexComponent } from './dashboard/dataup/zxtbk26/index.component';
-import { DashboardDataUpZxtbK27IndexComponent } from './dashboard/dataup/zxtbk27/index.component';
-import { DashboardDataUpZxtbK28IndexComponent } from './dashboard/dataup/zxtbk28/index.component';
-import { DashboardDataUpZxtbK30IndexComponent } from './dashboard/dataup/zxtbk30/index.component';
-import { DashboardDataUpZxtbK31IndexComponent } from './dashboard/dataup/zxtbk31/index.component';
-import { DashboardDataUpZxtbK32IndexComponent } from './dashboard/dataup/zxtbk32/index.component';
-import { DashboardDataUpZxtbK33IndexComponent } from './dashboard/dataup/zxtbk33/index.component';
+import { DashboardDataUpZxSjtbComponent } from './dashboard/dataupzx/zxsjtb.component';
+import { DashboardDataUpZxtbK01IndexComponent } from './dashboard/dataupzx/zxtbk01/index.component';
+import { DashboardDataUpZxtbK021IndexComponent } from './dashboard/dataupzx/zxtbk02-1/index.component';
+import { DashboardDataUpZxtbK022IndexComponent } from './dashboard/dataupzx/zxtbk02-2/index.component';
+import { DashboardDataUpZxtbK023IndexComponent } from './dashboard/dataupzx/zxtbk02-3/index.component';
+import { DashboardDataUpZxtbK031IndexComponent } from './dashboard/dataupzx/zxtbk03-1/index.component';
+import { DashboardDataUpZxtbK032IndexComponent } from './dashboard/dataupzx/zxtbk03-2/index.component';
+import { DashboardDataUpZxtbK033IndexComponent } from './dashboard/dataupzx/zxtbk03-3/index.component';
+import { DashboardDataUpZxtbK034IndexComponent } from './dashboard/dataupzx/zxtbk03-4/index.component';
+
+import { DashboardDataUpZxtbK07IndexComponent } from './dashboard/dataupzx/zxtbk07/index.component';
+import { DashboardDataUpZxtbK08IndexComponent } from './dashboard/dataupzx/zxtbk08/index.component';
+import { DashboardDataUpZxtbK09IndexComponent } from './dashboard/dataupzx/zxtbk09/index.component';
+import { DashboardDataUpZxtbK10IndexComponent } from './dashboard/dataupzx/zxtbk10/index.component';
+import { DashboardDataUpZxtbK102IndexComponent } from './dashboard/dataupzx/zxtbk10-2/index.component';
+import { DashboardDataUpZxtbK11IndexComponent } from './dashboard/dataupzx/zxtbk11/index.component';
+import { DashboardDataUpZxtbK121IndexComponent } from './dashboard/dataupzx/zxtbk12-1/index.component';
+import { DashboardDataUpZxtbK122IndexComponent } from './dashboard/dataupzx/zxtbk12-2/index.component';
+import { DashboardDataUpZxtbK13IndexComponent } from './dashboard/dataupzx/zxtbk13/index.component';
+import { DashboardDataUpZxtbK141IndexComponent } from './dashboard/dataupzx/zxtbk14-1/index.component';
+import { DashboardDataUpZxtbK142IndexComponent } from './dashboard/dataupzx/zxtbk14-2/index.component';
+import { DashboardDataUpZxtbK15IndexComponent } from './dashboard/dataupzx/zxtbk15/index.component';
+import { DashboardDataUpZxtbK152IndexComponent } from './dashboard/dataupzx/zxtbk15-2/index.component';
+import { DashboardDataUpZxtbK153IndexComponent } from './dashboard/dataupzx/zxtbk15-3/index.component';
+import { DashboardDataUpZxtbK16IndexComponent } from './dashboard/dataupzx/zxtbk16/index.component';
+import { DashboardDataUpZxtbK17IndexComponent } from './dashboard/dataupzx/zxtbk17/index.component';
+import { DashboardDataUpZxtbK18IndexComponent } from './dashboard/dataupzx/zxtbk18/index.component';
+import { DashboardDataUpZxtbK19IndexComponent } from './dashboard/dataupzx/zxtbk19/index.component';
+import { DashboardDataUpZxtbK20IndexComponent } from './dashboard/dataupzx/zxtbk20/index.component';
+import { DashboardDataUpZxtbK21IndexComponent } from './dashboard/dataupzx/zxtbk21/index.component';
+import { DashboardDataUpZxtbK22IndexComponent } from './dashboard/dataupzx/zxtbk22/index.component';
+import { DashboardDataUpZxtbK23IndexComponent } from './dashboard/dataupzx/zxtbk23/index.component';
+import { DashboardDataUpZxtbK24IndexComponent } from './dashboard/dataupzx/zxtbk24/index.component';
+import { DashboardDataUpZxtbK25IndexComponent } from './dashboard/dataupzx/zxtbk25/index.component';
+import { DashboardDataUpZxtbK26IndexComponent } from './dashboard/dataupzx/zxtbk26/index.component';
+import { DashboardDataUpZxtbK27IndexComponent } from './dashboard/dataupzx/zxtbk27/index.component';
+import { DashboardDataUpZxtbK28IndexComponent } from './dashboard/dataupzx/zxtbk28/index.component';
+import { DashboardDataUpZxtbK30IndexComponent } from './dashboard/dataupzx/zxtbk30/index.component';
+import { DashboardDataUpZxtbK31IndexComponent } from './dashboard/dataupzx/zxtbk31/index.component';
+import { DashboardDataUpZxtbK32IndexComponent } from './dashboard/dataupzx/zxtbk32/index.component';
+import { DashboardDataUpZxtbK33IndexComponent } from './dashboard/dataupzx/zxtbk33/index.component';
 // 分校数据填报
 import { DashboardDataUpFxSjtbComponent } from './dashboard/dataupfx/fxsjtb.component';
 import { DashboardDataUpFxtbB01IndexComponent } from './dashboard/dataupfx/fxtbb01/index.component';
@@ -135,9 +140,14 @@ const COMPONENTS_NOROUNT = [
   // --总校数据填报
   DashboardDataUpZxSjtbComponent,
   DashboardDataUpZxtbK01IndexComponent,
-  DashboardDataUpZxtbK04IndexComponent,
-  DashboardDataUpZxtbK05IndexComponent,
-  DashboardDataUpZxtbK06IndexComponent,
+  DashboardDataUpZxtbK021IndexComponent,
+  DashboardDataUpZxtbK022IndexComponent,
+  DashboardDataUpZxtbK023IndexComponent,
+  DashboardDataUpZxtbK031IndexComponent,
+  DashboardDataUpZxtbK032IndexComponent,
+  DashboardDataUpZxtbK033IndexComponent,
+  DashboardDataUpZxtbK034IndexComponent,
+
   DashboardDataUpZxtbK07IndexComponent,
   DashboardDataUpZxtbK08IndexComponent,
   DashboardDataUpZxtbK09IndexComponent,

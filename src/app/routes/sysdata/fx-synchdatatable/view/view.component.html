@@ -1,25 +1,25 @@
 <div class="modal-header">
-  <div class="modal-title">{{ record.dtName }} </div>
+  <div class="modal-title">分校数据采集表：<b>【{{ record.dtName }}】</b> </div>
 </div>
 <div sv-container>
-  <div nz-row [innerHTML]="Catcha">
-  </div>
-  <nz-divider></nz-divider>
-  <p class="title">数据填写规则</p>
   <div nz-row>
-    <div nz-col nzSpan="24">
-      <div class="item-wrap">
-        {{record.descRules}}
-      </div>
+    <div nz-col nzSpan="3"><span style="font-weight: bold;font-size: medium;">数据填写规则:</span></div>
+    <div nz-col nzSpan="21">
+      <div [innerHTML]="descRules"></div>
     </div>
   </div>
-  <nz-divider></nz-divider>
-  <p class="title">数据校验规则</p>
+  <nz-divider nzType="horizontal"></nz-divider>
   <div nz-row>
-    <div nz-col nzSpan="24">
-      <div class="item-wrap">
-        {{record.checkRules}}
-      </div>
+    <div nz-col nzSpan="3"><span style="font-weight: bold;font-size: medium;">数据表头模板:</span></div>
+    <div nz-col nzSpan="21">
+      <div [innerHTML]="tableHtml"></div>
+    </div>
+  </div>
+  <nz-divider nzType="horizontal"></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="3"><span style="font-weight: bold;font-size: medium;">数据校验规则:</span></div>
+    <div nz-col nzSpan="21">
+      <div [innerHTML]="checkRules"></div>
     </div>
   </div>
 </div>

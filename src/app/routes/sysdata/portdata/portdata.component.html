@@ -6,7 +6,7 @@
   </ng-template>
 </page-header>
 <nz-card>
-  <nz-table #nzTable nzSize="middle" nzPageSize="5" [nzData]="listOfData" nzHideOnSinglePage="true">
+  <nz-table #nzTable nzSize="middle" nzPageSize="10" [nzData]="listOfData" nzHideOnSinglePage="true">
     <thead>
       <tr>
         <th nzShowExpand nzwidth="2%"></th>
@@ -31,7 +31,7 @@
         </tr>
         <tr [nzExpand]="mapOfExpandData[data.id]">
           <td></td>
-          <td colspan="6">最后修改时间：{{ data.mod_Time }}<br>{{ data.remark }}
+          <td colspan="6">最后修改时间：{{ data.mod_time }}<br>{{ data.remark }}
           </td>
         </tr>
       </ng-template>

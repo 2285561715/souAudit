@@ -4,7 +4,7 @@
   </ng-template>
 </page-header>
 <nz-card>
-  <nz-table #nzTable nzSize="middle" nzPageSize="7" [nzData]="listOfData">
+  <nz-table #nzTable nzSize="middle" nzPageSize="10" [nzData]="listOfData">
     <thead>
       <tr>
         <th nzShowExpand nzwidth="4%" nzAlign="center"></th>
@@ -29,7 +29,7 @@
             <!-- <button nz-button nzSize="small" nzType="primary" (click)="openComponent(data)">
               <i nz-icon nzType="table"></i> 数据样表</button>
             <nz-divider nzType="vertical"></nz-divider> -->
-            <button nz-button nzSize="small" nzType="default" (click)="viewInfo(data)">view</button>
+            <button nz-button nzSize="small" nzType="default" (click)="viewInfo(data)">查看</button>
             <nz-divider nzType="vertical"></nz-divider>
             <button nz-button nzSize="small" nzType="default" (click)="editInfo(data)">修改</button>
             <!-- <nz-divider nzType="vertical"></nz-divider>
@@ -38,7 +38,7 @@
         </tr>
         <tr [nzExpand]="mapOfExpandData[data.id]">
           <td></td>
-          <td colspan="6">{{ data.descRules }}</td>
+          <td colspan="6">最后修改时间：{{ data.modTime }}<br>{{ data.remark }}
         </tr>
       </ng-template>
     </tbody>
