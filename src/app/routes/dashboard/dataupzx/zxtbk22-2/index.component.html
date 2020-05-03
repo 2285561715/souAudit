@@ -2,8 +2,7 @@
   <thead>
     <tr style="background-color: linen">
       <th nzWidth="120px" nzAlign="center">年度</th>
-      <th nzWidth="250px" nzAlign="center"><b>社会培训人时数</b></th>
-      <th nzWidth="250px" nzAlign="center"><b>社会考试服务人次数</b></th>
+      <th nzAlign="center"><b>学习者对学校满意度（%）</b></th>
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
@@ -14,21 +13,11 @@
       </td>
 
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else pxrssInputTpl">
-          {{ data.pxrss }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxz2xxInputTpl">
+          {{ data.xxz2xx }}
         </ng-container>
-        <ng-template #pxrssInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.pxrss" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
-        </ng-template>
-      </td>
-
-      <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ksfwrcInputTpl">
-          {{ data.ksfwrc }}
-        </ng-container>
-        <ng-template #ksfwrcInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.ksfwrc" [nzMin]="0" [nzStep]="1">
+        <ng-template #xxz2xxInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.xxz2xx" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>

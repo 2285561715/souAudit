@@ -2,8 +2,10 @@
   <div nz-row>
     <div nz-col nzSpan="8">
       <button nz-button nzType="primary" nzSize="small" (click)="addData()">
-        <i nz-icon nzType="plus-circle"></i> 新增 1 行
-      </button>
+        <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="danger" nzSize="small" (click)="deleteConfirm()">
+        <i nz-icon nzType="delete"></i> 清空全部数据</button>
     </div>
     <div nz-col nzSpan="16" style="text-align: right">
       <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
@@ -19,14 +21,16 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background: linen">
-      <th nzWidth="80px" nzAlign="center" nzWidth="130px">年度</th>
-      <th nzAlign="center" nzWidth="200px">项目名称</th>
-      <th nzAlign="center" nzWidth="200px">机构名称</th>
-      <th nzAlign="center" nzWidth="200px">办学规模</th>
-      <th nzAlign="center" nzWidth="200px">合作单位名称</th>
-      <th nzAlign="center" nzWidth="150px">合作单位性质</th>
-      <th nzAlign="center" nzWidth="200px">备注说明</th>
-      <th nzWidth="100px" nzAlign="center">Action</th>
+      <th nzWidth="6%" nzAlign="center">年度</th>
+      <th nzWidth="6%" nzAlign="center">分校或<br>学院代码</th>
+      <th nzWidth="9%" nzAlign="center">分校/学院名称</th>
+      <th nzAlign="center">项目名称</th>
+      <th nzAlign="center" nzWidth="11%">机构名称</th>
+      <th nzAlign="center" nzWidth="6%">办学规模</th>
+      <th nzAlign="center" nzWidth="12%">合作单位名称</th>
+      <th nzAlign="center" nzWidth="8%">合作单位性质</th>
+      <th nzAlign="center" nzWidth="12%">备注说明</th>
+      <th nzWidth="9%" nzAlign="center">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -36,8 +40,24 @@
           {{ data.nd }} 年
         </ng-container>
         <ng-template #ndInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1" nzSize="4">
+          <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1" nzSize="3">
           </nz-input-number>
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxdmInputTpl">
+          {{ data.xxdm }}
+        </ng-container>
+        <ng-template #xxdmInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xxdm" />
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxmcInputTpl">
+          {{ data.xxmc }}
+        </ng-container>
+        <ng-template #xxmcInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xxmc" />
         </ng-template>
       </td>
       <!-- id,nd,xmmc,dwmc,hzxz,xxdm -->
@@ -65,7 +85,7 @@
           {{ data.bxgm }}
         </ng-container>
         <ng-template #bxgmInputTpl>
-          <nz-input-number style="max-width: 9em" [(ngModel)]="editCache[data.id].data.bxgm" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="max-width: 9em" [(ngModel)]="editCache[data.id].data.bxgm" [nzMin]="0" [nzStep]="100">
           </nz-input-number>
         </ng-template>
       </td>
@@ -85,7 +105,7 @@
         </ng-container>
         <ng-template #hzxzInputTpl>
           <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.hzxz" /> -->
-          <nz-select style="width: 100px;" [(ngModel)]="editCache[data.id].data.hzxz" nzAllowClear nzPlaceHolder="性质">
+          <nz-select style="width: 85px;" [(ngModel)]="editCache[data.id].data.hzxz" nzAllowClear nzPlaceHolder="性质">
             <nz-option nzValue="A企业" nzLabel="A企业"></nz-option>
             <nz-option nzValue="B政府" nzLabel="B政府"></nz-option>
             <nz-option nzValue="C学校" nzLabel="C学校"></nz-option>

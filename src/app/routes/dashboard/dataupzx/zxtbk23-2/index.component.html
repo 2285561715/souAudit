@@ -3,12 +3,15 @@
     <div nz-col nzSpan="8">
       <button nz-button nzType="primary" nzSize="small" (click)="addData()">
         <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="danger" nzSize="small" (click)="deleteConfirm()">
+        <i nz-icon nzType="delete"></i> 清空全部数据</button>
     </div>
     <div nz-col nzSpan="16" style="text-align: right">
       <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
-        http-url="http://139.224.62.102/assets/zxsj_mb/sjzxtb_k26_sbjhykyj.xlsx"
-        file-name="表K26.创新成果—省部级及以上和行业科研奖项获奖情况.xlsx">
-        《表K26.创新成果—省部级及以上和行业科研奖项获奖情况》模板下载 <i nz-icon nzType="download" style="color:coral"></i></button>
+        http-url="http://139.224.62.102/assets/zxsj_mb/{{ dataStr.dtNo }}.xlsx" file-name="{{ dataStr.dtName }}.xlsx">
+        {{ dataStr.dtName }}模板下载 <i nz-icon nzType="download" style="color:coral"></i>
+      </button>
       <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
         <button nz-button nzSize="small" nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
       </nz-upload>
@@ -18,14 +21,14 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background: linen">
-      <th nzAlign="center" nzWidth="110px">年度</th>
-      <th nzWidth="100px" nzAlign="center">学校代码</th>
-      <th nzWidth="130px" nzAlign="center">学校名称</th>
-      <th nzAlign="center" nzWidth="100px"><b>教师姓名</b></th>
-      <th nzAlign="center" nzWidth="100px"><b>职工号</b></th>
-      <th nzAlign="center" nzWidth="300px"><b>奖项名称</b></th>
-      <th nzAlign="center" nzWidth="240px"><b>奖项类别</b></th>
-      <th nzWidth="100px" nzAlign="center">Action</th>
+      <th nzWidth="6%" nzAlign="center">年度</th>
+      <th nzWidth="7%" nzAlign="center">分校或<br>学院代码</th>
+      <th nzWidth="10%" nzAlign="center">分校/学院名称</th>
+      <th nzAlign="center"><b>奖项（荣誉）名称</b></th>
+      <th nzWidth="9%" nzAlign="center"><b>奖项类别</b></th>
+      <th nzWidth="18%" nzAlign="center"><b>授奖单位</b></th>
+      <th nzWidth="6%" nzAlign="center"><b>获奖年份</b></th>
+      <th nzWidth="8%" nzAlign="center">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -35,7 +38,7 @@
           {{ data.nd }} 年
         </ng-container>
         <ng-template #ndInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1" nzSize="4">
+          <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1" nzSize="3">
           </nz-input-number>
         </ng-template>
       </td>
@@ -57,22 +60,7 @@
       </td>
       <!-- id,nd,xxdm,xxmc,jsxm,zgh,jxmc,jxlb-->
       <!-- id,年度,学校代码,学校名称,教师姓名,工号,奖项（荣誉）名称,奖项类别-->
-      <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jsxmInputTpl">
-          {{ data.jsxm }}
-        </ng-container>
-        <ng-template #jsxmInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.jsxm" />
-        </ng-template>
-      </td>
-      <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else zghInputTpl">
-          {{ data.zgh }}
-        </ng-container>
-        <ng-template #zghInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zgh" />
-        </ng-template>
-      </td>
+
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jxmcInputTpl">
           {{ data.jxmc }}
@@ -81,20 +69,34 @@
           <input type="text" nz-input [(ngModel)]="editCache[data.id].data.jxmc" />
         </ng-template>
       </td>
-
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jxlbInputTpl">
           {{ data.jxlb }}
         </ng-container>
         <ng-template #jxlbInputTpl>
-          <nz-select style="width: 240px;" [(ngModel)]="editCache[data.id].data.jxlb" nzAllowClear nzPlaceHolder="奖项类别">
-            <nz-option nzValue="国家科学技术奖" nzLabel="国家科学技术奖"></nz-option>
-            <nz-option nzValue="教育部高等学校科学研究优秀成果奖" nzLabel="教育部高等学校科学研究优秀成果奖"></nz-option>
-            <nz-option nzValue="上海市科学技术奖" nzLabel="上海市科学技术奖"></nz-option>
-            <nz-option nzValue="上海市哲学社会科学优秀成果奖" nzLabel="上海市哲学社会科学优秀成果奖"></nz-option>
-            <nz-option nzValue="上海市决策咨询研究成果奖" nzLabel="上海市决策咨询研究成果奖"></nz-option>
-            <nz-option nzValue="其他成果奖" nzLabel="其他成果奖"></nz-option>
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.jxlb" placeholder="教学成果奖"> -->
+          <nz-select style="width: 110px;" [(ngModel)]="editCache[data.id].data.jxlb" nzAllowClear nzPlaceHolder="类别">
+            <nz-option nzValue="省部级及以上" nzLabel="省部级及以上"></nz-option>
+            <nz-option nzValue="市级" nzLabel="市级"></nz-option>
+            <nz-option nzValue="行业" nzLabel="行业"></nz-option>
+            <nz-option nzValue="其它" nzLabel="其它"></nz-option>
           </nz-select>
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else sjdwInputTpl">
+          {{ data.sjdw }}
+        </ng-container>
+        <ng-template #sjdwInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.sjdw" />
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else sjndInputTpl">
+          {{ data.sjnd }}
+        </ng-container>
+        <ng-template #sjndInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.sjnd" />
         </ng-template>
       </td>
 

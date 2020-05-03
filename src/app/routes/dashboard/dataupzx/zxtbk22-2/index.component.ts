@@ -3,11 +3,11 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRe
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
 @Component({
-  selector: 'app-dashboard-dataup-zxtbk26-index',
+  selector: 'app-dashboard-dataup-zxtbk222-index',
   templateUrl: './index.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpZxtbK26IndexComponent implements OnInit {
+export class DashboardDataUpZxtbK222IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -15,29 +15,18 @@ export class DashboardDataUpZxtbK26IndexComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     public loadUser: SettingsService,
   ) {}
-
+  // 登录用户部门id
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
   value: any = {};
-  inData: any[] = [];
-  upUrl = '';
 
   @Input() dataStr: any;
 
   ngOnInit(): void {
-    this.upUrl =
-      '/api/excel/import?tableName=sjzxtb_k26_sbjhykyj&appId=' +
-      this.dataStr.id +
-      '&stepId=' +
-      this.dataStr.stepId +
-      '&deptId=' +
-      this.loadUser.user.bid;
-    this.loadInfo();
-  }
-  // 获得数据表的数据
-  loadInfo(): void {
-    this.listOfData = [];
-    this.http.get('/api/data/tables/search/zxtb/sjzxtb_k26_sbjhykyj').subscribe((res: any[]) => {
+    console.log(this.dataStr.dtNo);
+
+    // 获得数据表的数据
+    this.http.get('/api/data/tables/search/zxtb/' + this.dataStr.dtNo).subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -61,17 +50,19 @@ export class DashboardDataUpZxtbK26IndexComponent implements OnInit {
       edit: false,
     };
   }
-  // 保存数据
+
   saveEdit(id: string): void {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    // 登录用户部门id
+
     this.http
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_k26_sbjhykyj&appId=` +
+          `&tableno=` +
+          this.dataStr.dtNo +
+          `&appId=` +
           this.dataStr.id +
           `&stepId=` +
           this.dataStr.stepId +
@@ -85,33 +76,6 @@ export class DashboardDataUpZxtbK26IndexComponent implements OnInit {
     this.editCache[id].edit = false;
   }
 
-  // 新增1条数据
-  addData(): void {
-    const date = new Date();
-    this.http
-      .put(
-        `/api/data/tables/entry/init?tableno=sjzxtb_k26_sbjhykyj&nd=` +
-          date.getFullYear() +
-          `&appId=` +
-          this.dataStr.id +
-          `&stepId=` +
-          this.dataStr.stepId +
-          `&deptId=51252&deptName=上海开放大学`,
-      )
-      .subscribe(res => {
-        this.msgSrv.success('新增数据成功');
-        this.loadInfo();
-      });
-  }
-
-  dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k26_sbjhykyj&id=' + id).subscribe((res: any) => {
-      this.msgSrv.success('删除数据成功');
-      // this.cdr.detectChanges();
-      this.loadInfo();
-    });
-  }
-
   updateEditCache(): void {
     this.listOfData.forEach(item => {
       this.editCache[item.id] = {
@@ -120,12 +84,4 @@ export class DashboardDataUpZxtbK26IndexComponent implements OnInit {
       };
     });
   }
-  // 数据导入后回调函数
-  fupChange(event): void {
-    if (event.type === 'success') {
-      this.msgSrv.success('本次导入数据：' + event.file.response.dataCount + ' 条！');
-      this.loadInfo();
-    }
-  }
-  // -----------------
 }

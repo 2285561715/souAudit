@@ -1,19 +1,20 @@
-import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
+import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef, NzModalService } from 'ng-zorro-antd';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 
 @Component({
-  selector: 'app-dashboard-dataup-zxtbk30-index',
+  selector: 'app-dashboard-dataup-zxtbk232-index',
   templateUrl: './index.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
+export class DashboardDataUpZxtbK232IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
     private msgSrv: NzMessageService,
     private cdr: ChangeDetectorRef,
     public loadUser: SettingsService,
+    private modalService: NzModalService,
   ) {}
 
   editCache: { [key: string]: any } = {};
@@ -25,7 +26,9 @@ export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
 
   ngOnInit(): void {
     this.upUrl =
-      '/api/excel/import?tableName=sjzxtb_k30_xfyh&appId=' +
+      '/api/excel/import?tableName=' +
+      this.dataStr.dtNo +
+      '&appId=' +
       this.dataStr.id +
       '&stepId=' +
       this.dataStr.stepId +
@@ -33,10 +36,11 @@ export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
       this.loadUser.user.bid;
     this.loadInfo();
   }
+
   loadInfo(): void {
     this.listOfData = [];
     // 获得数据表的数据
-    this.http.get('/api/data/tables/search/zxtb/sjzxtb_k30_xfyh').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/zxtb/' + this.dataStr.dtNo).subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -45,8 +49,10 @@ export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
           data: { ...item },
         };
       });
+
       this.cdr.detectChanges();
     });
+    console.log(this.listOfData);
   }
 
   startEdit(id: string): void {
@@ -71,7 +77,9 @@ export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_k30_xfyh&appId=` +
+          `&tableno=` +
+          this.dataStr.dtNo +
+          `&appId=` +
           this.dataStr.id +
           `&stepId=` +
           this.dataStr.stepId +
@@ -82,6 +90,7 @@ export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
       .subscribe(res => {
         this.msgSrv.success('保存成功');
       });
+
     this.editCache[id].edit = false;
   }
 
@@ -90,7 +99,9 @@ export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
     const date = new Date();
     this.http
       .put(
-        `/api/data/tables/entry/init?tableno=sjzxtb_k30_xfyh&nd=` +
+        `/api/data/tables/entry/init?tableno=` +
+          this.dataStr.dtNo +
+          `&nd=` +
           date.getFullYear() +
           `&appId=` +
           this.dataStr.id +
@@ -105,7 +116,7 @@ export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
   }
 
   dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k30_xfyh&id=' + id).subscribe((res: any) => {
+    this.http.delete('/api/data/tables/entry/del?tableno=' + this.dataStr.dtNo + '&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
       this.loadInfo();
     });
@@ -127,4 +138,22 @@ export class DashboardDataUpZxtbK30IndexComponent implements OnInit {
     }
   }
   // -----------------
+  deleteConfirm(): void {
+    this.modalService.confirm({
+      nzTitle: '<i>是否要删除数据</i>',
+      nzContent: '<b>删除数据后无法恢复，确认要删除？</b>',
+      nzOnOk: () => this.deleteInfo(),
+    });
+  }
+
+  deleteInfo() {
+    const subData = {
+      tableName: this.dataStr.dtNo,
+      predication: 'id>0',
+    };
+    this.http.request('delete', '/api/dynamic/delete', { body: subData }).subscribe((res: any) => {
+      this.msgSrv.success('清空数据成功');
+      this.loadInfo();
+    });
+  }
 }

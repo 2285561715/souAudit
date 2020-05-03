@@ -2,8 +2,9 @@
   <thead>
     <tr style="background-color: linen">
       <th nzWidth="120px" nzAlign="center">年度</th>
-      <th nzAlign="center"><b>学生对学校满意度（%）</b></th>
-      <th nzAlign="center"><b>用人单位对毕业生满意度（%）</b></th>
+      <th nzWidth="120px" nzAlign="center">学期</th>
+      <th nzWidth="250px" nzAlign="center"><b>学分存储人次数</b></th>
+      <th nzWidth="250px" nzAlign="center"><b>学分转换人次数</b></th>
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
@@ -12,23 +13,25 @@
       <td nzAlign="center">
         {{ data.nd }} 年
       </td>
-
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxz2xxInputTpl">
-          {{ data.xxz2xx }}
+        {{ data.xq }}
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ccrcsInputTpl">
+          {{ data.ccrcs }}
         </ng-container>
-        <ng-template #xxz2xxInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.xxz2xx" [nzMin]="0" [nzStep]="1">
+        <ng-template #ccrcsInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.ccrcs" [nzMin]="0" [nzStep]="1000" style="width: 10em;">
           </nz-input-number>
         </ng-template>
       </td>
 
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else dw2bysInputTpl">
-          {{ data.dw2bys }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else zhrcsInputTpl">
+          {{ data.zhrcs }}
         </ng-container>
-        <ng-template #dw2bysInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.dw2bys" [nzMin]="0" [nzStep]="1">
+        <ng-template #zhrcsInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.zhrcs" [nzMin]="0" [nzStep]="1000" style="width: 10em;">
           </nz-input-number>
         </ng-template>
       </td>
@@ -41,7 +44,7 @@
           <ng-template #saveTpl>
             <a (click)="saveEdit(data.id)">保存</a>
             <nz-divider nzType="vertical"></nz-divider>
-            <a nz-popconfirm nzTitle="确认取消吗？" (nzOnConfirm)="cancelEdit(data.id)">取消</a>
+            <a nz-popconfirm nzTitle="确认取消?" (nzOnConfirm)="cancelEdit(data.id)">取消</a>
           </ng-template>
         </div>
       </td>

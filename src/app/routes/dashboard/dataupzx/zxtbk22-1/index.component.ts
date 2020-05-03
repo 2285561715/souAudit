@@ -15,7 +15,7 @@ export class DashboardDataUpZxtbK221IndexComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     public loadUser: SettingsService,
   ) {}
-
+  // 登录用户部门id
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
   value: any = {};
@@ -23,8 +23,10 @@ export class DashboardDataUpZxtbK221IndexComponent implements OnInit {
   @Input() dataStr: any;
 
   ngOnInit(): void {
+    console.log(this.dataStr.dtNo);
+
     // 获得数据表的数据
-    this.http.get('/api/data/tables/search/zxtb/sjzxtb_k07_xxzmyd').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/zxtb/' + this.dataStr.dtNo).subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -33,10 +35,8 @@ export class DashboardDataUpZxtbK221IndexComponent implements OnInit {
           data: { ...item },
         };
       });
-
       this.cdr.detectChanges();
     });
-    // this.updateEditCache();
   }
 
   startEdit(id: string): void {
@@ -50,18 +50,19 @@ export class DashboardDataUpZxtbK221IndexComponent implements OnInit {
       edit: false,
     };
   }
-  // 保存数据
+
   saveEdit(id: string): void {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
 
-    // 登录用户部门id
     this.http
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_k07_xxzmyd&appId=` +
+          `&tableno=` +
+          this.dataStr.dtNo +
+          `&appId=` +
           this.dataStr.id +
           `&stepId=` +
           this.dataStr.stepId +
@@ -72,7 +73,6 @@ export class DashboardDataUpZxtbK221IndexComponent implements OnInit {
       .subscribe(res => {
         this.msgSrv.success('保存成功');
       });
-
     this.editCache[id].edit = false;
   }
 

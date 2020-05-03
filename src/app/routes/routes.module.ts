@@ -50,14 +50,12 @@ import { DashboardDataUpZxtbK15IndexComponent } from './dashboard/dataupzx/zxtbk
 import { DashboardDataUpZxtbK16IndexComponent } from './dashboard/dataupzx/zxtbk16/index.component';
 import { DashboardDataUpZxtbK17IndexComponent } from './dashboard/dataupzx/zxtbk17/index.component';
 import { DashboardDataUpZxtbK18IndexComponent } from './dashboard/dataupzx/zxtbk18/index.component';
-
-import { DashboardDataUpZxtbK26IndexComponent } from './dashboard/dataupzx/zxtbk26/index.component';
-
-import { DashboardDataUpZxtbK28IndexComponent } from './dashboard/dataupzx/zxtbk28/index.component';
-import { DashboardDataUpZxtbK30IndexComponent } from './dashboard/dataupzx/zxtbk30/index.component';
-import { DashboardDataUpZxtbK31IndexComponent } from './dashboard/dataupzx/zxtbk31/index.component';
-import { DashboardDataUpZxtbK32IndexComponent } from './dashboard/dataupzx/zxtbk32/index.component';
-import { DashboardDataUpZxtbK33IndexComponent } from './dashboard/dataupzx/zxtbk33/index.component';
+import { DashboardDataUpZxtbK20IndexComponent } from './dashboard/dataupzx/zxtbk20/index.component';
+import { DashboardDataUpZxtbK221IndexComponent } from './dashboard/dataupzx/zxtbk22-1/index.component';
+import { DashboardDataUpZxtbK222IndexComponent } from './dashboard/dataupzx/zxtbk22-2/index.component';
+import { DashboardDataUpZxtbK223IndexComponent } from './dashboard/dataupzx/zxtbk22-3/index.component';
+import { DashboardDataUpZxtbK231IndexComponent } from './dashboard/dataupzx/zxtbk23-1/index.component';
+import { DashboardDataUpZxtbK232IndexComponent } from './dashboard/dataupzx/zxtbk23-2/index.component';
 
 // 分校数据填报
 import { DashboardDataUpFxSjtbComponent } from './dashboard/dataupfx/fxsjtb.component';
@@ -174,14 +172,13 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpZxtbK16IndexComponent,
   DashboardDataUpZxtbK17IndexComponent,
   DashboardDataUpZxtbK18IndexComponent,
+  DashboardDataUpZxtbK20IndexComponent,
+  DashboardDataUpZxtbK221IndexComponent,
+  DashboardDataUpZxtbK222IndexComponent,
+  DashboardDataUpZxtbK223IndexComponent,
+  DashboardDataUpZxtbK231IndexComponent,
+  DashboardDataUpZxtbK232IndexComponent,
 
-  DashboardDataUpZxtbK26IndexComponent,
-
-  DashboardDataUpZxtbK28IndexComponent,
-  DashboardDataUpZxtbK30IndexComponent,
-  DashboardDataUpZxtbK31IndexComponent,
-  DashboardDataUpZxtbK32IndexComponent,
-  DashboardDataUpZxtbK33IndexComponent,
   // --分校数据填报
   DashboardDataUpFxSjtbComponent,
   DashboardDataUpFxtbB01IndexComponent,

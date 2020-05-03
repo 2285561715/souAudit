@@ -2,8 +2,7 @@
   <thead>
     <tr style="background-color: linen">
       <th nzWidth="120px" nzAlign="center">年度</th>
-      <th nzWidth="250px" nzAlign="center"><b>学习者对学校满意度</b></th>
-      <th nzWidth="250px" nzAlign="center"><b>用人单位对毕业生满意度</b></th>
+      <th nzAlign="center"><b>学习者对学校满意度（%）</b></th>
       <th nzWidth="100px" nzAlign="center">Action</th>
     </tr>
   </thead>
@@ -19,16 +18,6 @@
         </ng-container>
         <ng-template #xxz2xxInputTpl>
           <nz-input-number [(ngModel)]="editCache[data.id].data.xxz2xx" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>
-        </ng-template>
-      </td>
-
-      <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else dw2bysInputTpl">
-          {{ data.dw2bys }}
-        </ng-container>
-        <ng-template #dw2bysInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.dw2bys" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
