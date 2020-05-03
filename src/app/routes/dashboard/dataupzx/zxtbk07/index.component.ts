@@ -19,12 +19,27 @@ export class DashboardDataUpZxtbK07IndexComponent implements OnInit {
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
   value: any = {};
+  inData: any[] = [];
+  upUrl = '';
 
   @Input() dataStr: any;
 
   ngOnInit(): void {
-    // 获得数据表的数据
-    this.http.get('/api/data/tables/search/zxtb/sjzxtb_k07_xxzmyd').subscribe((res: any[]) => {
+    this.upUrl =
+      '/api/excel/import?tableName=' +
+      this.dataStr.dtNo +
+      '&appId=' +
+      this.dataStr.id +
+      '&stepId=' +
+      this.dataStr.stepId +
+      '&deptId=' +
+      this.loadUser.user.bid;
+    this.loadInfo();
+  }
+  // 获得数据表的数据
+  loadInfo(): void {
+    this.listOfData = [];
+    this.http.get('/api/data/tables/search/zxtb/' + this.dataStr.dtNo).subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -33,10 +48,8 @@ export class DashboardDataUpZxtbK07IndexComponent implements OnInit {
           data: { ...item },
         };
       });
-
       this.cdr.detectChanges();
     });
-    // this.updateEditCache();
   }
 
   startEdit(id: string): void {
@@ -61,7 +74,9 @@ export class DashboardDataUpZxtbK07IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_k07_xxzmyd&appId=` +
+          `&tableno=` +
+          this.dataStr.dtNo +
+          `&appId=` +
           this.dataStr.id +
           `&stepId=` +
           this.dataStr.stepId +
@@ -72,8 +87,36 @@ export class DashboardDataUpZxtbK07IndexComponent implements OnInit {
       .subscribe(res => {
         this.msgSrv.success('保存成功');
       });
-
     this.editCache[id].edit = false;
+  }
+
+  // 新增1条数据
+  addData(): void {
+    const date = new Date();
+    this.http
+      .put(
+        `/api/data/tables/entry/init?tableno=` +
+          this.dataStr.dtNo +
+          `&nd=` +
+          date.getFullYear() +
+          '&appId=' +
+          this.dataStr.id +
+          '&stepId=' +
+          this.dataStr.stepId +
+          `&deptId=51252&deptName=上海开放大学`,
+      )
+      .subscribe(res => {
+        this.msgSrv.success('新增数据成功');
+        this.loadInfo();
+      });
+  }
+
+  dataDelete(id: string): void {
+    this.http.delete('/api/data/tables/entry/del?tableno=' + this.dataStr.dtNo + '&id=' + id).subscribe((res: any) => {
+      this.msgSrv.success('删除数据成功');
+      // this.cdr.detectChanges();
+      this.loadInfo();
+    });
   }
 
   updateEditCache(): void {
@@ -84,4 +127,12 @@ export class DashboardDataUpZxtbK07IndexComponent implements OnInit {
       };
     });
   }
+  // 数据导入后回调函数
+  fupChange(event): void {
+    if (event.type === 'success') {
+      this.msgSrv.success('本次导入数据：' + event.file.response.dataCount + ' 条！');
+      this.loadInfo();
+    }
+  }
+  // -----------------
 }

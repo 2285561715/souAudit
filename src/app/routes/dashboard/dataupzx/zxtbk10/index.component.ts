@@ -18,6 +18,7 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
 
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
+  value: any = {};
   inData: any[] = [];
   upUrl = '';
 
@@ -25,7 +26,9 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
 
   ngOnInit(): void {
     this.upUrl =
-      '/api/excel/import?tableName=sjzxtb_k10_glryxx&appId=' +
+      '/api/excel/import?tableName=' +
+      this.dataStr.dtNo +
+      '&appId=' +
       this.dataStr.id +
       '&stepId=' +
       this.dataStr.stepId +
@@ -33,10 +36,10 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
       this.loadUser.user.bid;
     this.loadInfo();
   }
-
+  // 获得数据表的数据
   loadInfo(): void {
     this.listOfData = [];
-    this.http.get('/api/data/tables/search/zxtb/sjzxtb_k10_glryxx').subscribe((res: any[]) => {
+    this.http.get('/api/data/tables/search/zxtb/' + this.dataStr.dtNo).subscribe((res: any[]) => {
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -71,7 +74,9 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_k10_glryxx&appId=` +
+          `&tableno=` +
+          this.dataStr.dtNo +
+          `&appId=` +
           this.dataStr.id +
           `&stepId=` +
           this.dataStr.stepId +
@@ -90,11 +95,13 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
     const date = new Date();
     this.http
       .put(
-        `/api/data/tables/entry/init?tableno=sjzxtb_k10_glryxx&nd=` +
+        `/api/data/tables/entry/init?tableno=` +
+          this.dataStr.dtNo +
+          `&nd=` +
           date.getFullYear() +
-          `&appId=` +
+          '&appId=' +
           this.dataStr.id +
-          `&stepId=` +
+          '&stepId=' +
           this.dataStr.stepId +
           `&deptId=51252&deptName=上海开放大学`,
       )
@@ -105,8 +112,9 @@ export class DashboardDataUpZxtbK10IndexComponent implements OnInit {
   }
 
   dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjzxtb_k10_glryxx&id=' + id).subscribe((res: any) => {
+    this.http.delete('/api/data/tables/entry/del?tableno=' + this.dataStr.dtNo + '&id=' + id).subscribe((res: any) => {
       this.msgSrv.success('删除数据成功');
+      // this.cdr.detectChanges();
       this.loadInfo();
     });
   }

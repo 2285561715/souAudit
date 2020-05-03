@@ -43,6 +43,7 @@
     "@delon/theme": "^8.8.0",
     "@delon/util": "^8.8.0",
     "ajv": "^6.11.0",
+    "echarts": "^4.7.0",
     "editor.md": "^1.5.0",
     "file-saver": "^2.0.2",
     "ng-zorro-antd": "^8.5.2",
