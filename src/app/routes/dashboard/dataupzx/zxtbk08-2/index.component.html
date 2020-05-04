@@ -2,8 +2,10 @@
   <div nz-row>
     <div nz-col nzSpan="8">
       <button nz-button nzType="primary" nzSize="small" (click)="addData()">
-        <i nz-icon nzType="plus-circle"></i> 新增 1 行
-      </button>
+        <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="danger" nzSize="small" (click)="deleteConfirm()">
+        <i nz-icon nzType="delete"></i> 清空本次填报数据</button>
     </div>
     <div nz-col nzSpan="16" style="text-align: right">
       <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
@@ -19,15 +21,15 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background: linen">
-      <th nzAlign="center" nzWidth="90px">年度</th>
-      <th nzAlign="center" nzWidth="250px">应用平台或系统名称</th>
-      <th nzAlign="center" nzWidth="200px">应用类型</th>
-      <th nzAlign="center" nzWidth="150px">技术类型</th>
-      <th nzAlign="center" nzWidth="150px">投入使用年份</th>
-      <th nzAlign="center" nzWidth="150px">用户数</th>
-      <th nzAlign="center" nzWidth="150px">访问量</th>
-      <th nzAlign="center" nzWidth="150px">互动数</th>
-      <th nzWidth="100px" nzAlign="center">Action</th>
+      <th nzAlign="center" nzWidth="9%">年度</th>
+      <th nzAlign="center">应用平台或系统名称</th>
+      <th nzAlign="center" nzWidth="11%">应用类型</th>
+      <th nzAlign="center" nzWidth="11%">技术类型</th>
+      <th nzAlign="center" nzWidth="8%">投入使用年份</th>
+      <th nzAlign="center" nzWidth="9%">用户数</th>
+      <th nzAlign="center" nzWidth="9%">访问量</th>
+      <th nzAlign="center" nzWidth="9%">互动数</th>
+      <th nzWidth="8%" nzAlign="center">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -38,7 +40,7 @@
         </ng-container>
         <ng-template #ndInputTpl>
           <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1" nzSize="4">
-          </nz-input-number> 年
+          </nz-input-number>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -94,7 +96,7 @@
           {{ data.yhs }}
         </ng-container>
         <ng-template #yhsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.yhs" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="width: 8em" [(ngModel)]="editCache[data.id].data.yhs" [nzMin]="0" [nzStep]="1000">
           </nz-input-number>
         </ng-template>
       </td>
@@ -103,7 +105,7 @@
           {{ data.fwl }}
         </ng-container>
         <ng-template #fwlInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.fwl" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="width: 8em" [(ngModel)]="editCache[data.id].data.fwl" [nzMin]="0" [nzStep]="1000">
           </nz-input-number>
         </ng-template>
       </td>
@@ -112,7 +114,7 @@
           {{ data.hds }}
         </ng-container>
         <ng-template #hdsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.hds" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="width: 8em" [(ngModel)]="editCache[data.id].data.hds" [nzMin]="0" [nzStep]="1000">
           </nz-input-number>
         </ng-template>
       </td>

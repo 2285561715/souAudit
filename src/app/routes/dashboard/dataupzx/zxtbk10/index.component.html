@@ -2,8 +2,10 @@
   <div nz-row>
     <div nz-col nzSpan="8">
       <button nz-button nzType="primary" nzSize="small" (click)="addData()">
-        <i nz-icon nzType="plus-circle"></i> 新增 1 行
-      </button>
+        <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="danger" nzSize="small" (click)="deleteConfirm()">
+        <i nz-icon nzType="delete"></i> 清空本次填报数据</button>
     </div>
     <div nz-col nzSpan="16" style="text-align: right">
       <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
@@ -19,10 +21,10 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background-color: linen">
-      <th nzWidth="120px" nzAlign="center">年度</th>
-      <th nzWidth="250px" nzAlign="center"><b>专业名称</b></th>
-      <th nzWidth="250px" nzAlign="center"><b>状态</b></th>
-      <th nzWidth="100px" nzAlign="center">Action</th>
+      <th nzWidth="15%" nzAlign="center">年度</th>
+      <th nzAlign="center"><b>专业名称</b></th>
+      <th nzWidth="15%" nzAlign="center"><b>状态</b></th>
+      <th nzWidth="10%" nzAlign="center">操作</th>
     </tr>
   </thead>
   <tbody>

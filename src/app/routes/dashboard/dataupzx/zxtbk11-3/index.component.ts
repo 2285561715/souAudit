@@ -148,8 +148,8 @@ export class DashboardDataUpZxtbK113IndexComponent implements OnInit {
 
   deleteInfo() {
     const subData = {
-      tableName: 'zxtb_k113_dzts',
-      predication: 'id>0',
+      tableName: this.dataStr.dtNo,
+      predication: 'islock=0',
     };
     this.http.request('delete', '/api/dynamic/delete', { body: subData }).subscribe((res: any) => {
       this.msgSrv.success('清空数据成功');

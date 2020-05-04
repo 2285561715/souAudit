@@ -2,8 +2,10 @@
   <div nz-row>
     <div nz-col nzSpan="8">
       <button nz-button nzType="primary" nzSize="small" (click)="addData()">
-        <i nz-icon nzType="plus-circle"></i> 新增 1 行
-      </button>
+        <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="danger" nzSize="small" (click)="deleteConfirm()">
+        <i nz-icon nzType="delete"></i> 清空本次填报数据</button>
     </div>
     <div nz-col nzSpan="16" style="text-align: right">
       <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
@@ -18,21 +20,21 @@
 </nz-card>
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
-    <tr style="background: linen">
-      <th nzAlign="center">年度</th>
-      <th nzAlign="center">姓名</th>
-      <th nzAlign="center">身份证号</th>
-      <th nzAlign="center">出生年月</th>
-      <th nzAlign="center">性别</th>
-      <th nzAlign="center">毕业专业</th>
+    <tr style="background: linen;font-weight: bold;">
+      <th nzWidth="6%" nzAlign="center">年度</th>
+      <th nzWidth="6%" nzAlign="center">姓名</th>
+      <th nzWidth="7%" nzAlign="center">身份证号</th>
+      <th nzWidth="7%" nzAlign="center">出生年月<br>198006</th>
+      <th nzWidth="4%" nzAlign="center">性别</th>
+      <th nzWidth="11%" nzAlign="center">毕业专业</th>
       <th nzAlign="center">任教学科</th>
-      <th nzAlign="center">任教课程<br />总门次</th>
-      <th nzAlign="center">专业技术职务</th>
-      <th nzAlign="center">学历</th>
-      <th nzAlign="center">学位</th>
-      <th nzAlign="center">性质</th>
-      <th nzAlign="center">所在单位</th>
-      <th nzWidth="100px" nzAlign="center">Action</th>
+      <th nzWidth="5%" nzAlign="center">任教课程<br />总门次</th>
+      <th nzWidth="8%" nzAlign="center">专业技术职务</th>
+      <th nzWidth="6%" nzAlign="center">学历</th>
+      <th nzWidth="5%" nzAlign="center">学位</th>
+      <th nzWidth="5%" nzAlign="center">性质</th>
+      <th nzWidth="11%" nzAlign="center">所在单位</th>
+      <th nzWidth="7%" nzAlign="center">操作</th>
     </tr>
   </thead>
   <tbody>

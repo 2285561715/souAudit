@@ -13,8 +13,8 @@ export class DashboardDataUpZxtbK112IndexComponent implements OnInit {
     private modal: ModalHelper,
     private msgSrv: NzMessageService,
     private cdr: ChangeDetectorRef,
-    private modalService: NzModalService,
     public loadUser: SettingsService,
+    private modalService: NzModalService,
   ) {}
 
   editCache: { [key: string]: any } = {};
@@ -36,6 +36,7 @@ export class DashboardDataUpZxtbK112IndexComponent implements OnInit {
       this.loadUser.user.bid;
     this.loadInfo();
   }
+
   loadInfo(): void {
     this.listOfData = [];
     // 获得数据表的数据
@@ -51,6 +52,7 @@ export class DashboardDataUpZxtbK112IndexComponent implements OnInit {
 
       this.cdr.detectChanges();
     });
+    console.log(this.listOfData);
   }
 
   startEdit(id: string): void {
@@ -146,8 +148,8 @@ export class DashboardDataUpZxtbK112IndexComponent implements OnInit {
 
   deleteInfo() {
     const subData = {
-      tableName: 'zxtb_k112_web',
-      predication: 'id>0',
+      tableName: this.dataStr.dtNo,
+      predication: 'islock=0',
     };
     this.http.request('delete', '/api/dynamic/delete', { body: subData }).subscribe((res: any) => {
       this.msgSrv.success('清空数据成功');

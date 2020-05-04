@@ -2,8 +2,10 @@
   <div nz-row>
     <div nz-col nzSpan="8">
       <button nz-button nzType="primary" nzSize="small" (click)="addData()">
-        <i nz-icon nzType="plus-circle"></i> 新增 1 行
-      </button>
+        <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="danger" nzSize="small" (click)="deleteConfirm()">
+        <i nz-icon nzType="delete"></i> 清空本次填报数据</button>
     </div>
     <div nz-col nzSpan="16" style="text-align: right">
       <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
@@ -19,12 +21,12 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background: linen">
-      <th nzAlign="center" nzWidth="150px">年度</th>
-      <th nzAlign="center" nzWidth="200px">科研平台名称</th>
-      <th nzAlign="center" nzWidth="150px">级别</th>
-      <th nzAlign="center" nzWidth="150px">经费投入</th>
-      <th nzAlign="center" nzWidth="200px">备注说明</th>
-      <th nzWidth="100px" nzAlign="center">Action</th>
+      <th nzAlign="center" nzWidth="12%">年度</th>
+      <th nzAlign="center">科研平台名称</th>
+      <th nzAlign="center" nzWidth="15%">级别</th>
+      <th nzAlign="center" nzWidth="15%">经费投入</th>
+      <th nzAlign="center" nzWidth="18%">备注说明</th>
+      <th nzWidth="10%" nzAlign="center">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -66,7 +68,7 @@
           {{ data.jftr }}
         </ng-container>
         <ng-template #jftrInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.jftr" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="width: 9em" [(ngModel)]="editCache[data.id].data.jftr" [nzMin]="0" [nzStep]="10000">
           </nz-input-number>
         </ng-template>
       </td>

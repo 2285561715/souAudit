@@ -2,8 +2,10 @@
   <div nz-row>
     <div nz-col nzSpan="8">
       <button nz-button nzType="primary" nzSize="small" (click)="addData()">
-        <i nz-icon nzType="plus-circle"></i> 新增 1 行
-      </button>
+        <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="danger" nzSize="small" (click)="deleteConfirm()">
+        <i nz-icon nzType="delete"></i> 清空本次填报数据</button>
     </div>
     <div nz-col nzSpan="16" style="text-align: right">
       <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
@@ -19,13 +21,13 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background: linen">
-      <th nzAlign="center" nzWidth="130px">年度</th>
-      <th nzAlign="center" nzWidth="130px">姓名</th>
-      <th nzAlign="center" nzWidth="300px">类型</th>
-      <th nzAlign="center" nzWidth="300px">研究方向</th>
-      <th nzAlign="center" nzWidth="150px">获得时间</th>
-      <th nzAlign="center">备注</th>
-      <th nzWidth="100px" nzAlign="center">Action</th>
+      <th nzAlign="center" nzWidth="7%">年度</th>
+      <th nzAlign="center" nzWidth="12%">姓名</th>
+      <th nzAlign="center" nzWidth="15%">类型</th>
+      <th nzAlign="center">研究方向</th>
+      <th nzAlign="center" nzWidth="11%">获得时间</th>
+      <th nzAlign="center" nzWidth="15%">备注</th>
+      <th nzAlign="center" nzWidth="8%">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -70,7 +72,8 @@
           {{ data.hdsj }}
         </ng-container>
         <ng-template #hdsjInputTpl>
-          <input type="date" nz-input [(ngModel)]="editCache[data.id].data.hdsj" />
+          <!-- <input type="date" nz-input [(ngModel)]="editCache[data.id].data.hdsj" /> -->
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.hdsj" placeholder="如201809">
         </ng-template>
       </td>
       <td nzAlign="center">

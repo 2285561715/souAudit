@@ -1,20 +1,20 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background: linen">
-      <th nzWidth="80px" nzAlign="center">年度</th>
-      <th nzWidth="95px" nzAlign="center">传统教室(间)</th>
-      <th nzWidth="95px" nzAlign="center">计算机教室</th>
-      <th nzWidth="95px" nzAlign="center">多媒体<br>教室(间)</th>
-      <th nzWidth="95px" nzAlign="center">实验(训)室<br>(含虚拟)(间)</th>
-      <th nzWidth="95px" nzAlign="center">联网计算机<br>数(台)</th>
-      <th nzWidth="95px" nzAlign="center">局域网<br>带宽(M)</th>
-      <th nzWidth="95px" nzAlign="center">互联网接入<br>带宽(M)</th>
-      <th nzWidth="95px" nzAlign="center">专用服务器<br>数(台)</th>
-      <th nzWidth="95px" nzAlign="center">教(学)员<br>学习室(间)</th>
-      <th nzWidth="95px" nzAlign="center">资料室(间)</th>
-      <th nzWidth="95px" nzAlign="center">图书馆(个)</th>
-      <th nzWidth="95px" nzAlign="center">经费投入(元)</th>
-      <th nzWidth="100px" nzAlign="center">Action</th>
+      <th nzWidth="6%" nzAlign="center">年度</th>
+      <th nzWidth="7%" nzAlign="center">传统教室(间)</th>
+      <th nzWidth="7%" nzAlign="center">计算机教室</th>
+      <th nzWidth="7%" nzAlign="center">多媒体<br>教室(间)</th>
+      <th nzWidth="8%" nzAlign="center">实验(训)室<br>(含虚拟)(间)</th>
+      <th nzWidth="7%" nzAlign="center">联网计算机<br>数(台)</th>
+      <th nzWidth="6%" nzAlign="center">局域网<br>带宽(M)</th>
+      <th nzWidth="7%" nzAlign="center">互联网接入<br>带宽(M)</th>
+      <th nzWidth="7%" nzAlign="center">专用服务器<br>数(台)</th>
+      <th nzWidth="8%" nzAlign="center">教(学)员<br>学习室(间)</th>
+      <th nzWidth="7%" nzAlign="center">资料室(间)</th>
+      <th nzWidth="7%" nzAlign="center">图书馆(个)</th>
+      <th nzAlign="center">经费投入(元)</th>
+      <th nzWidth="7%" nzAlign="center">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -129,8 +129,7 @@
           {{ data.jftr }}
         </ng-container>
         <ng-template #jftrInputTpl>
-          <nz-input-number style="max-width: 10em" [(ngModel)]="editCache[data.id].data.jftr" [nzMin]="0"
-            [nzStep]="10000">
+          <nz-input-number style="width: 10em" [(ngModel)]="editCache[data.id].data.jftr" [nzMin]="0" [nzStep]="10000">
           </nz-input-number>
         </ng-template>
       </td>

@@ -2,8 +2,10 @@
   <div nz-row>
     <div nz-col nzSpan="8">
       <button nz-button nzType="primary" nzSize="small" (click)="addData()">
-        <i nz-icon nzType="plus-circle"></i> 新增 1 行
-      </button>
+        <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="danger" nzSize="small" (click)="deleteConfirm()">
+        <i nz-icon nzType="delete"></i> 清空本次填报数据</button>
     </div>
     <div nz-col nzSpan="16" style="text-align: right">
       <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
@@ -19,19 +21,19 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background-color: linen">
-      <th nzWidth="90px" nzAlign="center">年度</th>
-      <th nzWidth="100px" nzAlign="center"><b>姓名</b></th>
-      <th nzWidth="100px" nzAlign="center"><b>身份证号</b></th>
-      <th nzWidth="130px" nzAlign="center"><b>出生年月</b></th>
-      <th nzWidth="80px" nzAlign="center"><b>性别</b></th>
-      <th nzWidth="120px" nzAlign="center"><b>职工类型</b></th>
-      <th nzWidth="120px" nzAlign="center"><b>所在部门</b></th>
-      <th nzWidth="130px" nzAlign="center"><b>专业技术职务</b></th>
-      <th nzWidth="105px" nzAlign="center"><b>学历</b></th>
-      <th nzWidth="105px" nzAlign="center"><b>学位</b></th>
+      <th nzWidth="7%" nzAlign="center">年度</th>
+      <th nzWidth="7%" nzAlign="center"><b>姓名</b></th>
+      <th nzWidth="9%" nzAlign="center"><b>身份证号</b></th>
+      <th nzWidth="8%" nzAlign="center"><b>出生年月</b></th>
+      <th nzWidth="6%" nzAlign="center"><b>性别</b></th>
+      <th nzWidth="8%" nzAlign="center"><b>职工类型</b></th>
+      <th nzWidth="11%" nzAlign="center"><b>所在部门</b></th>
+      <th nzWidth="9%" nzAlign="center"><b>专业技术职务</b></th>
+      <th nzWidth="6%" nzAlign="center"><b>学历</b></th>
+      <th nzWidth="7%" nzAlign="center"><b>学位</b></th>
       <th nzAlign="center"><b>工作职务</b></th>
       <!-- <th nzAlign="center">入职年月</th> -->
-      <th nzWidth="100px" nzAlign="center">Action</th>
+      <th nzWidth="7%" nzAlign="center">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -69,7 +71,8 @@
           {{ data.birdate }}
         </ng-container>
         <ng-template #birdateInputTpl>
-          <input type="date" nzSize="small" nz-input [(ngModel)]="editCache[data.id].data.birdate" />
+          <!-- <input type="date" nzSize="small" nz-input [(ngModel)]="editCache[data.id].data.birdate" /> -->
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.birdate" placeholder="如198009">
         </ng-template>
       </td>
       <td nzAlign="center">

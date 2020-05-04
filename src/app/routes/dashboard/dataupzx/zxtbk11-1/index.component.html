@@ -2,8 +2,10 @@
   <div nz-row>
     <div nz-col nzSpan="8">
       <button nz-button nzType="primary" nzSize="small" (click)="addData()">
-        <i nz-icon nzType="plus-circle"></i> 新增 1 行
-      </button>
+        <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="danger" nzSize="small" (click)="deleteConfirm()">
+        <i nz-icon nzType="delete"></i> 清空本次填报数据</button>
     </div>
     <div nz-col nzSpan="16" style="text-align: right">
       <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
@@ -19,23 +21,23 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background-color: linen">
-      <th nzWidth="120px" nzAlign="center">年度</th>
-      <th nzWidth="250px" nzAlign="center">课程名称</th>
-      <th nzWidth="250px" nzAlign="center">所属学院</th>
-      <th nzWidth="250px" nzAlign="center">建设类型</th>
-      <th nzWidth="250px" nzAlign="center">经费投入（单位：元）</th>
-      <th nzWidth="100px" nzAlign="center">Action</th>
+      <th nzWidth="10%" nzAlign="center">年度</th>
+      <th nzWidth="25%" nzAlign="center">课程名称</th>
+      <th nzWidth="20%" nzAlign="center">所属学院</th>
+      <th nzWidth="20%" nzAlign="center">建设类型</th>
+      <th nzWidth="15%" nzAlign="center">经费投入（单位：元）</th>
+      <th nzWidth="10%" nzAlign="center">操作</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of editRowTable.data">
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ndInputTpl">
-          {{ data.nd }}
+          {{ data.nd }} 年
         </ng-container>
         <ng-template #ndInputTpl>
           <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1">
-          </nz-input-number>年
+          </nz-input-number>
         </ng-template>
       </td>
 
@@ -62,7 +64,7 @@
           {{ data.jslx }}
         </ng-container>
         <ng-template #jslxInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.jslx" />
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.jslx" placeholder="如文字教材、在线课程等">
         </ng-template>
       </td>
 
