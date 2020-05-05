@@ -22,10 +22,10 @@
           <div class="steps-content" [innerHTML]="panel.viewPoint"></div>
         </div>
         <ng-template #panelHead>
-          <span *ngIf="panel.level==='1'" style="font-weight: bold;font-size: 20px;">I·{{panel.name}}</span>
-          <span *ngIf="panel.level==='2'" style="font-weight: bold;font-size: 18px;">II·{{panel.name}}</span>
-          <span *ngIf="panel.level==='3'" style="font-weight: bold;font-size: 17px;">·{{panel.name}}</span>
-          <span *ngIf="panel.level==='4'" style="font-weight: bold;font-size: 17px;">·{{panel.name}}</span>
+          <span *ngIf="panel.level==='1'" style="font-weight: bold;font-size: 20px;">{{panel.name}}</span>
+          <span *ngIf="panel.level==='2'" style="font-weight: bold;font-size: 18px;">{{panel.name}}</span>
+          <span *ngIf="panel.level==='3'" style="font-weight: bold;font-size: 17px;">{{panel.name}}</span>
+          <span *ngIf="panel.level==='4'" style="font-weight: bold;font-size: 17px;">{{panel.name}}</span>
         </ng-template>
         <ng-template #expandedIcon let-active>
           {{ active }}

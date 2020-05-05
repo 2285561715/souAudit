@@ -93,7 +93,8 @@
           {{ data.sjnd }}
         </ng-container>
         <ng-template #sjndInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.sjnd" />
+          <nz-input-number style="width: 6em" [(ngModel)]="editCache[data.id].data.sjnd" [nzMin]="2000" [nzStep]="1">
+          </nz-input-number>
         </ng-template>
       </td>
 
@@ -125,7 +126,7 @@
       </td>
 
       <td nzAlign="center">
-        <div class="editable-row-operations">
+        <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>
             <nz-divider nzType="vertical"></nz-divider>

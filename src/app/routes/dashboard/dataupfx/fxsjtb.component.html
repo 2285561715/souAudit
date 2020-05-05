@@ -3,103 +3,86 @@
     <nz-tab [nzTitle]="titleTemplate">
       <ng-template #titleTemplate><i nz-icon nzType="form" style="color: coral"></i>数据列表</ng-template>
       <!-- 学历教育板块 -->
-      <div *ngIf="value.dtNo === 'sjfxtb_b01_ldxx'">
-        <app-dashboard-dataup-fxtbb01-index [dataStr]="value"></app-dashboard-dataup-fxtbb01-index>
+      <div *ngIf="value.dtNo === 'fxtb_f031_ldxx'">
+        <app-dashboard-dataup-fxtbb031-index [dataStr]="value"></app-dashboard-dataup-fxtbb031-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_b01_jftr'">
-        <app-dashboard-dataup-fxtbb012-index [dataStr]="value"></app-dashboard-dataup-fxtbb012-index>
+      <div *ngIf="value.dtNo === 'fxtb_f032_jftr'">
+        <app-dashboard-dataup-fxtbb032-index [dataStr]="value"></app-dashboard-dataup-fxtbb032-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_b02_jsjbqk'">
-        <app-dashboard-dataup-fxtbb02-index [dataStr]="value"></app-dashboard-dataup-fxtbb02-index>
+      <div *ngIf="value.dtNo === 'fxtb_f051_jsjbqk'">
+        <app-dashboard-dataup-fxtbb051-index [dataStr]="value"></app-dashboard-dataup-fxtbb051-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_b03_jsjbxx'">
+      <div *ngIf="value.dtNo === 'fxtb_f052_jsjbxx'">
+        <app-dashboard-dataup-fxtbb052-index [dataStr]="value"></app-dashboard-dataup-fxtbb052-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f053_glryxx'">
+        <app-dashboard-dataup-fxtbb053-index [dataStr]="value"></app-dashboard-dataup-fxtbb053-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f054_fdyxx'">
+        <app-dashboard-dataup-fxtbb054-index [dataStr]="value"></app-dashboard-dataup-fxtbb054-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f055_fxlglry'">
+        <app-dashboard-dataup-fxtbb055-index [dataStr]="value"></app-dashboard-dataup-fxtbb055-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f056_sqglry'">
+        <app-dashboard-dataup-fxtbb056-index [dataStr]="value"></app-dashboard-dataup-fxtbb056-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f06_yjss'">
+        <app-dashboard-dataup-fxtbb06-index [dataStr]="value"></app-dashboard-dataup-fxtbb06-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f07_hzbx'">
+        <app-dashboard-dataup-fxtbb07-index [dataStr]="value"></app-dashboard-dataup-fxtbb07-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f081_xxhyj'">
+        <app-dashboard-dataup-fxtbb081-index [dataStr]="value"></app-dashboard-dataup-fxtbb081-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f082_mob'">
+        <app-dashboard-dataup-fxtbb082-index [dataStr]="value"></app-dashboard-dataup-fxtbb082-index>
+      </div>
+      <div *ngIf="value.dtNo === 'zxtb_k131_rcpygm'">
         <app-dashboard-dataup-fxtbb09-index [dataStr]="value"></app-dashboard-dataup-fxtbb09-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_b04_glryxx'">
-        <app-dashboard-dataup-fxtbb10-index [dataStr]="value"></app-dashboard-dataup-fxtbb10-index>
+      <div *ngIf="value.dtNo === 'fxtb_f101_mskkz'">
+        <app-dashboard-dataup-fxtbb101-index [dataStr]="value"></app-dashboard-dataup-fxtbb101-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_b05_fdyxx'">
+      <div *ngIf="value.dtNo === 'zxtb_k112_web'">
         <app-dashboard-dataup-fxtbb102-index [dataStr]="value"></app-dashboard-dataup-fxtbb102-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_b06_gsptd'">
-        <app-dashboard-dataup-fxtbb121-index [dataStr]="value"></app-dashboard-dataup-fxtbb121-index>
+      <div *ngIf="value.dtNo === 'fxtb_f11_sysj'">
+        <app-dashboard-dataup-fxtbb11-index [dataStr]="value"></app-dashboard-dataup-fxtbb11-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_b07_gsprc'">
-        <app-dashboard-dataup-fxtbb122-index [dataStr]="value"></app-dashboard-dataup-fxtbb122-index>
+      <div *ngIf="value.dtNo === 'zxtb_k134_rcpy3l'">
+        <app-dashboard-dataup-fxtbb132-index [dataStr]="value"></app-dashboard-dataup-fxtbb132-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_b08_hzbx'">
-        <app-dashboard-dataup-fxtbb13-index [dataStr]="value"></app-dashboard-dataup-fxtbb13-index>
+      <div *ngIf="value.dtNo === 'fxtb_f133_hjqkxs'">
+        <app-dashboard-dataup-fxtbb133-index [dataStr]="value"></app-dashboard-dataup-fxtbb133-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_b08_jxkypt'">
-        <app-dashboard-dataup-fxtbb16-index [dataStr]="value"></app-dashboard-dataup-fxtbb16-index>
-      </div>
-      <div *ngIf="value.dtNo === 'sjzxtb_k141_kfjyyj'">
+      <!-- <div *ngIf="value.dtNo === 'zxtb_k14_hjqkxs'">  用总校的表
+        <app-dashboard-dataup-fxtbb133-index [dataStr]="value"></app-dashboard-dataup-fxtbb133-index>
+      </div> -->
+      <div *ngIf="value.dtNo === 'fxtb_f141_fxlwczx'">
         <app-dashboard-dataup-fxtbb141-index [dataStr]="value"></app-dashboard-dataup-fxtbb141-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjzxtb_k142_shsqjy'">
+      <div *ngIf="value.dtNo === 'fxtb_f142_fxltsxm'">
         <app-dashboard-dataup-fxtbb142-index [dataStr]="value"></app-dashboard-dataup-fxtbb142-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_b09_yjss'">
+      <div *ngIf="value.dtNo === 'fxtb_f15_fxlgxgj'">
         <app-dashboard-dataup-fxtbb15-index [dataStr]="value"></app-dashboard-dataup-fxtbb15-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjzxtb_k15_web'">
-        <app-dashboard-dataup-fxtbb152-index [dataStr]="value"></app-dashboard-dataup-fxtbb152-index>
+      <div *ngIf="value.dtNo === 'fxtb_f16_sqkckf'">
+        <app-dashboard-dataup-fxtbb16-index [dataStr]="value"></app-dashboard-dataup-fxtbb16-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_b10_mob'">
-        <app-dashboard-dataup-fxtbb153-index [dataStr]="value"></app-dashboard-dataup-fxtbb153-index>
+      <div *ngIf="value.dtNo === 'fxtb_f171_sqpphd'">
+        <app-dashboard-dataup-fxtbb171-index [dataStr]="value"></app-dashboard-dataup-fxtbb171-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_b11_sysx'">
-        <app-dashboard-dataup-fxtbb17-index [dataStr]="value"></app-dashboard-dataup-fxtbb17-index>
+      <div *ngIf="value.dtNo === 'fxtb_f172_sqppxm'">
+        <app-dashboard-dataup-fxtbb172-index [dataStr]="value"></app-dashboard-dataup-fxtbb172-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjzxtb_k18_dzts'">
+      <div *ngIf="value.dtNo === 'fxtb_f18_sqyjgz'">
         <app-dashboard-dataup-fxtbb18-index [dataStr]="value"></app-dashboard-dataup-fxtbb18-index>
       </div>
-      <div *ngIf="value.dtNo === 'sjzxtb_k21_rcpygm'">
-        <app-dashboard-dataup-fxtbb21-index [dataStr]="value"></app-dashboard-dataup-fxtbb21-index>
-      </div>
-      <div *ngIf="value.dtNo === 'sjzxtb_k22_hjqkxs'">
-        <app-dashboard-dataup-fxtbb22-index [dataStr]="value"></app-dashboard-dataup-fxtbb22-index>
-      </div>
-      <div *ngIf="value.dtNo === 'sjzxtb_k23_rcpy3l'">
-        <app-dashboard-dataup-fxtbb23-index [dataStr]="value"></app-dashboard-dataup-fxtbb23-index>
-      </div>
-      <div *ngIf="value.dtNo === 'sjzxtb_k25_jxcgj'">
-        <app-dashboard-dataup-fxtbb25-index [dataStr]="value"></app-dashboard-dataup-fxtbb25-index>
-      </div>
-      <!-- 非学历教育板块 -->
-      <div *ngIf="value.dtNo === 'sjfxtb_c01_glbmry'">
-        <app-dashboard-dataup-fxtbc01-index [dataStr]="value"></app-dashboard-dataup-fxtbc01-index>
-      </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_c02_gxgjzy'">
-        <app-dashboard-dataup-fxtbc02-index [dataStr]="value"></app-dashboard-dataup-fxtbc02-index>
-      </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_c03_fxlpxqk'">
-        <app-dashboard-dataup-fxtbc03-index [dataStr]="value"></app-dashboard-dataup-fxtbc03-index>
-      </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_c04_fxlpppx'">
-        <app-dashboard-dataup-fxtbc04-index [dataStr]="value"></app-dashboard-dataup-fxtbc04-index>
-      </div>
-      <!-- 社区教育板块 -->
-      <div *ngIf="value.dtNo === 'sjfxtb_d01_glbmry'">
-        <app-dashboard-dataup-fxtbd01-index [dataStr]="value"></app-dashboard-dataup-fxtbd01-index>
-      </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_d02_sqkczy'">
-        <app-dashboard-dataup-fxtbd02-index [dataStr]="value"></app-dashboard-dataup-fxtbd02-index>
-      </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_d03_sqjyhdqk'">
-        <app-dashboard-dataup-fxtbd03-index [dataStr]="value"></app-dashboard-dataup-fxtbd03-index>
-      </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_d03_sqjyhdlb'">
-        <app-dashboard-dataup-fxtbd032-index [dataStr]="value"></app-dashboard-dataup-fxtbd032-index>
-      </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_d04_sqjypxyt'">
-        <app-dashboard-dataup-fxtbd04-index [dataStr]="value"></app-dashboard-dataup-fxtbd04-index>
-      </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_d05_sqjkygzqk'">
-        <app-dashboard-dataup-fxtbd05-index [dataStr]="value"></app-dashboard-dataup-fxtbd05-index>
-      </div>
-      <div *ngIf="value.dtNo === 'sjfxtb_d05_sqjkyxmhj'">
-        <app-dashboard-dataup-fxtbd052-index [dataStr]="value"></app-dashboard-dataup-fxtbd052-index>
+      <div *ngIf="value.dtNo === 'fxtb_f19_glory'">
+        <app-dashboard-dataup-fxtbb19-index [dataStr]="value"></app-dashboard-dataup-fxtbb19-index>
       </div>
     </nz-tab>
 
@@ -107,18 +90,18 @@
       <ng-template #titleTemplate2><i nz-icon nzType="profile" style="color: coral"></i>填报规则</ng-template>
       <div [innerHTML]="description"></div>
     </nz-tab>
-    <nz-tab [nzTitle]="titleTemplate1">
+    <!-- <nz-tab [nzTitle]="titleTemplate1">
       <ng-template #titleTemplate1><i nz-icon nzType="import" style="color: coral"></i>统计报表</ng-template>
       <p>数据统计报表处理中...</p>
-    </nz-tab>
+    </nz-tab> -->
     <!-- <nz-tab [nzTitle]="titleTemplate3">
         <ng-template #titleTemplate3><i nz-icon nzType="file-done" style="color: coral"></i>校验规则</ng-template>
         <div [innerHTML]="checkRules"></div>
       </nz-tab> -->
-    <!-- <nz-tab [nzTitle]="titleTemplate4">
-        <ng-template #titleTemplate4><i nz-icon nzType="table" style="color: coral"></i>样例数据</ng-template>
-        <div [innerHTML]="tableTitle"></div>
-      </nz-tab> -->
+    <nz-tab [nzTitle]="titleTemplate4">
+      <ng-template #titleTemplate4><i nz-icon nzType="table" style="color: coral"></i>样例数据</ng-template>
+      <div [innerHTML]="tableTitle"></div>
+    </nz-tab>
     <nz-tab [nzTitle]="titleTemplate5">
       <ng-template #titleTemplate5><i nz-icon nzType="select" style="color: coral"></i>数据导出</ng-template>
       <!-- <p><b>请选择要导出的数据字段：</b></p>

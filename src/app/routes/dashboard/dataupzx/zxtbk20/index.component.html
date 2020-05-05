@@ -37,7 +37,7 @@
       </td>
 
       <td nzAlign="center">
-        <div class="editable-row-operations">
+        <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>
           </ng-container>

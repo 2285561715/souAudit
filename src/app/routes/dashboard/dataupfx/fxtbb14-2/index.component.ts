@@ -1,6 +1,6 @@
-import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
-import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
+import { NzMessageService } from 'ng-zorro-antd';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
+import { _HttpClient, SettingsService } from '@delon/theme';
 
 @Component({
   selector: 'app-dashboard-dataup-fxtbb142-index',
@@ -10,7 +10,6 @@ import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 export class DashboardDataUpFxtbB142IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
-    private modal: ModalHelper,
     private msgSrv: NzMessageService,
     private cdr: ChangeDetectorRef,
     public loadUser: SettingsService,
@@ -19,26 +18,38 @@ export class DashboardDataUpFxtbB142IndexComponent implements OnInit {
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
   value: any = {};
+  parmOfSql: any = {};
 
   @Input() dataStr: any;
 
   ngOnInit(): void {
+    this.loadInfo();
+  }
+
+  loadInfo(): void {
     // 获得数据表的数据
-    this.http.get('/api/data/tables/search/fxtb/sjzxtb_k142_shsqjy').subscribe((res: any[]) => {
+    this.listOfData = [];
+    this.parmOfSql = {
+      tableName: this.dataStr.dtNo,
+      fieldList: ['id', 'nd', 'xxdm', 'xxmc', 'xms', 'fgs', 'rss', 'islock'],
+      predication: " xxdm='" + this.loadUser.user.bid + "' ",
+      orderFieldList: ['nd', 'id'],
+      orderDirection: 'DESC',
+    };
+    this.http.post('/api/dynamic/search', this.parmOfSql).subscribe((res: any[]) => {
+      // this.listOfData = res;
       res.forEach(item => {
-        if (item.xxdm === this.loadUser.user.bid) {
-          item.id = item.id + '';
-          this.listOfData = [...this.listOfData, item];
-          this.editCache[item.id] = {
-            edit: false,
-            data: { ...item },
-          };
-        }
+        item.id = item.id + '';
+        this.listOfData = [...this.listOfData, item];
+        this.editCache[item.id] = {
+          edit: false,
+          data: { ...item },
+        };
       });
-      
+      console.log('helsdafkld');
+      console.log(this.listOfData);
       this.cdr.detectChanges();
     });
-    // this.updateEditCache();
   }
 
   startEdit(id: string): void {
@@ -57,13 +68,15 @@ export class DashboardDataUpFxtbB142IndexComponent implements OnInit {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
-    
 
+    // 登录用户部门id
     this.http
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjzxtb_k142_shsqjy&appId=` +
+          `&tableno=` +
+          this.dataStr.dtNo +
+          `&appId=` +
           this.dataStr.id +
           `&stepId=` +
           this.dataStr.stepId +

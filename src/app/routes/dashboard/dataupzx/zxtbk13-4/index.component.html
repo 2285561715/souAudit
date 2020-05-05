@@ -25,8 +25,8 @@
       <th rowspan="2" nzWidth="5%" nzAlign="center">学期</th>
       <th rowspan="2" nzWidth="8%" nzAlign="center">分校或<br>学院代码</th>
       <th rowspan="2" nzAlign="center">分校/学院名称</th>
-      <th colspan="5" nzAlign="center"><b>本 科</b></th>
-      <th colspan="4" nzAlign="center"><b>专 科</b></th>
+      <th colspan="5" nzAlign="center" style="background: ivory;"><b>本 科</b></th>
+      <th colspan="4" nzAlign="center" style="background: rgb(222, 240, 247);"><b>专 科</b></th>
       <th rowspan="2" nzWidth="9%" nzAlign="center">操作</th>
     </tr>
     <tr style="background-color: linen">
@@ -162,7 +162,7 @@
         </ng-template>
       </td>
       <td nzAlign="center">
-        <div class="editable-row-operations">
+        <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>
             <nz-divider nzType="vertical"></nz-divider>

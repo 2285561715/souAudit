@@ -24,7 +24,7 @@
       <th nzWidth="9%" nzAlign="center">年度</th>
       <th nzWidth="9%" nzAlign="center">姓名</th>
       <th nzWidth="10%" nzAlign="center">职务</th>
-      <th nzWidth="6%" nzAlign="center">年龄</th>
+      <th nzWidth="6%" nzAlign="center">出身年月</th>
       <th nzWidth="8%" nzAlign="center">学历</th>
       <th nzWidth="9%" nzAlign="center">职称</th>
       <th nzAlign="center">分管工作</th>
@@ -111,7 +111,7 @@
         </ng-template>
       </td>
       <td nzAlign="center">
-        <div class="editable-row-operations">
+        <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>
             <nz-divider nzType="vertical"></nz-divider>

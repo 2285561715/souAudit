@@ -56,43 +56,36 @@ import { DashboardDataUpZxtbK222IndexComponent } from './dashboard/dataupzx/zxtb
 import { DashboardDataUpZxtbK223IndexComponent } from './dashboard/dataupzx/zxtbk22-3/index.component';
 import { DashboardDataUpZxtbK231IndexComponent } from './dashboard/dataupzx/zxtbk23-1/index.component';
 import { DashboardDataUpZxtbK232IndexComponent } from './dashboard/dataupzx/zxtbk23-2/index.component';
-
 // 分校数据填报
+import { DashboardDataUpFxIndexsViewComponent } from './dashboard/dataupfx/indexsview.component';
 import { DashboardDataUpFxSjtbComponent } from './dashboard/dataupfx/fxsjtb.component';
-import { DashboardDataUpFxtbB01IndexComponent } from './dashboard/dataupfx/fxtbb01/index.component';
-import { DashboardDataUpFxtbB012IndexComponent } from './dashboard/dataupfx/fxtbb01-2/index.component';
-import { DashboardDataUpFxtbB02IndexComponent } from './dashboard/dataupfx/fxtbb02/index.component';
+import { DashboardDataUpFxWzfileditEditComponent } from './dashboard/dataupfx/wzfiledit/edit.component';
+import { DashboardDataUpFxtbB031IndexComponent } from './dashboard/dataupfx/fxtbb03-1/index.component';
+import { DashboardDataUpFxtbB032IndexComponent } from './dashboard/dataupfx/fxtbb03-2/index.component';
+import { DashboardDataUpFxtbB051IndexComponent } from './dashboard/dataupfx/fxtbb05-1/index.component';
+import { DashboardDataUpFxtbB052IndexComponent } from './dashboard/dataupfx/fxtbb05-2/index.component';
+import { DashboardDataUpFxtbB053IndexComponent } from './dashboard/dataupfx/fxtbb05-3/index.component';
+import { DashboardDataUpFxtbB054IndexComponent } from './dashboard/dataupfx/fxtbb05-4/index.component';
+import { DashboardDataUpFxtbB055IndexComponent } from './dashboard/dataupfx/fxtbb05-5/index.component';
+import { DashboardDataUpFxtbB056IndexComponent } from './dashboard/dataupfx/fxtbb05-6/index.component';
+import { DashboardDataUpFxtbB06IndexComponent } from './dashboard/dataupfx/fxtbb06/index.component';
+import { DashboardDataUpFxtbB07IndexComponent } from './dashboard/dataupfx/fxtbb07/index.component';
+import { DashboardDataUpFxtbB081IndexComponent } from './dashboard/dataupfx/fxtbb08-1/index.component';
+import { DashboardDataUpFxtbB082IndexComponent } from './dashboard/dataupfx/fxtbb08-2/index.component';
 import { DashboardDataUpFxtbB09IndexComponent } from './dashboard/dataupfx/fxtbb09/index.component';
-import { DashboardDataUpFxtbB10IndexComponent } from './dashboard/dataupfx/fxtbb10/index.component';
+import { DashboardDataUpFxtbB101IndexComponent } from './dashboard/dataupfx/fxtbb10-1/index.component';
 import { DashboardDataUpFxtbB102IndexComponent } from './dashboard/dataupfx/fxtbb10-2/index.component';
-import { DashboardDataUpFxtbB121IndexComponent } from './dashboard/dataupfx/fxtbb12-1/index.component';
-import { DashboardDataUpFxtbB122IndexComponent } from './dashboard/dataupfx/fxtbb12-2/index.component';
-import { DashboardDataUpFxtbB13IndexComponent } from './dashboard/dataupfx/fxtbb13/index.component';
+import { DashboardDataUpFxtbB11IndexComponent } from './dashboard/dataupfx/fxtbb11/index.component';
+import { DashboardDataUpFxtbB132IndexComponent } from './dashboard/dataupfx/fxtbb13-2/index.component';
+import { DashboardDataUpFxtbB133IndexComponent } from './dashboard/dataupfx/fxtbb13-3/index.component';
 import { DashboardDataUpFxtbB141IndexComponent } from './dashboard/dataupfx/fxtbb14-1/index.component';
 import { DashboardDataUpFxtbB142IndexComponent } from './dashboard/dataupfx/fxtbb14-2/index.component';
 import { DashboardDataUpFxtbB15IndexComponent } from './dashboard/dataupfx/fxtbb15/index.component';
-import { DashboardDataUpFxtbB152IndexComponent } from './dashboard/dataupfx/fxtbb15-2/index.component';
-import { DashboardDataUpFxtbB153IndexComponent } from './dashboard/dataupfx/fxtbb15-3/index.component';
 import { DashboardDataUpFxtbB16IndexComponent } from './dashboard/dataupfx/fxtbb16/index.component';
-import { DashboardDataUpFxtbB17IndexComponent } from './dashboard/dataupfx/fxtbb17/index.component';
+import { DashboardDataUpFxtbB171IndexComponent } from './dashboard/dataupfx/fxtbb17-1/index.component';
+import { DashboardDataUpFxtbB172IndexComponent } from './dashboard/dataupfx/fxtbb17-2/index.component';
 import { DashboardDataUpFxtbB18IndexComponent } from './dashboard/dataupfx/fxtbb18/index.component';
-import { DashboardDataUpFxtbB21IndexComponent } from './dashboard/dataupfx/fxtbb21/index.component';
-import { DashboardDataUpFxtbB22IndexComponent } from './dashboard/dataupfx/fxtbb22/index.component';
-import { DashboardDataUpFxtbB23IndexComponent } from './dashboard/dataupfx/fxtbb23/index.component';
-import { DashboardDataUpFxtbB25IndexComponent } from './dashboard/dataupfx/fxtbb25/index.component';
-// 分校非学历数据填报
-import { DashboardDataUpFxtbC01IndexComponent } from './dashboard/dataupfx/fxtbc01/index.component';
-import { DashboardDataUpFxtbC02IndexComponent } from './dashboard/dataupfx/fxtbc02/index.component';
-import { DashboardDataUpFxtbC03IndexComponent } from './dashboard/dataupfx/fxtbc03/index.component';
-import { DashboardDataUpFxtbC04IndexComponent } from './dashboard/dataupfx/fxtbc04/index.component';
-// 社区教育数据填报
-import { DashboardDataUpFxtbD01IndexComponent } from './dashboard/dataupfx/fxtbd01/index.component';
-import { DashboardDataUpFxtbD02IndexComponent } from './dashboard/dataupfx/fxtbd02/index.component';
-import { DashboardDataUpFxtbD03IndexComponent } from './dashboard/dataupfx/fxtbd03/index.component';
-import { DashboardDataUpFxtbD032IndexComponent } from './dashboard/dataupfx/fxtbd03-2/index.component';
-import { DashboardDataUpFxtbD04IndexComponent } from './dashboard/dataupfx/fxtbd04/index.component';
-import { DashboardDataUpFxtbD05IndexComponent } from './dashboard/dataupfx/fxtbd05/index.component';
-import { DashboardDataUpFxtbD052IndexComponent } from './dashboard/dataupfx/fxtbd05-2/index.component';
+import { DashboardDataUpFxtbB19IndexComponent } from './dashboard/dataupfx/fxtbb19/index.component';
 // -- 文字资料上传
 import { DashboardFileUpZxWzclComponent } from './dashboard/fileup/zxwzcl.component';
 import { DashboardFileUpFxWzclComponent } from './dashboard/fileup/fxwzcl.component';
@@ -178,43 +171,36 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpZxtbK223IndexComponent,
   DashboardDataUpZxtbK231IndexComponent,
   DashboardDataUpZxtbK232IndexComponent,
-
   // --分校数据填报
+  DashboardDataUpFxIndexsViewComponent,
   DashboardDataUpFxSjtbComponent,
-  DashboardDataUpFxtbB01IndexComponent,
-  DashboardDataUpFxtbB012IndexComponent,
-  DashboardDataUpFxtbB02IndexComponent,
+  DashboardDataUpFxWzfileditEditComponent,
+  DashboardDataUpFxtbB031IndexComponent,
+  DashboardDataUpFxtbB032IndexComponent,
+  DashboardDataUpFxtbB051IndexComponent,
+  DashboardDataUpFxtbB052IndexComponent,
+  DashboardDataUpFxtbB053IndexComponent,
+  DashboardDataUpFxtbB054IndexComponent,
+  DashboardDataUpFxtbB055IndexComponent,
+  DashboardDataUpFxtbB056IndexComponent,
+  DashboardDataUpFxtbB06IndexComponent,
+  DashboardDataUpFxtbB07IndexComponent,
+  DashboardDataUpFxtbB081IndexComponent,
+  DashboardDataUpFxtbB082IndexComponent,
   DashboardDataUpFxtbB09IndexComponent,
-  DashboardDataUpFxtbB10IndexComponent,
+  DashboardDataUpFxtbB101IndexComponent,
   DashboardDataUpFxtbB102IndexComponent,
-  DashboardDataUpFxtbB121IndexComponent,
-  DashboardDataUpFxtbB122IndexComponent,
-  DashboardDataUpFxtbB13IndexComponent,
+  DashboardDataUpFxtbB11IndexComponent,
+  DashboardDataUpFxtbB132IndexComponent,
+  DashboardDataUpFxtbB133IndexComponent,
   DashboardDataUpFxtbB141IndexComponent,
   DashboardDataUpFxtbB142IndexComponent,
   DashboardDataUpFxtbB15IndexComponent,
-  DashboardDataUpFxtbB152IndexComponent,
-  DashboardDataUpFxtbB153IndexComponent,
   DashboardDataUpFxtbB16IndexComponent,
-  DashboardDataUpFxtbB17IndexComponent,
+  DashboardDataUpFxtbB171IndexComponent,
+  DashboardDataUpFxtbB172IndexComponent,
   DashboardDataUpFxtbB18IndexComponent,
-  DashboardDataUpFxtbB21IndexComponent,
-  DashboardDataUpFxtbB22IndexComponent,
-  DashboardDataUpFxtbB23IndexComponent,
-  DashboardDataUpFxtbB25IndexComponent,
-  // 非学历教育模块
-  DashboardDataUpFxtbC01IndexComponent,
-  DashboardDataUpFxtbC02IndexComponent,
-  DashboardDataUpFxtbC03IndexComponent,
-  DashboardDataUpFxtbC04IndexComponent,
-  // 非学历教育模块
-  DashboardDataUpFxtbD01IndexComponent,
-  DashboardDataUpFxtbD02IndexComponent,
-  DashboardDataUpFxtbD03IndexComponent,
-  DashboardDataUpFxtbD032IndexComponent,
-  DashboardDataUpFxtbD04IndexComponent,
-  DashboardDataUpFxtbD05IndexComponent,
-  DashboardDataUpFxtbD052IndexComponent,
+  DashboardDataUpFxtbB19IndexComponent,
   // --文字材料上传
   DashboardFileUpZxWzclComponent,
   DashboardFileUpFxWzclComponent,

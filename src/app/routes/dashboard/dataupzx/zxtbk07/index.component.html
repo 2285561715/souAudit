@@ -28,7 +28,7 @@
       <th nzAlign="center" nzWidth="11%">机构名称</th>
       <th nzAlign="center" nzWidth="6%">办学规模</th>
       <th nzAlign="center" nzWidth="12%">合作单位名称</th>
-      <th nzAlign="center" nzWidth="8%">合作单位性质</th>
+      <th nzAlign="center" nzWidth="10%">合作单位性质</th>
       <th nzAlign="center" nzWidth="12%">备注说明</th>
       <th nzWidth="9%" nzAlign="center">操作</th>
     </tr>
@@ -105,7 +105,7 @@
         </ng-container>
         <ng-template #hzxzInputTpl>
           <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.hzxz" /> -->
-          <nz-select style="width: 85px;" [(ngModel)]="editCache[data.id].data.hzxz" nzAllowClear nzPlaceHolder="性质">
+          <nz-select style="width: 100px;" [(ngModel)]="editCache[data.id].data.hzxz" nzAllowClear nzPlaceHolder="性质">
             <nz-option nzValue="A企业" nzLabel="A企业"></nz-option>
             <nz-option nzValue="B政府" nzLabel="B政府"></nz-option>
             <nz-option nzValue="C学校" nzLabel="C学校"></nz-option>
@@ -125,7 +125,7 @@
       </td>
 
       <td nzAlign="center">
-        <div class="editable-row-operations">
+        <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>
             <nz-divider nzType="vertical"></nz-divider>

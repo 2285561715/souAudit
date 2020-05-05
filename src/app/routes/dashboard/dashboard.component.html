@@ -150,45 +150,6 @@
         </span>
       </ng-template>
     </div>
-    <!-- <div nz-col [nzSpan]="16">
-      <nz-card [nzTitle]="titleTemplate4" [nzExtra]="extraTemplate"
-        style="border-radius: 10px;background-color: rgb(252, 251, 228);">
-        <div nz-row nzGutter="24" nzAlign="middle" class="little-card"> 
-          <div nz-col [nzSpan]="12">
-            <p style="line-height: 2.5em;font-size:1.2em;">
-              <i nz-icon nzType="ie-square" nzTheme="fill"></i> 在线评审 <br>
-
-              <i nz-icon nzType="folder-open" nzTheme="fill"></i> 离线评审
-            </p>
-            <ul nz-list [nzDataSource]="divData.indexInfoList" nzBordered [nzRenderItem]="largeItem">
-              <ng-template #largeItem let-item>
-                <li nz-list-item [nzActions]="[opAction]" [nzContent]="item.indexName" nzNoFlex></li>
-                <ng-template #opAction><a style="color: coral; ">评审>></a></ng-template>
-              </ng-template>
-            </ul>
-          </div>
-          <div nz-col [nzSpan]="12" *ngIf="!divData.isZx">
-            <p style="line-height: 2.5em;font-size:1.2em;">【按分校评审】
-
-            </p>
-            <ul nz-list [nzDataSource]="divData.branchInfoList" nzBordered [nzRenderItem]="largeItem">
-              <ng-template #largeItem let-item>
-                <li nz-list-item [nzActions]="[opAction]" [nzContent]="item.bname" nzNoFlex></li>
-                <ng-template #opAction><a style="color: coral; ">评审>></a></ng-template>
-              </ng-template>
-            </ul>
-          </div>
-        </div>
-      </nz-card>
-      <ng-template #extraTemplate>状态：
-        <nz-tag *ngIf="statusStr==='1'" [nzColor]="'#f50'">评审中</nz-tag>
-      </ng-template>
-      <ng-template #titleTemplate4>
-        <span style="font-weight: bold;font-size:1.1em;">
-          {{divData.stepName}}【{{ divData.fromDate.toString().substring(0,10) }}
-          至 {{ divData.endDate.toString().substring(0,10) }}】</span>
-      </ng-template>
-    </div> -->
   </div>
 </div>
 

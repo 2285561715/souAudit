@@ -1,6 +1,6 @@
-import { NzMessageService, NzDrawerRef, NzDrawerService, NzModalRef } from 'ng-zorro-antd';
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
-import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
+import { NzMessageService } from 'ng-zorro-antd';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
+import { _HttpClient, SettingsService } from '@delon/theme';
 
 @Component({
   selector: 'app-dashboard-dataup-fxtbb16-index',
@@ -10,7 +10,6 @@ import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 export class DashboardDataUpFxtbB16IndexComponent implements OnInit {
   constructor(
     private http: _HttpClient,
-    private modal: ModalHelper,
     private msgSrv: NzMessageService,
     private cdr: ChangeDetectorRef,
     public loadUser: SettingsService,
@@ -19,35 +18,37 @@ export class DashboardDataUpFxtbB16IndexComponent implements OnInit {
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
   value: any = {};
-  inData: any[] = [];
-  upUrl = '';
+  parmOfSql: any = {};
 
   @Input() dataStr: any;
 
   ngOnInit(): void {
-    this.upUrl =
-      '/api/excel/import?tableName=sjfxtb_b08_jxkypt&appId=' +
-      this.dataStr.id +
-      '&stepId=' +
-      this.dataStr.stepId +
-      '&deptId=' +
-      this.loadUser.user.bid;
+    console.log(this.loadUser.user);
     this.loadInfo();
   }
-  // 获得数据表的数据
+
   loadInfo(): void {
+    // 获得数据表的数据
     this.listOfData = [];
-    this.http.get('/api/data/tables/search/fxtb/sjfxtb_b08_jxkypt').subscribe((res: any[]) => {
+    this.parmOfSql = {
+      tableName: this.dataStr.dtNo,
+      fieldList: ['id', 'nd', 'xxdm', 'xxmc', 'zjjcs', 'gjjcs', 'dmtjcs', 'webzys', 'islock'],
+      predication: " xxdm='" + this.loadUser.user.bid + "' ",
+      orderFieldList: ['nd', 'id'],
+      orderDirection: 'DESC',
+    };
+    this.http.post('/api/dynamic/search', this.parmOfSql).subscribe((res: any[]) => {
+      // this.listOfData = res;
       res.forEach(item => {
-        if (item.xxdm === this.loadUser.user.bid) {
-          item.id = item.id + '';
-          this.listOfData = [...this.listOfData, item];
-          this.editCache[item.id] = {
-            edit: false,
-            data: { ...item },
-          };
-        }
+        item.id = item.id + '';
+        this.listOfData = [...this.listOfData, item];
+        this.editCache[item.id] = {
+          edit: false,
+          data: { ...item },
+        };
       });
+      console.log('helsdafkld');
+      console.log(this.listOfData);
       this.cdr.detectChanges();
     });
   }
@@ -68,12 +69,15 @@ export class DashboardDataUpFxtbB16IndexComponent implements OnInit {
     const index = this.listOfData.findIndex(item => item.id === id);
     Object.assign(this.listOfData[index], this.editCache[id].data);
     const data = this.editCache[id].data;
+
     // 登录用户部门id
     this.http
       .put(
         `/api/data/tables/entry?id=` +
           id +
-          `&tableno=sjfxtb_b08_jxkypt&appId=` +
+          `&tableno=` +
+          this.dataStr.dtNo +
+          `&appId=` +
           this.dataStr.id +
           `&stepId=` +
           this.dataStr.stepId +
@@ -84,37 +88,8 @@ export class DashboardDataUpFxtbB16IndexComponent implements OnInit {
       .subscribe(res => {
         this.msgSrv.success('保存成功');
       });
+
     this.editCache[id].edit = false;
-  }
-
-  // 新增1条数据
-  addData(): void {
-    const date = new Date();
-    this.http
-      .put(
-        `/api/data/tables/entry/init?tableno=sjfxtb_b08_jxkypt&nd=` +
-          date.getFullYear() +
-          `&appId=` +
-          this.dataStr.id +
-          `&stepId=` +
-          this.dataStr.stepId +
-          `&deptId=` +
-          this.loadUser.user.bid +
-          `&deptName=` +
-          this.loadUser.user.bname,
-      )
-      .subscribe(res => {
-        this.msgSrv.success('新增数据成功');
-        this.loadInfo();
-      });
-  }
-
-  dataDelete(id: string): void {
-    this.http.delete('/api/data/tables/entry/del?tableno=sjfxtb_b08_jxkypt&id=' + id).subscribe((res: any) => {
-      this.msgSrv.success('删除数据成功');
-      // this.cdr.detectChanges();
-      this.loadInfo();
-    });
   }
 
   updateEditCache(): void {
@@ -125,12 +100,4 @@ export class DashboardDataUpFxtbB16IndexComponent implements OnInit {
       };
     });
   }
-  // 数据导入后回调函数
-  fupChange(event): void {
-    if (event.type === 'success') {
-      this.msgSrv.success('本次导入数据：' + event.file.response.dataCount + ' 条！');
-      this.loadInfo();
-    }
-  }
-  // -----------------
 }

@@ -1,27 +1,12 @@
-<nz-card nzSize="small">
-  <div nz-row>
-    <div nz-col nzSpan="8">
-      <button nz-button nzType="primary" nzSize="small" (click)="addData()">
-        <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
-    </div>
-    <div nz-col nzSpan="16" style="text-align: right">
-      <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
-        http-url="http://139.224.62.102/assets/fxsj_mb/sjfxtb_b08_jxkypt.xlsx" file-name="表08-4.支撑平台-教学科研平台.xlsx">
-        《表08-4.支撑平台-教学科研平台》模板下载 <i nz-icon nzType="download" style="color:coral"></i></button>
-      <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
-        <button nz-button nzSize="small" nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
-      </nz-upload>
-    </div>
-  </div>
-</nz-card>
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
-    <tr style="background: linen">
-      <th nzAlign="center" nzWidth="150px">年度</th>
-      <th nzAlign="center" nzWidth="350px">教学科研平台名称</th>
-      <th nzAlign="center" nzWidth="200px">级别</th>
-      <th nzAlign="center" nzWidth="150px">数量</th>
-      <th nzWidth="100px" nzAlign="center">操作</th>
+    <tr style="background-color: linen">
+      <th nzAlign="center" nzWidth="12%"><b>年度 </b></th>
+      <th nzAlign="center" nzWidth="15%"><b>自建教材数</b></th>
+      <th nzAlign="center" nzWidth="15%"><b>共建教材数</b></th>
+      <th nzAlign="center" nzWidth="15%"><b>多媒体教材数</b></th>
+      <th nzAlign="center" nzWidth="15%"><b>网上学习资源数</b></th>
+      <th nzAlign="center" nzWidth="9%">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -31,44 +16,55 @@
           {{ data.nd }} 年
         </ng-container>
         <ng-template #ndInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1" nzSize="4">
-          </nz-input-number> 年
-        </ng-template>
-      </td>
-      <!-- id,nd,xxdm,xxmc,ptmc,ptjb,ptnum -->
-      <!-- id,年度,学校代码,学校名称,教学科研平台名称,级别,数量 -->
-      <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ptmcInputTpl">
-          {{ data.ptmc }}
-        </ng-container>
-        <ng-template #ptmcInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.ptmc" />
-        </ng-template>
-      </td>
-      <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ptjbInputTpl">
-          {{ data.ptjb }}
-        </ng-container>
-        <ng-template #ptjbInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.ptjb" />
-        </ng-template>
-      </td>
-      <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ptnumInputTpl">
-          {{ data.ptnum }}
-        </ng-container>
-        <ng-template #ptnumInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.ptnum" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="width: 7em" [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
 
       <td nzAlign="center">
-        <div class="editable-row-operations">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else zjjcsInputTpl">
+          {{ data.zjjcs }}
+        </ng-container>
+        <ng-template #zjjcsInputTpl>
+          <nz-input-number style="width: 8em" [(ngModel)]="editCache[data.id].data.zjjcs" [nzMin]="0" [nzStep]="100">
+          </nz-input-number>
+        </ng-template>
+      </td>
+
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else gjjcsInputTpl">
+          {{ data.gjjcs }}
+        </ng-container>
+        <ng-template #gjjcsInputTpl>
+          <nz-input-number style="width: 8em" [(ngModel)]="editCache[data.id].data.gjjcs" [nzMin]="0" [nzStep]="100">
+          </nz-input-number>
+        </ng-template>
+      </td>
+
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else dmtjcsInputTpl">
+          {{ data.dmtjcs }}
+        </ng-container>
+        <ng-template #dmtjcsInputTpl>
+          <nz-input-number style="width: 8em" [(ngModel)]="editCache[data.id].data.dmtjcs" [nzMin]="0" [nzStep]="100">
+          </nz-input-number>
+        </ng-template>
+      </td>
+
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else webzysInputTpl">
+          {{ data.webzys }}
+        </ng-container>
+        <ng-template #webzysInputTpl>
+          <nz-input-number style="width: 8em" [(ngModel)]="editCache[data.id].data.webzys" [nzMin]="0" [nzStep]="100">
+          </nz-input-number>
+        </ng-template>
+      </td>
+
+      <td nzAlign="center">
+        <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>
-            <nz-divider nzType="vertical"></nz-divider>
-            <a nz-popconfirm nzTitle="确认删除该条数据?" (nzOnConfirm)="dataDelete(data.id)">删除</a>
           </ng-container>
           <ng-template #saveTpl>
             <a (click)="saveEdit(data.id)">保存</a>
