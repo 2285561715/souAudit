@@ -9,7 +9,9 @@ import { DashboardFileUpFxComponent } from './fileupfx.component';
 import { DashboardZjpsZxComponent } from './zjpszx.component';
 import { DashboardZjpsFxComponent } from './zjpsfx.component';
 import { DashboardJhzjFxComponent } from './jhzjfx.component';
+import { DashboardDataUpZxIndexsViewComponent } from './dataupzx/indexsview.component';
 import { DashboardDataUpFxIndexsViewComponent } from './dataupfx/indexsview.component';
+import { DashboardManualVideoPlayComponent } from './manual/videoplay.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,29 +33,12 @@ export class DashboardComponent implements OnInit {
   value: string;
   visible = false;
   statusStr = '1';
-
+  pgYear: number;
   bname = '';
   unitName = '';
   unitNo = '';
 
   // -------------------------------------
-  termData = [
-    {
-      key: 1,
-      flag: 1,
-      termname: '2020 年',
-      termno: '2020-1',
-      appName: '上海开放大学2020年分校办学水平评估',
-      esName: '上海开放大学分校办学水平评估指标及内涵（2020版）',
-      esType: '分校办学水平评估',
-      id: 18,
-      inTime: '2019-08-16',
-      isZx: false,
-      startDate: '2019-08-31',
-      verIndex: 'sou-fx-bxsp-2020',
-      dtNo: 'sjfxtb_b08_hzbx',
-    },
-  ];
   mapOfExpandData: { [key: string]: boolean } = {};
   // -------------------------------------
 
@@ -61,6 +46,9 @@ export class DashboardComponent implements OnInit {
     this.bname = this.loadUser.user.bname;
     this.unitName = this.loadUser.user.unitName;
     this.unitNo = this.loadUser.user.unitNo;
+
+    const pgdate = new Date();
+    this.pgYear = pgdate.getFullYear();
 
     this.loadInfo();
     console.log(this.listOfData);
@@ -70,24 +58,55 @@ export class DashboardComponent implements OnInit {
     // 获得评估任务-------------------------------------------------
     switch (this.loadUser.user.unitNo) {
       case 'zxbmtb':
-        this.http.get('/api/adapply').subscribe((res: any[]) => {
-          res.forEach(item => {
-            if (item.isZx && this.loadUser.user.userFrom === 'zx') {
-              this.listOfData.push(item);
-            }
-          });
-          this.cdr.detectChanges();
-        });
+        // this.http.get('/api/adapply').subscribe((res: any[]) => {
+        //   res.forEach(item => {
+        //     if (item.isZx && this.loadUser.user.userFrom === 'zx') {
+        //       this.listOfData.push(item);
+        //     }
+        //   });
+        //   this.cdr.detectChanges();
+        // });
+        this.listOfData = [
+          {
+            appName: '2020年上海开放大学整体办学水平评估',
+            dataEndDate: '2019-12-31',
+            dataFromDate: '2019-01-01',
+            endDate: '2020-05-31',
+            esName: '上海开放大学整体办学水平评估指标及内涵（2020版）',
+            esType: '整体办学水平评估',
+            id: 17,
+            inTime: '2020-04-30',
+            isZx: true,
+            startDate: '2020-05-01',
+            verIndex: 'sou-zx-bxsp-2020',
+          },
+        ];
         break;
       case 'fxtb':
-        this.http.get('/api/adapply').subscribe((res: any[]) => {
-          res.forEach(item => {
-            if (!item.isZx && this.loadUser.user.userFrom === 'fx') {
-              this.listOfData.push(item);
-            }
-          });
-          this.cdr.detectChanges();
-        });
+        // this.http.get('/api/adapply').subscribe((res: any[]) => {
+        //   console.log(res);
+        //   res.forEach(item => {
+        //     if (!item.isZx && this.loadUser.user.userFrom === 'fx') {
+        //       this.listOfData.push(item);
+        //     }
+        //   });
+        //   this.cdr.detectChanges();
+        // });
+        this.listOfData = [
+          {
+            appName: '2020年上海开放大学分校办学水平评估',
+            dataEndDate: '2019-12-31',
+            dataFromDate: '2019-01-01',
+            endDate: '2020-05-31',
+            esName: '上海开放大学分校办学水平评估指标及内涵（2020版）',
+            esType: '分校办学水平评估',
+            id: 18,
+            inTime: '2020-04-30',
+            isZx: false,
+            startDate: '2020-05-01',
+            verIndex: 'sou-fx-bxsp-2020',
+          },
+        ];
         break;
       case 'xnzj':
         this.http.get('/api/zjps/index?userId=' + this.loadUser.user.id).subscribe((res: any) => {
@@ -106,19 +125,6 @@ export class DashboardComponent implements OnInit {
       default:
         break;
     }
-
-    // console.log(this.listOfData);
-    // this.http.get('/api/adapply').subscribe((res: any[]) => {
-    //   res.forEach(item => {
-    //     if (item.isZx && this.loadUser.user.userFrom === 'zx') {
-    //       this.listOfData.push(item);
-    //     }
-    //     if (!item.isZx && this.loadUser.user.userFrom === 'fx') {
-    //       this.listOfData.push(item);
-    //     }
-    //   });
-    //   this.cdr.detectChanges();
-    // });
   }
 
   // 总校数据上报sjtb
@@ -204,33 +210,13 @@ export class DashboardComponent implements OnInit {
   }
   // -------------------------------------------
   // 分校文件上传file
-  openFileUpFx(record: any): void {
+  openVideo(record: any, fileName: string) {
     const dataValue = record;
-    dataValue.deptId = this.loadUser.user.bid;
-    dataValue.deptName = this.loadUser.user.bname;
-
-    const drawerRef = this.drawerService.create<DashboardFileUpFxComponent, { value: any }, string>({
-      nzTitle: '【' + this.loadUser.user.bname + '】' + '文字单片材料上传',
-      nzWidth: 830,
-      nzPlacement: 'left',
-      nzMaskClosable: false,
-      nzContent: DashboardFileUpFxComponent,
-      nzContentParams: {
-        value: dataValue,
-      },
-    });
-
-    drawerRef.afterOpen.subscribe(() => {
-      console.log('Drawer(Component) open');
-    });
-
-    drawerRef.afterClose.subscribe(data => {
-      if (typeof data === 'string') {
-        this.value = data;
-      }
+    dataValue.fileUrl = fileName;
+    this.modal.create(DashboardManualVideoPlayComponent, { record }, { size: 'lg' }).subscribe((res: any) => {
+      this.loadInfo();
     });
   }
-
   // -------------------------------------------
   // 分校年初计划年终总结上传file
   openJhZjFx(record: any): void {
@@ -315,9 +301,36 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+
   // --------------------------------------------
-  // 打开模版预览抽屉
-  openProfile(record: any): void {
+  // 总校按指标展开上传材料，打开模版预览抽屉
+  openProfileZX(record: any): void {
+    const drawerRef = this.drawerService.create<DashboardDataUpZxIndexsViewComponent, { value: string }, string>({
+      nzTitle: '<b>【' + record.appName + '】 数据填报和材料上传</b>',
+      nzWidth: 1280,
+      nzPlacement: 'left',
+      nzMaskClosable: false,
+      nzContent: DashboardDataUpZxIndexsViewComponent,
+      nzContentParams: {
+        value: record.verIndex,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      // console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      console.log('关闭=' + data);
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
+  }
+
+  // --------------------------------------------
+  // 分校按指标展开上传材料，打开模版预览抽屉
+  openProfileFX(record: any): void {
     const drawerRef = this.drawerService.create<DashboardDataUpFxIndexsViewComponent, { value: string }, string>({
       nzTitle: '<b>【' + record.appName + '】 数据填报和材料上传</b>',
       nzWidth: 1280,

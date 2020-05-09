@@ -21,11 +21,13 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background-color: linen">
-      <th nzWidth="10%" nzAlign="center">年度</th>
-      <th nzWidth="25%" nzAlign="center">课程名称</th>
-      <th nzWidth="20%" nzAlign="center">所属学院</th>
-      <th nzWidth="20%" nzAlign="center">建设类型</th>
-      <th nzWidth="15%" nzAlign="center">经费投入（单位：元）</th>
+      <th nzWidth="8%" nzAlign="center">年度</th>
+      <th nzWidth="9%" nzAlign="center">学校代码</th>
+      <th nzAlign="center">总校/分校名称</th>
+      <th nzWidth="20%" nzAlign="center">课程名称</th>
+      <th nzWidth="14%" nzAlign="center">所属学院</th>
+      <th nzWidth="14%" nzAlign="center">建设类型</th>
+      <th nzWidth="14%" nzAlign="center">经费投入（单位：元）</th>
       <th nzWidth="10%" nzAlign="center">操作</th>
     </tr>
   </thead>
@@ -38,6 +40,23 @@
         <ng-template #ndInputTpl>
           <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
+        </ng-template>
+      </td>
+
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxdmInputTpl">
+          {{ data.xxdm }}
+        </ng-container>
+        <ng-template #xxdmInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xxdm" />
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxmcInputTpl">
+          {{ data.xxmc }}
+        </ng-container>
+        <ng-template #xxmcInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xxmc" />
         </ng-template>
       </td>
 

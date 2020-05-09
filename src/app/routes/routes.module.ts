@@ -15,8 +15,11 @@ import { DashboardZjpsFxComponent } from './dashboard/zjpsfx.component';
 import { DashboardZjpsdfZxpsComponent } from './dashboard/zjpsdf/zxps.component';
 import { DashboardZjpsdfFxpsComponent } from './dashboard/zjpsdf/fxps.component';
 import { DashboardZjpsdfDataBoardComponent } from './dashboard/zjpsdf/databoard.component';
+import { DashboardManualVideoPlayComponent } from './dashboard/manual/videoplay.component';
 // --总校数据填报
+import { DashboardDataUpZxIndexsViewComponent } from './dashboard/dataupzx/indexsview.component';
 import { DashboardDataUpZxSjtbComponent } from './dashboard/dataupzx/zxsjtb.component';
+import { DashboardDataUpZxWzfileditEditComponent } from './dashboard/dataupzx/wzfiledit/edit.component';
 import { DashboardDataUpZxtbK01IndexComponent } from './dashboard/dataupzx/zxtbk01/index.component';
 import { DashboardDataUpZxtbK021IndexComponent } from './dashboard/dataupzx/zxtbk02-1/index.component';
 import { DashboardDataUpZxtbK022IndexComponent } from './dashboard/dataupzx/zxtbk02-2/index.component';
@@ -130,8 +133,11 @@ const COMPONENTS_NOROUNT = [
   DashboardZjpsdfZxpsComponent,
   DashboardZjpsdfFxpsComponent,
   DashboardZjpsdfDataBoardComponent,
+  DashboardManualVideoPlayComponent,
   // --总校数据填报
+  DashboardDataUpZxIndexsViewComponent,
   DashboardDataUpZxSjtbComponent,
+  DashboardDataUpZxWzfileditEditComponent,
   DashboardDataUpZxtbK01IndexComponent,
   DashboardDataUpZxtbK021IndexComponent,
   DashboardDataUpZxtbK022IndexComponent,

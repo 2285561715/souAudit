@@ -87,7 +87,7 @@
           {{ data.bk_kshgl }}
         </ng-container>
         <ng-template #bk_kshglInputTpl>
-          <input type="text" style="width: 4em;" nz-input [(ngModel)]="editCache[data.id].data.bk_kshgl" />
+          <input type="text" style="width: 5em;" nz-input [(ngModel)]="editCache[data.id].data.bk_kshgl" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -95,7 +95,7 @@
           {{ data.bk_bytgrs }}
         </ng-container>
         <ng-template #bk_bytgrsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.bk_bytgrs" [nzMin]="0" [nzStep]="1">
+          <nz-input-number [(ngModel)]="editCache[data.id].data.bk_bytgrs" [nzMin]="0" [nzStep]="1000">
           </nz-input-number>
         </ng-template>
       </td>
@@ -104,7 +104,7 @@
           {{ data.bk_byrs8 }}
         </ng-container>
         <ng-template #bk_byrs8InputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.bk_byrs8" [nzMin]="0" [nzStep]="1">
+          <nz-input-number [(ngModel)]="editCache[data.id].data.bk_byrs8" [nzMin]="0" [nzStep]="1000">
           </nz-input-number>
         </ng-template>
       </td>
@@ -113,7 +113,7 @@
           {{ data.bk_xwhd8 }}
         </ng-container>
         <ng-template #bk_xwhd8InputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.bk_xwhd8" [nzMin]="0" [nzStep]="1">
+          <nz-input-number [(ngModel)]="editCache[data.id].data.bk_xwhd8" [nzMin]="0" [nzStep]="1000">
           </nz-input-number>
         </ng-template>
       </td>
@@ -122,7 +122,7 @@
           {{ data.bk_xslss }}
         </ng-container>
         <ng-template #bk_xslssInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.bk_xslss" [nzMin]="0" [nzStep]="1">
+          <nz-input-number [(ngModel)]="editCache[data.id].data.bk_xslss" [nzMin]="0" [nzStep]="100">
           </nz-input-number>
         </ng-template>
       </td>
@@ -131,7 +131,7 @@
           {{ data.zk_kshgl }}
         </ng-container>
         <ng-template #zk_kshglInputTpl>
-          <input type="text" style="width: 4em;" nz-input [(ngModel)]="editCache[data.id].data.zk_kshgl" />
+          <input type="text" style="width: 5em;" nz-input [(ngModel)]="editCache[data.id].data.zk_kshgl" />
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -139,7 +139,7 @@
           {{ data.zk_bytgrs }}
         </ng-container>
         <ng-template #zk_bytgrsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.zk_bytgrs" [nzMin]="0" [nzStep]="1">
+          <nz-input-number [(ngModel)]="editCache[data.id].data.zk_bytgrs" [nzMin]="0" [nzStep]="1000">
           </nz-input-number>
         </ng-template>
       </td>
@@ -148,7 +148,7 @@
           {{ data.zk_byrs8 }}
         </ng-container>
         <ng-template #zk_byrs8InputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.zk_byrs8" [nzMin]="0" [nzStep]="1">
+          <nz-input-number [(ngModel)]="editCache[data.id].data.zk_byrs8" [nzMin]="0" [nzStep]="1000">
           </nz-input-number>
         </ng-template>
       </td>
@@ -157,7 +157,7 @@
           {{ data.zk_xslss }}
         </ng-container>
         <ng-template #zk_xslssInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.zk_xslss" [nzMin]="0" [nzStep]="1">
+          <nz-input-number [(ngModel)]="editCache[data.id].data.zk_xslss" [nzMin]="0" [nzStep]="100">
           </nz-input-number>
         </ng-template>
       </td>

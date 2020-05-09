@@ -48,8 +48,7 @@ export class DashboardDataUpZxComponent implements OnInit {
         'check_time',
       ],
       predication: " app_id='17' and step_id='21' and dept_id='40' and con_type='sjtb' ",
-      orderFieldList: ['dt_no'],
-      orderDirection: 'ASC',
+      orderDirections: 'dt_no ASC',
     };
     this.http.post('/api/dynamic/search', this.parmOfSql).subscribe((res: any[]) => {
       this.listOfTableList = res;

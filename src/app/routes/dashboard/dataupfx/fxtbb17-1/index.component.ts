@@ -29,6 +29,7 @@ export class DashboardDataUpFxtbB171IndexComponent implements OnInit {
     this.upUrl =
       '/api/excel/import?tableName=' +
       this.dataStr.dtNo +
+      '&startLine=1' +
       '&appId=' +
       this.dataStr.id +
       '&stepId=' +
@@ -45,8 +46,7 @@ export class DashboardDataUpFxtbB171IndexComponent implements OnInit {
       tableName: this.dataStr.dtNo,
       fieldList: ['id', 'nd', 'xxdm', 'xxmc', 'hdmc', 'cjrs', 'islock'],
       predication: " xxdm='" + this.loadUser.user.bid + "' ",
-      orderFieldList: ['nd', 'id'],
-      orderDirection: 'DESC',
+      orderDirections: 'nd DESC,id DESC',
     };
     this.http.post('/api/dynamic/search', this.parmOfSql).subscribe((res: any[]) => {
       // this.listOfData = res;
@@ -162,7 +162,7 @@ export class DashboardDataUpFxtbB171IndexComponent implements OnInit {
   // 数据导入后回调函数
   fupChange(event): void {
     if (event.type === 'success') {
-      this.msgSrv.success('本次导入数据：' + event.file.response.dataCount + ' 条！');
+      this.msgSrv.success('本次导入数据：' + event.fileList[0].response + ' 条！');
       this.loadInfo();
     }
   }

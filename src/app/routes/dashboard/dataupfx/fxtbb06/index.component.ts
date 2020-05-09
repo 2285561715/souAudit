@@ -33,8 +33,7 @@ export class DashboardDataUpFxtbB06IndexComponent implements OnInit {
       tableName: this.dataStr.dtNo,
       fieldList: ['id', 'nd', 'xxdm', 'xxmc', 'ctjs', 'jsjjs', 'dmtjs', 'sysxs', 'jyxxs', 'zls', 'tsg', 'islock'],
       predication: " xxdm='" + this.loadUser.user.bid + "' ",
-      orderFieldList: ['nd', 'id'],
-      orderDirection: 'DESC',
+      orderDirections: 'nd DESC,id DESC',
     };
     this.http.post('/api/dynamic/search', this.parmOfSql).subscribe((res: any[]) => {
       // this.listOfData = res;

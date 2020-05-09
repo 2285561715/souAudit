@@ -28,6 +28,7 @@ export class DashboardDataUpZxtbK051IndexComponent implements OnInit {
     this.upUrl =
       '/api/excel/import?tableName=' +
       this.dataStr.dtNo +
+      '&startLine=1' +
       '&appId=' +
       this.dataStr.id +
       '&stepId=' +
@@ -41,6 +42,7 @@ export class DashboardDataUpZxtbK051IndexComponent implements OnInit {
     this.listOfData = [];
     // 获得数据表的数据
     this.http.get('/api/data/tables/search/zxtb/' + this.dataStr.dtNo).subscribe((res: any[]) => {
+      console.log(res);
       res.forEach(item => {
         item.id = item.id + '';
         this.listOfData = [...this.listOfData, item];
@@ -133,7 +135,7 @@ export class DashboardDataUpZxtbK051IndexComponent implements OnInit {
   // 数据导入后回调函数
   fupChange(event): void {
     if (event.type === 'success') {
-      this.msgSrv.success('本次导入数据：' + event.file.response.dataCount + ' 条！');
+      this.msgSrv.success('本次导入数据：' + event.fileList[0].response + ' 条！');
       this.loadInfo();
     }
   }

@@ -46,8 +46,7 @@ export class SysdataPortDataComponent implements OnInit {
       tableName: 'sj_dataports',
       fieldList: ['id', 'es_type', 'port_type', 'port_no', 'port_name', 'remark', 'mod_time'],
       predication: " es_type='整体办学水平评估' ",
-      orderFieldList: ['id'],
-      orderDirection: 'DESC',
+      orderDirections: 'id DESC',
     };
     this.http.post('/api/dynamic/search', this.parmOfSql).subscribe((res: any[]) => {
       this.listOfData = res;

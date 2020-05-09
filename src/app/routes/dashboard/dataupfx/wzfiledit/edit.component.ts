@@ -66,6 +66,15 @@ export class DashboardDataUpFxWzfileditEditComponent implements OnInit {
     initialFrameHeight: 200,
   };
 
+  config_attach = {
+    toolbars: [['attachment', '|', 'bold', 'insertorderedlist', 'insertunorderedlist', 'cleardoc', 'horizontal']],
+    autoClearinitialContent: true,
+    autoHeightEnabled: true,
+    autoFloatEnabled: true,
+    wordCount: false,
+    initialFrameHeight: 200,
+  };
+
   validateForm: FormGroup;
   constructor(
     private modal: NzModalRef,
@@ -76,24 +85,12 @@ export class DashboardDataUpFxWzfileditEditComponent implements OnInit {
     private msg: NzMessageService,
   ) {}
 
-  fileList = [
-    {
-      uid: '1',
-      name: 'xxx.png',
-      status: 'done',
-      url: 'http://www.baidu.com/xxx.png',
-    },
-    {
-      uid: '2',
-      name: 'yyy.png',
-      status: 'done',
-      url: 'http://www.baidu.com/yyy.png',
-    },
-  ];
-
   ngOnInit(): void {
+    console.log(this.record);
+
     this.validateForm = this.fb.group({
-      remark: [this.record.remark, [Validators.required]],
+      indexPGfile: [this.record.indexPGfile, [Validators.required]],
+      attachfiles: [this.record.attachfiles, [Validators.required]],
     });
 
     this.i = this.record;
@@ -108,18 +105,6 @@ export class DashboardDataUpFxWzfileditEditComponent implements OnInit {
     console.log('enter  destory');
   }
   _change(event: any) {}
-
-  handleChange({ file, fileList }: UploadChangeParam): void {
-    const status = file.status;
-    if (status !== 'uploading') {
-      console.log(file, fileList);
-    }
-    if (status === 'done') {
-      this.msg.success(`${file.name} file uploaded successfully.`);
-    } else if (status === 'error') {
-      this.msg.error(`${file.name} file upload failed.`);
-    }
-  }
   // --------------------------------------------------------------------------
 
   save(value: any) {
@@ -134,6 +119,21 @@ export class DashboardDataUpFxWzfileditEditComponent implements OnInit {
       this.modal.close(true);
     });
   }
+
+  // --------------------------------------------------------------------------
+  submitForm() {
+    const fdata = this.validateForm.value;
+    const subData = {
+      tableName: 'ad_indexes',
+      updateValues: "remark='" + fdata.remark + "',view_point='" + fdata.viewPoint + "' ",
+      predication: 'id=' + this.record.id,
+    };
+    this.http.put('/api/dynamic/update', subData).subscribe(res => {
+      this.msgSrv.success('保存成功');
+      this.modal.close(true);
+    });
+  }
+  // ---------------------------------------------------------------------------
 
   close() {
     this.modal.destroy();

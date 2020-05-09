@@ -3,24 +3,22 @@
 </div>
 <div class="steps-content" [formGroup]="validateForm">
   <nz-form-item nzJustify="center">
-    <nz-form-control [nzSpan]="24">
-      <ueditor #full formControlName="remark" [config]="config" (onReady)="_ready($event)" (onDestroy)="_destroy()"
+    <nz-form-label [nzSpan]="2" style="font-size: 16px;font-weight: bold;">文字材料</nz-form-label>
+    <nz-form-control [nzSpan]="22">
+      <ueditor #full formControlName="indexPGfile" [config]="config" (onReady)="_ready($event)" (onDestroy)="_destroy()"
         (ngModelChange)="_change($event)" style="width: 100%;height: 180px;">
       </ueditor>
     </nz-form-control>
   </nz-form-item>
 
-  <!-- <nz-upload nzType="drag" [nzMultiple]="true" nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-    (nzChange)="handleChange($event)">
-    <p class="ant-upload-drag-icon"><i nz-icon nzType="upload"></i></p>
-    <p class="ant-upload-text">点击或拖拽文件到本区域以完成上传</p>
-  </nz-upload> -->
-
-  <nz-upload nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" [nzFileList]="fileList">
-    <button nz-button nzType="primary" style="border: 0;"><i nz-icon nzType="upload"></i>
-      附件上传</button> &nbsp; &nbsp; （若无附件上传要求，既无需上传附件）
-  </nz-upload>
-
+  <nz-form-item nzJustify="center">
+    <nz-form-label [nzSpan]="2" style="font-size: 16px;">其他附件</nz-form-label>
+    <nz-form-control [nzSpan]="22">
+      <ueditor #full formControlName="attachfiles" [config]="config_attach" (onReady)="_ready($event)"
+        (onDestroy)="_destroy()" (ngModelChange)="_change($event)" style="width: 100%;height: 80px;">
+      </ueditor>
+    </nz-form-control>
+  </nz-form-item>
 </div>
 
 <div class="modal-footer" style="text-align: right;">

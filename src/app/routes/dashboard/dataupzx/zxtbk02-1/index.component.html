@@ -19,7 +19,7 @@
         </ng-container>
         <ng-template #xlsumInputTpl>
           <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_sum" /> -->
-          <nz-input-number [(ngModel)]="editCache[data.id].data.xl_sum" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="width: 10em;" [(ngModel)]="editCache[data.id].data.xl_sum" [nzMin]="0" [nzStep]="100">
           </nz-input-number>
         </ng-template>
       </td>
@@ -29,7 +29,7 @@
         </ng-container>
         <ng-template #xlnumInputTpl>
           <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_num" /> -->
-          <nz-input-number [(ngModel)]="editCache[data.id].data.xl_num" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="width: 10em;" [(ngModel)]="editCache[data.id].data.xl_num" [nzMin]="0" [nzStep]="10">
           </nz-input-number>
         </ng-template>
       </td>

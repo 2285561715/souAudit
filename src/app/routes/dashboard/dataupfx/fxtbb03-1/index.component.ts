@@ -27,6 +27,7 @@ export class DashboardDataUpFxtbB031IndexComponent implements OnInit {
     this.upUrl =
       '/api/excel/import?tableName=' +
       this.dataStr.dtNo +
+      '&startLine=1' +
       '&appId=' +
       this.dataStr.id +
       '&stepId=' +
@@ -153,7 +154,7 @@ export class DashboardDataUpFxtbB031IndexComponent implements OnInit {
   // 数据导入后回调函数
   fupChange(event): void {
     if (event.type === 'success') {
-      this.msgSrv.success('本次导入数据：' + event.file.response.dataCount + ' 条！');
+      this.msgSrv.success('本次导入数据：' + event.fileList[0].response + ' 条！');
       this.loadInfo();
     }
   }

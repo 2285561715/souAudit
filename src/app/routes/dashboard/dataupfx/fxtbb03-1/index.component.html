@@ -21,12 +21,12 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background-color: linen;">
-      <th nzWidth="9%" nzAlign="center" style="font-weight: bold">年度</th>
-      <th nzWidth="9%" nzAlign="center" style="font-weight: bold">姓名</th>
-      <th nzWidth="10%" nzAlign="center" style="font-weight: bold">职务</th>
-      <th nzWidth="6%" nzAlign="center" style="font-weight: bold">出身年月</th>
+      <th nzWidth="8%" nzAlign="center" style="font-weight: bold">年度</th>
+      <th nzWidth="8%" nzAlign="center" style="font-weight: bold">姓名</th>
+      <th nzWidth="9%" nzAlign="center" style="font-weight: bold">职务</th>
+      <th nzWidth="9%" nzAlign="center" style="font-weight: bold">出身年月</th>
       <th nzWidth="8%" nzAlign="center" style="font-weight: bold">学历</th>
-      <th nzWidth="9%" nzAlign="center" style="font-weight: bold">职称</th>
+      <th nzWidth="13%" nzAlign="center" style="font-weight: bold">职称</th>
       <th nzAlign="center" style="font-weight: bold">分管工作</th>
       <th nzWidth="9%" nzAlign="center">操作</th>
     </tr>
@@ -87,6 +87,7 @@
           {{ data.zc }}
         </ng-container>
         <ng-template #zcInputTpl>
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zc" /> -->
           <nz-select style="width: 110px;" [(ngModel)]="editCache[data.id].data.zc" nzAllowClear nzPlaceHolder="职称">
             <nz-option nzValue="正高级" nzLabel="正高级"></nz-option>
             <nz-option nzValue="副高级" nzLabel="副高级"></nz-option>

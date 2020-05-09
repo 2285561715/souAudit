@@ -1,15 +1,15 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background: linen">
-      <th nzWidth="8%" nzAlign="center">年度</th>
-      <th nzWidth="8%" nzAlign="center">学期</th>
-      <th nzWidth="9%" nzAlign="center">分校/学院代码</th>
-      <th nzAlign="center">分校/学院名称</th>
-      <th nzWidth="10%" nzAlign="center"><b>社会培训项目数</b></th>
-      <th nzWidth="10%" nzAlign="center"><b>社会培训人时数</b></th>
-      <th nzWidth="10%" nzAlign="center"><b>考试服务项目数</b></th>
-      <th nzWidth="10%" nzAlign="center"><b>考试服务人次数</b></th>
-      <th nzWidth="10%" nzAlign="center">操作</th>
+      <th nzWidth="7%" nzAlign="center">年度</th>
+      <th nzWidth="7%" nzAlign="center">学期</th>
+      <th nzWidth="9%" nzAlign="center">总校/分校代码</th>
+      <th nzAlign="center">总校/分校名称</th>
+      <th nzWidth="12%" nzAlign="center"><b>社会培训项目数</b></th>
+      <th nzWidth="12%" nzAlign="center"><b>社会培训人时数</b></th>
+      <th nzWidth="12%" nzAlign="center"><b>考试服务项目数</b></th>
+      <th nzWidth="12%" nzAlign="center"><b>考试服务人次数</b></th>
+      <th nzWidth="7%" nzAlign="center">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -55,7 +55,7 @@
           {{ data.px_xms }}
         </ng-container>
         <ng-template #px_xmsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.px_xms" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="width: 10em;" [(ngModel)]="editCache[data.id].data.px_xms" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -64,7 +64,8 @@
           {{ data.px_rss }}
         </ng-container>
         <ng-template #px_rssInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.px_rss" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="width: 10em;" [(ngModel)]="editCache[data.id].data.px_rss" [nzMin]="0"
+            [nzStep]="1000">
           </nz-input-number>
         </ng-template>
       </td>
@@ -74,7 +75,7 @@
           {{ data.ksfw_xms }}
         </ng-container>
         <ng-template #ksfw_xmsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.ksfw_xms" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="width: 10em;" [(ngModel)]="editCache[data.id].data.ksfw_xms" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -84,11 +85,11 @@
           {{ data.ksfw_rcs }}
         </ng-container>
         <ng-template #ksfw_rcsInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.ksfw_rcs" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="width: 10em;" [(ngModel)]="editCache[data.id].data.ksfw_rcs" [nzMin]="0"
+            [nzStep]="1000">
           </nz-input-number>
         </ng-template>
       </td>
-
 
       <td nzAlign="center">
         <div *ngIf="data.islock === 0" class="editable-row-operations">

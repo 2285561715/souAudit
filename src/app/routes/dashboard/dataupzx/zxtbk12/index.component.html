@@ -21,14 +21,16 @@
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
     <tr style="background: linen;font-weight: bold;">
-      <th nzAlign="center" nzWidth="8%">年度</th>
+      <th nzAlign="center" nzWidth="7%">年度</th>
+      <th nzWidth="7%" nzAlign="center">学校代码</th>
+      <th nzWidth="9%" nzAlign="center">总校/分校名称</th>
       <th nzAlign="center">教学实训基地、实验室<br>（含虚拟实验室）名称</th>
-      <th nzAlign="center" nzWidth="9%">建设类型</th>
+      <th nzAlign="center" nzWidth="7%">建设类型</th>
       <th nzAlign="center" nzWidth="9%">使用类型</th>
-      <th nzAlign="center" nzWidth="10%">使用人数</th>
-      <th nzAlign="center" nzWidth="10%">投入经费</th>
-      <th nzAlign="center" nzWidth="9%">投入使用年份</th>
-      <th nzAlign="center" nzWidth="15%">备注说明</th>
+      <th nzAlign="center" nzWidth="9%">使用人数</th>
+      <th nzAlign="center" nzWidth="9%">投入经费</th>
+      <th nzAlign="center" nzWidth="7%">投入使用年份</th>
+      <th nzAlign="center" nzWidth="12%">备注说明</th>
       <th nzAlign="center" nzWidth="7%">操作</th>
     </tr>
   </thead>
@@ -45,6 +47,22 @@
         </ng-template>
       </td>
       <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxdmInputTpl">
+          {{ data.xxdm }}
+        </ng-container>
+        <ng-template #xxdmInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xxdm" />
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxmcInputTpl">
+          {{ data.xxmc }}
+        </ng-container>
+        <ng-template #xxmcInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xxmc" />
+        </ng-template>
+      </td>
+      <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ptmcInputTpl">
           {{ data.ptmc }}
         </ng-container>
@@ -52,14 +70,13 @@
           <input type="text" nz-input [(ngModel)]="editCache[data.id].data.ptmc" />
         </ng-template>
       </td>
-
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jslxInputTpl">
           {{ data.jslx }}
         </ng-container>
         <ng-template #jslxInputTpl>
           <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.ptjb" /> -->
-          <nz-select style="width: 120px;" [(ngModel)]="editCache[data.id].data.jslx" nzAllowClear nzPlaceHolder="建设类别">
+          <nz-select style="width: 100px;" [(ngModel)]="editCache[data.id].data.jslx" nzAllowClear nzPlaceHolder="建设类别">
             <nz-option nzValue="校外" nzLabel="校外"></nz-option>
             <nz-option nzValue="自建" nzLabel="自建"></nz-option>
           </nz-select>
@@ -72,7 +89,7 @@
         </ng-container>
         <ng-template #yylxInputTpl>
           <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.ptjb" /> -->
-          <nz-select style="width: 120px;" [(ngModel)]="editCache[data.id].data.yylx" nzAllowClear nzPlaceHolder="应用类型">
+          <nz-select style="width: 105px;" [(ngModel)]="editCache[data.id].data.yylx" nzAllowClear nzPlaceHolder="应用类型">
             <nz-option nzValue="实训基地" nzLabel="实训基地"></nz-option>
             <nz-option nzValue="实验室" nzLabel="实验室"></nz-option>
             <nz-option nzValue="虚拟实验室" nzLabel="虚拟实验室"></nz-option>

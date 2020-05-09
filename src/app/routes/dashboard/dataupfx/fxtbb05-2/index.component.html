@@ -23,14 +23,14 @@
     <tr style="background: linen;">
       <th nzWidth="6%" nzAlign="center" style="font-weight: bold">年度</th>
       <th nzWidth="6%" nzAlign="center" style="font-weight: bold">姓名</th>
-      <th nzWidth="7%" nzAlign="center" style="font-weight: bold">身份证号</th>
-      <th nzWidth="7%" nzAlign="center" style="font-weight: bold">出生年月<br>198006</th>
+      <th nzWidth="9%" nzAlign="center" style="font-weight: bold">身份证号</th>
+      <th nzWidth="6%" nzAlign="center" style="font-weight: bold">出生年月<br>198006</th>
       <th nzWidth="4%" nzAlign="center" style="font-weight: bold">性别</th>
-      <th nzWidth="11%" nzAlign="center" style="font-weight: bold">毕业专业</th>
+      <th nzWidth="10%" nzAlign="center" style="font-weight: bold">毕业专业</th>
       <th nzAlign="center" style="font-weight: bold">任教学科</th>
       <th nzWidth="5%" nzAlign="center" style="font-weight: bold">任教课程<br />总门次</th>
       <th nzWidth="8%" nzAlign="center" style="font-weight: bold">专业技术职务</th>
-      <th nzWidth="6%" nzAlign="center" style="font-weight: bold">学历</th>
+      <th nzWidth="7%" nzAlign="center" style="font-weight: bold">学历</th>
       <th nzWidth="5%" nzAlign="center" style="font-weight: bold">学位</th>
       <th nzWidth="5%" nzAlign="center" style="font-weight: bold">性质</th>
       <th nzWidth="11%" nzAlign="center" style="font-weight: bold">所在单位</th>
@@ -99,7 +99,7 @@
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else rjxkInputTpl">
           <!-- {{ data.rjxk }} -->
           <span *ngIf="data.rjxk && data.rjxk.length>10" nz-tooltip
-            nzTooltipTitle="{{data.rjxk}}">{{ data.rjxk.substring(0,10) }}...</span>
+            nzTooltipTitle="{{data.rjxk}}">{{ data.rjxk.substring(0,7) }}...</span>
           <span *ngIf="!(data.rjxk && data.rjxk.length>10)">{{ data.rjxk }}</span>
         </ng-container>
         <ng-template #rjxkInputTpl>
@@ -121,14 +121,14 @@
           {{ data.zyjszw }}
         </ng-container>
         <ng-template #zyjszwInputTpl>
-          <!-- <input type="text" style="max-width: 8em" nz-input [(ngModel)]="editCache[data.id].data.zyjszw" /> -->
-          <nz-select style="width: 70px;" [(ngModel)]="editCache[data.id].data.zyjszw" nzAllowClear nzPlaceHolder="职称">
+          <input type="text" style="max-width: 8em" nz-input [(ngModel)]="editCache[data.id].data.zyjszw" />
+          <!-- <nz-select style="width: 95px;" [(ngModel)]="editCache[data.id].data.zyjszw" nzAllowClear nzPlaceHolder="职称">
             <nz-option nzValue="正高" nzLabel="正高"></nz-option>
             <nz-option nzValue="副高" nzLabel="副高"></nz-option>
             <nz-option nzValue="中级" nzLabel="中级"></nz-option>
             <nz-option nzValue="初级" nzLabel="初级"></nz-option>
             <nz-option nzValue="无" nzLabel="无"></nz-option>
-          </nz-select>
+          </nz-select> -->
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -137,7 +137,7 @@
         </ng-container>
         <ng-template #xlInputTpl>
           <!-- <input type="text" style="max-width: 8em" nz-input [(ngModel)]="editCache[data.id].data.xl" /> -->
-          <nz-select style="width: 70px;" [(ngModel)]="editCache[data.id].data.xl" nzAllowClear nzPlaceHolder="学历">
+          <nz-select style="width: 90px;" [(ngModel)]="editCache[data.id].data.xl" nzAllowClear nzPlaceHolder="学历">
             <nz-option nzValue="博士研究生" nzLabel="博研"></nz-option>
             <nz-option nzValue="硕士研究生" nzLabel="硕研"></nz-option>
             <nz-option nzValue="本科" nzLabel="本科"></nz-option>
