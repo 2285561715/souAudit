@@ -53,7 +53,6 @@ export class DashboardDataUpZxtbK18IndexComponent implements OnInit {
 
       this.cdr.detectChanges();
     });
-    console.log(this.listOfData);
   }
 
   startEdit(id: string): void {

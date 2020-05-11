@@ -1,13 +1,15 @@
 <div class="modal-header">
-  <div class="modal-title"><b>【{{ record.name }}】</b> 指标内涵及观测点修改</div>
+  <div class="modal-title"><b>【{{ record.name }}】</b> 指标内涵及说明</div>
 </div>
 <div class="steps-content" [formGroup]="validateForm">
   <nz-form-item>
     <nz-form-label [nzSpan]="3" style="font-size: 16px;font-weight: bold;">指标内涵</nz-form-label>
     <nz-form-control [nzSpan]="21">
-      <ueditor #full formControlName="remark" [config]="config" (onReady)="_ready($event)" (onDestroy)="_destroy()"
+      <!-- <ueditor #full formControlName="remark" [config]="config" (onReady)="_ready($event)" (onDestroy)="_destroy()"
         (ngModelChange)="_change($event)" style="width: 90%; ">
-      </ueditor>
+      </ueditor> -->
+      <textarea formControlName="remark" id="remark" nz-input rows="3" style="width: 95%;"
+        placeholder="指标内涵"></textarea>
     </nz-form-control>
   </nz-form-item>
 
@@ -15,7 +17,7 @@
     <nz-form-label [nzSpan]="3" style="font-size: 16px;font-weight: bold;">观 测 点</nz-form-label>
     <nz-form-control [nzSpan]="21">
       <ueditor #full formControlName="viewPoint" [config]="config" (onReady)="_ready($event)" (onDestroy)="_destroy()"
-        (ngModelChange)="_change($event)" style="width: 90%;">
+        (ngModelChange)="_change($event)" style="width: 95%;">
       </ueditor>
     </nz-form-control>
   </nz-form-item>

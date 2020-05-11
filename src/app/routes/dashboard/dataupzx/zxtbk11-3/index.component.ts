@@ -28,7 +28,7 @@ export class DashboardDataUpZxtbK113IndexComponent implements OnInit {
     this.upUrl =
       '/api/excel/import?tableName=' +
       this.dataStr.dtNo +
-      '&startLine=2' +
+      '&startLine=1' +
       '&appId=' +
       this.dataStr.id +
       '&stepId=' +
@@ -53,7 +53,6 @@ export class DashboardDataUpZxtbK113IndexComponent implements OnInit {
 
       this.cdr.detectChanges();
     });
-    console.log(this.listOfData);
   }
 
   startEdit(id: string): void {

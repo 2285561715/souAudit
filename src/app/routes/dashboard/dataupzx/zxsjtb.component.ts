@@ -33,7 +33,6 @@ export class DashboardDataUpZxSjtbComponent implements OnInit {
   isVisible = false;
 
   ngOnInit(): void {
-    console.log(this.value.dtNo);
     // 导出数据接口地址
     this.outDataUrl =
       '/api/excel/export?tableName=' +

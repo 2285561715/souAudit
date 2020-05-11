@@ -19,7 +19,7 @@
   </div>
 </nz-card>
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
-  <thead>
+  <!-- <thead>
     <tr style="background-color: linen;">
       <th rowspan="2" nzWidth="6%" nzAlign="center">年度</th>
       <th rowspan="2" nzWidth="7%" nzAlign="center">学校代码</th>
@@ -37,6 +37,19 @@
       <th nzAlign="center" nzWidth="9%">用户数</th>
       <th nzAlign="center" nzWidth="9%">下载量</th>
     </tr>
+  </thead> -->
+  <thead>
+    <tr style="background: linen">
+      <th nzAlign="center" nzWidth="9%">年度</th>
+      <th nzAlign="center">应用平台或系统名称</th>
+      <th nzAlign="center" nzWidth="11%">应用类型</th>
+      <th nzAlign="center" nzWidth="11%">技术类型</th>
+      <th nzAlign="center" nzWidth="8%">投入使用年份</th>
+      <th nzAlign="center" nzWidth="9%">用户数</th>
+      <th nzAlign="center" nzWidth="9%">访问量</th>
+      <th nzAlign="center" nzWidth="9%">互动数</th>
+      <th nzWidth="8%" nzAlign="center">操作</th>
+    </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of editRowTable.data">
@@ -50,24 +63,82 @@
         </ng-template>
       </td>
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxdmInputTpl">
-          {{ data.xxdm }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ptmcInputTpl">
+          {{ data.ptmc }}
         </ng-container>
-        <ng-template #xxdmInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xxdm" />
+        <ng-template #ptmcInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.ptmc" />
+        </ng-template>
+      </td>
+
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else yylxInputTpl">
+          {{ data.yylx }}
+        </ng-container>
+        <ng-template #yylxInputTpl>
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.ptjb" /> -->
+          <nz-select style="width: 120px;" [(ngModel)]="editCache[data.id].data.yylx" nzAllowClear nzPlaceHolder="应用类型">
+            <nz-option nzValue="教学管理" nzLabel="教学管理"></nz-option>
+            <nz-option nzValue="教务管理" nzLabel="教务管理"></nz-option>
+            <nz-option nzValue="校务管理" nzLabel="校务管理"></nz-option>
+          </nz-select>
+        </ng-template>
+      </td>
+
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jslxInputTpl">
+          {{ data.jslx }}
+        </ng-container>
+        <ng-template #jslxInputTpl>
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.ptjb" /> -->
+          <nz-select style="width: 120px;" [(ngModel)]="editCache[data.id].data.jslx" nzAllowClear nzPlaceHolder="技术类型">
+            <nz-option nzValue="PC桌面" nzLabel="PC桌面"></nz-option>
+            <nz-option nzValue="移动APP" nzLabel="移动APP"></nz-option>
+            <nz-option nzValue="微信公众号" nzLabel="微信公众号"></nz-option>
+            <nz-option nzValue="其它（小程序）" nzLabel="其它（小程序）"></nz-option>
+          </nz-select>
+        </ng-template>
+      </td>
+
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else synfInputTpl">
+          {{ data.synf }}
+        </ng-container>
+        <ng-template #synfInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.synf" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
+
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else yhsInputTpl">
+          {{ data.yhs }}
+        </ng-container>
+        <ng-template #yhsInputTpl>
+          <nz-input-number style="width: 8em" [(ngModel)]="editCache[data.id].data.yhs" [nzMin]="0" [nzStep]="1000">
+          </nz-input-number>
         </ng-template>
       </td>
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xxmcInputTpl">
-          {{ data.xxmc }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else fwlInputTpl">
+          {{ data.fwl }}
         </ng-container>
-        <ng-template #xxmcInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xxmc" />
+        <ng-template #fwlInputTpl>
+          <nz-input-number style="width: 8em" [(ngModel)]="editCache[data.id].data.fwl" [nzMin]="0" [nzStep]="1000">
+          </nz-input-number>
         </ng-template>
       </td>
-      <!-- id,nd,xxdm,xxmc,wx_mc,wx_gzrs,wx_fwl,wx_hds,app_mc,app_yhs,app_xzs -->
-      <!-- iid,年度,学校代码,学校名称,微信应用名称,关注人数,访问量,互动数,APP应用名称,用户数,下载量 -->
       <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else hdsInputTpl">
+          {{ data.hds }}
+        </ng-container>
+        <ng-template #hdsInputTpl>
+          <nz-input-number style="width: 8em" [(ngModel)]="editCache[data.id].data.hds" [nzMin]="0" [nzStep]="1000">
+          </nz-input-number>
+        </ng-template>
+      </td>
+
+      <!-- <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else wx_mcInputTpl">
           {{ data.wx_mc }}
         </ng-container>
@@ -127,7 +198,7 @@
           <nz-input-number style="width: 7em" [(ngModel)]="editCache[data.id].data.app_xzs" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
-      </td>
+      </td> -->
 
       <td nzAlign="center">
         <div *ngIf="data.islock === 0" class="editable-row-operations">

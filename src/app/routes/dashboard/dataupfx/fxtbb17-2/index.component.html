@@ -34,7 +34,7 @@
           {{ data.nd }} 年
         </ng-container>
         <ng-template #ndInputTpl>
-          <nz-input-number style="width: 6em" [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1">
+          <nz-input-number style="width: 8em" [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
@@ -53,7 +53,7 @@
           {{ data.cjrs }}
         </ng-container>
         <ng-template #cjrsInputTpl>
-          <nz-input-number style="width: 7em" [(ngModel)]="editCache[data.id].data.cjrs" [nzMin]="0" [nzStep]="1000">
+          <nz-input-number style="width: 10em" [(ngModel)]="editCache[data.id].data.cjrs" [nzMin]="0" [nzStep]="1000">
           </nz-input-number>
         </ng-template>
       </td>

@@ -47,12 +47,12 @@ export class DashboardDataUpZxComponent implements OnInit {
         'mod_time',
         'check_time',
       ],
-      predication: " app_id='17' and step_id='21' and dept_id='40' and con_type='sjtb' ",
+      predication: " app_id='17' and step_id='21' and dept_id='37' and con_type='sjtb' ",
       orderDirections: 'dt_no ASC',
     };
     this.http.post('/api/dynamic/search', this.parmOfSql).subscribe((res: any[]) => {
       this.listOfTableList = res;
-      // console.log(this.listOfData);
+
       this.cdr.detectChanges();
     });
 
@@ -89,6 +89,7 @@ export class DashboardDataUpZxComponent implements OnInit {
     });
 
     drawerRef.afterClose.subscribe(data => {
+      this.loadSteps();
       if (typeof data === 'string') {
         this.value = data;
       }

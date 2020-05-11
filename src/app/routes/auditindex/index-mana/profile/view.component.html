@@ -6,9 +6,9 @@
       style="border: 0px;">
       <div *ngIf="panel.isLeaf===true" nz-row nzGutter="8">
         <p style="margin:0;text-align: right;">
-          <button nz-button nzSize="small" nzType="link" (click)="openEdit(panel)" nzTooltipTitle="编辑观测点"
+          <button nz-button nzSize="small" nzType="link" (click)="openEdit(panel)" nzTooltipTitle="编辑内涵及说明"
             nzTooltipPlacement="topCenter" nz-tooltip>
-            <i nz-icon nzType="setting" nzTheme="fill" style="color:coral"></i>内涵和观测点
+            <i nz-icon nzType="setting" nzTheme="fill" style="color:coral"></i>内涵及说明
           </button>
         </p>
         <div class="steps-content" [innerHTML]="panel.viewPoint"></div>

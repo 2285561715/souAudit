@@ -58,7 +58,7 @@ export class DashboardDataUpFxtbB055IndexComponent implements OnInit {
           data: { ...item },
         };
       });
-      console.log(this.listOfData);
+
       this.cdr.detectChanges();
     });
   }

@@ -113,14 +113,8 @@
           {{ data.zyjszw }}
         </ng-container>
         <ng-template #zyjszwInputTpl>
-          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zyjszw" /> -->
-          <nz-select style="width: 80px;" [(ngModel)]="editCache[data.id].data.zyjszw" nzAllowClear nzPlaceHolder="职称">
-            <nz-option nzValue="正高" nzLabel="正高"></nz-option>
-            <nz-option nzValue="副高" nzLabel="副高"></nz-option>
-            <nz-option nzValue="中级" nzLabel="中级"></nz-option>
-            <nz-option nzValue="初级" nzLabel="初级"></nz-option>
-            <nz-option nzValue="无" nzLabel="无"></nz-option>
-          </nz-select>
+          <nz-cascader [nzOptions]="nzOptions" [(ngModel)]="editCache[data.id].data.zyjszw" [nzShowSearch]="true"
+            (ngModelChange)="onChanges($event)"></nz-cascader>
         </ng-template>
       </td>
       <td nzAlign="center">
@@ -149,7 +143,6 @@
             <nz-option nzValue="博士" nzLabel="博士"></nz-option>
             <nz-option nzValue="硕士" nzLabel="硕士"></nz-option>
             <nz-option nzValue="学士" nzLabel="学士"></nz-option>
-            <nz-option nzValue="专科" nzLabel="专科"></nz-option>
             <nz-option nzValue="其它" nzLabel="其它"></nz-option>
             <nz-option nzValue="无任何学位" nzLabel="无"></nz-option>
           </nz-select>

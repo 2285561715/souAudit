@@ -44,20 +44,22 @@ export class DashboardDataUpFxtbB082IndexComponent implements OnInit {
     this.listOfData = [];
     this.parmOfSql = {
       tableName: this.dataStr.dtNo,
-      fieldList: [
-        'id',
-        'nd',
-        'xxdm',
-        'xxmc',
-        'wx_mc',
-        'wx_gzrs',
-        'wx_fwl',
-        'wx_hds',
-        'app_mc',
-        'app_yhs',
-        'app_xzs',
-        'islock',
-      ],
+      // 移动平台
+      // fieldList: [
+      //   'id',
+      //   'nd',
+      //   'xxdm',
+      //   'xxmc',
+      //   'wx_mc',
+      //   'wx_gzrs',
+      //   'wx_fwl',
+      //   'wx_hds',
+      //   'app_mc',
+      //   'app_yhs',
+      //   'app_xzs',
+      //   'islock',
+      // ],
+      fieldList: ['id', 'nd', 'xxdm', 'xxmc', 'ptmc', 'yylx', 'jslx', 'synf', 'yhs', 'fwl', 'hds', 'islock'],
       predication: " xxdm='" + this.loadUser.user.bid + "' ",
       orderDirections: 'nd DESC,id DESC',
     };
@@ -71,7 +73,7 @@ export class DashboardDataUpFxtbB082IndexComponent implements OnInit {
           data: { ...item },
         };
       });
-      console.log(this.listOfData);
+
       this.cdr.detectChanges();
     });
   }

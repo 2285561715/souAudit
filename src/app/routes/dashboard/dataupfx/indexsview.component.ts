@@ -68,7 +68,6 @@ export class DashboardDataUpFxIndexsViewComponent implements OnInit {
       console.log(this.nodes);
       // res.nodes.deep = 5;
       // this.listOfData = this.trToArry.treeToArr(res.nodes);
-      // console.log(this.listOfData);
 
       this.levTempOne = this.nodes[0].children;
       let i = 0;

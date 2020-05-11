@@ -91,14 +91,8 @@
           {{ data.zc }}
         </ng-container>
         <ng-template #zcInputTpl>
-          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zc" /> -->
-          <nz-select style="width: 110px;" [(ngModel)]="editCache[data.id].data.zc" nzAllowClear nzPlaceHolder="职称">
-            <nz-option nzValue="正高级" nzLabel="正高级"></nz-option>
-            <nz-option nzValue="副高级" nzLabel="副高级"></nz-option>
-            <nz-option nzValue="中级" nzLabel="中级"></nz-option>
-            <nz-option nzValue="初级" nzLabel="初级"></nz-option>
-            <nz-option nzValue="无" nzLabel="无"></nz-option>
-          </nz-select>
+          <nz-cascader [nzOptions]="nzOptions" [(ngModel)]="editCache[data.id].data.zc" [nzShowSearch]="true"
+            (ngModelChange)="onChanges($event)"></nz-cascader>
         </ng-template>
       </td>
 

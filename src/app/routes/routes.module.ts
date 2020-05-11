@@ -24,7 +24,7 @@ import { DashboardDataUpZxtbK01IndexComponent } from './dashboard/dataupzx/zxtbk
 import { DashboardDataUpZxtbK021IndexComponent } from './dashboard/dataupzx/zxtbk02-1/index.component';
 import { DashboardDataUpZxtbK022IndexComponent } from './dashboard/dataupzx/zxtbk02-2/index.component';
 import { DashboardDataUpZxtbK023IndexComponent } from './dashboard/dataupzx/zxtbk02-3/index.component';
-import { DashboardDataUpZxtbK031IndexComponent } from './dashboard/dataupzx/zxtbk03-1/index.component';
+import { DashboardDataUpZxtbK024IndexComponent } from './dashboard/dataupzx/zxtbk02-4/index.component';
 import { DashboardDataUpZxtbK032IndexComponent } from './dashboard/dataupzx/zxtbk03-2/index.component';
 import { DashboardDataUpZxtbK033IndexComponent } from './dashboard/dataupzx/zxtbk03-3/index.component';
 import { DashboardDataUpZxtbK034IndexComponent } from './dashboard/dataupzx/zxtbk03-4/index.component';
@@ -43,6 +43,7 @@ import { DashboardDataUpZxtbK10IndexComponent } from './dashboard/dataupzx/zxtbk
 import { DashboardDataUpZxtbK111IndexComponent } from './dashboard/dataupzx/zxtbk11-1/index.component';
 import { DashboardDataUpZxtbK112IndexComponent } from './dashboard/dataupzx/zxtbk11-2/index.component';
 import { DashboardDataUpZxtbK113IndexComponent } from './dashboard/dataupzx/zxtbk11-3/index.component';
+import { DashboardDataUpZxtbK114IndexComponent } from './dashboard/dataupzx/zxtbk11-4/index.component';
 import { DashboardDataUpZxtbK12IndexComponent } from './dashboard/dataupzx/zxtbk12/index.component';
 import { DashboardDataUpZxtbK131IndexComponent } from './dashboard/dataupzx/zxtbk13-1/index.component';
 import { DashboardDataUpZxtbK132IndexComponent } from './dashboard/dataupzx/zxtbk13-2/index.component';
@@ -53,7 +54,7 @@ import { DashboardDataUpZxtbK15IndexComponent } from './dashboard/dataupzx/zxtbk
 import { DashboardDataUpZxtbK16IndexComponent } from './dashboard/dataupzx/zxtbk16/index.component';
 import { DashboardDataUpZxtbK17IndexComponent } from './dashboard/dataupzx/zxtbk17/index.component';
 import { DashboardDataUpZxtbK18IndexComponent } from './dashboard/dataupzx/zxtbk18/index.component';
-import { DashboardDataUpZxtbK20IndexComponent } from './dashboard/dataupzx/zxtbk20/index.component';
+import { DashboardDataUpZxtbK21IndexComponent } from './dashboard/dataupzx/zxtbk21/index.component';
 import { DashboardDataUpZxtbK221IndexComponent } from './dashboard/dataupzx/zxtbk22-1/index.component';
 import { DashboardDataUpZxtbK222IndexComponent } from './dashboard/dataupzx/zxtbk22-2/index.component';
 import { DashboardDataUpZxtbK223IndexComponent } from './dashboard/dataupzx/zxtbk22-3/index.component';
@@ -63,8 +64,10 @@ import { DashboardDataUpZxtbK232IndexComponent } from './dashboard/dataupzx/zxtb
 import { DashboardDataUpFxIndexsViewComponent } from './dashboard/dataupfx/indexsview.component';
 import { DashboardDataUpFxSjtbComponent } from './dashboard/dataupfx/fxsjtb.component';
 import { DashboardDataUpFxWzfileditEditComponent } from './dashboard/dataupfx/wzfiledit/edit.component';
+import { DashboardDataUpFxtbB021IndexComponent } from './dashboard/dataupfx/fxtbb02-1/index.component';
+import { DashboardDataUpFxtbB022IndexComponent } from './dashboard/dataupfx/fxtbb02-2/index.component';
 import { DashboardDataUpFxtbB031IndexComponent } from './dashboard/dataupfx/fxtbb03-1/index.component';
-import { DashboardDataUpFxtbB032IndexComponent } from './dashboard/dataupfx/fxtbb03-2/index.component';
+import { DashboardDataUpFxtbB04IndexComponent } from './dashboard/dataupfx/fxtbb04/index.component';
 import { DashboardDataUpFxtbB051IndexComponent } from './dashboard/dataupfx/fxtbb05-1/index.component';
 import { DashboardDataUpFxtbB052IndexComponent } from './dashboard/dataupfx/fxtbb05-2/index.component';
 import { DashboardDataUpFxtbB053IndexComponent } from './dashboard/dataupfx/fxtbb05-3/index.component';
@@ -75,20 +78,24 @@ import { DashboardDataUpFxtbB06IndexComponent } from './dashboard/dataupfx/fxtbb
 import { DashboardDataUpFxtbB07IndexComponent } from './dashboard/dataupfx/fxtbb07/index.component';
 import { DashboardDataUpFxtbB081IndexComponent } from './dashboard/dataupfx/fxtbb08-1/index.component';
 import { DashboardDataUpFxtbB082IndexComponent } from './dashboard/dataupfx/fxtbb08-2/index.component';
-import { DashboardDataUpFxtbB09IndexComponent } from './dashboard/dataupfx/fxtbb09/index.component';
 import { DashboardDataUpFxtbB101IndexComponent } from './dashboard/dataupfx/fxtbb10-1/index.component';
 import { DashboardDataUpFxtbB102IndexComponent } from './dashboard/dataupfx/fxtbb10-2/index.component';
 import { DashboardDataUpFxtbB11IndexComponent } from './dashboard/dataupfx/fxtbb11/index.component';
+import { DashboardDataUpFxtbB131IndexComponent } from './dashboard/dataupfx/fxtbb13-1/index.component';
 import { DashboardDataUpFxtbB132IndexComponent } from './dashboard/dataupfx/fxtbb13-2/index.component';
 import { DashboardDataUpFxtbB133IndexComponent } from './dashboard/dataupfx/fxtbb13-3/index.component';
 import { DashboardDataUpFxtbB141IndexComponent } from './dashboard/dataupfx/fxtbb14-1/index.component';
 import { DashboardDataUpFxtbB142IndexComponent } from './dashboard/dataupfx/fxtbb14-2/index.component';
-import { DashboardDataUpFxtbB15IndexComponent } from './dashboard/dataupfx/fxtbb15/index.component';
-import { DashboardDataUpFxtbB16IndexComponent } from './dashboard/dataupfx/fxtbb16/index.component';
+import { DashboardDataUpFxtbB151IndexComponent } from './dashboard/dataupfx/fxtbb15-1/index.component';
+import { DashboardDataUpFxtbB152IndexComponent } from './dashboard/dataupfx/fxtbb15-2/index.component';
+import { DashboardDataUpFxtbB161IndexComponent } from './dashboard/dataupfx/fxtbb16-1/index.component';
+import { DashboardDataUpFxtbB162IndexComponent } from './dashboard/dataupfx/fxtbb16-2/index.component';
 import { DashboardDataUpFxtbB171IndexComponent } from './dashboard/dataupfx/fxtbb17-1/index.component';
 import { DashboardDataUpFxtbB172IndexComponent } from './dashboard/dataupfx/fxtbb17-2/index.component';
-import { DashboardDataUpFxtbB18IndexComponent } from './dashboard/dataupfx/fxtbb18/index.component';
-import { DashboardDataUpFxtbB19IndexComponent } from './dashboard/dataupfx/fxtbb19/index.component';
+import { DashboardDataUpFxtbB181IndexComponent } from './dashboard/dataupfx/fxtbb18-1/index.component';
+import { DashboardDataUpFxtbB182IndexComponent } from './dashboard/dataupfx/fxtbb18-2/index.component';
+import { DashboardDataUpFxtbB191IndexComponent } from './dashboard/dataupfx/fxtbb19-1/index.component';
+import { DashboardDataUpFxtbB192IndexComponent } from './dashboard/dataupfx/fxtbb19-2/index.component';
 // -- 文字资料上传
 import { DashboardFileUpZxWzclComponent } from './dashboard/fileup/zxwzcl.component';
 import { DashboardFileUpFxWzclComponent } from './dashboard/fileup/fxwzcl.component';
@@ -142,7 +149,7 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpZxtbK021IndexComponent,
   DashboardDataUpZxtbK022IndexComponent,
   DashboardDataUpZxtbK023IndexComponent,
-  DashboardDataUpZxtbK031IndexComponent,
+  DashboardDataUpZxtbK024IndexComponent,
   DashboardDataUpZxtbK032IndexComponent,
   DashboardDataUpZxtbK033IndexComponent,
   DashboardDataUpZxtbK034IndexComponent,
@@ -161,6 +168,7 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpZxtbK111IndexComponent,
   DashboardDataUpZxtbK112IndexComponent,
   DashboardDataUpZxtbK113IndexComponent,
+  DashboardDataUpZxtbK114IndexComponent,
   DashboardDataUpZxtbK12IndexComponent,
   DashboardDataUpZxtbK131IndexComponent,
   DashboardDataUpZxtbK132IndexComponent,
@@ -171,7 +179,7 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpZxtbK16IndexComponent,
   DashboardDataUpZxtbK17IndexComponent,
   DashboardDataUpZxtbK18IndexComponent,
-  DashboardDataUpZxtbK20IndexComponent,
+  DashboardDataUpZxtbK21IndexComponent,
   DashboardDataUpZxtbK221IndexComponent,
   DashboardDataUpZxtbK222IndexComponent,
   DashboardDataUpZxtbK223IndexComponent,
@@ -181,8 +189,10 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpFxIndexsViewComponent,
   DashboardDataUpFxSjtbComponent,
   DashboardDataUpFxWzfileditEditComponent,
+  DashboardDataUpFxtbB021IndexComponent,
+  DashboardDataUpFxtbB022IndexComponent,
   DashboardDataUpFxtbB031IndexComponent,
-  DashboardDataUpFxtbB032IndexComponent,
+  DashboardDataUpFxtbB04IndexComponent,
   DashboardDataUpFxtbB051IndexComponent,
   DashboardDataUpFxtbB052IndexComponent,
   DashboardDataUpFxtbB053IndexComponent,
@@ -193,20 +203,24 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpFxtbB07IndexComponent,
   DashboardDataUpFxtbB081IndexComponent,
   DashboardDataUpFxtbB082IndexComponent,
-  DashboardDataUpFxtbB09IndexComponent,
   DashboardDataUpFxtbB101IndexComponent,
   DashboardDataUpFxtbB102IndexComponent,
   DashboardDataUpFxtbB11IndexComponent,
+  DashboardDataUpFxtbB131IndexComponent,
   DashboardDataUpFxtbB132IndexComponent,
   DashboardDataUpFxtbB133IndexComponent,
   DashboardDataUpFxtbB141IndexComponent,
   DashboardDataUpFxtbB142IndexComponent,
-  DashboardDataUpFxtbB15IndexComponent,
-  DashboardDataUpFxtbB16IndexComponent,
+  DashboardDataUpFxtbB151IndexComponent,
+  DashboardDataUpFxtbB152IndexComponent,
+  DashboardDataUpFxtbB161IndexComponent,
+  DashboardDataUpFxtbB162IndexComponent,
   DashboardDataUpFxtbB171IndexComponent,
   DashboardDataUpFxtbB172IndexComponent,
-  DashboardDataUpFxtbB18IndexComponent,
-  DashboardDataUpFxtbB19IndexComponent,
+  DashboardDataUpFxtbB181IndexComponent,
+  DashboardDataUpFxtbB182IndexComponent,
+  DashboardDataUpFxtbB191IndexComponent,
+  DashboardDataUpFxtbB192IndexComponent,
   // --文字材料上传
   DashboardFileUpZxWzclComponent,
   DashboardFileUpFxWzclComponent,

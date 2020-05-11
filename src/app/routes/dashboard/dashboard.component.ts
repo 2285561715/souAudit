@@ -51,7 +51,6 @@ export class DashboardComponent implements OnInit {
     this.pgYear = pgdate.getFullYear();
 
     this.loadInfo();
-    console.log(this.listOfData);
   }
 
   loadInfo(): void {
