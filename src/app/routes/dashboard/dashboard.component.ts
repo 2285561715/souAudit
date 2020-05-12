@@ -4,8 +4,6 @@ import { NzDrawerService, NzMessageService, NzModalService } from 'ng-zorro-antd
 
 import { DashboardDataUpZxComponent } from './dataupzx.component';
 import { DashboardDataUpFxComponent } from './dataupfx.component';
-import { DashboardFileUpZxComponent } from './fileupzx.component';
-import { DashboardFileUpFxComponent } from './fileupfx.component';
 import { DashboardZjpsZxComponent } from './zjpszx.component';
 import { DashboardZjpsFxComponent } from './zjpsfx.component';
 import { DashboardJhzjFxComponent } from './jhzjfx.component';
@@ -73,7 +71,8 @@ export class DashboardComponent implements OnInit {
             endDate: '2020-05-31',
             esName: '上海开放大学整体办学水平评估指标及内涵（2020版）',
             esType: '整体办学水平评估',
-            id: 17,
+            id: 19,
+            step_id: 32,
             inTime: '2020-04-30',
             isZx: true,
             startDate: '2020-05-01',
@@ -99,7 +98,8 @@ export class DashboardComponent implements OnInit {
             endDate: '2020-05-31',
             esName: '上海开放大学分校办学水平评估指标及内涵（2020版）',
             esType: '分校办学水平评估',
-            id: 18,
+            id: 20,
+            step_id: 35,
             inTime: '2020-04-30',
             isZx: false,
             startDate: '2020-05-01',
@@ -144,7 +144,7 @@ export class DashboardComponent implements OnInit {
     });
 
     drawerRef.afterOpen.subscribe(() => {
-      console.log('Drawer(Component) open');
+      // console.log('Drawer(Component) open');
     });
 
     drawerRef.afterClose.subscribe(data => {
@@ -171,7 +171,7 @@ export class DashboardComponent implements OnInit {
     });
 
     drawerRef.afterOpen.subscribe(() => {
-      console.log('Drawer(Component) open');
+      // console.log('Drawer(Component) open');
     });
 
     drawerRef.afterClose.subscribe(data => {
@@ -180,35 +180,9 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-  // 总校文件上传file
-  openFileUp(record: any): void {
-    const dataValue = record;
-    dataValue.deptId = this.loadUser.user.bid;
-    dataValue.deptName = this.loadUser.user.bname;
 
-    const drawerRef = this.drawerService.create<DashboardFileUpZxComponent, { value: any }, string>({
-      nzTitle: '【' + this.loadUser.user.bname + '】' + '文字材料上传',
-      nzWidth: 500,
-      nzPlacement: 'left',
-      nzMaskClosable: false,
-      nzContent: DashboardFileUpZxComponent,
-      nzContentParams: {
-        value: dataValue,
-      },
-    });
-
-    drawerRef.afterOpen.subscribe(() => {
-      console.log('Drawer(Component) open');
-    });
-
-    drawerRef.afterClose.subscribe(data => {
-      if (typeof data === 'string') {
-        this.value = data;
-      }
-    });
-  }
   // -------------------------------------------
-  // 分校文件上传file
+  // 视频演示
   openVideo(record: any, fileName: string) {
     const dataValue = record;
     dataValue.fileUrl = fileName;
@@ -304,14 +278,22 @@ export class DashboardComponent implements OnInit {
   // --------------------------------------------
   // 总校按指标展开上传材料，打开模版预览抽屉
   openProfileZX(record: any): void {
-    const drawerRef = this.drawerService.create<DashboardDataUpZxIndexsViewComponent, { value: string }, string>({
+    // console.log(record);
+    const subData = {
+      verIndex: record.verIndex,
+      esName: record.esName,
+      appId: record.id,
+      stepId: record.step_id,
+      deptId: this.loadUser.user.bid,
+    };
+    const drawerRef = this.drawerService.create<DashboardDataUpZxIndexsViewComponent, { value: any }, string>({
       nzTitle: '<b>【' + record.appName + '】 数据填报和材料上传</b>',
       nzWidth: 1280,
       nzPlacement: 'left',
       nzMaskClosable: false,
       nzContent: DashboardDataUpZxIndexsViewComponent,
       nzContentParams: {
-        value: record.verIndex,
+        value: subData,
       },
     });
 
@@ -330,14 +312,22 @@ export class DashboardComponent implements OnInit {
   // --------------------------------------------
   // 分校按指标展开上传材料，打开模版预览抽屉
   openProfileFX(record: any): void {
-    const drawerRef = this.drawerService.create<DashboardDataUpFxIndexsViewComponent, { value: string }, string>({
+    const subData = {
+      verIndex: record.verIndex,
+      esName: record.esName,
+      appId: record.id,
+      stepId: record.step_id,
+      deptId: this.loadUser.user.bid,
+    };
+
+    const drawerRef = this.drawerService.create<DashboardDataUpFxIndexsViewComponent, { value: any }, string>({
       nzTitle: '<b>【' + record.appName + '】 数据填报和材料上传</b>',
       nzWidth: 1280,
       nzPlacement: 'left',
       nzMaskClosable: false,
       nzContent: DashboardDataUpFxIndexsViewComponent,
       nzContentParams: {
-        value: record.verIndex,
+        value: subData,
       },
     });
 

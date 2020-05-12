@@ -13,8 +13,10 @@ import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 import { ArrayService } from '@delon/util';
 import { DashboardDataUpZxWzfileditEditComponent } from './wzfiledit/edit.component';
 import { DomSanitizer } from '@angular/platform-browser';
+import { zip } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
-import { DashboardDataUpZxSjtbComponent } from './zxsjtb.component';
+// import { DashboardDataUpZxSjtbComponent } from './zxsjtb.component';
 
 @Component({
   selector: 'app-dashboard-dataupzx-indexs-view',
@@ -39,169 +41,110 @@ export class DashboardDataUpZxIndexsViewComponent implements OnInit {
   ) {}
 
   searchValue = '';
-  defaultExpandedKeys = ['0'];
-  value: string;
-
+  value: any;
   nodes: any = [];
-  panels: any = [];
   editCache: { [key: string]: any } = {};
-  listOfData: any[] = [];
 
-  levTempOne: any[] = [];
-  levTempTwo: any[] = [];
-  levTempThr: any[] = [];
-  levTempFou: any[] = [];
-  levTempFiv: any[] = [];
+  listOfData: any[] = [];
+  listOfTreeData: any[] = [];
+  listOfDataFile: any[] = [];
+
   isFirst = false;
+  temppdept: string;
+  parmOfSql: any = {};
+
+  tempDCK: any[] = [];
+  tempNode: any[] = [];
 
   ngOnInit() {
-    console.log(this.loadUser);
     this.loadInfo();
   }
 
   loadInfo(): void {
-    // 查询指标体系
     this.listOfData = [];
-    this.http.get('/api/indexes/' + this.value).subscribe((res: any) => {
-      this.nodes = res.nodes;
+    this.listOfDataFile = [];
+    this.parmOfSql = {
+      tableName: 'ad_apply_wbswz',
+      fieldList: [
+        'ver_index',
+        'dept_id',
+        'app_id',
+        'index_id',
+        'step_id',
+        'index_comments',
+        'other_attachments',
+        'up_time',
+      ],
+      predication:
+        " ver_index='" +
+        this.value.verIndex +
+        "' and dept_id='" +
+        this.value.deptId +
+        "' and app_id='" +
+        this.value.appId +
+        "' and step_id='" +
+        this.value.stepId +
+        "'",
+      orderDirections: 'id ASC',
+    };
 
-      console.log(this.nodes);
-      // res.nodes.deep = 5;
-      // this.listOfData = this.trToArry.treeToArr(res.nodes);
+    zip(
+      this.http.get('/api/indexes/' + this.value.verIndex, { esName: this.value.esName }),
+      this.http.post('/api/dynamic/search', this.parmOfSql),
+    )
+      .pipe(
+        catchError(([cxIndexs, cxFiles]) => {
+          return [cxIndexs, cxFiles];
+        }),
+      )
+      .subscribe(
+        ([cxIndexs, cxFiles]) => {
+          this.tempDCK = cxFiles;
+          this.tempNode = cxIndexs.nodes[0].children;
+        },
+        () => {},
+        () => {
+          this.listOfDataFile = this.tempDCK;
+          this.nodes = this.tempNode;
+          this.nodes.deep = 5;
+          this.listOfTreeData = this.trToArry.treeToArr(this.nodes);
+          this.listOfTreeData.forEach(item => {
+            item.dutyDept.includes(this.value.deptId + '') ? (item.isDuty = true) : (item.isDuty = false);
 
-      this.levTempOne = this.nodes[0].children;
-      let i = 0;
-      // 第一层
-      this.levTempOne.forEach(item => {
-        item.id = item.id + '';
-        this.listOfData.push({
-          id: item.id,
-          active: true,
-          name: item.title,
-          level: item.level,
-          isLeaf: item.isLeaf,
-          isStar: item.isStar,
-          idKind: item.idKind,
-          remark: item.remark,
-          vp: item.viewPoint,
-          viewPoint: this.sanitizer.bypassSecurityTrustHtml(item.viewPoint),
-          dtNo: 'sjfxtb_b08_hzbx',
-          dtName: '合作办学',
-          stepId: 29,
-        });
-        // this.listOfData = [...this.listOfData, item];
-
-        // 第二层
-        if (this.levTempOne[i].children && this.levTempOne[i].children.length > 0) {
-          this.levTempTwo = [];
-          this.levTempTwo = this.levTempOne[i].children;
-          let j = 0;
-          this.levTempTwo.forEach(itemtwo => {
-            itemtwo.id = itemtwo.id + '';
-            this.listOfData.push({
-              id: itemtwo.id,
-              active: true,
-              name: itemtwo.title,
-              level: itemtwo.level,
-              isLeaf: itemtwo.isLeaf,
-              isStar: itemtwo.isStar,
-              idKind: itemtwo.idKind,
-              remark: itemtwo.remark,
-              vp: itemtwo.viewPoint,
-              viewPoint: this.sanitizer.bypassSecurityTrustHtml(itemtwo.viewPoint),
-              dtNo: 'sjfxtb_b08_hzbx',
-              dtName: '合作办学',
-              stepId: 29,
-            });
-
-            // 第三层
-            if (this.levTempTwo[j].children && this.levTempTwo[j].children.length > 0) {
-              this.levTempThr = [];
-              this.levTempThr = this.levTempTwo[j].children;
-              let k = 0;
-              this.levTempThr.forEach(itemthr => {
-                itemthr.id = itemthr.id + '';
-                this.listOfData.push({
-                  id: itemthr.id,
-                  active: true,
-                  name: itemthr.title,
-                  level: itemthr.level,
-                  isLeaf: itemthr.isLeaf,
-                  isStar: itemthr.isStar,
-                  idKind: itemthr.idKind,
-                  remark: itemthr.remark,
-                  vp: itemthr.viewPoint,
-                  viewPoint: this.sanitizer.bypassSecurityTrustHtml(itemthr.viewPoint),
-                  dtNo: 'sjfxtb_b08_hzbx',
-                  dtName: '合作办学',
-                  stepId: 29,
-                });
-
-                // 第四层
-                if (this.levTempThr[k].children && this.levTempThr[k].children.length > 0) {
-                  this.levTempFou = [];
-                  this.levTempFou = this.levTempThr[k].children;
-                  let l = 0;
-                  this.levTempFou.forEach(itemfou => {
-                    itemfou.id = itemfou.id + '';
-                    this.listOfData.push({
-                      id: itemfou.id,
-                      active: true,
-                      name: itemfou.title,
-                      level: itemfou.level,
-                      isLeaf: itemfou.isLeaf,
-                      isStar: itemfou.isStar,
-                      idKind: itemfou.idKind,
-                      remark: itemfou.remark,
-                      vp: itemfou.viewPoint,
-                      viewPoint: this.sanitizer.bypassSecurityTrustHtml(itemfou.viewPoint),
-                      dtNo: 'sjfxtb_b08_hzbx',
-                      dtName: '合作办学',
-                      stepId: 29,
-                    });
-
-                    // 第五层
-                    if (this.levTempFou[l].children && this.levTempFou[l].children.length > 0) {
-                      this.levTempFiv = [];
-                      this.levTempFiv = this.levTempFou[l].children;
-                      //
-                      this.levTempFiv.forEach(itemfiv => {
-                        itemfiv.id = itemfiv.id + '';
-                        this.listOfData.push({
-                          id: itemfiv.id,
-                          active: true,
-                          name: itemfiv.title,
-                          level: itemfiv.level,
-                          isLeaf: itemfiv.isLeaf,
-                          isStar: itemfiv.isStar,
-                          idKind: itemfiv.idKind,
-                          remark: itemfiv.remark,
-                          vp: itemfiv.viewPoint,
-                          viewPoint: this.sanitizer.bypassSecurityTrustHtml(itemfiv.viewPoint),
-                          dtNo: 'sjfxtb_b08_hzbx',
-                          dtName: '合作办学',
-                          stepId: 29,
-                        });
-
-                        // 第六层
-                        // if (this.levTempFou[l].children && this.levTempFou[l].children.length > 0) {
-                        // }
-                        l = l + 1;
-                      });
-                    }
-                    l = l + 1;
-                  });
+            if (item.isDuty) {
+              this.listOfDataFile.forEach(itemf => {
+                if (itemf.index_id === item.id) {
+                  item.pgfile = itemf.index_comments;
+                  item.atfile = itemf.other_attachments;
+                  item.uptime = itemf.up_time;
                 }
-                k = k + 1;
               });
             }
-            j = j + 1;
+
+            item.id = item.id + '';
+            this.listOfData.push({
+              id: item.id,
+              active: item.isDuty,
+              name: item.title,
+              level: item.level,
+              isLeaf: item.isLeaf,
+              isStar: item.isStar,
+              idKind: item.idKind,
+              remark: item.remark,
+              dutydept: item.dutyDept,
+              isduty: item.isDuty,
+              viewPoint: this.sanitizer.bypassSecurityTrustHtml(item.viewPoint),
+              pgfile: item.pgfile,
+              pf: this.sanitizer.bypassSecurityTrustHtml(item.pgfile),
+              atfile: item.atfile,
+              af: this.sanitizer.bypassSecurityTrustHtml(item.atfile),
+              uptime: item.uptime,
+            });
           });
-        }
-        i = i + 1;
-      });
-      this.cdr.detectChanges();
-    });
+          this.cdr.detectChanges();
+          console.log(this.listOfData);
+        },
+      );
   }
 
   openFolder(data: NzTreeNode | Required<NzFormatEmitEvent>): void {
@@ -238,35 +181,18 @@ export class DashboardDataUpZxIndexsViewComponent implements OnInit {
     });
   }
 
-  openEdit(record: any[]) {
-    this.modal.create(DashboardDataUpZxWzfileditEditComponent, { record }, { size: 'xl' }).subscribe((res: any) => {
+  openEdit(record: any) {
+    const dataValue = record;
+    dataValue.appId = this.value.appId;
+    dataValue.deptId = this.value.deptId;
+    dataValue.stepId = this.value.stepId;
+    dataValue.verIndex = this.value.verIndex;
+
+    this.modal.create(DashboardDataUpZxWzfileditEditComponent, { dataValue }, { size: 'xl' }).subscribe((res: any) => {
       this.loadInfo();
     });
   }
-  // -------------------------------------------------------------
-  // 分校数据填报，弹出框
-  dataUpFun(panel: any): void {
-    console.log(panel);
-    const tdata = this.value;
-    // tdata.dtNo = 'sjfxtb_b08_hzbx';
-    // tdata.dtName = '合作办学';
-    // tdata.stepId = 29;
 
-    const drawerRef = this.drawerService.create<DashboardDataUpZxSjtbComponent, { value: any }, string>({
-      nzTitle: '【' + panel.dtName + '】数据填报',
-      nzWidth: document.body.clientWidth - 100,
-      nzPlacement: 'right',
-      // nzMaskClosable: false,
-      nzContent: DashboardDataUpZxSjtbComponent,
-      nzContentParams: {
-        value: panel,
-      },
-    });
-
-    drawerRef.afterOpen.subscribe(() => {
-      console.log('Drawer(Component) open');
-    });
-  }
   // --------------------------------------------------------------
   nzEvent(event: NzFormatEmitEvent): void {
     console.log(event);

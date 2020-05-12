@@ -46,13 +46,17 @@
     </div>
     <div nz-col [nzSpan]="6">
       <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTbnd" [nzActions]="[czspUpButton]">
-        <p style="line-height: 2em;font-size: 1.1em;">视频《评估工作指导》</p>
-        <p style="line-height: 2em;font-size: 1.1em;">视频《指标内涵解释》</p>
+        <p style="line-height: 2em;font-size: 1.1em;">
+          <button nz-button nzType="link" down-file http-url="http://139.224.62.102/assets/sou-bxsp-2020-05.pdf"
+            file-name="上海开放大学办学水平评估指标体系介绍" nzSize="small">
+            【上海开放大学办学水平评估指标体系介绍】<i nz-icon nzType="cloud-download" style="color: coral;"></i> </button>
+        </p>
+        <p style="line-height: 2em;font-size: 1.1em;">&nbsp;</p>
       </nz-card>
       <ng-template #titleTemplateTbnd>
         <span style="line-height: 1.5em;font-size: 1.2em;"><b>
             <i nz-icon nzType="build" nzTheme="fill" style="color: coral;"></i>
-            评估指导-操作演示 </b></span>
+            体系介绍及填报操作演示 </b></span>
       </ng-template>
       <ng-template #czspUpButton>
         <button nz-button nzType="default" (click)="openVideo(divData,'sou-zx-bxsp-2020-19')" nzSize="large">
@@ -65,13 +69,17 @@
   <div nz-row [nzGutter]="16" *ngIf="unitNo==='fxtb'">
     <div nz-col [nzSpan]="6">
       <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTbnd" [nzActions]="[czspUpButton]">
-        <p style="line-height: 2em;font-size: 1.1em;">视频《评估工作指导》</p>
-        <p style="line-height: 2em;font-size: 1.1em;">视频《指标内涵解释》</p>
+        <p style="line-height: 2em;font-size: 1.1em;">
+          <button nz-button nzType="link" down-file http-url="http://139.224.62.102/assets/sou-bxsp-2020-05.pdf"
+            file-name="上海开放大学办学水平评估指标体系介绍" nzSize="small">
+            【上海开放大学办学水平评估指标体系介绍】<i nz-icon nzType="cloud-download" style="color: coral;"></i> </button>
+        </p>
+        <p style="line-height: 2em;font-size: 1.1em;">&nbsp;</p>
       </nz-card>
       <ng-template #titleTemplateTbnd>
         <span style="line-height: 1.5em;font-size: 1.2em;"><b>
             <i nz-icon nzType="build" nzTheme="fill" style="color: coral;"></i>
-            评估指导-操作演示 </b></span>
+            体系介绍及填报操作演示 </b></span>
       </ng-template>
       <ng-template #czspUpButton>
         <button nz-button nzType="default" (click)="openVideo(divData,'sou-fx-bxsp-2020-18')" nzSize="large">

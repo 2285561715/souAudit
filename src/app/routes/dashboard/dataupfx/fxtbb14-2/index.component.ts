@@ -45,7 +45,6 @@ export class DashboardDataUpFxtbB142IndexComponent implements OnInit {
           data: { ...item },
         };
       });
-      console.log('helsdafkld');
 
       this.cdr.detectChanges();
     });

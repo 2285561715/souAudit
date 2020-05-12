@@ -13,6 +13,7 @@ import { UploadChangeParam } from 'ng-zorro-antd/upload';
 })
 export class DashboardDataUpFxWzfileditEditComponent implements OnInit {
   record: any = [];
+  dataValue: any;
   i: any;
 
   config = {
@@ -21,15 +22,16 @@ export class DashboardDataUpFxWzfileditEditComponent implements OnInit {
         'bold',
         'italic',
         'underline',
-        'fontborder',
-        'strikethrough',
         'superscript',
         'subscript',
         'removeformat',
         'formatmatch',
-        // 'autotypeset',
-        // 'blockquote',
         'pasteplain',
+        '|',
+        'rowspacingtop',
+        'rowspacingbottom',
+        'lineheight',
+        'fontsize',
         '|',
         'forecolor',
         'backcolor',
@@ -41,22 +43,18 @@ export class DashboardDataUpFxWzfileditEditComponent implements OnInit {
         'insertimage',
         'attachment',
         '|',
+        'indent',
+        'justifyleft',
+        'justifycenter',
+        'justifyright',
+        'justifyjustify',
+        '|',
         'inserttable',
-        'insertparagraphbeforetable',
-        'insertrow',
-        'insertcol',
-        'mergeright',
-        'mergedown',
-        'deleterow',
-        'deletecol',
-        'splittorows',
-        'splittocols',
-        'splittocells',
         'mergecells',
         'deletetable',
         '|',
+        'spechars',
         'horizontal',
-        // 'source',
       ],
     ],
     autoClearinitialContent: true,
@@ -86,47 +84,47 @@ export class DashboardDataUpFxWzfileditEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.record);
-
     this.validateForm = this.fb.group({
-      indexPGfile: [this.record.indexPGfile, [Validators.required]],
-      attachfiles: [this.record.attachfiles, [Validators.required]],
+      indexPGfile: [this.dataValue.pgfile, [Validators.required]],
+      attachfiles: [this.dataValue.atfile, [Validators.required]],
     });
-
-    this.i = this.record;
   }
 
   // --------------------------------------------------------------------------
   onChanges(values: any): void {
-    console.log(values);
+    // console.log(values);
   }
   _ready(event: any): void {}
   _destroy(): void {
-    console.log('enter  destory');
+    // console.log('enter  destory');
   }
   _change(event: any) {}
   // --------------------------------------------------------------------------
-
-  save(value: any) {
-    value.id = this.record.id;
-    const subData = {
-      tableName: 'ad_indexes',
-      updateValues: "report_model='" + value.remark + "'",
-      predication: 'id=' + value.id,
-    };
-    this.http.put('/api/dynamic/update', subData).subscribe(res => {
-      this.msgSrv.success('保存成功');
-      this.modal.close(true);
-    });
-  }
-
-  // --------------------------------------------------------------------------
   submitForm() {
     const fdata = this.validateForm.value;
+    const date = new Date();
     const subData = {
-      tableName: 'ad_indexes',
-      updateValues: "remark='" + fdata.remark + "',view_point='" + fdata.viewPoint + "' ",
-      predication: 'id=' + this.record.id,
+      tableName: 'ad_apply_wbswz',
+      updateValues:
+        "index_comments='" +
+        fdata.indexPGfile +
+        "',other_attachments='" +
+        fdata.attachfiles +
+        "',up_time='" +
+        format(date, 'YYYY-MM-DD HH:mm:ss') +
+        "' ",
+      predication:
+        " ver_index='" +
+        this.dataValue.verIndex +
+        "' and index_id='" +
+        this.dataValue.id +
+        "' and dept_id='" +
+        this.dataValue.deptId +
+        "' and app_id='" +
+        this.dataValue.appId +
+        "' and step_id='" +
+        this.dataValue.stepId +
+        "'",
     };
     this.http.put('/api/dynamic/update', subData).subscribe(res => {
       this.msgSrv.success('保存成功');

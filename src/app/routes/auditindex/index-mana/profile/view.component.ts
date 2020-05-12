@@ -63,7 +63,7 @@ export class AuditindexIndexManaProfileViewComponent implements OnInit {
     // });
     this.http.get('/api/indexes/' + this.value.verIndex, { esName: this.value.esName }).subscribe((res: any) => {
       this.nodes = res.nodes;
-      console.log(this.nodes);
+      // console.log(this.nodes);
       // res.nodes.deep = 5;
       // this.listOfData = this.trToArry.treeToArr(res.nodes);
 

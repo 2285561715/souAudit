@@ -47,7 +47,14 @@ export class DashboardDataUpZxComponent implements OnInit {
         'mod_time',
         'check_time',
       ],
-      predication: " app_id='17' and step_id='21' and dept_id='37' and con_type='sjtb' ",
+      predication:
+        " app_id='" +
+        this.value.id +
+        "' and step_id='" +
+        this.value.step_id +
+        "' and dept_id='" +
+        this.value.deptId +
+        "' and con_type='sjtb' ",
       orderDirections: 'dt_no ASC',
     };
     this.http.post('/api/dynamic/search', this.parmOfSql).subscribe((res: any[]) => {
@@ -55,15 +62,6 @@ export class DashboardDataUpZxComponent implements OnInit {
 
       this.cdr.detectChanges();
     });
-
-    // 可以传 conType='sjtb' or 'file'
-    // this.http
-    //   .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=sjtb')
-    //   .subscribe((res: any) => {
-    //     this.listOfTableList = res;
-    //     console.log(this.listOfTableList);
-    //     this.cdr.detectChanges();
-    //   });
   }
 
   // 数据上传file

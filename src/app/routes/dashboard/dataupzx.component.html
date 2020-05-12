@@ -1,5 +1,5 @@
 <div nz-row [nzGutter]="8" *ngFor="let dt of listOfTableList; let i = index">
-  <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="'【' + dt.index_name+'】'" [nzActions]="[upStatus, checkStatus]"
+  <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="'【' + dt.index_name+'】'" [nzActions]="[upStatus]"
     [nzExtra]="extraTemplate">
     <div nz-col nzSpan="24">
       <i nz-icon nzType="star" nzTheme="fill" style="font-weight: bold;color: crimson;"></i>

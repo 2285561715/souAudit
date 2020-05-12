@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <div class="modal-title">指标<span style="color: tomato;font-weight: bold;">【{{ record.name }}】</span>文字材料上传</div>
+  <div class="modal-title">指标<span style="color: tomato;font-weight: bold;">【{{ dataValue.name }}】</span>文字材料上传</div>
 </div>
 <div class="steps-content" [formGroup]="validateForm">
   <nz-form-item nzJustify="center">
@@ -23,6 +23,6 @@
 
 <div class="modal-footer" style="text-align: right;">
   <button nz-button type="button" (click)="close()">关闭</button>
-  <button nz-button nzType="primary"><span>保存</span>
+  <button nz-button nzType="primary" (click)="submitForm()"><span>保存</span>
   </button>
 </div>
