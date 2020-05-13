@@ -21,7 +21,7 @@ export class DashboardManualVideoPlayComponent implements OnInit {
   videoPlayUrl = '';
 
   ngOnInit(): void {
-    this.videoPlayUrl = 'http://localhost:4200/assets/video/' + this.record.fileUrl + '.mp4';
+    this.videoPlayUrl = 'http://139.224.62.102/assets/video/' + this.record.fileUrl + '.mp4';
   }
 
   close() {
