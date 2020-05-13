@@ -145,7 +145,7 @@
       <ng-template #titleTemplate5><i nz-icon nzType="select" style="color: coral"></i>数据导出</ng-template>
       <p><b>导出本表全部数据：</b></p>
       <br />
-      <button nz-button [nzType]="'primary'" (click)="exportToExcel()">
+      <button nz-button [nzType]="'primary'" (click)="exportToExcel($event)">
         <i nz-icon nzType="check-circle" nzTheme="outline"></i> 导出为 EXCEL >>
       </button>
       <nz-modal [(nzVisible)]="isVisible" nzTitle="数据已导出请点击下载！" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
