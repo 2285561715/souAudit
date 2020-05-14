@@ -187,7 +187,7 @@ export class DashboardComponent implements OnInit {
     const dataValue = record;
     dataValue.fileUrl = fileName;
     this.modal.create(DashboardManualVideoPlayComponent, { record }, { size: 'lg' }).subscribe((res: any) => {
-      this.loadInfo();
+      // this.loadInfo();
     });
   }
   // -------------------------------------------

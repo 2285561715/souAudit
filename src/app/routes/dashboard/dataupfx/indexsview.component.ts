@@ -14,6 +14,7 @@ import { ArrayService } from '@delon/util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { zip } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { DashboardDataUpFxInxCommentComponent } from './inxComment.component';
 import { DashboardDataUpFxWzfileditEditComponent } from './wzfiledit/edit.component';
 
 @Component({
@@ -188,6 +189,12 @@ export class DashboardDataUpFxIndexsViewComponent implements OnInit {
     });
   }
 
+  // -------------------------------------------
+  // 指标内涵说明
+  openInxcoments(record: any) {
+    this.modal.create(DashboardDataUpFxInxCommentComponent, { record }, { size: 'lg' }).subscribe((res: any) => {});
+  }
+  // -------------------------------------------
   // --------------------------------------------------------------
   nzEvent(event: NzFormatEmitEvent): void {
     console.log(event);

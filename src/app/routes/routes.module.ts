@@ -61,6 +61,7 @@ import { DashboardDataUpZxtbK232IndexComponent } from './dashboard/dataupzx/zxtb
 // 分校数据填报
 import { DashboardDataUpFxIndexsViewComponent } from './dashboard/dataupfx/indexsview.component';
 import { DashboardDataUpFxSjtbComponent } from './dashboard/dataupfx/fxsjtb.component';
+import { DashboardDataUpFxInxCommentComponent } from './dashboard/dataupfx/inxComment.component';
 import { DashboardDataUpFxWzfileditEditComponent } from './dashboard/dataupfx/wzfiledit/edit.component';
 import { DashboardDataUpFxtbB021IndexComponent } from './dashboard/dataupfx/fxtbb02-1/index.component';
 import { DashboardDataUpFxtbB022IndexComponent } from './dashboard/dataupfx/fxtbb02-2/index.component';
@@ -179,6 +180,7 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpZxtbK232IndexComponent,
   // --分校数据填报
   DashboardDataUpFxIndexsViewComponent,
+  DashboardDataUpFxInxCommentComponent,
   DashboardDataUpFxSjtbComponent,
   DashboardDataUpFxWzfileditEditComponent,
   DashboardDataUpFxtbB021IndexComponent,
