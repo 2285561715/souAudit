@@ -11,10 +11,13 @@ import {
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 import { ArrayService } from '@delon/util';
-import { DashboardDataUpZxWzfileditEditComponent } from './wzfiledit/edit.component';
+
 import { DomSanitizer } from '@angular/platform-browser';
 import { zip } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
+import { DashboardDataUpZxInxCommentComponent } from './inxComment.component';
+import { DashboardDataUpZxWzfileditEditComponent } from './wzfiledit/edit.component';
 
 // import { DashboardDataUpZxSjtbComponent } from './zxsjtb.component';
 
@@ -192,7 +195,10 @@ export class DashboardDataUpZxIndexsViewComponent implements OnInit {
       this.loadInfo();
     });
   }
-
+  // 指标内涵说明
+  openInxcoments(record: any) {
+    this.modal.create(DashboardDataUpZxInxCommentComponent, { record }, { size: 'lg' }).subscribe((res: any) => {});
+  }
   // --------------------------------------------------------------
   nzEvent(event: NzFormatEmitEvent): void {
     console.log(event);

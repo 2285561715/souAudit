@@ -18,21 +18,14 @@
             (click)="openEdit(panel)" nzTooltipTitle="指标支撑文字材料上传或修改" nzTooltipPlacement="topCenter" nz-tooltip>
             <i nz-icon nzType="edit" nzTheme="fill"></i>上传材料
           </button>
-          <!-- <nz-divider nzType="vertical"></nz-divider>
-          <button nz-button nzSize="small" nzType="link" (click)="openInxcoments(panel)"
-            nzTooltipTitle="指标支撑文字材料上传或修改" nzTooltipPlacement="topCenter" nz-tooltip>
-            <指标内涵及说明>
-          </button> -->
+          <nz-divider nzType="vertical"></nz-divider>
+          <button nz-button nzSize="small" nzType="link" (click)="openInxcoments(panel)" nzTooltipTitle="指标支撑文字材料上传或修改"
+            nzTooltipPlacement="topCenter" nz-tooltip>
+            <指标内涵及说明> &nbsp;
+          </button>
 
-          <!-- <nz-divider nzType="vertical"></nz-divider>
-            <button nz-button nzSize="small" nzType="primary" style="background-color: olivedrab;border: 0;"
-              (click)="dataUpFun(panel)" nzTooltipTitle="填报指标支撑数据" nzTooltipPlacement="topCenter" nz-tooltip>
-              <i nz-icon nzType="bar-chart"></i>数据填报
-            </button>
-            &nbsp;&nbsp;
-            <i nz-icon nzType="clock-circle" style="color: rgb(122, 121, 121);"></i> 最近1次填报：2020-05-10 12:59:48 -->
         </p>
-        <div class="steps-content" [innerHTML]="panel.remark"></div>
+        <div *ngIf="!panel.uptime" class="steps-content" [innerHTML]="panel.remark"></div>
         <div *ngIf="!panel.uptime" class="steps-content" [innerHTML]="panel.viewPoint"></div>
         <div *ngIf="panel.uptime" class="steps-comment" [innerHTML]="panel.pf"></div>
         <div *ngIf="panel.uptime" class="steps-comment" [innerHTML]="panel.af"></div>

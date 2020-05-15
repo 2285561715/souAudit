@@ -59,7 +59,6 @@ export class DashboardDataUpZxComponent implements OnInit {
     };
     this.http.post('/api/dynamic/search', this.parmOfSql).subscribe((res: any[]) => {
       this.listOfTableList = res;
-
       this.cdr.detectChanges();
     });
   }

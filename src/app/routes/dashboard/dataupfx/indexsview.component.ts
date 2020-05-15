@@ -138,7 +138,7 @@ export class DashboardDataUpFxIndexsViewComponent implements OnInit {
             });
           });
           this.cdr.detectChanges();
-          console.log(this.listOfData);
+          // console.log(this.listOfData);
         },
       );
   }

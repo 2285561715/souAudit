@@ -17,6 +17,7 @@ import { DashboardManualVideoPlayComponent } from './dashboard/manual/videoplay.
 // --总校数据填报
 import { DashboardDataUpZxIndexsViewComponent } from './dashboard/dataupzx/indexsview.component';
 import { DashboardDataUpZxSjtbComponent } from './dashboard/dataupzx/zxsjtb.component';
+import { DashboardDataUpZxInxCommentComponent } from './dashboard/dataupzx/inxComment.component';
 import { DashboardDataUpZxWzfileditEditComponent } from './dashboard/dataupzx/wzfiledit/edit.component';
 import { DashboardDataUpZxtbK01IndexComponent } from './dashboard/dataupzx/zxtbk01/index.component';
 import { DashboardDataUpZxtbK021IndexComponent } from './dashboard/dataupzx/zxtbk02-1/index.component';
@@ -136,6 +137,7 @@ const COMPONENTS_NOROUNT = [
   DashboardManualVideoPlayComponent,
   // --总校数据填报
   DashboardDataUpZxIndexsViewComponent,
+  DashboardDataUpZxInxCommentComponent,
   DashboardDataUpZxSjtbComponent,
   DashboardDataUpZxWzfileditEditComponent,
   DashboardDataUpZxtbK01IndexComponent,

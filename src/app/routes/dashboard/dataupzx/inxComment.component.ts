@@ -4,11 +4,11 @@ import { _HttpClient } from '@delon/theme';
 import { format } from 'date-fns';
 
 @Component({
-  selector: 'app-dashboard-dataupfx-inxcomment',
+  selector: 'app-dashboard-dataupzx-inxcomment',
   templateUrl: './inxComment.component.html',
   styleUrls: ['./inxComment.component.less'],
 })
-export class DashboardDataUpFxInxCommentComponent implements OnInit {
+export class DashboardDataUpZxInxCommentComponent implements OnInit {
   constructor(
     private modal: NzModalRef,
     private msgSrv: NzMessageService,

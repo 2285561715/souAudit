@@ -34,7 +34,7 @@ export class DashboardDataUpFxComponent implements OnInit {
       .get('/api/deptrwcx?appId=' + this.value.id + '&deptId=' + this.value.deptId + '&conType=sjtb')
       .subscribe((res: any) => {
         this.listOfTableList = res;
-        console.log(this.listOfTableList);
+        // console.log(this.listOfTableList);
         this.cdr.detectChanges();
       });
   }
