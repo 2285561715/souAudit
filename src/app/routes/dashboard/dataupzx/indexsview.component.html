@@ -31,7 +31,7 @@
             &nbsp;&nbsp;
             <i nz-icon nzType="clock-circle" style="color: rgb(122, 121, 121);"></i> 最近1次填报：2020-05-10 12:59:48 -->
         </p>
-        <div class="steps-content" [innerHTML]="panel.remark"></div>
+        <div *ngIf="panel.isduty&&!panel.uptime" class="steps-content" [innerHTML]="panel.remark"></div>
         <div *ngIf="panel.isduty&&!panel.uptime" class="steps-content" [innerHTML]="panel.viewPoint"></div>
         <div *ngIf="panel.isduty&&panel.uptime" class="steps-comment" [innerHTML]="panel.pf"></div>
         <div *ngIf="panel.isduty&&panel.uptime" class="steps-comment" [innerHTML]="panel.af"></div>
