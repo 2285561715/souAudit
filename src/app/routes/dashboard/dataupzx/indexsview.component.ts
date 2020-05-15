@@ -145,7 +145,7 @@ export class DashboardDataUpZxIndexsViewComponent implements OnInit {
             });
           });
           this.cdr.detectChanges();
-          console.log(this.listOfData);
+          // console.log(this.listOfData);
         },
       );
   }
