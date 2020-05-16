@@ -1,9 +1,13 @@
 <div class="modal-header" style="padding-top: 32px">
   <div class="modal-title">【{{record.dtName}}】</div>
 </div>
-<div *ngIf="record.dtNo==='sjzxtb_k06_bxxt'">
+<!-- <div *ngIf="record.dtNo==='sjzxtb_k06_bxxt'">
   <app-tbjczx-zxtbk06-index [dataStr]="record"></app-tbjczx-zxtbk06-index>
-</div>
+</div> -->
+<nz-card>
+  <sf (formSubmit)="st.reset($event)" (formReset)="st.reset($event)"></sf>
+  <st #st [data]="this.listOfData" [columns]="columns"></st>
+</nz-card>
 <!-- <nz-collapse>
   <nz-collapse-panel nzHeader="统计结果数据" nzActive="true">
     <nz-table nzTemplateMode #borderedTable nzBordered nzSize="small">

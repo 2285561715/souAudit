@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient, ModalHelper, SettingsService } from '@delon/theme';
 import { NzDrawerService, NzMessageService, NzModalService } from 'ng-zorro-antd';
+import { format } from 'date-fns';
 
 import { DashboardDataUpZxComponent } from './dataupzx.component';
 import { DashboardDataUpFxComponent } from './dataupfx.component';
@@ -80,6 +81,24 @@ export class DashboardComponent implements OnInit {
           },
         ];
         break;
+      case 'zxbmsh':
+        this.listOfData = [
+          {
+            appName: '2020年上海开放大学整体办学水平评估',
+            dataEndDate: '2019-12-31',
+            dataFromDate: '2019-01-01',
+            endDate: '2020-05-31',
+            esName: '上海开放大学整体办学水平评估指标及内涵（试行）',
+            esType: '整体办学水平评估',
+            id: 19,
+            step_id: 32,
+            inTime: '2020-04-30',
+            isZx: true,
+            startDate: '2020-05-01',
+            verIndex: 'sou-zx-bxsp-2020',
+          },
+        ];
+        break;
       case 'fxtb':
         // this.http.get('/api/adapply').subscribe((res: any[]) => {
         //   console.log(res);
@@ -90,6 +109,24 @@ export class DashboardComponent implements OnInit {
         //   });
         //   this.cdr.detectChanges();
         // });
+        this.listOfData = [
+          {
+            appName: '2020年上海开放大学分校办学水平评估',
+            dataEndDate: '2019-12-31',
+            dataFromDate: '2019-01-01',
+            endDate: '2020-05-31',
+            esName: '上海开放大学分校办学水平评估指标及内涵（试行）',
+            esType: '分校办学水平评估',
+            id: 20,
+            step_id: 35,
+            inTime: '2020-04-30',
+            isZx: false,
+            startDate: '2020-05-01',
+            verIndex: 'sou-fx-bxsp-2020',
+          },
+        ];
+        break;
+      case 'fxsh':
         this.listOfData = [
           {
             appName: '2020年上海开放大学分校办学水平评估',
@@ -342,4 +379,59 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+  // ------------------------------------------------------------------
+  checkDataConfirm(): void {
+    this.modalService.confirm({
+      nzTitle: '<i>确认后，数据和材料将正式提交总校！</i>',
+      nzContent: '<b>确认要操作吗？</b>',
+      nzOnOk: () => this.checkInfo(),
+    });
+  }
+
+  checkInfo() {
+    const date = new Date();
+    console.log(this.listOfData[0].verIndex);
+    console.log(this.listOfData[0].id);
+    console.log(this.loadUser.user.bid);
+    console.log(this.listOfData[0].step_id);
+    // 确认数据填报
+    const subData = {
+      tableName: 'ad_apply_wbstb',
+      updateValues: "check_time='" + format(date, 'YYYY-MM-DD HH:mm:ss') + "',is_done='1' ",
+      predication:
+        "ver_index='" +
+        this.listOfData[0].verIndex +
+        "' and app_id='" +
+        this.listOfData[0].id +
+        "' and dept_id='" +
+        this.loadUser.user.bid +
+        "' and step_id='" +
+        this.listOfData[0].step_id +
+        "'",
+    };
+    this.http.put('/api/dynamic/update', subData).subscribe(res => {
+      this.msgSrv.success('填报数据确认成功');
+    });
+
+    // 确认文字材料
+    const subfile = {
+      tableName: 'ad_apply_wbswz',
+      updateValues: "check_time='" + format(date, 'YYYY-MM-DD HH:mm:ss') + "',is_done='1'",
+      predication:
+        "ver_index='" +
+        this.listOfData[0].verIndex +
+        "' and app_id='" +
+        this.listOfData[0].id +
+        "' and dept_id='" +
+        this.loadUser.user.bid +
+        "' and step_id='" +
+        this.listOfData[0].step_id +
+        "'",
+    };
+    this.http.put('/api/dynamic/update', subfile).subscribe(res => {
+      this.msgSrv.success('上传材料确认成功');
+    });
+    //
+  }
+  // ------------------------------------------------------------------
 }

@@ -69,6 +69,76 @@
     </div>
   </div>
 
+  <!-- 总校部门审核员 -->
+  <div nz-row [nzGutter]="16" *ngIf="unitNo==='zxbmsh'">
+    <div nz-col [nzSpan]="8">
+      <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTb1" [nzActions]="[indexDownFile]">
+        <p style="line-height: 3em;font-size: 1.2em;">评估周期：{{ divData.startDate }}至{{ divData.endDate }}</p>
+        <p style="line-height: 3em;font-size: 1.2em;">评估类别：{{ divData.esType }} </p>
+      </nz-card>
+      <ng-template #titleTemplateTb1>
+        <span style="line-height: 1.5em;font-size: 1.2em;"><b><i nz-icon nzType="aliyun" style="color: coral;"></i>
+            {{divData.appName}} </b></span>
+      </ng-template>
+      <ng-template #indexDownFile>
+        <button nz-button nzType="link" down-file [http-url]="'http://139.224.62.102/assets/'+divData.verIndex+'.pdf'"
+          [file-name]="divData.esName+'.pdf'" nzSize="large">
+          《{{divData.esName}}》下载<i nz-icon nzType="cloud-download" style="color: coral;"></i> </button>
+      </ng-template>
+    </div>
+    <div nz-col [nzSpan]="10">
+      <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTb2"
+        [nzActions]="[dataUpButton,fileUpButton,checkButton]">
+        <p style="line-height: 3em;font-size: 1.2em;">
+          填报周期：<b>{{ divData.startDate }} 至 {{ divData.endDate }}</b>
+        </p>
+        <p style="line-height: 3em;font-size: 1.2em;"> &nbsp; </p>
+      </nz-card>
+      <ng-template #titleTemplateTb2>
+        <span style="line-height: 1.5em;font-size: 1.2em; color: crimson; "><b>
+            <i nz-icon nzType="codepen-square" nzTheme="fill"></i>【{{pgYear}}】 数据填报和文字材料上传</b></span>
+      </ng-template>
+      <ng-template #dataUpButton>
+        <button *ngIf="divData.verIndex.toString().substring(4,6)==='zx'" nz-button nzType="primary" nzSize="large"
+          style="background: chocolate;border: 0px;" (click)="openDataUp(divData)">
+          <i nz-icon nzType="edit" nzTheme="fill"></i><b> 查看数据填报</b></button>
+      </ng-template>
+      <ng-template #fileUpButton>
+        <button *ngIf="divData.verIndex.toString().substring(4,6)==='zx'" nz-button nzType="primary" nzSize="large"
+          style="background: lightseagreen;border: 0px;" (click)="openProfileZX(divData)">
+          <i nz-icon nzType="copy" nzTheme="fill"></i><b> 查看上传材料</b></button>
+      </ng-template>
+      <ng-template #checkButton>
+        <button *ngIf="divData.verIndex.toString().substring(4,6)==='zx'" nz-button nzType="danger" nzSize="large"
+          (click)="checkDataConfirm(divData)">
+          <i nz-icon nzType="check-circle" nzTheme="fill"></i><b> 填报数据确认</b></button>
+      </ng-template>
+    </div>
+    <div nz-col [nzSpan]="6">
+      <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTbnd" [nzActions]="[czspUpButton]">
+        <p style="line-height: 3em;font-size: 1.2em;">
+          <button nz-button nzType="link" down-file http-url="http://139.224.62.102/assets/sou-bxsp-2020-05.pdf"
+            file-name="上海开放大学办学水平评估指标体系介绍" nzSize="large">
+            >上海开放大学办学水平评估指标体系介绍<i nz-icon nzType="cloud-download" style="color: coral;"></i> </button>
+        </p>
+        <p style="line-height: 3em;font-size: 1.2em;">
+          <button nz-button nzType="link" down-file http-url="http://139.224.62.102/assets/manul_zx.pdf"
+            file-name="总校数据填报操作手册（2020年）" nzSize="large">
+            >总校数据填报操作手册（2020年）】<i nz-icon nzType="cloud-download" style="color: coral;"></i> </button>
+        </p>
+      </nz-card>
+      <ng-template #titleTemplateTbnd>
+        <span style="line-height: 1.5em;font-size: 1.2em;"><b>
+            <i nz-icon nzType="build" nzTheme="fill" style="color: coral;"></i>
+            体系介绍及填报操作演示 </b></span>
+      </ng-template>
+      <ng-template #czspUpButton>
+        <button nz-button nzType="default" (click)="openVideo(divData,'sou-zx-bxsp-2020-19')" nzSize="large">
+          <i nz-icon nzType="play-circle" nzTheme="fill" style="color: coral;"></i> <b>操 作 演 示</b></button>
+      </ng-template>
+    </div>
+  </div>
+
   <!-- 分校填报员 -->
   <div nz-row [nzGutter]="16" *ngIf="unitNo==='fxtb'">
     <div nz-col [nzSpan]="6">
@@ -120,6 +190,76 @@
         <button *ngIf="divData.verIndex.toString().substring(4,6)==='fx'" nz-button nzType="primary" nzSize="large"
           style=" background:olive ;border: 0px;" (click)="openJhZjFx(divData)">
           <i nz-icon nzType="reconciliation"></i><b> 年计划总结</b></button>
+      </ng-template>
+    </div>
+    <div nz-col [nzSpan]="8">
+      <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTb1" [nzActions]="[indexDownFile]">
+        <p style="line-height: 3em;font-size: 1.2em;">评估周期：{{ divData.startDate }}至{{ divData.endDate }}</p>
+        <p style="line-height: 3em;font-size: 1.2em;">评估类别：{{ divData.esType }} </p>
+      </nz-card>
+      <ng-template #titleTemplateTb1>
+        <span style="line-height: 1.5em;font-size: 1.2em;"><b><i nz-icon nzType="aliyun" style="color: coral;"></i>
+            {{divData.appName}} </b></span>
+      </ng-template>
+      <ng-template #indexDownFile>
+        <button nz-button nzType="link" down-file [http-url]="'http://139.224.62.102/assets/'+divData.verIndex+'.pdf'"
+          nzSize="large" [file-name]="divData.esName+'.pdf'">
+          《{{divData.esName}}》下载<i nz-icon nzType="cloud-download" style="color: coral;"></i> </button>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- 分校领导审核 -->
+  <div nz-row [nzGutter]="16" *ngIf="unitNo==='fxsh'">
+    <div nz-col [nzSpan]="6">
+      <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTbnd" [nzActions]="[czspUpButton]">
+        <p style="line-height: 3em;font-size: 1.2em;text-align: left;">
+          <button nz-button nzType="link" down-file http-url="http://139.224.62.102/assets/sou-bxsp-2020-05.pdf"
+            file-name="上海开放大学办学水平评估指标体系介绍" nzSize="large">
+            >上海开放大学办学水平评估指标体系介绍<i nz-icon nzType="cloud-download" style="color: coral;"></i> </button>
+        </p>
+        <p style="line-height: 3em;font-size: 1.2em;text-align: left;">
+          <button nz-button nzType="link" down-file http-url="http://139.224.62.102/assets/manul_fx.pdf"
+            file-name="分校数据填报操作手册（2020年）" nzSize="large">
+            >分校数据填报操作手册（2020年）<i nz-icon nzType="cloud-download" style="color: coral;"></i> </button>
+        </p>
+      </nz-card>
+      <ng-template #titleTemplateTbnd>
+        <span style="line-height: 1.5em;font-size: 1.2em;"><b>
+            <i nz-icon nzType="build" nzTheme="fill" style="color: coral;"></i>
+            体系介绍及填报操作演示 </b></span>
+      </ng-template>
+      <ng-template #czspUpButton>
+        <button nz-button nzType="default" (click)="openVideo(divData,'sou-fx-bxsp-2020-18')" nzSize="large">
+          <i nz-icon nzType="play-circle" nzTheme="fill" style="color: coral;"></i> <b>操 作 演 示</b></button>
+      </ng-template>
+    </div>
+    <div nz-col [nzSpan]="10">
+      <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTb2"
+        [nzActions]="[dataUpButton,fileUpButton,jhzjUpButton]">
+        <p style="line-height: 3em;font-size: 1.2em;">
+          填报周期：<b>{{ divData.startDate }} 至 {{ divData.endDate }}</b>
+        </p>
+        <p style="line-height: 3em;font-size: 1.2em;"> &nbsp; </p>
+      </nz-card>
+      <ng-template #titleTemplateTb2>
+        <span style="line-height: 1.5em;font-size: 1.2em; color: crimson; "><b>
+            <i nz-icon nzType="codepen-square" nzTheme="fill"></i>【{{pgYear}}】 数据填报和文字材料上传</b></span>
+      </ng-template>
+      <ng-template #dataUpButton>
+        <button *ngIf="divData.verIndex.toString().substring(4,6)==='fx'" nz-button nzType="primary" nzSize="large"
+          style="background: chocolate;border: 0px;" (click)="openDataUpFx(divData)">
+          <i nz-icon nzType="edit" nzTheme="fill"></i><b> 查看填报数据</b></button>
+      </ng-template>
+      <ng-template #fileUpButton>
+        <button *ngIf="divData.verIndex.toString().substring(4,6)==='fx'" nz-button nzType="primary" nzSize="large"
+          style="background: lightseagreen;border: 0px;" (click)="openProfileFX(divData)">
+          <i nz-icon nzType="copy" nzTheme="fill"></i><b> 查看上报材料</b></button>
+      </ng-template>
+      <ng-template #jhzjUpButton>
+        <button *ngIf="divData.verIndex.toString().substring(4,6)==='fx'" nz-button nzType="danger" nzSize="large"
+          (click)="checkDataConfirm(divData)">
+          <i nz-icon nzType="check-circle" nzTheme="fill"></i><b> 填报数据确认</b></button>
       </ng-template>
     </div>
     <div nz-col [nzSpan]="8">
