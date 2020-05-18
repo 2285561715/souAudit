@@ -1,9 +1,10 @@
 <div nz-row [nzGutter]="8" *ngFor="let astep of listOfAppStep;let i=index">
 
   <nz-card *ngIf="astep.stepType==='评估启动'&&value.verIndex.substring(4,6)==='zx'" nzSize="small" [nzHoverable]="true"
-    nzType="inner" [nzTitle]='i+1+". " + astep.stepName'>
+    nzType="inner" [nzTitle]='i+1+". " + astep.stepName' style="font-weight: bold;">
     <p>时间段：{{astep.fromDate.substring(0,10)}} 至 {{astep.endDate.substring(0,10)}}</p>
   </nz-card>
+
   <nz-card *ngIf="astep.stepType==='评估启动'&&value.verIndex.substring(4,6)==='fx'" nzSize="small" [nzHoverable]="true"
     nzType="inner" [nzTitle]='i+1+". " + astep.stepName' [nzActions]="[actionSetbranch]">
     <p>时间段：{{astep.fromDate.substring(0,10)}} 至 {{astep.endDate.substring(0,10)}}</p>
@@ -13,26 +14,32 @@
     [nzTitle]='i+1+". " + astep.stepName' [nzActions]="[actionLookSjcj]">
     <p>时间段：{{astep.fromDate.substring(0,10)}} 至 {{astep.endDate.substring(0,10)}} </p>
   </nz-card>
+
   <nz-card *ngIf="astep.stepType==='数据填报'" nzSize="small" [nzHoverable]="true" nzType="inner"
-    [nzTitle]='i+1+". " + astep.stepName' [nzActions]="[actionSjbtTask, actionSjbtStatus]">
+    [nzTitle]='i+1+". " + astep.stepName' [nzActions]="[actionSjbtTask, actionSjbtStatus, actionFileStatus]">
     <p>时间段：{{astep.fromDate.substring(0,10)}} 至 {{astep.endDate.substring(0,10)}} </p>
   </nz-card>
+
   <nz-card *ngIf="astep.stepType==='数据审核'" nzSize="small" [nzHoverable]="true" nzType="inner"
     [nzTitle]='i+1+". " + astep.stepName' [nzActions]="[actionLockSjtb]">
     <p>时间段：{{astep.fromDate.substring(0,10)}} 至 {{astep.endDate.substring(0,10)}} </p>
   </nz-card>
+
   <nz-card *ngIf="astep.stepType==='预评估'" nzSize="small" [nzHoverable]="true" nzType="inner"
     [nzTitle]='i+1+". " + astep.stepName' [nzActions]="[actionPgzjSets, actionPgProcess, actionPgyj]">
     <p>时间段：{{astep.fromDate.substring(0,10)}} 至 {{astep.endDate.substring(0,10)}} </p>
   </nz-card>
+
   <nz-card *ngIf="astep.stepType==='专家评审'" nzSize="small" [nzHoverable]="true" nzType="inner"
     [nzTitle]='i+1+". " + astep.stepName' [nzActions]="[actionPgzjSets, actionPgProcess, actionPgyj]">
     <p>时间段：{{astep.fromDate.substring(0,10)}} 至 {{astep.endDate.substring(0,10)}} </p>
   </nz-card>
+
   <nz-card *ngIf="astep.stepType==='评估报告'" nzSize="small" [nzHoverable]="true" nzType="inner"
     [nzTitle]='i+1+". " + astep.stepName' [nzActions]="[actionPgbg]">
     <p>时间段：{{astep.fromDate.substring(0,10)}} 至 {{astep.endDate.substring(0,10)}} </p>
   </nz-card>
+
   <nz-card *ngIf="astep.stepType==='评估结束'" nzSize="small" [nzHoverable]="true" nzType="inner"
     [nzTitle]='i+1+". " + astep.stepName' [nzActions]="[actionEnd]">
     <p>时间段：{{astep.fromDate.substring(0,10)}} 至 {{astep.endDate.substring(0,10)}} </p>
@@ -40,60 +47,67 @@
 
   <ng-template #actionSetbranch>
     <a (click)="setBranchList(astep)">
-      <i nz-icon nzType="cluster" style="color: coral"></i> 设置评审分校及其参评模块</a>
+      <i nz-icon nzType="cluster" style="color: coral;font-weight: bold"></i> 设置评审分校及其参评模块</a>
   </ng-template>
 
   <ng-template #actionLookSjcj>
-    <a (click)="lookSjcjTable(astep)"><i nz-icon nzType="table" style="color: coral"></i> 查看数据</a>
+    <a (click)="lookSjcjTable(astep)"><i nz-icon nzType="table" style="color: coral;font-weight: bold"></i> 查看数据</a>
   </ng-template>
 
   <ng-template #actionSjbtTask>
-    <a *ngIf="!astep.isTaskOut" (click)="appSjtbTask(astep)">
-      <i nz-icon nzType="caret-right" style="color: coral"></i> 启动填报</a>
-    <a *ngIf="astep.isTaskOut">
-      <i nz-icon nzType="check-circle" nzTheme="fill" style="color:chartreuse"></i> 任务已发布</a>
+    <a *ngIf="!astep.isTaskOut" (click)="appSjtbTask(astep)" style="font-weight: bold;">
+      <i nz-icon nzType="caret-right" style="color: coral;font-weight: bold;"></i> 启动填报</a>
+    <a *ngIf="astep.isTaskOut" style="font-weight: bold;">
+      <i nz-icon nzType="check-circle" nzTheme="fill" style="color:lime;"></i> 任务已发布</a>
   </ng-template>
 
   <ng-template #actionSjbtStatus>
-    <a *ngIf="value.verIndex.substring(4,6)==='zx'" (click)="zxSjtbProcess(astep)">
-      <i nz-icon nzType="search" style="color: coral"></i> 填报进程及数据</a>
-    <a *ngIf="value.verIndex.substring(4,6)==='fx'" (click)="fxSjtbProcess(astep)">
-      <i nz-icon nzType="search" style="color: coral"></i> 填报进程及数据</a>
+    <a *ngIf="value.verIndex.substring(4,6)==='zx'" (click)="zxSjtbProcess(astep)" style="font-weight: bold;">
+      <i nz-icon nzType="table" style="color: coral;"></i> 数据填报进程</a>
+    <a *ngIf="value.verIndex.substring(4,6)==='fx'" (click)="fxSjtbProcess(astep)" style="font-weight: bold;">
+      <i nz-icon nzType="table" style="color: coral;font-weight: bold"></i> 数据填报进程</a>
+  </ng-template>
+
+  <ng-template #actionFileStatus>
+    <a *ngIf="value.verIndex.substring(4,6)==='zx'" (click)="zxFileProcess(astep)" style="font-weight: bold;">
+      <i nz-icon nzType="form" style="color: coral;"></i> 材料上传进程</a>
+    <a *ngIf="value.verIndex.substring(4,6)==='fx'" (click)="fxFileProcess(astep)" style="font-weight: bold;">
+      <i nz-icon nzType="form" style="color: coral;"></i> 材料上传进程</a>
   </ng-template>
 
   <ng-template #actionLockSjtb>
-    <a (click)="lookSjcjTable(astep)" style="color:crimson;">
-      <i nz-icon nzType="unlock" style="color: crimson"></i>
+    <a (click)="lookSjcjTable(astep)" style="color:crimson;font-weight: bold;">
+      <i nz-icon nzType="unlock" style="color: crimson;"></i>
       锁定数据（可在评估结束后加锁）
     </a>
   </ng-template>
 
   <ng-template #actionPgzjSets>
-    <a (click)="zjzSet(astep)">
-      <i nz-icon nzType="setting" style="color: coral"></i> 专家设置</a>
+    <a (click)="zjzSet(astep)" style="font-weight: bold;">
+      <i nz-icon nzType="setting" style="color: coral;"></i> 专家设置</a>
   </ng-template>
 
   <ng-template #actionPgProcess>
-    <a *ngIf="!astep.isTaskOut" (click)="appZjpsTask(astep)">
-      <i nz-icon nzType="pic-right" style="color: coral"></i> 启动评审</a>
-    <a *ngIf="astep.isTaskOut">
-      <i nz-icon nzType="check-circle" nzTheme="fill" style="color:chartreuse"></i> 任务已发布</a>
+    <a *ngIf="!astep.isTaskOut" (click)="appZjpsTask(astep)" style="font-weight: bold;">
+      <i nz-icon nzType="pic-right" style="color: coral;"></i> 启动评审</a>
+    <a *ngIf="astep.isTaskOut" style="font-weight: bold;">
+      <i nz-icon nzType="check-circle" nzTheme="fill" style="color:lime;"></i> 任务已发布</a>
   </ng-template>
 
   <ng-template #actionPgyj>
-    <a *ngIf="value.verIndex.substring(4,6)==='zx'" (click)="zjPsjcSee(astep)">
+    <a *ngIf="value.verIndex.substring(4,6)==='zx'" (click)="zjPsjcSee(astep)" style="font-weight: bold;">
       <i nz-icon nzType="search" style="color: coral"></i> 进程及意见</a>
-    <a *ngIf="value.verIndex.substring(4,6)==='fx'" (click)="zjPsjcSee(astep)">
+    <a *ngIf="value.verIndex.substring(4,6)==='fx'" (click)="zjPsjcSee(astep)" style="font-weight: bold;">
       <i nz-icon nzType="search" style="color: coral"></i> 进程及意见</a>
   </ng-template>
 
   <ng-template #actionPgbg>
-    <a (click)="lookSjcjTable(astep)">
+    <a (click)="lookSjcjTable(astep)" style="font-weight: bold;">
       <i nz-icon nzType="file-pdf" style="color: coral"></i> 评估报告</a>
   </ng-template>
 
   <ng-template #actionEnd>
-    <a (click)="lookSjcjTable(astep)">
+    <a (click)="lookSjcjTable(astep)" style="font-weight: bold;">
       <i nz-icon nzType="logout" style="color: coral"></i> 评估结果</a>
   </ng-template>
 </div>

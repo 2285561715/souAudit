@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { _HttpClient } from '@delon/theme';
+import { _HttpClient, SettingsService } from '@delon/theme';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { STColumn } from '@delon/abc';
@@ -16,6 +16,7 @@ export class AuditstepAdProcessTbjcZxDataViewComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private sanitizer: DomSanitizer,
     private router: Router,
+    public loadUser: SettingsService,
   ) {
     const currentUrls = router.url.split('=');
     if (currentUrls[1]) {
@@ -23,34 +24,58 @@ export class AuditstepAdProcessTbjcZxDataViewComponent implements OnInit {
       localStorage.setItem('tableNo', this.tableNo);
     }
   }
-  record: any = [];
+  value: any = [];
   listOfData: any[] = [];
-
-  selectedFields: any = [];
-  searchSchema: SFSchema = {
-    properties: {
-      no: {
-        type: 'string',
-        title: '学校代码',
-      },
-    },
-  };
-
   parmOfSql: any = {};
   parmOfSqlData: any = {};
-
   columns: STColumn[] = [];
 
+  outDataUrl = '';
+  downExcelUrl = '';
+  isVisible = false;
+
   ngOnInit() {
-    // console.log(this.record);
-    this.loadInfo();
+    // 导出数据接口地址
+    this.outDataUrl =
+      '/api/excel/export?tableName=' +
+      this.value.dtNo +
+      '&dtName=' +
+      this.value.dtName +
+      '&deptId=' +
+      this.loadUser.user.bid +
+      '&kind=fx'; // kind=fx, where xxdm='deptID'
+  }
+
+  // 数据导出功能
+  exportToExcel(event: any): void {
+    this.isVisible = true;
+    this.http
+      .get(
+        '/api/data/export?tableNo=' +
+          this.value.dtNo +
+          '&tableName=' +
+          this.value.dtName +
+          '&tableLx=zx&deptId=' +
+          this.loadUser.user.bid,
+      )
+      .subscribe(res => {
+        this.downExcelUrl = res.data;
+      });
+  }
+
+  handleOk(): void {
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    this.isVisible = false;
   }
 
   loadInfo(): void {
     this.parmOfSql = {
       tableName: 'sj_datatables',
       fieldList: ['dt_no', 'dt_name', 'fields_num', 'zd_name_list', 'zd_zh_name_list', 'duty_dept', 'duty_dept_name'],
-      predication: " dt_no='" + this.record.dtNo + "' ",
+      predication: " dt_no='" + this.value.dtNo + "' ",
       orderDirections: 'id DESC',
     };
     let i = 0;
@@ -69,7 +94,7 @@ export class AuditstepAdProcessTbjcZxDataViewComponent implements OnInit {
       });
       // --------------------------------------------------------
       this.parmOfSqlData = {
-        tableName: this.record.dtNo,
+        tableName: this.value.dtNo,
         fieldList: dataFields,
         predication: ' id>0 ',
         orderDirections: 'id DESC',

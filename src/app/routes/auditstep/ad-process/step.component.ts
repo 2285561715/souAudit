@@ -5,9 +5,13 @@ import { _HttpClient, ModalHelper } from '@delon/theme';
 import { AuditstepAdProcessViewDataSynchComponent } from './view/datasynch.component';
 import { AuditstepAdProcessZjpsSetupComponent } from './zjps/setup.component';
 import { AuditstepAdProcessSetFxComponent } from './setfx/setfx.component';
-import { AuditstepAdProcessTbjcZxIndexComponent } from './tbjczx/index.component';
+// 总校填报进程查询
+import { AuditstepAdProcessTbjcZxIndexSjtbComponent } from './tbjczx/indexsjtb.component';
+import { AuditstepAdProcessTbjcZxIndexFileComponent } from './tbjczx/indexfile.component';
+// 分校填报进程查询
 import { AuditstepAdProcessTbjcFxIndexComponent } from './tbjcfx/index.component';
 
+// 专家评审进程查询
 import { AuditstepAdProcessZjpsjcComponent } from './zjpsjc.component';
 
 @Component({
@@ -37,6 +41,7 @@ export class AuditstepAdProcessStepComponent implements OnInit {
     this.http.get('/api/adapply/steps?appId=' + this.value.id).subscribe((res: any) => {
       this.listOfAppStep = res;
       this.cdr.detectChanges();
+      // console.log(this.listOfAppStep);
     });
   }
   // 评估启动阶段，分校办学时评评估设置参与评审的分校，及分校参与评审的指标模块
@@ -100,11 +105,11 @@ export class AuditstepAdProcessStepComponent implements OnInit {
 
   // zx-查看总校数据填报进程
   zxSjtbProcess(record: any): void {
-    const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcZxIndexComponent, { value: any }, string>({
+    const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcZxIndexSjtbComponent, { value: any }, string>({
       nzTitle: '【' + record.stepName + '】 填报进程',
       nzWidth: document.body.clientWidth - 500,
       nzPlacement: 'left',
-      nzContent: AuditstepAdProcessTbjcZxIndexComponent,
+      nzContent: AuditstepAdProcessTbjcZxIndexSjtbComponent,
       nzContentParams: {
         value: record,
       },
@@ -120,8 +125,57 @@ export class AuditstepAdProcessStepComponent implements OnInit {
       }
     });
   }
+
+  // zx-查看总校文字材料上传进程
+  zxFileProcess(record: any): void {
+    const datavalue = record;
+    datavalue.verIndex = this.value.verIndex;
+    const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcZxIndexFileComponent, { value: any }, string>({
+      nzTitle: '【' + record.stepName + '】 填报进程',
+      nzWidth: document.body.clientWidth - 500,
+      nzPlacement: 'left',
+      nzContent: AuditstepAdProcessTbjcZxIndexFileComponent,
+      nzContentParams: {
+        value: datavalue,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
+  }
+
   // fx-查看分校数据填报进程
   fxSjtbProcess(record: any): void {
+    const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcFxIndexComponent, { value: any }, string>({
+      nzTitle: '【' + record.stepName + '】 填报进程',
+      nzWidth: document.body.clientWidth - 500,
+      nzPlacement: 'left',
+      nzContent: AuditstepAdProcessTbjcFxIndexComponent,
+      nzContentParams: {
+        value: record,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
+  }
+
+  // fx-查看分校文字材料上传进程
+  fxFileProcess(record: any): void {
     const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcFxIndexComponent, { value: any }, string>({
       nzTitle: '【' + record.stepName + '】 填报进程',
       nzWidth: document.body.clientWidth - 500,

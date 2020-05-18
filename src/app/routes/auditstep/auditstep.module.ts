@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared';
+
 import { AuditstepRoutingModule } from './auditstep-routing.module';
 import { AuditstepAdStartComponent } from './ad-start/ad-start.component';
 import { AuditstepAdStartAddComponent } from './ad-start/add/add.component';
@@ -28,10 +29,15 @@ import { AuditstepAdProcessZjpsZjzUserComponent } from './ad-process/zjps/zjzuse
 import { AuditstepAdProcessZjpsZjzPszbComponent } from './ad-process/zjps/zjzpszb/zjzpszb.component';
 import { AuditstepAdProcessZjpsZjzPsfxComponent } from './ad-process/zjps/zjzpsfx/zjzpsfx.component';
 // 数据填报进程查询
-import { AuditstepAdProcessTbjcZxIndexComponent } from './ad-process/tbjczx/index.component';
+import { AuditstepAdProcessTbjcZxIndexSjtbComponent } from './ad-process/tbjczx/indexsjtb.component';
+import { AuditstepAdProcessTbjcZxIndexFileComponent } from './ad-process/tbjczx/indexfile.component';
+import { StepProcessTbjcZxFileInxCommentComponent } from './ad-process/tbjczx/inxComment.component';
+import { StepProcessTbjcZxWzfileditEditComponent } from './ad-process/tbjczx/wzfiledit/edit.component';
+
 import { AuditstepAdProcessTbjcZxDataViewComponent } from './ad-process/tbjczx/dataview.component';
 
-import { StepTbjcZxtbK06IndexComponent } from './ad-process/tbjczx/zxtbk06/index.component';
+import { StepProcessTbjcZxtbK051IndexComponent } from './ad-process/tbjczx/zxtbk05-1/index.component';
+import { StepProcessTbjcZxtbK051ChartComponent } from './ad-process/tbjczx/zxtbk05-1/chart.component';
 
 import { AuditstepAdProcessTbjcFxIndexComponent } from './ad-process/tbjcfx/index.component';
 import { AuditstepAdProcessTbjcFxDataViewComponent } from './ad-process/tbjcfx/dataview.component';
@@ -43,6 +49,7 @@ import { AuditstepAdProcessPsjcFxIndexComponent } from './ad-process/psjcfx/inde
 import { AuditstepAdProcessPsjcFxDataViewComponent } from './ad-process/psjcfx/dataview.component';
 
 import { AuditstepAdProcessSetFxComponent } from './ad-process/setfx/setfx.component';
+import { UEditorModule } from 'ngx-ueditor';
 
 const COMPONENTS = [
   AuditstepAdStartComponent,
@@ -73,9 +80,13 @@ const COMPONENTS_NOROUNT = [
   AuditstepAdProcessZjpsZjzUserComponent,
   AuditstepAdProcessZjpsZjzPszbComponent,
   AuditstepAdProcessZjpsZjzPsfxComponent,
-  AuditstepAdProcessTbjcZxIndexComponent,
+  AuditstepAdProcessTbjcZxIndexSjtbComponent,
+  AuditstepAdProcessTbjcZxIndexFileComponent,
+  StepProcessTbjcZxWzfileditEditComponent,
+  StepProcessTbjcZxFileInxCommentComponent,
   AuditstepAdProcessTbjcZxDataViewComponent,
-  StepTbjcZxtbK06IndexComponent,
+  StepProcessTbjcZxtbK051IndexComponent,
+  StepProcessTbjcZxtbK051ChartComponent,
 
   AuditstepAdProcessTbjcFxIndexComponent,
   AuditstepAdProcessTbjcFxDataViewComponent,
@@ -90,7 +101,17 @@ const COMPONENTS_NOROUNT = [
 ];
 
 @NgModule({
-  imports: [SharedModule, AuditstepRoutingModule],
+  imports: [
+    SharedModule,
+    AuditstepRoutingModule,
+    UEditorModule.forRoot({
+      js: [`./assets/ueditor/ueditor.config.js`, `./assets/ueditor/ueditor.all.js`],
+      // 默认前端配置项
+      options: {
+        UEDITOR_HOME_URL: './assets/ueditor/',
+      },
+    }),
+  ],
   declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
   entryComponents: COMPONENTS_NOROUNT,
 })
