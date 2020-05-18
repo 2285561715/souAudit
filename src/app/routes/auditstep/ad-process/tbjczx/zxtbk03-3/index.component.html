@@ -1,0 +1,64 @@
+<nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
+  <thead>
+    <tr style="background-color: linen">
+      <th nzWidth="10%" nzAlign="center">年度</th>
+      <th nzAlign="center"><b>非学历教育项目总数</b></th>
+      <th nzAlign="center"><b>非学历教育项目新设数</b></th>
+      <th nzAlign="center"><b>非学历教育项目退出数</b></th>
+      <th nzWidth="10%" nzAlign="center">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of editRowTable.data">
+      <td nzAlign="center">
+        {{ data.nd }} 年
+      </td>
+
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else fxlnumInputTpl">
+          {{ data.fxl_num }}
+        </ng-container>
+        <ng-template #fxlnumInputTpl>
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xl_newnum" /> -->
+          <nz-input-number style="width: 10em;" [(ngModel)]="editCache[data.id].data.fxl_num" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else fxlnewnumInputTpl">
+          {{ data.fxl_newnum }}
+        </ng-container>
+        <ng-template #fxlnewnumInputTpl>
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_newnum" /> -->
+          <nz-input-number style="width: 10em;" [(ngModel)]="editCache[data.id].data.fxl_newnum" [nzMin]="0"
+            [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else fxloutnumInputTpl">
+          {{ data.fxl_outnum }}
+        </ng-container>
+        <ng-template #fxloutnumInputTpl>
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.fxl_outnum" /> -->
+          <nz-input-number style="width: 10em;" [(ngModel)]="editCache[data.id].data.fxl_outnum" [nzMin]="0"
+            [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
+
+      <td nzAlign="center">
+        <div *ngIf="data.islock === 0" class="editable-row-operations">
+          <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
+            <a (click)="startEdit(data.id)">修改</a>
+          </ng-container>
+          <ng-template #saveTpl>
+            <a (click)="saveEdit(data.id)">保存</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a nz-popconfirm nzTitle="确认取消吗？" (nzOnConfirm)="cancelEdit(data.id)">取消</a>
+          </ng-template>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

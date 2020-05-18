@@ -49,12 +49,47 @@ export class AuditstepAdProcessTbjcZxIndexFileComponent implements OnInit {
   listOfTreeData: any[] = [];
   listOfDataFile: any[] = [];
 
+  listOfDept = [
+    { bno: '7', bname: '质量监控与评价中心' },
+    { bno: '37', bname: '党政办' },
+    { bno: '40', bname: '人事处' },
+    { bno: '42', bname: '发展研究部/科研处' },
+    { bno: '43', bname: '学历教育部' },
+    { bno: '44', bname: '学习资源中心' },
+    { bno: '45', bname: '信网中心' },
+    { bno: '46', bname: '财务部/招标办' },
+    { bno: '47', bname: '国际交流学院' },
+    { bno: '48', bname: '社区教育部' },
+    { bno: '49', bname: '宣传部' },
+    { bno: '50', bname: '非学历教育部' },
+    { bno: '52', bname: '校内专家组' },
+    { bno: '53', bname: '校外专家组' },
+    { bno: '55', bname: '合作办' },
+    { bno: '57', bname: '后保处' },
+    { bno: '58', bname: '图书馆' },
+    { bno: '60', bname: '纪监室' },
+    { bno: '61', bname: '组织部/统战部' },
+    { bno: '62', bname: '群团部' },
+    { bno: '63', bname: '审计室' },
+    { bno: '64', bname: '中专部' },
+    { bno: '65', bname: '公共管理学院' },
+    { bno: '66', bname: '经济管理学院' },
+    { bno: '67', bname: '理工学院' },
+    { bno: '68', bname: '人文学院' },
+    { bno: '69', bname: '学分银行' },
+    { bno: '70', bname: '网研中心' },
+  ];
+  deptparmOfSql: any = {};
+
   isFirst = false;
-  temppdept: string;
   parmOfSql: any = {};
 
   tempDCK: any[] = [];
   tempNode: any[] = [];
+
+  temppgfile = '';
+  tempatfile = '';
+  temppdept = '';
 
   ngOnInit() {
     // console.log(this.value);
@@ -78,7 +113,7 @@ export class AuditstepAdProcessTbjcZxIndexFileComponent implements OnInit {
         'up_time',
       ],
       predication: " app_id='" + this.value.appId + "' and step_id='" + this.value.id + "'",
-      orderDirections: 'id ASC',
+      orderDirections: ' index_id ASC, up_time ASC',
     };
 
     zip(
@@ -102,12 +137,27 @@ export class AuditstepAdProcessTbjcZxIndexFileComponent implements OnInit {
           this.nodes.deep = 5;
           this.listOfTreeData = this.trToArry.treeToArr(this.nodes);
           this.listOfTreeData.forEach(item => {
+            // 已填报的文字材料遍历
+            this.temppgfile = '';
+            this.tempatfile = '';
+            this.temppdept = '';
+
             this.listOfDataFile.forEach(itemf => {
               if (itemf.index_id === item.id) {
                 item.wzid = itemf.id;
-                item.pgfile = itemf.index_comments;
-                item.atfile = itemf.other_attachments;
+                if (itemf.index_comments !== null) {
+                  this.temppgfile = this.temppgfile + '<br>' + itemf.index_comments;
+                }
+                if (itemf.other_attachments !== null) {
+                  this.tempatfile = this.tempatfile + '<br>' + itemf.other_attachments;
+                }
                 item.uptime = itemf.up_time;
+              }
+            });
+            // 遍历责任部门
+            this.listOfDept.forEach(itemd => {
+              if (item.dutyDept.includes(itemd.bno + ',')) {
+                this.temppdept = this.temppdept + ',' + itemd.bname;
               }
             });
 
@@ -122,12 +172,12 @@ export class AuditstepAdProcessTbjcZxIndexFileComponent implements OnInit {
               isStar: item.isStar,
               idKind: item.idKind,
               remark: item.remark,
-              dutydept: item.dutyDept,
+              dutydept: this.temppdept,
               viewPoint: this.sanitizer.bypassSecurityTrustHtml(item.viewPoint),
-              pgfile: item.pgfile,
-              pf: this.sanitizer.bypassSecurityTrustHtml(item.pgfile),
-              atfile: item.atfile,
-              af: this.sanitizer.bypassSecurityTrustHtml(item.atfile),
+              pgfile: this.temppgfile,
+              pf: this.sanitizer.bypassSecurityTrustHtml(this.temppgfile),
+              atfile: this.tempatfile,
+              af: this.sanitizer.bypassSecurityTrustHtml(this.tempatfile),
               uptime: item.uptime,
             });
           });

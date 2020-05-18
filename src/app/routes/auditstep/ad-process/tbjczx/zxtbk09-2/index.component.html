@@ -1,0 +1,57 @@
+<nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
+  <thead>
+    <tr style="background: linen">
+      <th nzWidth="10%" nzAlign="center">年度</th>
+      <th nzWidth="10%" nzAlign="center">分校或<br>学院代码</th>
+      <th nzWidth="20%" nzAlign="center">分校/学院名称</th>
+      <th nzWidth="20%" nzAlign="center"><b>下载率</b><br>百分比（%）</th>
+      <th nzWidth="20%" nzAlign="center"><b>被引频次</b></th>
+      <th nzWidth="10%" nzAlign="center">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of editRowTable.data">
+      <td nzAlign="center">
+        {{ data.nd }} 年
+      </td>
+      <td nzAlign="center">
+        {{ data.xxdm }}
+      </td>
+      <td nzAlign="center">
+        {{ data.xxmc }}
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xzlInputTpl">
+          {{ data.xzl }}
+        </ng-container>
+        <ng-template #xzlInputTpl>
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.xzl" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.xzl" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else bypcInputTpl">
+          {{ data.bypc }}
+        </ng-container>
+        <ng-template #bypcInputTpl>
+          <!-- <input type="number" nz-input [(ngModel)]="editCache[data.id].data.bypc" /> -->
+          <nz-input-number [(ngModel)]="editCache[data.id].data.bypc" [nzMin]="0" [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <div *ngIf="data.islock === 0" class="editable-row-operations">
+          <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
+            <a (click)="startEdit(data.id)">修改</a>
+          </ng-container>
+          <ng-template #saveTpl>
+            <a (click)="saveEdit(data.id)">保存</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a nz-popconfirm nzTitle="确认取消吗？" (nzOnConfirm)="cancelEdit(data.id)">取消</a>
+          </ng-template>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

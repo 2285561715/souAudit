@@ -212,16 +212,14 @@ export class StepProcessTbjcZxtbK051IndexComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log(this.dataStr);
-    this.upUrl =
-      '/api/excel/import?tableName=' +
-      this.dataStr.dtNo +
-      '&startLine=1' +
-      '&appId=' +
-      this.dataStr.appId +
-      '&stepId=' +
-      this.dataStr.stepId +
-      '&deptId=' +
-      this.loadUser.user.bid;
+    // this.upUrl =
+    //   '/api/excel/import?tableName=' +
+    //   this.dataStr.dtNo +
+    //   '&startLine=1' +
+    //   '&appId=' +
+    //   this.dataStr.appId +
+    //   '&stepId=' +
+    //   this.dataStr.stepId;
     this.loadInfo();
   }
 

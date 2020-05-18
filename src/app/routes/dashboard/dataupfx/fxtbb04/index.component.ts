@@ -17,12 +17,13 @@ export class DashboardDataUpFxtbB04IndexComponent implements OnInit {
 
   editCache: { [key: string]: any } = {};
   listOfData: any[] = [];
+  listOfMydData: any[] = [];
   value: any = {};
 
   @Input() dataStr: any;
 
   ngOnInit(): void {
-    // 获得数据表的数据
+    // 获得数据表的数据  分校自己填的满意度
     this.http.get('/api/data/tables/search/fxtb/' + this.dataStr.dtNo).subscribe((res: any[]) => {
       res.forEach(item => {
         if (item.xxdm === this.loadUser.user.bid) {
@@ -37,6 +38,17 @@ export class DashboardDataUpFxtbB04IndexComponent implements OnInit {
       this.cdr.detectChanges();
     });
     // this.updateEditCache();
+
+    // 获得总校填写的满意度数据
+    this.http.get('/api/data/tables/search/zxtb/zxtb_k221_xlmyd').subscribe((res: any[]) => {
+      res.forEach(item => {
+        if (item.xxdm === this.loadUser.user.bid) {
+          this.listOfMydData = [...this.listOfMydData, item];
+        }
+      });
+      this.cdr.detectChanges();
+    });
+    // ------------------------------------------
   }
 
   startEdit(id: string): void {

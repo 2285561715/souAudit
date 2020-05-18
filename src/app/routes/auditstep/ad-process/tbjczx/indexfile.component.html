@@ -5,7 +5,7 @@
       [nzExpandedIcon]="!isFirst && (panel.icon || expandedIcon)" style="border: 0px;">
       <div nz-row nzGutter="8">
         <p *ngIf="panel.isLeaf" style="margin:0;text-align: right;height: 2.0em;">
-          {{panel.dutydept}}
+          <!-- {{panel.dutydept}} -->
           <span *ngIf="panel.uptime">
             <i nz-icon nzType="clock-circle" style="color:lime;"></i>
             最近上传：{{ panel.uptime | _date}}</span>
@@ -22,8 +22,8 @@
             nzTooltipPlacement="topCenter" nz-tooltip>
             <指标内涵及说明> &nbsp;
           </button>
-
         </p>
+
         <div *ngIf="panel.isLeaf&&!panel.uptime" class="steps-content" [innerHTML]="panel.remark"></div>
         <div *ngIf="panel.isLeaf&&!panel.uptime" class="steps-content" [innerHTML]="panel.viewPoint"></div>
         <div *ngIf="panel.uptime" class="steps-comment" [innerHTML]="panel.pf"></div>
