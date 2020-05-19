@@ -1,0 +1,59 @@
+<nz-card nzSize="small">
+  <div nz-row>
+    <div nz-col nzSpan="16">
+      <span>页面默认显示<虹口分校>，右侧下拉框可选择查看其它分校情况!</span>
+    </div>
+    <div nz-col nzSpan="8" style="text-align: right;">
+      选择分校：<nz-select style="width: 200px;" nzShowSearch nzAllowClear nzPlaceHolder="-请选择分校-" [(ngModel)]="deptId"
+        (ngModelChange)="filter($event)">
+        <nz-option *ngFor="let option of listOfDept" [nzLabel]="option.deptName" [nzValue]="option.deptId"></nz-option>
+      </nz-select>&nbsp;&nbsp;
+    </div>
+  </div>
+</nz-card>
+<div nz-row nzGutter="8">
+  <!-- <p style="text-align: center;font-size: 22px;color: dimgray;">【上海开放大学办学水平评估】 <b>数据填报和材料上传</b></p> -->
+  <nz-collapse [nzBordered]="false">
+    <nz-collapse-panel *ngFor="let panel of listOfData" [nzHeader]="panelHead" [nzActive]="panel.active"
+      [nzExtra]="extraTpl" nzDisabled="false" nzShowArrow="false"
+      [nzExpandedIcon]="!isFirst && (panel.icon || expandedIcon)" style="border: 0px;">
+      <div nz-row nzGutter="8">
+        <p style="margin:0;text-align: right;height: 2.0em;">
+          <span *ngIf="panel.uptime">
+            <i nz-icon nzType="clock-circle" style="color:rgb(97, 173, 21);"></i>
+            最近上传：{{ panel.uptime | _date}}</span>
+          <span *ngIf="!panel.uptime" style="color:crimson;">
+            <i nz-icon nzType="clock-circle" style="color:crimson;"></i>
+            尚未上传</span>
+
+          <nz-divider nzType="vertical"></nz-divider>
+          <button nz-button nzSize="small" nzType="primary" style="background-color: coral;border: 0;"
+            (click)="openEdit(panel)" nzTooltipTitle="指标支撑文字材料上传或修改" nzTooltipPlacement="topCenter" nz-tooltip>
+            <i nz-icon nzType="edit" nzTheme="fill"></i>上传材料
+          </button>
+          <nz-divider nzType="vertical"></nz-divider>
+          <button nz-button nzSize="small" nzType="link" (click)="openInxcoments(panel)" nzTooltipTitle="指标支撑文字材料上传或修改"
+            nzTooltipPlacement="topCenter" nz-tooltip>
+            <指标内涵及说明> &nbsp;
+          </button>
+
+        </p>
+        <div *ngIf="!panel.uptime" class="steps-content" [innerHTML]="panel.remark"></div>
+        <div *ngIf="!panel.uptime" class="steps-content" [innerHTML]="panel.viewPoint"></div>
+        <div *ngIf="panel.uptime" class="steps-comment" [innerHTML]="panel.pf"></div>
+        <div *ngIf="panel.uptime" class="steps-comment" [innerHTML]="panel.af"></div>
+      </div>
+      <ng-template #panelHead>
+        <span *ngIf="panel.level === '1'" style="font-weight: bold;font-size: 20px;">{{ panel.name }}</span>
+        <span *ngIf="panel.level === '2'" style="font-weight: bold;font-size: 18px;">{{ panel.name }}</span>
+        <span *ngIf="panel.level === '3'" style="font-weight: bold;font-size: 17px;">{{ panel.name }}</span>
+        <span *ngIf="panel.level === '4'" style="font-weight: bold;font-size: 17px;">{{ panel.name }}</span>
+      </ng-template>
+      <ng-template #expandedIcon let-active>
+        {{ active }}
+        <i nz-icon nzType="caret-right" class="ant-collapse-arrow"></i>
+      </ng-template>
+      <ng-template #extraTpl> </ng-template>
+    </nz-collapse-panel>
+  </nz-collapse>
+</div>

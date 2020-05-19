@@ -8,10 +8,10 @@ import { resolve } from 'q';
 import { AuditstepAdProcessTbjcFxDataViewComponent } from './dataview.component';
 
 @Component({
-  selector: 'app-auditstep-ad-process-tbjcfx-index',
-  templateUrl: './index.component.html',
+  selector: 'app-auditstep-adprocess-tbjcfx-sjtb-index',
+  templateUrl: './indexsjtb.component.html',
 })
-export class AuditstepAdProcessTbjcFxIndexComponent implements OnInit {
+export class AuditstepAdProcessTbjcFxSjtbIndexComponent implements OnInit {
   constructor(
     private modal: ModalHelper,
     private msgSrv: NzMessageService,
@@ -67,6 +67,7 @@ export class AuditstepAdProcessTbjcFxIndexComponent implements OnInit {
     { text: '静安分校', value: '静安分校' },
     { text: '徐汇分校', value: '徐汇分校' },
     { text: '石化工业学校培训中心教学点', value: '石化工业学校培训中心教学点' },
+    { text: '沪东中华进修学院教学点', value: '沪东中华进修学院教学点' },
   ];
   searchType: string;
   selectedValue = null;
@@ -77,18 +78,20 @@ export class AuditstepAdProcessTbjcFxIndexComponent implements OnInit {
 
   loadInfo(): void {
     this.listOfData = [];
+    this.listOfDisplayData = [];
+    this.listOfType = [];
     this.http
       .get('/api/tbrwjdcx?appId=' + this.value.appId + '&pglx=fx&conType=' + this.conStr)
       .subscribe((res: any[]) => {
-        res.forEach(item => {
-          if (item.fileupUrl) {
-            const idx = item.fileupUrl.lastIndexOf('.');
-            const exName = item.fileupUrl.substring(idx + 1, item.fileupUrl.length);
-            item.exName = exName;
-          }
-          this.listOfData = [...this.listOfData, item];
-        });
-        // this.listOfData = res;
+        // res.forEach(item => {
+        //   if (item.fileupUrl) {
+        //     const idx = item.fileupUrl.lastIndexOf('.');
+        //     const exName = item.fileupUrl.substring(idx + 1, item.fileupUrl.length);
+        //     item.exName = exName;
+        //   }
+        //   this.listOfData = [...this.listOfData, item];
+        // });
+        this.listOfData = res;
         this.listOfDisplayData = this.listOfData;
 
         this.http.get('/api/branches').subscribe((ress: any[]) => {
@@ -160,7 +163,34 @@ export class AuditstepAdProcessTbjcFxIndexComponent implements OnInit {
     this.loadInfo();
   }
 
-  dataBarShow(record: any): void {
+  dataBarShow1(record: any): void {
     this.modal.create(AuditstepAdProcessTbjcFxDataViewComponent, { size: 'xl' }).subscribe((res: any) => {});
   }
+
+  // 评估管理员，查看已填报数据，并可修改
+  dataBarShow(record: any): void {
+    console.log(record);
+    const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcFxDataViewComponent, { value: any }, string>({
+      nzTitle: '【<b>' + record.deptName + '</b>】-【<b>' + record.dtName + '</b>】填报情况',
+      nzWidth: document.body.clientWidth - 80,
+      nzPlacement: 'right',
+      // nzMaskClosable: false,
+      nzContent: AuditstepAdProcessTbjcFxDataViewComponent,
+      nzContentParams: {
+        value: record,
+      },
+    });
+
+    drawerRef.afterOpen.subscribe(() => {
+      // console.log('Drawer(Component) open');
+    });
+
+    drawerRef.afterClose.subscribe(data => {
+      // this.loadSteps();
+      if (typeof data === 'string') {
+        this.value = data;
+      }
+    });
+  }
+  // ------------------------------------------------------------------------
 }

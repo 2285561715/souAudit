@@ -1,0 +1,142 @@
+<nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
+  <thead>
+    <tr style="background-color: linen;">
+      <th nzWidth="10%" nzAlign="center">年度</th>
+      <th nzWidth="20%" nzAlign="center" style="font-weight: bold"><b>学生对学校满意度（%）</b></th>
+      <th nzWidth="20%" nzAlign="center" style="font-weight: bold"><b>用人单位对毕业生满意度（%）</b></th>
+      <th nzWidth="20%" nzAlign="center" style="font-weight: bold;background-color: rgb(221, 245, 240)">
+        非学历教育<br>学习者对学校满意度（%）</th>
+      <th nzWidth="20%" nzAlign="center" style="font-weight: bold">社区教育<br>学习者对学校满意度（%）</th>
+      <th nzWidth="10%" nzAlign="center">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of editRowTable.data">
+      <td nzAlign="center">
+        {{ data.nd }} 年
+      </td>
+
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xl_xxz2xxInputTpl">
+          {{ data.xl_xxz2xx }}
+        </ng-container>
+        <ng-template #xl_xxz2xxInputTpl>
+          <nz-input-number style="width: 10em;" [(ngModel)]="editCache[data.id].data.xl_xxz2xx" [nzMin]="0"
+            [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xl_dw2bysInputTpl">
+          {{ data.xl_dw2bys }}
+        </ng-container>
+        <ng-template #xl_dw2bysInputTpl>
+          <nz-input-number style="width: 10em;" [(ngModel)]="editCache[data.id].data.xl_dw2bys" [nzMin]="0"
+            [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else fxl_xxz2xxInputTpl">
+          {{ data.fxl_xxz2xx }}
+        </ng-container>
+        <ng-template #fxl_xxz2xxInputTpl>
+          <nz-input-number style="width: 10em;" [(ngModel)]="editCache[data.id].data.fxl_xxz2xx" [nzMin]="0"
+            [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else sq_xxz2xxInputTpl">
+          {{ data.sq_xxz2xx }}
+        </ng-container>
+        <ng-template #sq_xxz2xxInputTpl>
+          <nz-input-number style="width: 10em;" [(ngModel)]="editCache[data.id].data.sq_xxz2xx" [nzMin]="0"
+            [nzStep]="1">
+          </nz-input-number>
+        </ng-template>
+      </td>
+
+      <td nzAlign="center">
+        <div *ngIf="data.islock === 0" class="editable-row-operations">
+          <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
+            <a (click)="startEdit(data.id)">修改</a>
+          </ng-container>
+          <ng-template #saveTpl>
+            <a (click)="saveEdit(data.id)">保存</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a nz-popconfirm nzTitle="确认取消吗？" (nzOnConfirm)="cancelEdit(data.id)">取消</a>
+          </ng-template>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<br><br>
+<span>注：下表数据由总校质量监控与评价中心提供</span>
+<nz-table #mydeditRowTable nzBordered [nzData]="listOfMydData" nzSize="small" nzHideOnSinglePage="true">
+  <thead>
+    <tr style="background-color: linen">
+      <th rowspan="2" nzWidth="8%" nzAlign="center">年度</th>
+      <th colspan="7" nzAlign="center" style="background: ivory;font-weight: bold;">学生对学校满意度</th>
+      <th colspan="5" nzAlign="center" style="background: rgb(221, 245, 240);font-weight: bold;">用人单位对毕业生满意度</th>
+    </tr>
+    <tr style="background-color: linen">
+      <th nzAlign="center" nzWidth="8%">对目标<br>认同度</th>
+      <th nzAlign="center" nzWidth="8%">对课程<br>满意度</th>
+      <th nzAlign="center" nzWidth="8%">对教师<br>满意度</th>
+      <th nzAlign="center" nzWidth="8%">资源<br>受益度</th>
+      <th nzAlign="center" nzWidth="8%">学业质量</th>
+      <th nzAlign="center" nzWidth="8%">综合<br>满意度</th>
+      <th nzAlign="center" nzWidth="8%" style="background: linen;"><b>人才培养<br>评价总分</b></th>
+      <th nzAlign="center" nzWidth="8%">对专业设置</th>
+      <th nzAlign="center" nzWidth="8%">对毕业生综<br>合能力素质</th>
+      <th nzAlign="center" nzWidth="8%">对毕业生基<br>本能力素养</th>
+      <th nzAlign="center" nzWidth="8%">对毕业生<br>知识能力</th>
+      <th nzAlign="center" nzWidth="8%">对毕业生<br>拓展能力</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of mydeditRowTable.data">
+      <td nzAlign="center">
+        {{ data.nd }} 年
+      </td>
+      <td nzAlign="center">
+        {{ data.xs_pymb }}
+      </td>
+      <td nzAlign="center">
+        {{ data.xs_kc }}
+      </td>
+      <td nzAlign="center">
+        {{ data.xs_js }}
+      </td>
+      <td nzAlign="center">
+        {{ data.xs_syd }}
+      </td>
+      <td nzAlign="center">
+        {{ data.xs_xyzl }}
+      </td>
+      <td nzAlign="center">
+        {{ data.xs_zh }}
+      </td>
+      <td nzAlign="center">
+        <b>{{ data.xs_all }}</b>
+      </td>
+      <td nzAlign="center">
+        {{ data.dw_zysz }}
+      </td>
+      <td nzAlign="center">
+        {{ data.dw_zhnl }}
+      </td>
+      <td nzAlign="center">
+        {{ data.dw_jbnl }}
+      </td>
+      <td nzAlign="center">
+        {{ data.dw_zsnl }}
+      </td>
+      <td nzAlign="center">
+        {{ data.dw_tznl }}
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

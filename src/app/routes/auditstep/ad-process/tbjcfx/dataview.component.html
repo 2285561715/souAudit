@@ -1,130 +1,140 @@
-<div class="modal-header" style="padding-top: 32px">
-  <div class="modal-title">【{{tableNo}}】数据呈现</div>
+<div class="card-container">
+  <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+    <nz-tab [nzTitle]="titleTemplate">
+      <ng-template #titleTemplate><i nz-icon nzType="form" style="color: coral"></i>数据列表</ng-template>
+      <!-- 学历教育板块 -->
+      <div *ngIf="value.dtNo === 'fxtb_f021_develop'">
+        <app-stepprocess-tbjcfx-fxtbb021-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb021-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f022_jftr'">
+        <app-stepprocess-tbjcfx-fxtbb022-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb022-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f031_ldxx'">
+        <app-stepprocess-tbjcfx-fxtbb031-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb031-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f04_myd'">
+        <app-stepprocess-tbjcfx-fxtbb04-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb04-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f051_jsjbqk'">
+        <app-stepprocess-tbjcfx-fxtbb051-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb051-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f052_jsjbxx'">
+        <app-stepprocess-tbjcfx-fxtbb052-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb052-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f053_glryxx'">
+        <app-stepprocess-tbjcfx-fxtbb053-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb053-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f054_fdyxx'">
+        <app-stepprocess-tbjcfx-fxtbb054-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb054-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f055_fxlglry'">
+        <app-stepprocess-tbjcfx-fxtbb055-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb055-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f056_sqglry'">
+        <app-stepprocess-tbjcfx-fxtbb056-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb056-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f06_yjss'">
+        <app-stepprocess-tbjcfx-fxtbb06-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb06-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f07_hzbx'">
+        <app-stepprocess-tbjcfx-fxtbb07-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb07-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f081_xxhyj'">
+        <app-stepprocess-tbjcfx-fxtbb081-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb081-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f082_yypt'">
+        <!-- fxtb_f082_mob -->
+        <app-stepprocess-tbjcfx-fxtbb082-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb082-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f101_mskkz'">
+        <app-stepprocess-tbjcfx-fxtbb101-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb101-index>
+      </div>
+      <div *ngIf="value.dtNo === 'zxtb_k112_web'">
+        <app-stepprocess-tbjcfx-fxtbb102-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb102-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f11_sysj'">
+        <app-stepprocess-tbjcfx-fxtbb11-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb11-index>
+      </div>
+      <div *ngIf="value.dtNo === 'zxtb_k131_rcpygm'">
+        <app-stepprocess-tbjcfx-fxtbb131-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb131-index>
+      </div>
+      <div *ngIf="value.dtNo === 'zxtb_k134_rcpy3l'">
+        <app-stepprocess-tbjcfx-fxtbb132-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb132-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f133_hjqkxs'">
+        <app-stepprocess-tbjcfx-fxtbb133-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb133-index>
+      </div>
+
+      <div *ngIf="value.dtNo === 'fxtb_f141_fxlwczx'">
+        <app-stepprocess-tbjcfx-fxtbb141-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb141-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f142_fxltsxm'">
+        <app-stepprocess-tbjcfx-fxtbb142-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb142-index>
+      </div>
+
+      <div *ngIf="value.dtNo === 'fxtb_f151_fxl2gkc'">
+        <app-stepprocess-tbjcfx-fxtbb151-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb151-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f152_fxl2gsz'">
+        <app-stepprocess-tbjcfx-fxtbb152-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb152-index>
+      </div>
+
+      <div *ngIf="value.dtNo === 'fxtb_f161_sqkckf'">
+        <app-stepprocess-tbjcfx-fxtbb161-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb161-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f162_sqxxhd'">
+        <app-stepprocess-tbjcfx-fxtbb162-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb162-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f171_sqpphd'">
+        <app-stepprocess-tbjcfx-fxtbb171-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb171-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f172_sqppxm'">
+        <app-stepprocess-tbjcfx-fxtbb172-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb172-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f181_sqpxyt'">
+        <app-stepprocess-tbjcfx-fxtbb181-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb181-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f182_sqkykt'">
+        <app-stepprocess-tbjcfx-fxtbb182-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb182-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f191_glory'">
+        <app-stepprocess-tbjcfx-fxtbb191-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb191-index>
+      </div>
+      <div *ngIf="value.dtNo === 'fxtb_f192_xwmt'">
+        <app-stepprocess-tbjcfx-fxtbb192-index [dataStr]="value"></app-stepprocess-tbjcfx-fxtbb192-index>
+      </div>
+    </nz-tab>
+
+    <nz-tab [nzTitle]="titleTemplate2">
+      <ng-template #titleTemplate2><i nz-icon nzType="profile" style="color: coral"></i>填报规则</ng-template>
+      <div [innerHTML]="description"></div>
+    </nz-tab>
+    <nz-tab [nzTitle]="titleTemplate1">
+      <ng-template #titleTemplate1><i nz-icon nzType="import" style="color: coral"></i>统计图表</ng-template>
+      <p>数据统计报表处理中...</p>
+    </nz-tab>
+
+    <nz-tab [nzTitle]="titleTemplate5">
+      <ng-template #titleTemplate5><i nz-icon nzType="select" style="color: coral"></i>数据导出</ng-template>
+      <!-- <p><b>请选择要导出的数据字段：</b></p>
+        <nz-select nzMode="tags" style="width: 100%;" nzPlaceHolder="请选择数据字段！" [(ngModel)]="listOfSelFlds"
+          (ngModelChange)="selOutFldsToExcel($event)">
+          <nz-option *ngFor="let option of listOfFields;let i=index" [nzLabel]="listOfFieldsZH[i]"
+            [nzValue]="listOfFields[i]">
+          </nz-option>
+        </nz-select> -->
+      <p><b>导出本表全部数据：</b></p>
+      <br />
+      <button nz-button [nzType]="'primary'" (click)="exportToExcel($event)">
+        <i nz-icon nzType="check-circle" nzTheme="outline"></i> 导出为 EXCEL >>
+      </button>
+      <nz-modal [(nzVisible)]="isVisible" nzTitle="数据已导出请点击下载！" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+        <p style="align-content: center;">
+          <button nz-button class="mr-sm" down-file [http-url]="downExcelUrl" [file-name]="value.dtName + '.xlsx'">
+            {{ value.dtName }} <i nz-icon nzType="download" style="color:coral"></i>
+          </button>
+        </p>
+      </nz-modal>
+    </nz-tab>
+  </nz-tabset>
 </div>
-<nz-collapse>
-  <nz-collapse-panel nzHeader="统计结果数据" nzActive="true">
-    <nz-table nzTemplateMode #borderedTable nzBordered nzSize="small">
-      <thead>
-        <tr>
-          <th rowspan="3">年份</th>
-          <th colspan="8">学历教育</th>
-          <th colspan="2" rowspan="2">非学历教育</th>
-          <th colspan="2" rowspan="2">社区教育</th>
-          <th colspan="2" rowspan="2">其他</th>
-          <th rowspan="3">合计</th>
-        </tr>
-        <tr>
-          <th colspan="2">市区分校</th>
-          <th colspan="2">郊区分校</th>
-          <th colspan="2">行业分校</th>
-          <th rowspan="2">小计</th>
-          <th rowspan="2">比例</th>
-        </tr>
-        <tr>
-          <th>数量</th>
-          <th>比例</th>
-          <th>数量</th>
-          <th>比例</th>
-          <th>数量</th>
-          <th>比例</th>
-          <th>数量</th>
-          <th>比例</th>
-          <th>数量</th>
-          <th>比例</th>
-          <th>数量</th>
-          <th>比例</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2016年</td>
-          <td>4544</td>
-          <td>28.79%</td>
-          <td>3321</td>
-          <td>21.04%</td>
-          <td>3113</td>
-          <td>19.73%</td>
-          <td>10206</td>
-          <td>69.56%</td>
-          <td>2341</td>
-          <td>14.83%</td>
-          <td>1231</td>
-          <td>7.80%</td>
-          <td>1231</td>
-          <td>7.80%</td>
-          <td>15009</td>
-        </tr>
-        <tr>
-          <td>2017年</td>
-          <td>4544</td>
-          <td>28.79%<span class="nzColor:#F00">↑</span></td>
-          <td>3321</td>
-          <td>21.04%<span class="nzColor:#F00">↑</span></td>
-          <td>3113</td>
-          <td>19.73%<span class="nzColor:#F00">↓</span></td>
-          <td>10206</td>
-          <td>69.56%<span class="nzColor:#F00">↓</span></td>
-          <td>2341</td>
-          <td>14.83%<span class="nzColor:#F00">-</span></td>
-          <td>1231</td>
-          <td>7.80%<span class="nzColor:#F00">-</span></td>
-          <td>1231</td>
-          <td>7.80%<span class="nzColor:#F00">↑</span></td>
-          <td>15009<span class="nzColor:#F00">↑</span></td>
-        </tr>
-        <tr>
-          <td>2018年</td>
-          <td>4544</td>
-          <td>28.79%<span class="nzColor:#F00">↑</span></td>
-          <td>3321</td>
-          <td>21.04%<span class="nzColor:#F00">↑</span></td>
-          <td>3113</td>
-          <td>19.73%<span class="nzColor:#F00">↓</span></td>
-          <td>10206</td>
-          <td>69.56%<span class="nzColor:#F00">↓</span></td>
-          <td>2341</td>
-          <td>14.83%<span class="nzColor:#F00">-</span></td>
-          <td>1231</td>
-          <td>7.80%<span class="nzColor:#F00">-</span></td>
-          <td>1231</td>
-          <td>7.80%<span class="nzColor:#F00">↑</span></td>
-          <td>15009<span class="nzColor:#F00">↑</span></td>
-        </tr>
-      </tbody>
-    </nz-table>
-  </nz-collapse-panel>
-
-  <nz-collapse-panel nzHeader="统计图表展示" nzActive="true">
-    <div nz-col nzSm="8">
-      <g2-pie [hasLegend]="true" title="学生数" subTitle="学生数" [total]="total" [data]="salesPieData" height="240">
-      </g2-pie>
-    </div>
-    <div nz-col nzSm="8">
-      <g2-pie [hasLegend]="true" title="学生数" subTitle="学生数" [total]="total" [data]="salesPieData" height="240">
-      </g2-pie>
-    </div>
-    <div nz-col nzSm="8">
-      <g2-pie [hasLegend]="true" title="学生数" subTitle="学生数" [total]="total" [data]="salesPieData" height="240">
-      </g2-pie>
-    </div>
-  </nz-collapse-panel>
-
-  <nz-collapse-panel nzHeader="原始数据列表" nzActive="false">
-    <nz-table #borderedTable nzBordered nzSize="small" nzTitle="学生数据 2016年" [nzData]="dataSet">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Address</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let data of borderedTable.data">
-          <td>{{ data.name }}</td>
-          <td>{{ data.age }}</td>
-          <td>{{ data.address }}</td>
-        </tr>
-      </tbody>
-    </nz-table>
-  </nz-collapse-panel>
-</nz-collapse>

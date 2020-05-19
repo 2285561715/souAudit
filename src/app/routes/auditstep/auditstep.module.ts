@@ -82,8 +82,45 @@ import { StepProcessTbjcZxFileInxCommentComponent } from './ad-process/tbjczx/in
 import { StepProcessTbjcZxWzfileditEditComponent } from './ad-process/tbjczx/wzfiledit/edit.component';
 // -----------------------------------------------------------------------------------------------------------------
 // 分析数据填报进程查询
-import { AuditstepAdProcessTbjcFxIndexComponent } from './ad-process/tbjcfx/index.component';
+import { AuditstepAdProcessTbjcFxSjtbIndexComponent } from './ad-process/tbjcfx/indexsjtb.component';
 import { AuditstepAdProcessTbjcFxDataViewComponent } from './ad-process/tbjcfx/dataview.component';
+
+import { StepProcessTbjcFxtbB021IndexComponent } from './ad-process/tbjcfx/fxtbb02-1/index.component';
+import { StepProcessTbjcFxtbB022IndexComponent } from './ad-process/tbjcfx/fxtbb02-2/index.component';
+import { StepProcessTbjcFxtbB031IndexComponent } from './ad-process/tbjcfx/fxtbb03-1/index.component';
+import { StepProcessTbjcFxtbB04IndexComponent } from './ad-process/tbjcfx/fxtbb04/index.component';
+import { StepProcessTbjcFxtbB051IndexComponent } from './ad-process/tbjcfx/fxtbb05-1/index.component';
+import { StepProcessTbjcFxtbB052IndexComponent } from './ad-process/tbjcfx/fxtbb05-2/index.component';
+import { StepProcessTbjcFxtbB053IndexComponent } from './ad-process/tbjcfx/fxtbb05-3/index.component';
+import { StepProcessTbjcFxtbB054IndexComponent } from './ad-process/tbjcfx/fxtbb05-4/index.component';
+import { StepProcessTbjcFxtbB055IndexComponent } from './ad-process/tbjcfx/fxtbb05-5/index.component';
+import { StepProcessTbjcFxtbB056IndexComponent } from './ad-process/tbjcfx/fxtbb05-6/index.component';
+import { StepProcessTbjcFxtbB06IndexComponent } from './ad-process/tbjcfx/fxtbb06/index.component';
+import { StepProcessTbjcFxtbB07IndexComponent } from './ad-process/tbjcfx/fxtbb07/index.component';
+import { StepProcessTbjcFxtbB081IndexComponent } from './ad-process/tbjcfx/fxtbb08-1/index.component';
+import { StepProcessTbjcFxtbB082IndexComponent } from './ad-process/tbjcfx/fxtbb08-2/index.component';
+import { StepProcessTbjcFxtbB101IndexComponent } from './ad-process/tbjcfx/fxtbb10-1/index.component';
+import { StepProcessTbjcFxtbB102IndexComponent } from './ad-process/tbjcfx/fxtbb10-2/index.component';
+import { StepProcessTbjcFxtbB11IndexComponent } from './ad-process/tbjcfx/fxtbb11/index.component';
+import { StepProcessTbjcFxtbB131IndexComponent } from './ad-process/tbjcfx/fxtbb13-1/index.component';
+import { StepProcessTbjcFxtbB132IndexComponent } from './ad-process/tbjcfx/fxtbb13-2/index.component';
+import { StepProcessTbjcFxtbB133IndexComponent } from './ad-process/tbjcfx/fxtbb13-3/index.component';
+import { StepProcessTbjcFxtbB141IndexComponent } from './ad-process/tbjcfx/fxtbb14-1/index.component';
+import { StepProcessTbjcFxtbB142IndexComponent } from './ad-process/tbjcfx/fxtbb14-2/index.component';
+import { StepProcessTbjcFxtbB151IndexComponent } from './ad-process/tbjcfx/fxtbb15-1/index.component';
+import { StepProcessTbjcFxtbB152IndexComponent } from './ad-process/tbjcfx/fxtbb15-2/index.component';
+import { StepProcessTbjcFxtbB161IndexComponent } from './ad-process/tbjcfx/fxtbb16-1/index.component';
+import { StepProcessTbjcFxtbB162IndexComponent } from './ad-process/tbjcfx/fxtbb16-2/index.component';
+import { StepProcessTbjcFxtbB171IndexComponent } from './ad-process/tbjcfx/fxtbb17-1/index.component';
+import { StepProcessTbjcFxtbB172IndexComponent } from './ad-process/tbjcfx/fxtbb17-2/index.component';
+import { StepProcessTbjcFxtbB181IndexComponent } from './ad-process/tbjcfx/fxtbb18-1/index.component';
+import { StepProcessTbjcFxtbB182IndexComponent } from './ad-process/tbjcfx/fxtbb18-2/index.component';
+import { StepProcessTbjcFxtbB191IndexComponent } from './ad-process/tbjcfx/fxtbb19-1/index.component';
+import { StepProcessTbjcFxtbB192IndexComponent } from './ad-process/tbjcfx/fxtbb19-2/index.component';
+
+import { AuditstepAdProcessTbjcFxIndexFileComponent } from './ad-process/tbjcfx/indexfile.component';
+import { StepProcessTbjcFxFileInxCommentComponent } from './ad-process/tbjcfx/inxComment.component';
+import { StepProcessTbjcFxWzfileditEditComponent } from './ad-process/tbjcfx/wzfiledit/edit.component';
 
 // 专家评审进程查询
 import { AuditstepAdProcessZjpsjcComponent } from './ad-process/zjpsjc.component';
@@ -172,11 +209,48 @@ const COMPONENTS_NOROUNT = [
   StepProcessTbjcZxtbK231IndexComponent,
   StepProcessTbjcZxtbK232IndexComponent,
   StepProcessTbjcZxtbK051ChartComponent,
-  // DashboardDataUpZxtbK052IndexComponent,
-  // -------------------------------------------------------------
-  AuditstepAdProcessTbjcFxIndexComponent,
+
+  // 分校填报进程查询----------------------------------------------
+  AuditstepAdProcessTbjcFxSjtbIndexComponent,
   AuditstepAdProcessTbjcFxDataViewComponent,
-  // 专家评审进程
+  StepProcessTbjcFxtbB021IndexComponent,
+  StepProcessTbjcFxtbB022IndexComponent,
+  StepProcessTbjcFxtbB031IndexComponent,
+  StepProcessTbjcFxtbB04IndexComponent,
+  StepProcessTbjcFxtbB051IndexComponent,
+  StepProcessTbjcFxtbB052IndexComponent,
+  StepProcessTbjcFxtbB053IndexComponent,
+  StepProcessTbjcFxtbB054IndexComponent,
+  StepProcessTbjcFxtbB055IndexComponent,
+  StepProcessTbjcFxtbB056IndexComponent,
+  StepProcessTbjcFxtbB06IndexComponent,
+  StepProcessTbjcFxtbB07IndexComponent,
+  StepProcessTbjcFxtbB081IndexComponent,
+  StepProcessTbjcFxtbB082IndexComponent,
+  StepProcessTbjcFxtbB101IndexComponent,
+  StepProcessTbjcFxtbB102IndexComponent,
+  StepProcessTbjcFxtbB11IndexComponent,
+  StepProcessTbjcFxtbB131IndexComponent,
+  StepProcessTbjcFxtbB132IndexComponent,
+  StepProcessTbjcFxtbB133IndexComponent,
+  StepProcessTbjcFxtbB141IndexComponent,
+  StepProcessTbjcFxtbB142IndexComponent,
+  StepProcessTbjcFxtbB151IndexComponent,
+  StepProcessTbjcFxtbB152IndexComponent,
+  StepProcessTbjcFxtbB161IndexComponent,
+  StepProcessTbjcFxtbB162IndexComponent,
+  StepProcessTbjcFxtbB171IndexComponent,
+  StepProcessTbjcFxtbB172IndexComponent,
+  StepProcessTbjcFxtbB181IndexComponent,
+  StepProcessTbjcFxtbB182IndexComponent,
+  StepProcessTbjcFxtbB191IndexComponent,
+  StepProcessTbjcFxtbB192IndexComponent,
+
+  AuditstepAdProcessTbjcFxIndexFileComponent,
+  StepProcessTbjcFxFileInxCommentComponent,
+  StepProcessTbjcFxWzfileditEditComponent,
+
+  // 专家评审进程--------------------------------------------------
   AuditstepAdProcessZjpsjcComponent,
   AuditstepAdProcessPsjcZxIndexComponent,
   AuditstepAdProcessPsjcZxDataViewComponent,

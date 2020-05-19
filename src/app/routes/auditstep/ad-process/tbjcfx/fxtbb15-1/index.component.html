@@ -20,13 +20,11 @@
 </nz-card>
 <nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
   <thead>
-    <tr style="background: linen">
-      <th nzWidth="9%" nzAlign="center">年度</th>
-      <th nzAlign="center"><b>奖项（荣誉）名称</b></th>
-      <th nzWidth="12%" nzAlign="center"><b>奖项类别</b></th>
-      <th nzWidth="18%" nzAlign="center"><b>授奖单位</b></th>
-      <th nzWidth="10%" nzAlign="center"><b>获奖年份</b></th>
-      <th nzWidth="10%" nzAlign="center">操作</th>
+    <tr style="background-color: linen">
+      <th nzWidth="12%" nzAlign="center">年度</th>
+      <th nzAlign="center" style="font-weight: bold;">共享课程名称</th>
+      <th nzAlign="center" nzWidth="25%" style="font-weight: bold;">共享类别</th>
+      <th nzWidth="12%" nzAlign="center">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -36,47 +34,29 @@
           {{ data.nd }} 年
         </ng-container>
         <ng-template #ndInputTpl>
-          <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1" nzSize="3">
+          <nz-input-number style="width: 8em" [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1">
           </nz-input-number>
         </ng-template>
       </td>
-      <td>&nbsp;
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jxmcInputTpl">
-          {{ data.jxmc }}
+
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else kcmcInputTpl">
+          {{ data.kcmc }}
         </ng-container>
-        <ng-template #jxmcInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.jxmc" />
+        <ng-template #kcmcInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.kcmc" />
         </ng-template>
       </td>
+
       <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else jxlbInputTpl">
-          {{ data.jxlb }}
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xmlbInputTpl">
+          {{ data.xmlb }}
         </ng-container>
-        <ng-template #jxlbInputTpl>
-          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.jxlb" placeholder="教学成果奖"> -->
-          <nz-select style="width: 110px;" [(ngModel)]="editCache[data.id].data.jxlb" nzAllowClear nzPlaceHolder="类别">
-            <nz-option nzValue="省部级及以上" nzLabel="省部级及以上"></nz-option>
-            <nz-option nzValue="市级" nzLabel="市级"></nz-option>
-            <nz-option nzValue="行业" nzLabel="行业"></nz-option>
-            <nz-option nzValue="其它" nzLabel="其它"></nz-option>
+        <ng-template #xmlbInputTpl>
+          <nz-select style="width: 120px;" [(ngModel)]="editCache[data.id].data.xmlb" nzAllowClear nzPlaceHolder="共享类别">
+            <nz-option nzValue="培训项目" nzLabel="培训项目"></nz-option>
+            <nz-option nzValue="考试项目" nzLabel="考试项目"></nz-option>
           </nz-select>
-        </ng-template>
-      </td>
-      <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else sjdwInputTpl">
-          {{ data.sjdw }}
-        </ng-container>
-        <ng-template #sjdwInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.sjdw" />
-        </ng-template>
-      </td>
-      <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else sjndInputTpl">
-          {{ data.sjnd }}
-        </ng-container>
-        <ng-template #sjndInputTpl>
-          <nz-input-number style="width: 8em" [(ngModel)]="editCache[data.id].data.sjnd" [nzMin]="2000" [nzStep]="1">
-          </nz-input-number>
         </ng-template>
       </td>
 

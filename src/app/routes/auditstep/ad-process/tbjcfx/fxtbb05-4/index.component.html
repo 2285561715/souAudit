@@ -1,0 +1,128 @@
+<nz-card nzSize="small">
+  <div nz-row>
+    <div nz-col nzSpan="8">
+      <button nz-button nzType="primary" nzSize="small" (click)="addData()">
+        <i nz-icon nzType="plus-circle"></i> 新增 1 行</button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="danger" nzSize="small" (click)="deleteConfirm()">
+        <i nz-icon nzType="delete"></i> 清空本次填报数据</button>
+    </div>
+    <div nz-col nzSpan="16" style="text-align: right">
+      <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
+        http-url="http://139.224.62.102/assets/fxsj_mb/{{ dataStr.dtNo }}.xlsx" file-name="{{ dataStr.dtName }}.xlsx">
+        {{ dataStr.dtName }}模板下载 <i nz-icon nzType="download" style="color:coral"></i>
+      </button>
+      <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
+        <button nz-button nzSize="small" nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
+      </nz-upload>
+    </div>
+  </div>
+</nz-card>
+<nz-table #editRowTable nzBordered [nzData]="listOfData" nzSize="small" nzHideOnSinglePage="true">
+  <thead>
+    <tr style="background-color: linen">
+      <th nzWidth="12%" nzAlign="center">年度</th>
+      <th nzWidth="15%" nzAlign="center"><b>姓名</b></th>
+      <th nzWidth="15%" nzAlign="center"><b>身份证号</b></th>
+      <th nzWidth="15%" nzAlign="center"><b>出生年月</b></th>
+      <th nzWidth="10%" nzAlign="center"><b>性别</b></th>
+      <th nzAlign="center"><b>工作性质</b></th>
+      <th nzWidth="15%" nzAlign="center"><b>学历</b></th>
+      <th nzWidth="10%" nzAlign="center">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of editRowTable.data">
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else ndInputTpl">
+          {{ data.nd }} 年
+        </ng-container>
+        <ng-template #ndInputTpl>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.nd" [nzMin]="0" [nzStep]="1" nzSize="4">
+          </nz-input-number>
+        </ng-template>
+      </td>
+      <!-- id,nd,xxdm,xxmc,xm,zgh,birdate,xb,gzxz,xl, -->
+      <!-- id,年度,学校代码,学校名称,姓名,工号,出生年月,性别,工作性质,学历, -->
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xmInputTpl">
+          {{ data.xm }}
+        </ng-container>
+        <ng-template #xmInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xm" />
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else zghInputTpl">
+          <span *ngIf="data.zgh && data.zgh.length > 10"> {{ data.zgh.substring(0, 6) }}...</span>
+          <span *ngIf="!(data.zgh && data.zgh.length > 10)">{{ data.zgh }}</span>
+        </ng-container>
+        <ng-template #zghInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.zgh" />
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else birdateInputTpl">
+          {{ data.birdate }}
+        </ng-container>
+        <ng-template #birdateInputTpl>
+          <!-- <input type="date" nzSize="small" nz-input [(ngModel)]="editCache[data.id].data.birdate" /> -->
+          <input type="text" style="width: 7em" nz-input [(ngModel)]="editCache[data.id].data.birdate" />
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xbInputTpl">
+          {{ data.xb }}
+        </ng-container>
+        <ng-template #xbInputTpl>
+          <nz-select style="width: 80px;" [(ngModel)]="editCache[data.id].data.xb" nzAllowClear nzPlaceHolder="性别">
+            <nz-option nzValue="男" nzLabel="男"></nz-option>
+            <nz-option nzValue="女" nzLabel="女"></nz-option>
+          </nz-select>
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else gzxzInputTpl">
+          {{ data.gzxz }}
+        </ng-container>
+        <ng-template #gzxzInputTpl>
+          <nz-select style="width: 100px;" [(ngModel)]="editCache[data.id].data.gzxz" nzAllowClear nzPlaceHolder="性质">
+            <nz-option nzValue="专职" nzLabel="专职"></nz-option>
+            <nz-option nzValue="兼职" nzLabel="兼职"></nz-option>
+          </nz-select>
+        </ng-template>
+      </td>
+      <td nzAlign="center">
+        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else xlInputTpl">
+          {{ data.xl }}
+        </ng-container>
+        <ng-template #xlInputTpl>
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].data.xl" /> -->
+          <nz-select style="width: 130px;" [(ngModel)]="editCache[data.id].data.xl" nzAllowClear nzPlaceHolder="学历">
+            <nz-option nzValue="博士研究生" nzLabel="博士研究生"></nz-option>
+            <nz-option nzValue="硕士研究生" nzLabel="硕士研究生"></nz-option>
+            <nz-option nzValue="本科" nzLabel="本科"></nz-option>
+            <nz-option nzValue="专科" nzLabel="专科"></nz-option>
+            <nz-option nzValue="中专" nzLabel="中专"></nz-option>
+            <nz-option nzValue="其它" nzLabel="其它"></nz-option>
+          </nz-select>
+        </ng-template>
+      </td>
+
+      <td nzAlign="center">
+        <div *ngIf="data.islock === 0" class="editable-row-operations">
+          <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
+            <a (click)="startEdit(data.id)">修改</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a nz-popconfirm nzTitle="确认删除该条数据?" (nzOnConfirm)="dataDelete(data.id)">删除</a>
+          </ng-container>
+          <ng-template #saveTpl>
+            <a (click)="saveEdit(data.id)">保存</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a nz-popconfirm nzTitle="确认取消?" (nzOnConfirm)="cancelEdit(data.id)">取消</a>
+          </ng-template>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

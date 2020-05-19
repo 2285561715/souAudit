@@ -9,7 +9,8 @@ import { AuditstepAdProcessSetFxComponent } from './setfx/setfx.component';
 import { AuditstepAdProcessTbjcZxIndexSjtbComponent } from './tbjczx/indexsjtb.component';
 import { AuditstepAdProcessTbjcZxIndexFileComponent } from './tbjczx/indexfile.component';
 // 分校填报进程查询
-import { AuditstepAdProcessTbjcFxIndexComponent } from './tbjcfx/index.component';
+import { AuditstepAdProcessTbjcFxSjtbIndexComponent } from './tbjcfx/indexsjtb.component';
+import { AuditstepAdProcessTbjcFxIndexFileComponent } from './tbjcfx/indexfile.component';
 
 // 专家评审进程查询
 import { AuditstepAdProcessZjpsjcComponent } from './zjpsjc.component';
@@ -33,6 +34,7 @@ export class AuditstepAdProcessStepComponent implements OnInit {
   listOfAppStep: any = [];
 
   ngOnInit() {
+    // console.log(this.value);
     this.loadSteps();
   }
 
@@ -153,18 +155,18 @@ export class AuditstepAdProcessStepComponent implements OnInit {
 
   // fx-查看分校数据填报进程
   fxSjtbProcess(record: any): void {
-    const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcFxIndexComponent, { value: any }, string>({
-      nzTitle: '【' + record.stepName + '】 填报进程',
+    const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcFxSjtbIndexComponent, { value: any }, string>({
+      nzTitle: '<b>【' + record.stepName + '】 进程</b>',
       nzWidth: document.body.clientWidth - 500,
       nzPlacement: 'left',
-      nzContent: AuditstepAdProcessTbjcFxIndexComponent,
+      nzContent: AuditstepAdProcessTbjcFxSjtbIndexComponent,
       nzContentParams: {
         value: record,
       },
     });
 
     drawerRef.afterOpen.subscribe(() => {
-      console.log('Drawer(Component) open');
+      // console.log('Drawer(Component) open');
     });
 
     drawerRef.afterClose.subscribe(data => {
@@ -176,13 +178,17 @@ export class AuditstepAdProcessStepComponent implements OnInit {
 
   // fx-查看分校文字材料上传进程
   fxFileProcess(record: any): void {
-    const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcFxIndexComponent, { value: any }, string>({
-      nzTitle: '【' + record.stepName + '】 填报进程',
+    const datavalue = record;
+    datavalue.verIndex = this.value.verIndex;
+    datavalue.deptId = '31001';
+    datavalue.deptName = '虹口分校';
+    const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcFxIndexFileComponent, { value: any }, string>({
+      nzTitle: '分校文字材料填报情况',
       nzWidth: document.body.clientWidth - 500,
       nzPlacement: 'left',
-      nzContent: AuditstepAdProcessTbjcFxIndexComponent,
+      nzContent: AuditstepAdProcessTbjcFxIndexFileComponent,
       nzContentParams: {
-        value: record,
+        value: datavalue,
       },
     });
 

@@ -1,0 +1,53 @@
+<nz-card nzSize="small">
+  <div nz-row>
+    <div nz-col nzSpan="16">
+      <span>页面默认显示全部分校列表，右侧下拉框可选择查看某分校填报情况!</span>
+    </div>
+    <div nz-col nzSpan="8" style="text-align: right;">
+      选择分校：<nz-select style="width: 200px;" nzShowSearch nzAllowClear nzPlaceHolder="-请选择分校-"
+        [(ngModel)]="selectedValue" (ngModelChange)="filter($event)">
+        <nz-option *ngFor="let option of listOfType" [nzLabel]="option.text" [nzValue]="option.value"></nz-option>
+      </nz-select>&nbsp;&nbsp;
+    </div>
+  </div>
+</nz-card>
+<nz-table nzSize="small" #colSpanTable [nzData]="listOfDisplayData" nzBordered nzPageSize="40"
+  nzHideOnSinglePage="true">
+  <thead>
+    <tr style="background: chocolate;">
+      <th nzAlign="center" nzWidth="20%" style="color:snow;font-size: 15px;font-weight: bold;">分校名称</th>
+      <th nzAlign="center" style="color:snow;font-size: 15px;font-weight: bold;">数据表名称</th>
+      <th nzAlign="center" nzWidth="13%" style="color:snow;font-size: 15px;font-weight: bold;">是否填报</th>
+      <th nzAlign="center" nzWidth="13%" style="color:snow;font-size: 15px;font-weight: bold;">是否确认</th>
+      <th nzAlign="center" nzWidth="13%" style="color:snow;font-size: 15px;font-weight: bold;">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dt of colSpanTable.data; index as i">
+      <td nzAlign="center">{{ dt.deptName }}</td>
+      <td style="font-size: 15px;font-weight: bold;">{{ dt.dtName }}</td>
+      <td nzAlign="center">
+        <span *ngIf="!dt.modTime" nz-tooltip nzTooltipTitle="未填报">
+          <i nz-icon nzType="close" style="color: crimson;font-size: 16px;"></i>
+        </span>
+        <span *ngIf="dt.modTime" nz-tooltip nzTooltipTitle="{{dt.modTime}}">
+          <i nz-icon nzType="check-circle" style="color:lime;font-size: 16px;"></i>
+        </span>
+      </td>
+      <td nzAlign="center">
+        <span *ngIf="!dt.checkTime" nz-tooltip nzTooltipTitle="待确认">
+          <i nz-icon nzType="minus-circle" style="color: crimson;font-size: 16px;"></i>
+        </span>
+        <span *ngIf="dt.checkTime" nz-tooltip nzTooltipTitle="{{dt.checkTime}}">
+          <i nz-icon nzType="check-circle" style="color:lime;font-size: 16px;"></i>
+        </span>
+      </td>
+      <td nzAlign="center">
+        <span *ngIf="dt.modTime" nz-tooltip nzTooltipTitle="查看上报数据">
+          <button nz-button style="border: 0em" nzSize="small" (click)="dataBarShow(dt)"><i nz-icon nzType="search"
+              style="color: coral"></i>查看数据</button>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
