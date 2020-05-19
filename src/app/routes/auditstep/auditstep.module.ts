@@ -118,6 +118,7 @@ import { StepProcessTbjcFxtbB182IndexComponent } from './ad-process/tbjcfx/fxtbb
 import { StepProcessTbjcFxtbB191IndexComponent } from './ad-process/tbjcfx/fxtbb19-1/index.component';
 import { StepProcessTbjcFxtbB192IndexComponent } from './ad-process/tbjcfx/fxtbb19-2/index.component';
 
+import { AuditstepAdProcessTbjcFxFileDeptIndexComponent } from './ad-process/tbjcfx/filedept.component';
 import { AuditstepAdProcessTbjcFxIndexFileComponent } from './ad-process/tbjcfx/indexfile.component';
 import { StepProcessTbjcFxFileInxCommentComponent } from './ad-process/tbjcfx/inxComment.component';
 import { StepProcessTbjcFxWzfileditEditComponent } from './ad-process/tbjcfx/wzfiledit/edit.component';
@@ -246,6 +247,7 @@ const COMPONENTS_NOROUNT = [
   StepProcessTbjcFxtbB191IndexComponent,
   StepProcessTbjcFxtbB192IndexComponent,
 
+  AuditstepAdProcessTbjcFxFileDeptIndexComponent,
   AuditstepAdProcessTbjcFxIndexFileComponent,
   StepProcessTbjcFxFileInxCommentComponent,
   StepProcessTbjcFxWzfileditEditComponent,

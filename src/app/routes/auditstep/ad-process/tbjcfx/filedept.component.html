@@ -1,0 +1,18 @@
+  <nz-table #branchTable nzSize="small" [nzData]="listOfData" nzHideOnSinglePage="true" nzPageSize="100">
+    <thead>
+      <tr>
+        <th nzWidth="25%" nzAlign="center" (nzFilterChange)="filter($event)">类别</th>
+        <th nzAlign="center">分校名称</th>
+        <th nzWidth="25%" nzAlign="center">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of branchTable.data;let i=index;">
+        <td nzAlign="center">{{ data.btype }} </td>
+        <td>{{ data.bname }}</td>
+        <td>
+          <button nz-button style="border: 0em" (click)="fxFileProcess(data)"><i nz-icon nzType="search"
+              style="color: coral"></i>文字材料</button>
+        </td>
+    </tbody>
+  </nz-table>

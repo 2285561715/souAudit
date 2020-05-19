@@ -55,48 +55,6 @@ export class AuditstepAdProcessTbjcFxIndexFileComponent implements OnInit {
   tempDCK: any[] = [];
   tempNode: any[] = [];
 
-  deptId = '31001';
-  listOfDept = [
-    { deptId: '31001', deptName: '虹口分校' },
-    { deptId: '31002', deptName: '闵行二分校' },
-    { deptId: '31003', deptName: '宝山分校' },
-    { deptId: '31004', deptName: '浦东东校' },
-    { deptId: '31005', deptName: '闵行一分校' },
-    { deptId: '31006', deptName: '金山分校' },
-    { deptId: '31007', deptName: '松江分校' },
-    { deptId: '31008', deptName: '浦东南校' },
-    { deptId: '31009', deptName: '奉贤分校' },
-    { deptId: '31010', deptName: '青浦分校' },
-    { deptId: '31011', deptName: '崇明分校' },
-    { deptId: '31012', deptName: '嘉定分校' },
-    { deptId: '31020', deptName: '百联集团分校' },
-    { deptId: '31025', deptName: '新世界集团分校' },
-    { deptId: '31026', deptName: '航空运输学院' },
-    { deptId: '31028', deptName: '企业家联合会' },
-    { deptId: '31030', deptName: '杨浦分校 ' },
-    { deptId: '31031', deptName: '黄浦分校' },
-    { deptId: '31032', deptName: '普陀分校' },
-    { deptId: '31034', deptName: '西南进修学院分校' },
-    { deptId: '31036', deptName: '浦东西校' },
-    { deptId: '31039', deptName: '商业分校' },
-    { deptId: '31043', deptName: '时尚学院' },
-    { deptId: '31045', deptName: '工程大分校' },
-    { deptId: '31058', deptName: '贸易学校教学点' },
-    { deptId: '31065', deptName: '邮电分校' },
-    { deptId: '31069', deptName: '新知教学点' },
-    { deptId: '31070', deptName: '旅游局教学点' },
-    { deptId: '31074', deptName: '泽达进修学院' },
-    { deptId: '31075', deptName: '交大昂立分校' },
-    { deptId: '31086', deptName: '外经贸分校' },
-    { deptId: '31087', deptName: '慧承文化进修学院' },
-    { deptId: '31088', deptName: '徐汇财贸分校' },
-    { deptId: '31089', deptName: '建设分校' },
-    { deptId: '31092', deptName: '静安分校' },
-    { deptId: '31093', deptName: '徐汇分校' },
-    { deptId: '31097', deptName: '石化工业学校培训中心教学点' },
-    { deptId: '31057', deptName: '沪东中华进修学院教学点 ' },
-  ];
-
   ngOnInit() {
     // console.log(this.value);
     this.loadInfo();
@@ -121,11 +79,11 @@ export class AuditstepAdProcessTbjcFxIndexFileComponent implements OnInit {
         " ver_index='" +
         this.value.verIndex +
         "' and dept_id='" +
-        this.deptId +
+        this.value.deptId +
         "' and app_id='" +
         this.value.appId +
         "' and step_id='" +
-        this.value.stepId +
+        this.value.id +
         "'",
       orderDirections: 'id ASC',
     };
@@ -184,12 +142,6 @@ export class AuditstepAdProcessTbjcFxIndexFileComponent implements OnInit {
           // console.log(this.listOfData);
         },
       );
-  }
-
-  filter(event: any): void {
-    console.log(event);
-    this.deptId = event;
-    this.loadInfo();
   }
 
   openFolder(data: NzTreeNode | Required<NzFormatEmitEvent>): void {

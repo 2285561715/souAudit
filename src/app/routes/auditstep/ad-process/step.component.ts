@@ -10,7 +10,7 @@ import { AuditstepAdProcessTbjcZxIndexSjtbComponent } from './tbjczx/indexsjtb.c
 import { AuditstepAdProcessTbjcZxIndexFileComponent } from './tbjczx/indexfile.component';
 // 分校填报进程查询
 import { AuditstepAdProcessTbjcFxSjtbIndexComponent } from './tbjcfx/indexsjtb.component';
-import { AuditstepAdProcessTbjcFxIndexFileComponent } from './tbjcfx/indexfile.component';
+import { AuditstepAdProcessTbjcFxFileDeptIndexComponent } from './tbjcfx/filedept.component';
 
 // 专家评审进程查询
 import { AuditstepAdProcessZjpsjcComponent } from './zjpsjc.component';
@@ -180,17 +180,17 @@ export class AuditstepAdProcessStepComponent implements OnInit {
   fxFileProcess(record: any): void {
     const datavalue = record;
     datavalue.verIndex = this.value.verIndex;
-    datavalue.deptId = '31001';
-    datavalue.deptName = '虹口分校';
-    const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcFxIndexFileComponent, { value: any }, string>({
-      nzTitle: '分校文字材料填报情况',
-      nzWidth: document.body.clientWidth - 500,
-      nzPlacement: 'left',
-      nzContent: AuditstepAdProcessTbjcFxIndexFileComponent,
-      nzContentParams: {
-        value: datavalue,
+    const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcFxFileDeptIndexComponent, { value: any }, string>(
+      {
+        nzTitle: '分校列表',
+        nzWidth: 500,
+        nzPlacement: 'right',
+        nzContent: AuditstepAdProcessTbjcFxFileDeptIndexComponent,
+        nzContentParams: {
+          value: datavalue,
+        },
       },
-    });
+    );
 
     drawerRef.afterOpen.subscribe(() => {
       console.log('Drawer(Component) open');
