@@ -1,0 +1,78 @@
+<div nz-row nzGutter="8">
+  <nz-collapse [nzBordered]="false">
+    <nz-collapse-panel *ngFor="let panel of listOfData" [nzHeader]="panelHead" [nzActive]="panel.active"
+      [nzExtra]="extraTpl" nzDisabled="false" nzShowArrow="false"
+      [nzExpandedIcon]="!isFirst && (panel.icon || expandedIcon)" style="border: 0px;">
+      <div *ngIf="panel.isLeaf" nz-row nzGutter="8">
+        <div nz-col [nzSpan]="10">
+          <span *ngIf="panel.isStar">
+            <nz-tag [nzColor]="'#f50'">关键指标</nz-tag>&nbsp;&nbsp;
+          </span>
+          <span *ngIf="!panel.isStar">
+            <nz-tag [nzColor]="'#2db7f5'">常规指标</nz-tag>
+          </span>
+          <span *ngIf="panel.idKind === 'xx'">
+            <nz-tag [nzColor]="'orange'">全局指标</nz-tag>
+          </span>
+          <span *ngIf="panel.idKind === 'xl'">
+            <nz-tag [nzColor]="'orange'">学历教育指标</nz-tag>
+          </span>
+          <span *ngIf="panel.idKind === 'fxl'">
+            <nz-tag [nzColor]="'blue'">非学历教育指标</nz-tag>
+          </span>
+          <span *ngIf="panel.idKind === 'sq'">
+            <nz-tag [nzColor]="'green'">社区教育指标</nz-tag>
+          </span>
+        </div>
+        <div nz-col [nzSpan]="14" style="margin:0;text-align: right;height: 2.0em;">
+          <span *ngIf="panel.psmodtime">
+            <i nz-icon nzType="clock-circle" style="color:rgb(97, 173, 21);"></i>
+            已打分：
+            <nz-tag *ngIf="panel.pspoint==='A'" [nzColor]="'#2db7f5'">A</nz-tag>
+            <nz-tag *ngIf="panel.pspoint==='B'" [nzColor]="'green'">B</nz-tag>
+            <nz-tag *ngIf="panel.pspoint==='C'" [nzColor]="'blue'">C</nz-tag>
+            <nz-tag *ngIf="panel.pspoint==='D'" [nzColor]="'#f50'">D</nz-tag>
+          </span>
+          <span *ngIf="!panel.uptime" style="color:crimson;">
+            <i nz-icon nzType="clock-circle" style="color:crimson;"></i>
+            未打分</span>
+          <nz-divider nzType="vertical"></nz-divider>
+          <button nz-button nzSize="small" nzType="primary" style="background-color: coral;border: 0;"
+            (click)="openEdit(panel)" nzTooltipTitle="指标打分及录入反馈意见" nzTooltipPlacement="topCenter" nz-tooltip>
+            <i nz-icon nzType="edit" nzTheme="fill"></i>打分反馈
+          </button>
+          <nz-divider nzType="vertical"></nz-divider>
+          <button nz-button nzSize="small" nzType="link" (click)="openInxcoments(panel)" nzTooltipTitle="指标支撑文字材料上传或修改"
+            nzTooltipPlacement="topCenter" nz-tooltip>
+            <指标内涵及说明> &nbsp;
+          </button>
+        </div>
+      </div>
+      <div *ngIf="panel.isLeaf" nz-row nzGutter="8">
+        <div class="steps-comment" [innerHTML]="panel.pf"></div>
+        <div class="steps-comment" [innerHTML]="panel.af"></div>
+      </div>
+      <ng-template #panelHead>
+        <span *ngIf="panel.level === '1'" style="font-weight: bold;font-size: 20px;">{{ panel.name }}</span>
+        <span *ngIf="panel.level === '2'" style="font-weight: bold;font-size: 18px;">{{ panel.name }}</span>
+        <span *ngIf="panel.level === '3'" style="font-weight: bold;font-size: 17px;">{{ panel.name }}</span>
+        <span *ngIf="panel.level === '4'" style="font-weight: bold;font-size: 17px;">{{ panel.name }}</span>
+      </ng-template>
+      <ng-template #expandedIcon let-active>
+        {{ active }}
+        <i nz-icon nzType="caret-right" class="ant-collapse-arrow"></i>
+      </ng-template>
+      <ng-template #extraTpl> </ng-template>
+    </nz-collapse-panel>
+  </nz-collapse>
+</div>
+<div class="footer">
+  <b>打分分布：</b>
+  <nz-tag [nzColor]="'#2db7f5'">A {{aNum}}个，占比 {{format(aNum/listOfDataPoint.length*100)}} %；</nz-tag>
+  <nz-divider nzType="vertical"></nz-divider>
+  <nz-tag [nzColor]="'green'">B {{bNum}}个，占比 {{format(bNum/listOfDataPoint.length*100)}} %；</nz-tag>
+  <nz-divider nzType="vertical"></nz-divider>
+  <nz-tag [nzColor]="'blue'">C {{cNum}}个，占比 {{format(cNum/listOfDataPoint.length*100)}} %；</nz-tag>
+  <nz-divider nzType="vertical"></nz-divider>
+  <nz-tag [nzColor]="'#f50'">D {{dNum}}个，占比 {{format(dNum/listOfDataPoint.length*100)}} %；</nz-tag>
+</div>

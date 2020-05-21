@@ -24,6 +24,54 @@ export class AuditindexIndexManaXdrawerIdmoreComponent implements OnInit {
   // indexesTempValue: Observable<any>;
   indexesTempValue = [];
   // listOfDept = [];
+  config = {
+    toolbars: [
+      [
+        'bold',
+        'italic',
+        'underline',
+        'superscript',
+        'subscript',
+        'removeformat',
+        'formatmatch',
+        'pasteplain',
+        '|',
+        'rowspacingtop',
+        'rowspacingbottom',
+        'lineheight',
+        'fontsize',
+        '|',
+        'forecolor',
+        'backcolor',
+        'insertorderedlist',
+        'insertunorderedlist',
+        'selectall',
+        'cleardoc',
+        '|',
+        'insertimage',
+        // 'attachment',
+        '|',
+        'indent',
+        'justifyleft',
+        'justifycenter',
+        'justifyright',
+        'justifyjustify',
+        '|',
+        'inserttable',
+        'mergecells',
+        'deletetable',
+        '|',
+        'spechars',
+        'horizontal',
+      ],
+    ],
+    autoClearinitialContent: true,
+    autoHeightEnabled: true,
+    autoFloatEnabled: true,
+    wordCount: false,
+    initialFrameHeight: 200,
+  };
+
   listOfDept = [];
   listOfSelectedDept = []; // dutyDept数据库查询初始值
   formatterPercent = (value: number) => `${value} %`;
@@ -130,6 +178,17 @@ export class AuditindexIndexManaXdrawerIdmoreComponent implements OnInit {
     // console.log(this.validateForm.value);
     // console.log('done');
   }
+
+  // --------------------------------------------------------------------------
+  onChanges(values: any): void {
+    // console.log(values);
+  }
+  _ready(event: any): void {}
+  _destroy(): void {
+    // console.log('enter  destory');
+  }
+  _change(event: any) {}
+  // --------------------------------------------------------------------------
 
   submitForm(): void {
     for (const i of Object.keys(this.validateForm.controls)) {

@@ -10,6 +10,8 @@ import { DashboardZjpsFxComponent } from './zjpsfx.component';
 import { DashboardJhzjFxComponent } from './jhzjfx.component';
 import { DashboardDataUpZxIndexsViewComponent } from './dataupzx/indexsview.component';
 import { DashboardDataUpFxIndexsViewComponent } from './dataupfx/indexsview.component';
+import { DashboardZjpsZxIndexsViewComponent } from './zjpszx/indexsview.component';
+
 import { DashboardManualVideoPlayComponent } from './manual/videoplay.component';
 
 @Component({
@@ -261,12 +263,12 @@ export class DashboardComponent implements OnInit {
     const dataValue = record;
     dataValue.ZjId = this.loadUser.user.id;
 
-    const drawerRef = this.drawerService.create<DashboardZjpsZxComponent, { value: any }, string>({
+    const drawerRef = this.drawerService.create<DashboardZjpsZxIndexsViewComponent, { value: any }, string>({
       nzTitle: '【' + record.appName + ' - ' + record.stepName + '】' + '专家评审',
-      nzWidth: 890,
+      nzWidth: 1280,
       nzPlacement: 'left',
       nzMaskClosable: false,
-      nzContent: DashboardZjpsZxComponent,
+      nzContent: DashboardZjpsZxIndexsViewComponent,
       nzContentParams: {
         value: dataValue,
       },

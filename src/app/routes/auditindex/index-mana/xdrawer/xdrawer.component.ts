@@ -115,7 +115,7 @@ export class AuditindexIndexManaXdrawerComponent implements OnInit {
   setMore(activeNode: any): void {
     activeNode.verIndex = this.value.verIndex;
     this.modal
-      .create(AuditindexIndexManaXdrawerIdmoreComponent, { activeNode }, { size: 'lg' })
+      .create(AuditindexIndexManaXdrawerIdmoreComponent, { activeNode }, { size: 'xl' })
       .subscribe((res: any) => {
         this.loadInfo();
       });

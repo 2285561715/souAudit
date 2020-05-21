@@ -7,11 +7,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UploadChangeParam } from 'ng-zorro-antd/upload';
 
 @Component({
-  selector: 'app-dashboard-dataupzx-wzfiledit-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.less'],
+  selector: 'app-dashboard-zjpszx-review',
+  templateUrl: './review.component.html',
+  styleUrls: ['./review.component.less'],
 })
-export class DashboardDataUpZxWzfileditEditComponent implements OnInit {
+export class DashboardZjpsZxReviewComponent implements OnInit {
   record: any = [];
   dataValue: any;
   i: any;
@@ -64,15 +64,6 @@ export class DashboardDataUpZxWzfileditEditComponent implements OnInit {
     initialFrameHeight: 200,
   };
 
-  config_attach = {
-    toolbars: [['attachment', '|', 'bold', 'insertorderedlist', 'insertunorderedlist', 'cleardoc', 'horizontal']],
-    autoClearinitialContent: true,
-    autoHeightEnabled: true,
-    autoFloatEnabled: true,
-    wordCount: false,
-    initialFrameHeight: 200,
-  };
-
   validateForm: FormGroup;
   constructor(
     private modal: NzModalRef,
@@ -82,11 +73,12 @@ export class DashboardDataUpZxWzfileditEditComponent implements OnInit {
     private fb: FormBuilder,
     private msg: NzMessageService,
   ) {}
-
+  // radioValue = 'A';
   ngOnInit(): void {
+    // console.log(this.dataValue);
     this.validateForm = this.fb.group({
-      indexPGfile: [this.dataValue.pgfile, [Validators.required]],
-      attachfiles: [this.dataValue.atfile, [Validators.required]],
+      point: [this.dataValue.pspoint, [Validators.required]],
+      remark: [this.dataValue.psremark, [Validators.required]],
     });
   }
 
@@ -102,29 +94,19 @@ export class DashboardDataUpZxWzfileditEditComponent implements OnInit {
   // --------------------------------------------------------------------------
   submitForm() {
     const fdata = this.validateForm.value;
+    console.log(this.validateForm.value);
     const date = new Date();
     const subData = {
-      tableName: 'ad_apply_wbswz',
+      tableName: 'ad_apply_wbszjps',
       updateValues:
-        "index_comments='" +
-        fdata.indexPGfile +
-        "',other_attachments='" +
-        fdata.attachfiles +
-        "',up_time='" +
+        "ps_point='" +
+        fdata.point +
+        "',ps_text='" +
+        fdata.remark +
+        "',mod_time='" +
         format(date, 'YYYY-MM-DD HH:mm:ss') +
         "' ",
-      predication:
-        " ver_index='" +
-        this.dataValue.verIndex +
-        "' and index_id='" +
-        this.dataValue.id +
-        "' and dept_id='" +
-        this.dataValue.deptId +
-        "' and app_id='" +
-        this.dataValue.appId +
-        "' and step_id='" +
-        this.dataValue.stepId +
-        "'",
+      predication: " id='" + this.dataValue.pid + "'",
     };
     this.http.put('/api/dynamic/update', subData).subscribe(res => {
       this.msgSrv.success('保存成功');

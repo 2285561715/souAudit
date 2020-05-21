@@ -54,13 +54,13 @@
         </ng-container>
         <ng-template #xmlbInputTpl>
           <nz-select style="width: 120px;" [(ngModel)]="editCache[data.id].data.xmlb" nzAllowClear nzPlaceHolder="共享类别">
-            <nz-option nzValue="培训项目" nzLabel="培训项目"></nz-option>
-            <nz-option nzValue="考试项目" nzLabel="考试项目"></nz-option>
+            <nz-option nzValue="专职" nzLabel="专职"></nz-option>
+            <nz-option nzValue="兼职" nzLabel="兼职"></nz-option>
           </nz-select>
         </ng-template>
       </td>
 
-      <td nzAlign="center">
+      <td nzAlign=" center">
         <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>

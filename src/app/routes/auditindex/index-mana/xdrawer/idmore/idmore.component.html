@@ -47,8 +47,13 @@
     <nz-form-item>
       <nz-form-label [nzSpan]="4" nzFor="reportModel">评估报告模板</nz-form-label>
       <nz-form-control [nzSpan]="18">
-        <textarea formControlName="reportModel" id="reportModel" nz-input rows="10"
-          placeholder="指标对应的评估报告模板范文"></textarea>
+        <!-- <textarea formControlName="reportModel" id="reportModel" nz-input rows="10"
+          placeholder="指标对应的评估报告模板范文"></textarea> -->
+
+        <ueditor #full formControlName="reportModel" [config]="config" (onReady)="_ready($event)"
+          (onDestroy)="_destroy()" (ngModelChange)="_change($event)" style="width: 100%;height: 180px;">
+        </ueditor>
+
       </nz-form-control>
     </nz-form-item>
   </div>

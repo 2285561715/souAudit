@@ -41,7 +41,7 @@ export class DashboardDataUpFxWzfileditEditComponent implements OnInit {
         'cleardoc',
         '|',
         'insertimage',
-        'attachment',
+        // 'attachment',
         '|',
         'indent',
         'justifyleft',
