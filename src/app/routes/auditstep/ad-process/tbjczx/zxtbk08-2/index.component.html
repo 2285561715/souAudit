@@ -29,7 +29,7 @@
       <th nzAlign="center" nzWidth="9%">用户数</th>
       <th nzAlign="center" nzWidth="9%">访问量</th>
       <th nzAlign="center" nzWidth="9%">互动数</th>
-      <th nzWidth="8%" nzAlign="center">操作</th>
+      <th nzWidth="8%" nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -119,7 +119,7 @@
         </ng-template>
       </td>
 
-      <td nzAlign="center">
+      <td nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">
         <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>

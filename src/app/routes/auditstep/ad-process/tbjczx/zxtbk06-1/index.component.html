@@ -32,8 +32,7 @@
       <th nzWidth="6%" nzAlign="center"><b>学历</b></th>
       <th nzWidth="7%" nzAlign="center"><b>学位</b></th>
       <th nzAlign="center"><b>工作职务</b></th>
-      <!-- <th nzAlign="center">入职年月</th> -->
-      <th nzWidth="7%" nzAlign="center">操作</th>
+      <th nzWidth="7%" nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -157,16 +156,8 @@
           <input type="text" nz-input [(ngModel)]="editCache[data.id].data.gzzw" />
         </ng-template>
       </td>
-      <!-- <td nzAlign="center">
-        <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else rznyInputTpl">
-          {{ data.rzny }}
-        </ng-container>
-        <ng-template #rznyInputTpl>
-          <input type="text" nz-input [(ngModel)]="editCache[data.id].data.rzny" />
-        </ng-template>
-      </td> -->
 
-      <td nzAlign="center">
+      <td nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">
         <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>

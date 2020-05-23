@@ -278,84 +278,22 @@
       </ng-template>
     </div>
   </div>
-
-  <!-- 专家组 -->
-  <div nz-row [nzGutter]="8" *ngIf="unitNo==='xnzj'||unitNo==='xwzj'">
-    <div nz-col [nzSpan]="24">
-      <nz-card [nzTitle]="titleTemplate3" style="background-color:#EEE;border-radius: 10px;">
-
-        <div nz-row nzGutter="24" nzAlign="middle" class="little-card">
-          <div nz-col nzXs="24" nzMd="8" style="cursor: pointer;">
-            <div nz-row nzType="flex" nzAlign="middle" class="bg-magenta text-center rounded-md">
-              <div nz-col nzSpan="8" class="p-md text-white">
-                <i nz-icon nzType="cloud-download" class="display-2"></i>
-              </div>
-              <div nz-col nzSpan="16" class="bg-white py-md">
-                <p>
-                  <button nz-button nzType="primary" nzSize="large" style="border: 0em;background: coral;" down-file
-                    [http-url]="'http://139.224.62.102/assets/'+divData.verIndex+'.pdf'"
-                    [file-name]="divData.appName+'.pdf'">
-                    文档下载</button>
-                </p>
-                <div class="text-grey-dark">点击下载指标体系及内涵</div>
-              </div>
-            </div>
-          </div>
-          <!-- 总校评估评审 -->
-          <div *ngIf="divData.verIndex.toString().substring(4,6)==='zx'" nz-col nzXs="24" nzMd="8"
-            style="cursor: pointer;" (click)="zxZjpsWeb(divData)">
-            <div nz-row nzType="flex" nzAlign="middle" class="bg-primary text-center rounded-md">
-              <div nz-col nzSpan="8" class="p-md text-white">
-                <i nz-icon nzType="solution" class="display-2"></i>
-              </div>
-              <div nz-col nzSpan="16" class="bg-white py-md">
-                <p>
-                  <button nz-button nzType="primary" nzSize="large" style="border: 0em;background: coral;">
-                    评审反馈</button>
-                </p>
-                <div class="text-grey-dark">在线查看数据和材料，打分并反馈意见</div>
-              </div>
-            </div>
-          </div>
-          <!-- 分校评估评审 -->
-          <div *ngIf="divData.verIndex.toString().substring(4,6)==='fx'" nz-col nzXs="24" nzMd="8"
-            style="cursor: pointer;" (click)="fxZjpsWeb(divData)">
-            <div nz-row nzType="flex" nzAlign="middle" class="bg-primary text-center rounded-md">
-              <div nz-col nzSpan="8" class="p-md text-white">
-                <i nz-icon nzType="solution" class="display-2"></i>
-              </div>
-              <div nz-col nzSpan="16" class="bg-white py-md">
-                <p>
-                  <button nz-button nzType="primary" nzSize="large" style="border: 0em;background: coral;">
-                    在线评审反馈</button>
-                </p>
-                <div class="text-grey-dark">在线查看数据和材料，打分并反馈意见</div>
-              </div>
-            </div>
-          </div>
-          <!-- 打包下载 -->
-          <!-- <div nz-col nzXs="24" nzMd="8" style="cursor: pointer;">
-            <div nz-row nzType="flex" nzAlign="middle" class="bg-geekblue text-center rounded-md">
-              <div nz-col nzSpan="8" class="p-md text-white">
-                <i nz-icon nzType="file-zip" nzTheme="outline"></i>
-              </div>
-              <div nz-col nzSpan="16" class="bg-white py-md">
-                <p>
-                  <button nz-button nzType="primary" style="border: 0em;background: coral;">
-                    数据和文字材料</button>
-                </p>
-                <div class="text-grey-dark">离线评审后，登录系统上传评审结果</div>
-              </div>
-            </div>
-          </div> -->
+  <div nz-row [nzGutter]="16" *ngIf="unitNo==='xnzj'||unitNo==='xwzj'">
+    <div nz-col [nzSpan]="11">
+      <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTb2">
+        <div class="content" style="background-color: rgb(189, 245, 217);">
+          <span><a href="/#/auditstep/p-preview">
+              专家评审></a></span>
         </div>
       </nz-card>
-      <ng-template #titleTemplate3>
-        <span style="font-size:1.1em;color:#333;">评估任务：
-          <b>{{divData.appName}} —— {{divData.stepName}}【{{ divData.fromDate.toString().substring(0,10) }}
-            至 {{ divData.endDate.toString().substring(0,10) }}】</b>
-        </span>
+      <ng-template #titleTemplateTb2>
+        <span style="line-height: 1.5em;font-size: 1.2em; color: crimson; "><b>
+            <i nz-icon nzType="codepen-square" nzTheme="fill"></i>【{{pgYear}}】 上海开放大学办学水平评估</b></span>
       </ng-template>
     </div>
+    <div nz-col [nzSpan]="1"></div>
+    <div nz-col [nzSpan]="11">
+    </div>
+    <div nz-col [nzSpan]="1"></div>
   </div>
 </div>

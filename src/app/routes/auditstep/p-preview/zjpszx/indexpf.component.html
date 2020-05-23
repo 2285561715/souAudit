@@ -1,0 +1,24 @@
+<nz-table nzSize="small" #colSpanTable [nzData]="value" nzBordered nzPageSize="40" nzHideOnSinglePage="true">
+  <thead>
+    <tr style="background: chocolate;">
+      <th nzAlign="center" style="color:snow;font-size: medium;font-weight: bold;">评估指标</th>
+      <th nzAlign="center" nzWidth="22%" style="color:snow;font-size: medium;font-weight: bold;">已评分</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dt of colSpanTable.data; index as i">
+      <td>
+        <span *ngIf="dt.level === '1'">{{ dt.name }}</span>
+        <span *ngIf="dt.level === '2'">&nbsp;&nbsp;&nbsp;{{ dt.name }}</span>
+        <span *ngIf="dt.level === '3'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{{ dt.name }}</b></span>
+        <span *ngIf="dt.level === '4'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ dt.name }}</span>
+      </td>
+      <td *ngIf="dt.isLeaf" nzAlign="center" nz-tooltip [nzTooltipTitle]="dt.ppmark">
+        <nz-tag [nzColor]="'#f50'"> {{ dt.pspoint }} </nz-tag>
+      </td>
+      <td *ngIf="!dt.isLeaf" nzAlign="center">
+
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

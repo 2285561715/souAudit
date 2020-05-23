@@ -1,4 +1,4 @@
-<nz-card nzSize="small">
+<nz-card  *ngIf="loadUser.user.unitNo==='S01'" nzSize="small">
   <div nz-row>
     <div nz-col nzSpan="8">
       <button nz-button nzType="primary" nzSize="small" (click)="addData()">
@@ -27,7 +27,7 @@
       <th nzAlign="center"><b>新闻报道名称</b></th>
       <th nzWidth="20%" nzAlign="center"><b>官方媒体名称</b></th>
       <th nzWidth="15%" nzAlign="center"><b>备注说明</b></th>
-      <th nzWidth="9%" nzAlign="center">操作</th>
+      <th nzWidth="9%" nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -82,7 +82,7 @@
         </ng-template>
       </td>
 
-      <td nzAlign="center">
+      <td nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">
         <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>

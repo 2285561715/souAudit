@@ -1,4 +1,4 @@
-<nz-card nzSize="small">
+<nz-card  *ngIf="loadUser.user.unitNo==='S01'" nzSize="small">
   <div nz-row>
     <div nz-col nzSpan="8">
       <button nz-button nzType="primary" nzSize="small" (click)="addData()">
@@ -8,13 +8,13 @@
         <i nz-icon nzType="delete"></i> 清空本次填报数据</button>
     </div>
     <div nz-col nzSpan="16" style="text-align: right">
-      <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
+      <!-- <button nz-button class="mr-sm" nzType="link" nzSize="small" down-file
         http-url="http://139.224.62.102/assets/fxsj_mb/{{ dataStr.dtNo }}.xlsx" file-name="{{ dataStr.dtName }}.xlsx">
         {{ dataStr.dtName }}模板下载 <i nz-icon nzType="download" style="color:coral"></i>
       </button>
       <nz-upload [nzAction]="upUrl" (nzChange)="fupChange($event)">
         <button nz-button nzSize="small" nzType="primary"><i nz-icon nzType="upload"></i><span>数据导入</span></button>
-      </nz-upload>
+      </nz-upload> -->
     </div>
   </div>
 </nz-card>
@@ -34,7 +34,7 @@
       <th nzWidth="5%" nzAlign="center" style="font-weight: bold">学位</th>
       <th nzWidth="5%" nzAlign="center" style="font-weight: bold">性质</th>
       <th nzWidth="11%" nzAlign="center" style="font-weight: bold">所在单位</th>
-      <th nzWidth="7%" nzAlign="center">操作</th>
+      <th nzWidth="7%" nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -176,7 +176,7 @@
         </ng-template>
       </td>
 
-      <td nzAlign="center">
+      <td nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">
         <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>

@@ -29,7 +29,7 @@
       <th nzAlign="center" nzWidth="8%" style="font-weight: bold;">面授课教师姓名</th>
       <th nzAlign="center" nzWidth="9%" style="font-weight: bold;">面授课开展次数<br>（2课时计1次）</th>
       <th nzAlign="center" nzWidth="8%" style="font-weight: bold;">出勤率</th>
-      <th rowspan="2" nzWidth="8%" nzAlign="center">操作</th>
+      <th rowspan="2" nzWidth="8%" nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -105,7 +105,7 @@
         </ng-template>
       </td>
 
-      <td nzAlign="center">
+      <td nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">
         <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>

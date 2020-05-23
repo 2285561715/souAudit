@@ -5,12 +5,9 @@ import { format } from 'date-fns';
 
 import { DashboardDataUpZxComponent } from './dataupzx.component';
 import { DashboardDataUpFxComponent } from './dataupfx.component';
-import { DashboardZjpsZxComponent } from './zjpszx.component';
-import { DashboardZjpsFxComponent } from './zjpsfx.component';
 import { DashboardJhzjFxComponent } from './jhzjfx.component';
 import { DashboardDataUpZxIndexsViewComponent } from './dataupzx/indexsview.component';
 import { DashboardDataUpFxIndexsViewComponent } from './dataupfx/indexsview.component';
-import { DashboardZjpsZxIndexsViewComponent } from './zjpszx/indexsview.component';
 
 import { DashboardManualVideoPlayComponent } from './manual/videoplay.component';
 
@@ -242,62 +239,6 @@ export class DashboardComponent implements OnInit {
       nzPlacement: 'left',
       nzMaskClosable: false,
       nzContent: DashboardJhzjFxComponent,
-      nzContentParams: {
-        value: dataValue,
-      },
-    });
-
-    drawerRef.afterOpen.subscribe(() => {
-      console.log('Drawer(Component) open');
-    });
-
-    drawerRef.afterClose.subscribe(data => {
-      if (typeof data === 'string') {
-        this.value = data;
-      }
-    });
-  }
-
-  // 专家评审——总校评估
-  zxZjpsWeb(record: any): void {
-    const dataValue = record;
-    dataValue.ZjId = this.loadUser.user.id;
-
-    const drawerRef = this.drawerService.create<DashboardZjpsZxIndexsViewComponent, { value: any }, string>({
-      nzTitle: '【' + record.appName + ' - ' + record.stepName + '】' + '专家评审',
-      nzWidth: 1280,
-      nzPlacement: 'left',
-      nzMaskClosable: false,
-      nzContent: DashboardZjpsZxIndexsViewComponent,
-      nzContentParams: {
-        value: dataValue,
-      },
-    });
-
-    drawerRef.afterOpen.subscribe(() => {
-      console.log('Drawer(Component) open');
-    });
-
-    drawerRef.afterClose.subscribe(data => {
-      if (typeof data === 'string') {
-        this.value = data;
-      }
-    });
-  }
-
-  // 专家评审——分校评估
-  fxZjpsWeb(record: any): void {
-    // console.log('hellooo');
-    // console.log(record);
-    const dataValue = record;
-    dataValue.ZjId = this.loadUser.user.id;
-
-    const drawerRef = this.drawerService.create<DashboardZjpsFxComponent, { value: any }, string>({
-      nzTitle: '【' + record.appName + ' - 虹口分校 - ' + record.stepName + '】' + '专家评审',
-      nzWidth: 890,
-      nzPlacement: 'left',
-      nzMaskClosable: false,
-      nzContent: DashboardZjpsFxComponent,
       nzContentParams: {
         value: dataValue,
       },

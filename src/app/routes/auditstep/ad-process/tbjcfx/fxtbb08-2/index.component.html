@@ -1,4 +1,4 @@
-<nz-card nzSize="small">
+<nz-card  *ngIf="loadUser.user.unitNo==='S01'" nzSize="small">
   <div nz-row>
     <div nz-col nzSpan="8">
       <button nz-button nzType="primary" nzSize="small" (click)="addData()">
@@ -26,7 +26,7 @@
       <th rowspan="2" nzAlign="center" nzWidth="12%">学校名称</th>
       <th colspan="4" nzAlign="center"><b>微信公众号或小程序运营情况</b></th>
       <th colspan="3" nzAlign="center"><b>APP应用情况</b></th>
-      <th rowspan="2" nzWidth="100px" nzAlign="center">操作</th>
+      <th rowspan="2" nzWidth="100px" nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">操作</th>
     </tr>
     <tr style="background-color: linen">
       <th nzAlign="center" nzWidth="150px">微信应用名称</th>
@@ -48,7 +48,7 @@
       <th nzAlign="center" nzWidth="9%">用户数</th>
       <th nzAlign="center" nzWidth="9%">访问量</th>
       <th nzAlign="center" nzWidth="9%">互动数</th>
-      <th nzWidth="8%" nzAlign="center">操作</th>
+      <th nzWidth="8%" nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -200,7 +200,7 @@
         </ng-template>
       </td> -->
 
-      <td nzAlign="center">
+      <td nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">
         <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>

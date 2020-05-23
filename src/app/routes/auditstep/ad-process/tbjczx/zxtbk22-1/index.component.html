@@ -26,7 +26,7 @@
       <th rowspan="2" nzAlign="center" nzWidth="10%">分校/学院名称</th>
       <th colspan="7" nzAlign="center" style="background: ivory;"><b>学生对学校满意度</b></th>
       <th colspan="5" nzAlign="center" style="background: rgb(221, 245, 240);"><b>用人单位对毕业生满意度</b></th>
-      <th rowspan="2" nzWidth="7%" nzAlign="center">操作</th>
+      <th rowspan="2" nzWidth="7%" nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">操作</th>
     </tr>
     <tr style="background-color: linen">
       <th nzAlign="center" nzWidth="6%"><b>对目标<br>认同度</b></th>
@@ -178,7 +178,7 @@
 
         </ng-template>
       </td>
-      <td nzAlign="center">
+      <td nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">
         <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>

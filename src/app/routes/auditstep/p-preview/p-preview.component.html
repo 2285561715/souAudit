@@ -1,9 +1,83 @@
 <page-header [action]="phActionTpl">
   <ng-template #phActionTpl>
-    <button (click)="add()" nz-button nzType="primary">新建</button>
   </ng-template>
 </page-header>
-<nz-card>
-  <sf mode="search" [schema]="searchSchema" (formSubmit)="st.reset($event)" (formReset)="st.reset($event)"></sf>
-  <st #st [data]="url" [columns]="columns"></st>
-</nz-card>
+<div nz-row *ngFor="let divData of listOfData">
+  <div nz-row [nzGutter]="16" *ngIf="unitNo==='xnzj'||unitNo==='xwzj'">
+    <div nz-col [nzSpan]="12">
+      <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTb1">
+        <div nz-row [nzGutter]="16">
+          <div nz-col [nzSpan]="5">
+            <div class="content">
+              <span>
+                <img src="http://localhost:4200/assets/kd1.png" width="100">
+              </span>
+            </div>
+          </div>
+          <div nz-col [nzSpan]="19">
+            <div style="margin-top: 1.1em;">
+              <span style="font-size:1.25em;color:#333; line-height: 2.5em;margin-left: 0.8em;">
+                任务名称：<b>{{divData.appName}}</b></span><br>
+              <span style="font-size:1.25em;color:#333; line-height: 2.5em;margin-left: 0.8em;">
+                阶段名称： {{divData.stepType}} </span><br>
+              <span style="font-size:1.25em;color:#333; line-height: 2.5em;margin-left: 0.8em;">
+                计划安排：<b>{{ divData.fromDate.toString().substring(0,10) }} 至
+                  {{ divData.endDate.toString().substring(0,10) }}</b></span>
+              <br>
+              <button nz-button nzType="link" nzSize="large" down-file
+                [http-url]="'http://139.224.62.102/assets/'+divData.verIndex+'.pdf'"
+                [file-name]="divData.appName+'.pdf'"><b>
+                  <i nz-icon nzType="cloud-download" nzTheme="outline"></i> {{divData.appName}}指标及内涵说明</b></button>
+            </div>
+            <br>
+            <div class="ctitle" style="background-color: coral;" (click)="zxZjpsWeb(divData)">
+              <span><i nz-icon nzType="edit" nzTheme="outline"></i> 开始评审</span>
+            </div>
+          </div>
+        </div>
+      </nz-card>
+      <ng-template #titleTemplateTb1>
+        <span style="line-height: 1.5em;font-size: 1.2em;color:crimson;"><b>
+            <i nz-icon nzType="codepen-square" nzTheme="fill"></i> {{divData.stepName}} - {{divData.appName}}</b></span>
+      </ng-template>
+    </div>
+    <div nz-col [nzSpan]="1"></div>
+    <div nz-col [nzSpan]="10">
+      <!-- <nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTb3">
+        <div nz-row [nzGutter]="16">
+          <div nz-col [nzSpan]="6">
+            <div class="content">
+              <span>
+                <img src="http://139.224.62.102/assets/kd1.png" width="100">
+              </span>
+            </div>
+          </div>
+          <div nz-col [nzSpan]="18">
+            <div style="margin-top: 1.1em;">
+              <span style="font-size:1.25em;color:#333; line-height: 2.5em;margin-left: 0.8em;">
+                任务名称：<b>2020年上海开放大学分校办学水平评估</b></span><br>
+              <span style="font-size:1.25em;color:#333; line-height: 2.5em;margin-left: 0.8em;">
+                阶段名称： {{divData.stepName}} </span><br>
+              <span style="font-size:1.25em;color:#333; line-height: 2.5em;margin-left: 0.8em;">
+                计划安排：<b></b></span>
+              <br>
+              <button nz-button nzType="link" nzSize="large" down-file
+                [http-url]="'http://139.224.62.102/assets/sou-fx-bxsp-2020.pdf'"
+                [file-name]="'2020年上海开放大学分校办学水平评估指标及内涵说明.pdf'"><b>
+                  <i nz-icon nzType="cloud-download" nzTheme="outline"></i> 2020年上海开放大学分校办学水平评估指标及内涵说明</b></button>
+            </div>
+            <br>
+            <div class="ctitle" style="background-color: rgb(172, 252, 156);">
+              <span><i nz-icon nzType="branches" nzTheme="outline"></i> 未开放</span>
+            </div>
+          </div>
+        </div>
+      </nz-card>
+      <ng-template #titleTemplateTb3>
+        <span style="line-height: 1.5em;font-size: 1.2em; color: rgb(3, 9, 70); "><b>
+            <i nz-icon nzType="codepen-square" nzTheme="fill"></i> {{divData.stepName}} - 2020年上海开放大学分校办学水平评估</b></span>
+      </ng-template> -->
+    </div>
+    <div nz-col [nzSpan]="1"></div>
+  </div>
+</div>

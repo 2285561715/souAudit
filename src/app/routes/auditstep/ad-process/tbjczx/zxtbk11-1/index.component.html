@@ -28,7 +28,7 @@
       <th nzWidth="14%" nzAlign="center">所属学院</th>
       <th nzWidth="14%" nzAlign="center">建设类型</th>
       <th nzWidth="14%" nzAlign="center">经费投入（单位：元）</th>
-      <th nzWidth="10%" nzAlign="center">操作</th>
+      <th nzWidth="10%" nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -97,7 +97,7 @@
         </ng-template>
       </td>
 
-      <td nzAlign="center">
+      <td nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">
         <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>

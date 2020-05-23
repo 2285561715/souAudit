@@ -19,9 +19,8 @@ import { AuditstepDataCheckupComponent } from './data-checkup/data-checkup.compo
 import { AuditstepDataCheckupEditComponent } from './data-checkup/edit/edit.component';
 import { AuditstepDataCheckupViewComponent } from './data-checkup/view/view.component';
 import { AuditstepPPreviewComponent } from './p-preview/p-preview.component';
-import { AuditstepPPreviewEditComponent } from './p-preview/edit/edit.component';
-import { AuditstepPPreviewViewComponent } from './p-preview/view/view.component';
 import { AuditstepAdProcessComponent } from './ad-process/ad-process.component';
+
 import { AuditstepAdProcessStepComponent } from './ad-process/step.component';
 import { AuditstepAdProcessViewDataSynchComponent } from './ad-process/view/datasynch.component';
 // import { AuditstepAdProcessViewDataSynchShowComponent } from './ad-process/view/datasynchshow.component';
@@ -123,6 +122,13 @@ import { AuditstepAdProcessTbjcFxIndexFileComponent } from './ad-process/tbjcfx/
 import { StepProcessTbjcFxFileInxCommentComponent } from './ad-process/tbjcfx/inxComment.component';
 import { StepProcessTbjcFxWzfileditEditComponent } from './ad-process/tbjcfx/wzfiledit/edit.component';
 
+// 专家评审总校
+import { AuditstepPreviewZjpsZxIndexsViewComponent } from './p-preview/zjpszx/indexsview.component';
+import { AuditstepPreviewZjpsZxSjtbComponent } from './p-preview/zjpszx/zxsjtb.component';
+import { AuditstepPreviewZjpsZxInxCommentComponent } from './p-preview/zjpszx/inxComment.component';
+import { AuditstepPreviewZjpsZxReviewComponent } from './p-preview/zjpszx/review.component';
+import { AuditstepAdProcessTbjcZxIndexPfComponent } from './p-preview/zjpszx/indexpf.component';
+
 // 专家评审进程查询
 import { AuditstepAdProcessZjpsjcComponent } from './ad-process/zjpsjc.component';
 import { AuditstepAdProcessPsjcZxIndexComponent } from './ad-process/psjczx/index.component';
@@ -153,11 +159,8 @@ const COMPONENTS_NOROUNT = [
   AuditstepDataUploadViewComponent,
   AuditstepDataCheckupEditComponent,
   AuditstepDataCheckupViewComponent,
-  AuditstepPPreviewEditComponent,
-  AuditstepPPreviewViewComponent,
   AuditstepAdProcessStepComponent,
   AuditstepAdProcessViewDataSynchComponent,
-  // AuditstepAdProcessViewDataSynchShowComponent,
   AuditstepAdProcessZjpsSetupComponent,
   AuditstepAdProcessZjpsZjzUserComponent,
   AuditstepAdProcessZjpsZjzPszbComponent,
@@ -168,7 +171,6 @@ const COMPONENTS_NOROUNT = [
   StepProcessTbjcZxWzfileditEditComponent,
   StepProcessTbjcZxFileInxCommentComponent,
   AuditstepAdProcessTbjcZxDataViewComponent,
-
   StepProcessTbjcZxtbK01IndexComponent,
   StepProcessTbjcZxtbK021IndexComponent,
   StepProcessTbjcZxtbK022IndexComponent,
@@ -246,12 +248,16 @@ const COMPONENTS_NOROUNT = [
   StepProcessTbjcFxtbB182IndexComponent,
   StepProcessTbjcFxtbB191IndexComponent,
   StepProcessTbjcFxtbB192IndexComponent,
-
   AuditstepAdProcessTbjcFxFileDeptIndexComponent,
   AuditstepAdProcessTbjcFxIndexFileComponent,
   StepProcessTbjcFxFileInxCommentComponent,
   StepProcessTbjcFxWzfileditEditComponent,
-
+  // 专家评审总校
+  AuditstepPreviewZjpsZxIndexsViewComponent,
+  AuditstepPreviewZjpsZxSjtbComponent,
+  AuditstepPreviewZjpsZxInxCommentComponent,
+  AuditstepPreviewZjpsZxReviewComponent,
+  AuditstepAdProcessTbjcZxIndexPfComponent,
   // 专家评审进程--------------------------------------------------
   AuditstepAdProcessZjpsjcComponent,
   AuditstepAdProcessPsjcZxIndexComponent,

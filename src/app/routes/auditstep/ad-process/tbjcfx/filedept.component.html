@@ -3,7 +3,7 @@
       <tr>
         <th nzWidth="25%" nzAlign="center">类别</th>
         <th nzAlign="center">分校名称</th>
-        <th nzWidth="25%" nzAlign="center">操作</th>
+        <th nzWidth="25%" nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">操作</th>
       </tr>
     </thead>
     <tbody>

@@ -27,7 +27,7 @@
       <th rowspan="2" nzAlign="center">分校/学院名称</th>
       <th colspan="7" nzAlign="center"><b>学习平台使用情况</b></th>
       <th nzAlign="center"><b>公共网站使用情况</b></th>
-      <th rowspan="2" nzAlign="center">操作</th>
+      <th rowspan="2" nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">操作</th>
     </tr>
     <tr style="background-color: linen">
       <th nzAlign="center" nzWidth="130px">上线学生人数</th>
@@ -153,7 +153,7 @@
         </ng-template>
       </td>
 
-      <td nzAlign="center">
+      <td nzAlign="center" *ngIf="loadUser.user.unitNo==='S01'">
         <div *ngIf="data.islock === 0" class="editable-row-operations">
           <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else saveTpl">
             <a (click)="startEdit(data.id)">修改</a>

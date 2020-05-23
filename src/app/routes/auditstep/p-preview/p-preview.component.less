@@ -1,0 +1,45 @@
+@import '~@delon/theme/styles/default';
+
+:host ::ng-deep {
+  .ant-carousel {
+    .slick-dots {
+      bottom: -10px;
+
+      button {
+        background: @grey-10;
+      }
+
+      .slick-active button {
+        background: @primary-color;
+      }
+    }
+  }
+}
+
+
+.content {
+  position: relative;
+  height: 298px;
+  line-height: 298px;
+  text-align: center;
+  border-radius: 5px;
+
+  span {
+    font-size: 1.5em;
+  }
+}
+
+.ctitle {
+  position: relative;
+  bottom: 0;
+  height: 68px;
+  line-height: 68px;
+  text-align: center;
+  border-radius: 5px;
+
+  span {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+}
