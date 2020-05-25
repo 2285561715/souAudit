@@ -28,7 +28,6 @@ import { AuditstepAdProcessTbjcZxIndexPfComponent } from './indexpf.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuditstepPreviewZjpsZxIndexsViewComponent implements OnInit {
-  activedNode: NzTreeNode;
   constructor(
     private http: _HttpClient,
     private modal: ModalHelper,
@@ -42,6 +41,7 @@ export class AuditstepPreviewZjpsZxIndexsViewComponent implements OnInit {
     private sanitizer: DomSanitizer,
     public loadUser: SettingsService,
   ) {}
+  activedNode: NzTreeNode;
 
   searchValue = '';
   value: any;
@@ -55,13 +55,9 @@ export class AuditstepPreviewZjpsZxIndexsViewComponent implements OnInit {
   listOfDataTable: any[] = [];
 
   aNum = 0;
-  aRatio = 0.0;
   bNum = 0;
-  bRatio = 0.0;
   cNum = 0;
-  cRatio = 0.0;
   dNum = 0;
-  dRatio = 0.0;
 
   listOfDept = [
     { bno: '7', bname: '质量监控与评价中心' },
@@ -109,12 +105,17 @@ export class AuditstepPreviewZjpsZxIndexsViewComponent implements OnInit {
   temppgfile = '';
   tempatfile = '';
   temppdept = '';
+  string;
 
   ngOnInit() {
     this.loadInfo();
   }
 
   loadInfo(): void {
+    this.aNum = 0;
+    this.bNum = 0;
+    this.cNum = 0;
+    this.dNum = 0;
     this.listOfData = [];
     this.listOfDataFile = [];
     this.listOfDataTable = [];
@@ -139,7 +140,14 @@ export class AuditstepPreviewZjpsZxIndexsViewComponent implements OnInit {
     this.parmOfSqlPoint = {
       tableName: 'ad_apply_wbszjps',
       fieldList: ['id', 'index_id', 'zj_id', 'ps_point', 'ps_text', 'pp_mark', 'up_time', 'mod_time', 'is_done'],
-      predication: " app_id='" + this.value.appId + "' and step_id=33 and zj_id='" + this.loadUser.user.id + "'",
+      predication:
+        " app_id='" +
+        this.value.appId +
+        "' and step_id='" +
+        this.value.stepId +
+        "' and zj_id='" +
+        this.loadUser.user.id +
+        "'",
       orderDirections: ' index_id ASC, up_time ASC',
     };
     // 查询verindex 有哪些数据表
@@ -333,7 +341,7 @@ export class AuditstepPreviewZjpsZxIndexsViewComponent implements OnInit {
   dataBarShow(record: any): void {
     const drawerRef = this.drawerService.create<AuditstepPreviewZjpsZxSjtbComponent, { value: any }, string>({
       nzTitle: '<b>【' + record.dtName + '】数据填报</b>',
-      nzWidth: document.body.clientWidth - 80,
+      nzWidth: document.body.clientWidth - 180,
       nzPlacement: 'right',
       // nzMaskClosable: false,
       nzContent: AuditstepPreviewZjpsZxSjtbComponent,
@@ -355,13 +363,13 @@ export class AuditstepPreviewZjpsZxIndexsViewComponent implements OnInit {
   }
   // 专家查看已评分数据
   dataPFShow(): void {
-    const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcZxIndexPfComponent, { value: any }, string>({
+    const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcZxIndexPfComponent, { value: any }>({
       nzTitle: '<b>【' + this.loadUser.user.name + '】评分情况</b>',
       nzWidth: document.body.clientWidth - 1440,
       nzPlacement: 'right',
       nzContent: AuditstepAdProcessTbjcZxIndexPfComponent,
       nzContentParams: {
-        value: this.listOfData,
+        value: this.value,
       },
     });
 
@@ -370,7 +378,7 @@ export class AuditstepPreviewZjpsZxIndexsViewComponent implements OnInit {
     });
 
     drawerRef.afterClose.subscribe(data => {
-      // this.loadSteps();
+      this.loadInfo();
       if (typeof data === 'string') {
         this.value = data;
       }

@@ -94,12 +94,6 @@ import { DashboardDataUpFxtbB192IndexComponent } from './dashboard/dataupfx/fxtb
 // -- 文字资料上传
 import { DashboardFileUpFxJhzjComponent } from './dashboard/fileup/fxjhzj.component';
 
-// 专家评审-总校评估
-import { DashboardZjpsZxIndexsViewComponent } from './dashboard/zjpszx/indexsview.component';
-import { DashboardZjpsZxSjtbComponent } from './dashboard/zjpszx/zxsjtb.component';
-import { DashboardZjpsZxInxCommentComponent } from './dashboard/zjpszx/inxComment.component';
-import { DashboardZjpsZxReviewComponent } from './dashboard/zjpszx/review.component';
-
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
 import { UserRegisterComponent } from './passport/register/register.component';
@@ -215,11 +209,6 @@ const COMPONENTS_NOROUNT = [
   DashboardDataUpFxtbB192IndexComponent,
   // --文字材料上传
   DashboardFileUpFxJhzjComponent,
-  // 专家评审 总校
-  DashboardZjpsZxIndexsViewComponent,
-  DashboardZjpsZxInxCommentComponent,
-  DashboardZjpsZxSjtbComponent,
-  DashboardZjpsZxReviewComponent,
 ];
 
 @NgModule({

@@ -1,1 +1,48 @@
-<div echarts [options]="chartOption" class="chart"></div>
+<div nz-row nzGutter="16">
+  <div nz-col nzXs="24" nzMd="8">
+    <g2-pie [hasLegend]="true" title="教师职称结构" [subTitle]="zyjszw" style="font-weight: bold;" [total]="total_zyjszw"
+      [valueFormat]="format" [data]="pieData_zyjszw" height="280"></g2-pie>
+    <ng-template #zyjszw>
+      <span style="font-weight: bold;color: rgb(39, 39, 43);">职称结构</span>
+    </ng-template>
+  </div>
+  <div nz-col nzXs="24" nzMd="8">
+    <g2-pie [hasLegend]="true" title="教师学历结构" [subTitle]="xl" style="font-weight: bold;" [total]="total_xl"
+      [valueFormat]="format" [data]="pieData_xl" height="280"></g2-pie>
+    <ng-template #xl>
+      <span style="font-weight: bold;color: rgb(39, 39, 43);">学历结构</span>
+    </ng-template>
+  </div>
+  <div nz-col nzXs="24" nzMd="8">
+    <g2-pie [hasLegend]="true" title="年龄结构" [subTitle]="nlbl" style="font-weight: bold;" [total]="total_nlbl"
+      [valueFormat]="format" [data]="pieData_nlbl" height="280"></g2-pie>
+    <ng-template #nlbl>
+      <span style="font-weight: bold;color: rgb(173, 74, 7);">年龄结构</span>
+    </ng-template>
+  </div>
+</div>
+<br>
+
+<!-- <div nz-row nzGutter="16">
+  <div nz-col nzXs="24" nzMd="8">
+    <g2-pie [hasLegend]="true" title="总校专职教师" [subTitle]="nlbl_zz" style="font-weight: bold;" [total]="total_nlbl_zz"
+      [valueFormat]="format" [data]="pieData_nlbl_zz" height="200"></g2-pie>
+    <ng-template #nlbl_zz>
+      <span style="font-weight: bold;color: darkblue;">总校专职教师</span>
+    </ng-template>
+  </div>
+  <div nz-col nzXs="24" nzMd="8">
+    <g2-pie [hasLegend]="true" title="总校兼职教师" [subTitle]="nlbl_jz" style="font-weight: bold;" [total]="total_nlbl_jz"
+      [valueFormat]="format" [data]="pieData_nlbl_jz" height="200"></g2-pie>
+    <ng-template #nlbl_jz>
+      <span style="font-weight: bold;color: rgb(6, 117, 15);">总校兼职教师</span>
+    </ng-template>
+  </div>
+  <div nz-col nzXs="24" nzMd="8">
+    <g2-pie [hasLegend]="true" title="总校教师" [subTitle]="nlbl" style="font-weight: bold;" [total]="total_nlbl"
+      [valueFormat]="format" [data]="pieData_nlbl" height="200"></g2-pie>
+    <ng-template #nlbl>
+      <span style="font-weight: bold;color: rgb(173, 74, 7);">总校教师</span>
+    </ng-template>
+  </div>
+</div> -->

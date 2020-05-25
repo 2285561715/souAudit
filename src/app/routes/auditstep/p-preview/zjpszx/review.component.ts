@@ -73,9 +73,8 @@ export class AuditstepPreviewZjpsZxReviewComponent implements OnInit {
     private fb: FormBuilder,
     private msg: NzMessageService,
   ) {}
-  // radioValue = 'A';
+
   ngOnInit(): void {
-    console.log(this.dataValue);
     this.validateForm = this.fb.group({
       point: [this.dataValue.pspoint, [Validators.required]],
       ppmark: [this.dataValue.ppmark, [Validators.required]],
@@ -95,7 +94,6 @@ export class AuditstepPreviewZjpsZxReviewComponent implements OnInit {
   // --------------------------------------------------------------------------
   submitForm() {
     const fdata = this.validateForm.value;
-    console.log(this.validateForm.value);
     const date = new Date();
     const subData = {
       tableName: 'ad_apply_wbszjps',

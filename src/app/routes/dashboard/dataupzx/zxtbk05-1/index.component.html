@@ -70,7 +70,7 @@
       </td>
       <td nzAlign="center">
         <ng-container *ngIf="editCache[data.id] && !editCache[data.id].edit; else birdateInputTpl">
-          {{ data.birdate }}
+          {{ data.birdate.substring(0, 7) }}
         </ng-container>
         <ng-template #birdateInputTpl>
           <input type="text" style="max-width: 7em" nz-input [(ngModel)]="editCache[data.id].data.birdate" />

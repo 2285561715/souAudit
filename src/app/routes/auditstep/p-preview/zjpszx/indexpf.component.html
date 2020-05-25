@@ -1,4 +1,6 @@
-<nz-table nzSize="small" #colSpanTable [nzData]="value" nzBordered nzPageSize="40" nzHideOnSinglePage="true">
+<g2-pie [hasLegend]="true" subTitle="已评分" [total]="total" [valueFormat]="format" [data]="salesPieData" height="188">
+</g2-pie>
+<nz-table nzSize="small" #colSpanTable [nzData]="listOfData" nzBordered nzPageSize="100" nzHideOnSinglePage="true">
   <thead>
     <tr style="background: chocolate;">
       <th nzAlign="center" style="color:snow;font-size: medium;font-weight: bold;">评估指标</th>
@@ -6,14 +8,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let dt of colSpanTable.data; index as i">
+    <tr *ngFor="let dt of colSpanTable.data; let i = index;">
       <td>
         <span *ngIf="dt.level === '1'">{{ dt.name }}</span>
         <span *ngIf="dt.level === '2'">&nbsp;&nbsp;&nbsp;{{ dt.name }}</span>
         <span *ngIf="dt.level === '3'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{{ dt.name }}</b></span>
         <span *ngIf="dt.level === '4'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ dt.name }}</span>
       </td>
-      <td *ngIf="dt.isLeaf" nzAlign="center" nz-tooltip [nzTooltipTitle]="dt.ppmark">
+      <td *ngIf="dt.isLeaf" nzAlign="center" nz-tooltip [nzTooltipTitle]="dt.ppmark" (click)="openEdit(dt)">
         <nz-tag [nzColor]="'#f50'"> {{ dt.pspoint }} </nz-tag>
       </td>
       <td *ngIf="!dt.isLeaf" nzAlign="center">

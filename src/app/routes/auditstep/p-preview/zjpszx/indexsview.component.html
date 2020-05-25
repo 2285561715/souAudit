@@ -27,15 +27,15 @@
         <div nz-col [nzSpan]="14" style="margin:0;text-align: right;height: 2.0em;">
           <span *ngIf="panel.psmodtime">
             <i nz-icon nzType="clock-circle" style="color:rgb(97, 173, 21);"></i>
-            已打分：
+            已评分：
             <nz-tag *ngIf="panel.pspoint==='A'" [nzColor]="'#f50'">A</nz-tag>
             <nz-tag *ngIf="panel.pspoint==='B'" [nzColor]="'#f50'">B</nz-tag>
             <nz-tag *ngIf="panel.pspoint==='C'" [nzColor]="'#f50'">C</nz-tag>
             <nz-tag *ngIf="panel.pspoint==='D'" [nzColor]="'#f50'">D</nz-tag>
           </span>
-          <span *ngIf="!panel.uptime" style="color:crimson;">
-            <i nz-icon nzType="clock-circle" style="color:crimson;"></i>
-            未打分</span>
+          <span *ngIf="!panel.psmodtime" style="color:crimson;">
+            <i nz-icon nzType="info-circle" style="color:crimson;"></i>
+            未评分</span>
           <nz-divider nzType="vertical"></nz-divider>
           <button nz-button nzSize="small" nzType="primary" style="background-color: coral;border: 0;"
             (click)="openEdit(panel)" nzTooltipTitle="指标打分及录入反馈意见" nzTooltipPlacement="topCenter" nz-tooltip>
@@ -60,7 +60,7 @@
               <i nz-icon nzType="table"></i>{{c.dtName}}</button>&nbsp;&nbsp;
           </span>
         </div><br>
-        <div class="steps-comment" [innerHTML]="panel.af"></div>
+        <div class="steps-comment" style="border-color:gray;" [innerHTML]="panel.af"></div>
       </div>
       <ng-template #panelHead>
         <span *ngIf="panel.level === '1'" style="font-weight: bold;font-size: 20px;">{{ panel.name }}</span>
@@ -76,21 +76,22 @@
     </nz-collapse-panel>
   </nz-collapse>
 </div>
+<!-- <div class="footer" (click)="dataPFShow([{x:'A',y:aNum},{x:'B',y:bNum},{x:'C',y:cNum},{x:'D',y:dNum}])"></div> -->
 <div class="footer" (click)="dataPFShow()">
-  <nz-tag [nzColor]="'magenta'" style="height: 1.6em; font-size: 1.2em;font-weight: bold;">
+  <nz-tag [nzColor]="'blue'" style="height: 1.3em; font-size: 1.2em;font-weight: bold;margin-top: 0.3em;">
     已评分：{{aNum+bNum+cNum+dNum}}个
   </nz-tag>
   <nz-divider nzType="vertical"></nz-divider>
-  <nz-tag [nzColor]="'green'" style="height: 1.5em; font-size: 1.2em;font-weight: bold;">A
+  <nz-tag [nzColor]="'green'" style="height: 1.3em; font-size: 1.2em;font-weight: bold;">A
     ：{{aNum}}个，{{format(aNum/listOfDataPoint.length*100)}} %</nz-tag>&nbsp;
-  <nz-tag [nzColor]="'green'" style="height: 1.5em; font-size: 1.2em;font-weight: bold;">B
+  <nz-tag [nzColor]="'green'" style="height: 1.3em; font-size: 1.2em;font-weight: bold;">B
     ：{{bNum}}个，{{format(bNum/listOfDataPoint.length*100)}} %</nz-tag>&nbsp;
-  <nz-tag [nzColor]="'green'" style="height: 1.5em; font-size: 1.2em;font-weight: bold;">C
+  <nz-tag [nzColor]="'green'" style="height: 1.3em; font-size: 1.2em;font-weight: bold;">C
     ；{{cNum}}个，{{format(cNum/listOfDataPoint.length*100)}} %</nz-tag>&nbsp;
-  <nz-tag [nzColor]="'green'" style="height: 1.5em; font-size: 1.2em;font-weight: bold;">D
+  <nz-tag [nzColor]="'green'" style="height: 1.3em; font-size: 1.2em;font-weight: bold;">D
     ：{{dNum}}个，{{format(dNum/listOfDataPoint.length*100)}} %</nz-tag>
   <nz-divider nzType="vertical"></nz-divider>
-  <nz-tag [nzColor]="'#f50'" style="height: 1.5em; font-size: 1.2em;font-weight: bold;">尚有
+  <nz-tag [nzColor]="'red'" style="height: 1.3em; font-size: 1.2em;font-weight: bold;">尚有
     {{listOfDataPoint.length-(aNum+bNum+cNum+dNum)}} 个未评分
   </nz-tag>
 </div>
