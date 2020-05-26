@@ -1,27 +1,63 @@
-<div nz-row nzGutter="16">
-  <div nz-col nzXs="24" nzMd="8">
-    <g2-pie [hasLegend]="true" title="教师职称结构" [subTitle]="zyjszw" style="font-weight: bold;" [total]="total_zyjszw"
-      [valueFormat]="format" [data]="pieData_zyjszw" height="280"></g2-pie>
-    <ng-template #zyjszw>
-      <span style="font-weight: bold;color: rgb(39, 39, 43);">职称结构</span>
-    </ng-template>
+<nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTb1">
+  <div nz-row nzGutter="16">
+    <div nz-col nzXs="24" nzMd="8">
+      <g2-pie [hasLegend]="true" title="教师职称结构" [subTitle]="zyjszw" style="font-weight: bold;" [total]="total_zyjszw"
+        [valueFormat]="format" [data]="pieData_zyjszw" height="260"></g2-pie>
+      <ng-template #zyjszw>
+        <span style="font-weight: bold;color: rgb(39, 39, 43);">职称结构</span>
+      </ng-template>
+    </div>
+    <div nz-col nzXs="24" nzMd="8">
+      <g2-pie [hasLegend]="true" title="教师学历结构" [subTitle]="xl" style="font-weight: bold;" [total]="total_xl"
+        [valueFormat]="format" [data]="pieData_xl" height="260"></g2-pie>
+      <ng-template #xl>
+        <span style="font-weight: bold;color: rgb(39, 39, 43);">学历结构</span>
+      </ng-template>
+    </div>
+    <div nz-col nzXs="24" nzMd="8">
+      <g2-pie [hasLegend]="true" title="年龄结构" [subTitle]="nlbl" style="font-weight: bold;" [total]="total_nlbl"
+        [valueFormat]="format" [data]="pieData_nlbl" height="260"></g2-pie>
+      <ng-template #nlbl>
+        <span style="font-weight: bold;color: rgb(173, 74, 7);">年龄结构</span>
+      </ng-template>
+    </div>
   </div>
-  <div nz-col nzXs="24" nzMd="8">
-    <g2-pie [hasLegend]="true" title="教师学历结构" [subTitle]="xl" style="font-weight: bold;" [total]="total_xl"
-      [valueFormat]="format" [data]="pieData_xl" height="280"></g2-pie>
-    <ng-template #xl>
-      <span style="font-weight: bold;color: rgb(39, 39, 43);">学历结构</span>
-    </ng-template>
-  </div>
-  <div nz-col nzXs="24" nzMd="8">
-    <g2-pie [hasLegend]="true" title="年龄结构" [subTitle]="nlbl" style="font-weight: bold;" [total]="total_nlbl"
-      [valueFormat]="format" [data]="pieData_nlbl" height="280"></g2-pie>
-    <ng-template #nlbl>
-      <span style="font-weight: bold;color: rgb(173, 74, 7);">年龄结构</span>
-    </ng-template>
-  </div>
-</div>
+</nz-card>
+<ng-template #titleTemplateTb1>
+  <span style="line-height: 1.5em;font-size: 1.2em; color: crimson; "><b>
+      <i nz-icon nzType="home" nzTheme="fill"></i> 总校教师统计情况</b></span>
+</ng-template>
 <br>
+
+<nz-card [nzHoverable]="true" nzType="inner" [nzTitle]="titleTemplateTb2">
+  <div nz-row nzGutter="16">
+    <div nz-col nzXs="24" nzMd="8">
+      <g2-pie [hasLegend]="true" title="教师职称结构" [subTitle]="zyjszw" style="font-weight: bold;" [total]="total_zyjszw"
+        [valueFormat]="format" [data]="pieData_zyjszw" height="260"></g2-pie>
+      <ng-template #zyjszw>
+        <span style="font-weight: bold;color: rgb(39, 39, 43);">职称结构</span>
+      </ng-template>
+    </div>
+    <div nz-col nzXs="24" nzMd="8">
+      <g2-pie [hasLegend]="true" title="教师学历结构" [subTitle]="xl" style="font-weight: bold;" [total]="total_xl"
+        [valueFormat]="format" [data]="pieData_xl" height="260"></g2-pie>
+      <ng-template #xl>
+        <span style="font-weight: bold;color: rgb(39, 39, 43);">学历结构</span>
+      </ng-template>
+    </div>
+    <div nz-col nzXs="24" nzMd="8">
+      <g2-pie [hasLegend]="true" title="年龄结构" [subTitle]="nlbl" style="font-weight: bold;" [total]="total_nlbl"
+        [valueFormat]="format" [data]="pieData_nlbl" height="260"></g2-pie>
+      <ng-template #nlbl>
+        <span style="font-weight: bold;color: rgb(173, 74, 7);">年龄结构</span>
+      </ng-template>
+    </div>
+  </div>
+</nz-card>
+<ng-template #titleTemplateTb2>
+  <span style="line-height: 1.5em;font-size: 1.2em; color: green; "><b>
+      <i nz-icon nzType="team"></i> 全系统教师统计情况</b></span>
+</ng-template>
 
 <!-- <div nz-row nzGutter="16">
   <div nz-col nzXs="24" nzMd="8">

@@ -11,6 +11,7 @@
             <i nz-icon nzType="setting" nzTheme="fill" style="color:coral"></i>内涵及说明
           </button>
         </p>
+        <div class="steps-content" [innerHTML]="panel.remark" style="border-color: coral;"></div>
         <div class="steps-content" [innerHTML]="panel.viewPoint"></div>
       </div>
       <ng-template #panelHead>
