@@ -65,6 +65,7 @@ export class DashboardDataUpFxIndexsViewComponent implements OnInit {
     this.parmOfSql = {
       tableName: 'ad_apply_wbswz',
       fieldList: [
+        'id',
         'ver_index',
         'dept_id',
         'app_id',
@@ -112,6 +113,7 @@ export class DashboardDataUpFxIndexsViewComponent implements OnInit {
             item.isLeaf ? (item.isDuty = true) : (item.isDuty = false);
             this.listOfDataFile.forEach(itemf => {
               if (itemf.index_id === item.id) {
+                item.wzid = itemf.id;
                 item.pgfile = itemf.index_comments;
                 item.atfile = itemf.other_attachments;
                 item.uptime = itemf.up_time;
@@ -130,6 +132,7 @@ export class DashboardDataUpFxIndexsViewComponent implements OnInit {
               remark: item.remark,
               dutydept: item.dutyDept,
               viewPoint: this.sanitizer.bypassSecurityTrustHtml(item.viewPoint),
+              wzid: item.wzid,
               pgfile: item.pgfile,
               pf: this.sanitizer.bypassSecurityTrustHtml(item.pgfile),
               atfile: item.atfile,

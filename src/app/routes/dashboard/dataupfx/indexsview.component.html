@@ -4,18 +4,23 @@
     <nz-collapse-panel *ngFor="let panel of listOfData" [nzHeader]="panelHead" [nzActive]="panel.active"
       [nzExtra]="extraTpl" nzDisabled="false" nzShowArrow="false"
       [nzExpandedIcon]="!isFirst && (panel.icon || expandedIcon)" style="border: 0px;">
-      <div nz-row nzGutter="8">
+      <div *ngIf="panel.isLeaf" nz-row nzGutter="8">
         <p style="margin:0;text-align: right;height: 2.0em;">
           <span *ngIf="panel.uptime">
             <i nz-icon nzType="clock-circle" style="color:rgb(97, 173, 21);"></i>
             最近上传：{{ panel.uptime | _date}}</span>
-          <span *ngIf="!panel.uptime" style="color:crimson;">
+          <span *ngIf="!panel.uptime&&panel.wzid" style="color:crimson;">
             <i nz-icon nzType="clock-circle" style="color:crimson;"></i>
             尚未上传</span>
 
-          <nz-divider nzType="vertical"></nz-divider>
-          <button nz-button nzSize="small" nzType="primary" style="background-color: coral;border: 0;"
-            (click)="openEdit(panel)" nzTooltipTitle="指标支撑文字材料上传或修改" nzTooltipPlacement="topCenter" nz-tooltip>
+          <span *ngIf="!panel.wzid" style="color:rgb(97, 173, 21);">
+            <i nz-icon nzType="warning" style="color:rgb(97, 173, 21);"></i>
+            无需上传</span>
+
+          <nz-divider *ngIf="panel.wzid" nzType="vertical"></nz-divider>
+          <button *ngIf="panel.wzid" nz-button nzSize="small" nzType="primary"
+            style="background-color: coral;border: 0;" (click)="openEdit(panel)" nzTooltipTitle="指标支撑文字材料上传或修改"
+            nzTooltipPlacement="topCenter" nz-tooltip>
             <i nz-icon nzType="edit" nzTheme="fill"></i>上传材料
           </button>
           <nz-divider nzType="vertical"></nz-divider>
@@ -23,12 +28,11 @@
             nzTooltipPlacement="topCenter" nz-tooltip>
             <指标内涵及说明> &nbsp;
           </button>
-
         </p>
         <div *ngIf="!panel.uptime" class="steps-content" [innerHTML]="panel.remark"></div>
         <div *ngIf="!panel.uptime" class="steps-content" [innerHTML]="panel.viewPoint"></div>
         <div *ngIf="panel.uptime" class="steps-comment" [innerHTML]="panel.pf"></div>
-        <div *ngIf="panel.uptime" class="steps-comment" [innerHTML]="panel.af"></div>
+        <div *ngIf="panel.uptime" class="steps-comment" style="border-color:green;" [innerHTML]="panel.af"></div>
       </div>
       <ng-template #panelHead>
         <span *ngIf="panel.level === '1'" style="font-weight: bold;font-size: 20px;">{{ panel.name }}</span>

@@ -34,7 +34,8 @@
         <div *ngIf="panel.isduty&&!panel.uptime" class="steps-content" [innerHTML]="panel.remark"></div>
         <div *ngIf="panel.isduty&&!panel.uptime" class="steps-content" [innerHTML]="panel.viewPoint"></div>
         <div *ngIf="panel.isduty&&panel.uptime" class="steps-comment" [innerHTML]="panel.pf"></div>
-        <div *ngIf="panel.isduty&&panel.uptime" class="steps-comment" [innerHTML]="panel.af"></div>
+        <div *ngIf="panel.isduty&&panel.uptime" class="steps-comment" style="border-color:green;"
+          [innerHTML]="panel.af"></div>
       </div>
       <ng-template #panelHead>
         <span *ngIf="panel.level === '1'" style="font-weight: bold;font-size: 20px;">{{ panel.name }}</span>
