@@ -48,7 +48,7 @@ export class AuditstepAdProcessTbjcZxIndexSjtbComponent implements OnInit {
   dataBarShow(record: any): void {
     const drawerRef = this.drawerService.create<AuditstepAdProcessTbjcZxDataViewComponent, { value: any }, string>({
       nzTitle: '<b>【' + record.dtName + '】数据填报</b>',
-      nzWidth: document.body.clientWidth - 80,
+      nzWidth: document.body.clientWidth - 280,
       nzPlacement: 'right',
       // nzMaskClosable: false,
       nzContent: AuditstepAdProcessTbjcZxDataViewComponent,

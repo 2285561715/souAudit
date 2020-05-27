@@ -41,7 +41,9 @@ import { StepProcessTbjcZxtbK032IndexComponent } from './ad-process/tbjczx/zxtbk
 import { StepProcessTbjcZxtbK033IndexComponent } from './ad-process/tbjczx/zxtbk03-3/index.component';
 import { StepProcessTbjcZxtbK034IndexComponent } from './ad-process/tbjczx/zxtbk03-4/index.component';
 import { StepProcessTbjcZxtbK051IndexComponent } from './ad-process/tbjczx/zxtbk05-1/index.component';
+import { StepProcessTbjcZxtbK051ChartComponent } from './ad-process/tbjczx/zxtbk05-1/chart.component';
 import { StepProcessTbjcZxtbK052IndexComponent } from './ad-process/tbjczx/zxtbk05-2/index.component';
+import { StepProcessTbjcZxtbK052ChartComponent } from './ad-process/tbjczx/zxtbk05-2/chart.component';
 import { StepProcessTbjcZxtbK053IndexComponent } from './ad-process/tbjczx/zxtbk05-3/index.component';
 import { StepProcessTbjcZxtbK061IndexComponent } from './ad-process/tbjczx/zxtbk06-1/index.component';
 import { StepProcessTbjcZxtbK062IndexComponent } from './ad-process/tbjczx/zxtbk06-2/index.component';
@@ -72,7 +74,6 @@ import { StepProcessTbjcZxtbK222IndexComponent } from './ad-process/tbjczx/zxtbk
 import { StepProcessTbjcZxtbK223IndexComponent } from './ad-process/tbjczx/zxtbk22-3/index.component';
 import { StepProcessTbjcZxtbK231IndexComponent } from './ad-process/tbjczx/zxtbk23-1/index.component';
 import { StepProcessTbjcZxtbK232IndexComponent } from './ad-process/tbjczx/zxtbk23-2/index.component';
-import { StepProcessTbjcZxtbK051ChartComponent } from './ad-process/tbjczx/zxtbk05-1/chart.component';
 
 // import { DashboardDataUpZxtbK052IndexComponent } from '../dashboard/dataupzx/zxtbk05-2/index.component';
 // 总校文字材料填报进程
@@ -179,8 +180,13 @@ const COMPONENTS_NOROUNT = [
   StepProcessTbjcZxtbK032IndexComponent,
   StepProcessTbjcZxtbK033IndexComponent,
   StepProcessTbjcZxtbK034IndexComponent,
+
   StepProcessTbjcZxtbK051IndexComponent,
+  StepProcessTbjcZxtbK051ChartComponent,
+
   StepProcessTbjcZxtbK052IndexComponent,
+  StepProcessTbjcZxtbK052ChartComponent,
+
   StepProcessTbjcZxtbK053IndexComponent,
   StepProcessTbjcZxtbK061IndexComponent,
   StepProcessTbjcZxtbK062IndexComponent,
@@ -211,7 +217,6 @@ const COMPONENTS_NOROUNT = [
   StepProcessTbjcZxtbK223IndexComponent,
   StepProcessTbjcZxtbK231IndexComponent,
   StepProcessTbjcZxtbK232IndexComponent,
-  StepProcessTbjcZxtbK051ChartComponent,
 
   // 分校填报进程查询----------------------------------------------
   AuditstepAdProcessTbjcFxSjtbIndexComponent,
