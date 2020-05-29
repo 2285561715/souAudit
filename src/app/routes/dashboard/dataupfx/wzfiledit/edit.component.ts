@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { NzModalRef, NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { SFSchema, SFUISchema } from '@delon/form';
 import { format } from 'date-fns';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UploadChangeParam } from 'ng-zorro-antd/upload';
+import { UEditorComponent } from 'ngx-ueditor';
 
 @Component({
   selector: 'app-dashboard-dataupfx-wzfiledit-edit',
@@ -12,6 +13,7 @@ import { UploadChangeParam } from 'ng-zorro-antd/upload';
   styleUrls: ['./edit.component.less'],
 })
 export class DashboardDataUpFxWzfileditEditComponent implements OnInit {
+  isVisible = false;
   record: any = [];
   dataValue: any;
   i: any;
@@ -74,6 +76,10 @@ export class DashboardDataUpFxWzfileditEditComponent implements OnInit {
   };
 
   validateForm: FormGroup;
+
+  @ViewChild('full1', { static: true }) full1: UEditorComponent;
+  @ViewChild('full2', { static: true }) full2: UEditorComponent;
+
   constructor(
     private modal: NzModalRef,
     private msgSrv: NzMessageService,
@@ -81,7 +87,10 @@ export class DashboardDataUpFxWzfileditEditComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
     private msg: NzMessageService,
+    private el: ElementRef,
   ) {}
+
+  temptext: string;
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -98,7 +107,12 @@ export class DashboardDataUpFxWzfileditEditComponent implements OnInit {
   _destroy(): void {
     // console.log('enter  destory');
   }
-  _change(event: any) {}
+  _change(event: any) {
+    this.temptext = this.full1.Instance.getContentTxt();
+    if (this.temptext.length > 1088) {
+      this.isVisible = true;
+    }
+  }
   // --------------------------------------------------------------------------
   submitForm() {
     const fdata = this.validateForm.value;
@@ -126,12 +140,21 @@ export class DashboardDataUpFxWzfileditEditComponent implements OnInit {
         this.dataValue.stepId +
         "'",
     };
-    this.http.put('/api/dynamic/update', subData).subscribe(res => {
-      this.msgSrv.success('保存成功');
-      this.modal.close(true);
-    });
+
+    if (this.temptext.length > 1088) {
+      this.isVisible = true;
+    } else {
+      // 字数小于1000可以提交
+      this.http.put('/api/dynamic/update', subData).subscribe(res => {
+        this.msgSrv.success('保存成功');
+        this.modal.close(true);
+      });
+    }
   }
   // ---------------------------------------------------------------------------
+  handleOk(): void {
+    this.isVisible = false;
+  }
 
   close() {
     this.modal.destroy();

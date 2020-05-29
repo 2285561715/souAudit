@@ -5,8 +5,8 @@
   <nz-form-item nzJustify="center">
     <nz-form-label [nzSpan]="2" style="font-size: 16px;font-weight: bold;">文字材料</nz-form-label>
     <nz-form-control [nzSpan]="22">
-      <ueditor #full formControlName="indexPGfile" [config]="config" (onReady)="_ready($event)" (onDestroy)="_destroy()"
-        (ngModelChange)="_change($event)" style="width: 100%;height: 180px;">
+      <ueditor #full1 formControlName="indexPGfile" [config]="config" (onReady)="_ready($event)"
+        (onDestroy)="_destroy()" (ngModelChange)="_change($event)" style="width: 100%;height: 180px;">
       </ueditor>
     </nz-form-control>
   </nz-form-item>
@@ -14,8 +14,8 @@
   <nz-form-item nzJustify="center">
     <nz-form-label [nzSpan]="2" style="font-size: 16px;">其他附件</nz-form-label>
     <nz-form-control [nzSpan]="22">
-      <ueditor #full formControlName="attachfiles" [config]="config_attach" (onReady)="_ready($event)"
-        (onDestroy)="_destroy()" (ngModelChange)="_change($event)" style="width: 100%;height: 80px;">
+      <ueditor #full2 formControlName="attachfiles" [config]="config_attach" (onReady)="_ready($event)"
+        (onDestroy)="_destroy()" style="width: 100%;height: 80px;">
       </ueditor>
     </nz-form-control>
   </nz-form-item>
@@ -26,3 +26,12 @@
   <button nz-button nzType="primary" (click)="submitForm()"><span>保存</span>
   </button>
 </div>
+
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="modelTitle" nzCancelDisabled="true" (nzOnOk)="handleOk()">
+  <p style="font-weight: bold;">您上传字数超过最大限制1000字！</p>
+  <p style="font-weight: bold;">烦请适当删减后再上传！</p>
+  <ng-template #modelTitle>
+    <span style="font-weight: bold;color: red;"><i nz-icon nzType="warning" style="color: red;"></i> 提
+      醒！</span>
+  </ng-template>
+</nz-modal>
